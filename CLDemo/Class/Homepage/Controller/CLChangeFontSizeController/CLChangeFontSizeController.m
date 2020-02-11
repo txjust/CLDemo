@@ -10,7 +10,7 @@
 #import "ChangeFontSizeModel.h"
 #import "CLChangeFontSizeCell.h"
 #import "CLChangeFontSizeSlider.h"
-#import "CLMyController.h"
+#import "CLHomepageController.h"
 #import "CLTabbarController.h"
 
 
@@ -56,11 +56,11 @@
 - (void)refreshRootViewController {
     //创建新的根控制器
     CLTabbarController *tabbarController = [[CLTabbarController alloc] init];
-    tabbarController.selectedIndex = 3;
+    tabbarController.selectedIndex = 0;
     UINavigationController *navigationController = tabbarController.selectedViewController;
     NSMutableArray *viewControllers = navigationController.viewControllers.mutableCopy;
     //取出我的页面，提前加载，解决返回按钮不变化
-    CLMyController *me = (CLMyController *)[viewControllers firstObject];
+    CLHomepageController *me = (CLHomepageController *)[viewControllers firstObject];
     [me loadViewIfNeeded];
     //新建设置语言页面
     CLChangeFontSizeController *fontSizeController = [[CLChangeFontSizeController alloc] init];

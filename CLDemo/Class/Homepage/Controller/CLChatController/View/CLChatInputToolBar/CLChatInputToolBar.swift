@@ -15,8 +15,6 @@ protocol CLChatInputToolBarDelegate: class {
     func inputBarWillShowKeyboard()
     ///键盘将要隐藏
     func inputBarWillHiddenKeyboard()
-    ///点击相册按钮
-    func inputBarClickAlbum()
     ///点击相机按钮
     func inputBarClickCamera()
     ///点击录音按钮
@@ -41,10 +39,6 @@ extension CLChatInputToolBarDelegate {
     }
     ///键盘将要隐藏
     func inputBarWillHiddenKeyboard() {
-        
-    }
-    ///点击相册按钮
-    func inputBarClickAlbum() {
         
     }
     ///点击相机按钮
@@ -77,11 +71,13 @@ class CLChatInputToolBar: UIView {
     ///内容视图
     private lazy var contentView: UIView = {
         let contentView = UIView()
-        let topBorder = CALayer()
-        topBorder.frame = CGRect(x: 0, y: 0, width: cl_screenWidth(), height: 1)
-        topBorder.backgroundColor = hexColor("0x22222D").cgColor
-        contentView.layer.addSublayer(topBorder)
         return contentView
+    }()
+    ///顶部线条
+    private lazy var topLineView: UIView = {
+        let topLineView = UIView()
+        topLineView.backgroundColor = hexColor("0x22222D")
+        return topLineView
     }()
     ///顶部工具条
     private lazy var topToolBar: UIView = {
@@ -194,9 +190,6 @@ class CLChatInputToolBar: UIView {
     private lazy var photoView: CLChatPhotoView = {
         let photoView = CLChatPhotoView()
         photoView.backgroundColor = hexColor("0x31313F")
-        photoView.albumButtonCallback = {[weak self] in
-            self?.delegate?.inputBarClickAlbum()
-        }
         photoView.cameraButtonCallback = {[weak self] in
             self?.delegate?.inputBarClickCamera()
         }
@@ -335,6 +328,7 @@ extension CLChatInputToolBar {
     private func initUI() {
         backgroundColor = hexColor("0x31313F")
         addSubview(contentView)
+        addSubview(topLineView)
         contentView.addSubview(topToolBar)
         contentView.addSubview(middleSpaceView)
         contentView.addSubview(bottomSafeView)
@@ -356,6 +350,10 @@ extension CLChatInputToolBar {
                 make.left.equalTo(self.snp.left)
                 make.right.equalTo(self.snp.right)
             }
+        }
+        topLineView.snp.makeConstraints { (make) in
+            make.top.right.left.equalToSuperview()
+            make.height.equalTo(1)
         }
         topToolBar.snp.makeConstraints { (make) in
             make.top.left.right.equalTo(contentView)
@@ -606,12 +604,15 @@ extension CLChatInputToolBar {
         isShowPhotoKeyboard = false
         isShowEmojiKeyboard = false
         isShowVoiceKeyboard = false
+        
         middleSpaceView.snp.updateConstraints { (make) in
             make.height.equalTo(0)
         }
-        UIView.animate(withDuration: 0.25) {
+        UIView.animate(withDuration: 0.25, animations: {
             self.superview?.setNeedsLayout()
             self.superview?.layoutIfNeeded()
+        }) { (_) in
+            self.photoView.reset()
         }
         textViewResignFirstResponder()
     }

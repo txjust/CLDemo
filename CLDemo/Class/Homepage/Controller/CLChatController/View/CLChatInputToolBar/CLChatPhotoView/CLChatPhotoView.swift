@@ -7,21 +7,22 @@
 
 import UIKit
 import SnapKit
+import Photos
 
 class CLChatPhotoView: UIView {
     ///间隙
-    private var edgeInsets: UIEdgeInsets = UIEdgeInsets(top: 20, left: 20, bottom: -20, right: -20)
+    private var edgeInsets: UIEdgeInsets = UIEdgeInsets(top: 30, left: 20, bottom: -30, right: -20)
     ///行间隙
-    private var rowMargin: CGFloat = 20
+    private var rowMargin: CGFloat = 30
     ///列间隙
-    private var columnMargin: CGFloat = 20
+    private var columnMargin: CGFloat = 30
     ///多少行
     private var rowNumber: Int = 2
     ///多少列
     private var columnNumber: Int = 4
     ///大小
     private var itemSize: CGSize {
-        return CGSize(width: 80, height: 80)
+        return CGSize(width: 90, height: 90)
     }
     ///控件宽度
     private var width: CGFloat {
@@ -52,11 +53,10 @@ class CLChatPhotoView: UIView {
         cameraButton.addTarget(self, action: #selector(cameraButtonButtonAction), for: .touchUpInside)
         return cameraButton
     }()
-    ///点击相册
-    var albumButtonCallback: (()->())?
+    ///快速相册
+    private var albumContentView: CLChatPhotoAlbumContentView?
     ///点击相机
     var cameraButtonCallback: (()->())?
-
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.frame = CGRect(x: 0, y: 0, width: width, height: height)
@@ -86,17 +86,52 @@ extension CLChatPhotoView {
     }
 }
 extension CLChatPhotoView {
-    ///控制器将要旋转
-    func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        coordinator.animate(alongsideTransition: { (_) in
-        }) { (_) in
-            
+    ///重置状态
+    func reset() {
+        albumContentView?.snp.remakeConstraints { (make) in
+            make.left.right.equalToSuperview()
+            make.height.equalTo(height)
+            make.top.equalTo(height + cl_safeAreaInsets().bottom)
         }
+        albumContentView?.scrollToLeft()
     }
 }
 extension CLChatPhotoView {
     @objc private func albumButtonAction() {
-        albumButtonCallback?()
+        PHPhotoLibrary.requestAuthorization { (status) in
+            if status == .authorized {
+                DispatchQueue.main.async {
+                    showPhotoView()
+                }
+            }else {
+                print("=======================")
+            }
+        }
+        func showPhotoView() {
+            if albumContentView == nil {
+                albumContentView = CLChatPhotoAlbumContentView()
+            }
+            guard let albumContentView = albumContentView else {
+                return
+            }
+            addSubview(albumContentView)
+            albumContentView.snp.remakeConstraints { (make) in
+                make.left.right.equalToSuperview()
+                make.height.equalTo(height)
+                make.top.equalTo(height + cl_safeAreaInsets().bottom)
+            }
+            setNeedsLayout()
+            layoutIfNeeded()
+            UIView.animate(withDuration: 0.25) {
+                albumContentView.snp.remakeConstraints { (make) in
+                    make.left.right.equalToSuperview()
+                    make.height.equalTo(self.height)
+                    make.top.equalTo(0)
+                }
+                self.setNeedsLayout()
+                self.layoutIfNeeded()
+            }
+        }
     }
     @objc private func cameraButtonButtonAction() {
         cameraButtonCallback?()
