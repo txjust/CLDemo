@@ -8,56 +8,102 @@
 
 import UIKit
 
+class CLPopupModel: NSObject {
+    var title: String?
+    var callback: (() -> ())?
+}
+
+
 class CLPopupController: CLBaseViewController {
+    lazy var arrayDS: [CLPopupModel] = {
+        let arrayDS = [CLPopupModel]()
+        return arrayDS
+    }()
+    lazy var tableview: UITableView = {
+        let tableview = UITableView()
+        tableview.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: "UITableViewCell")
+        tableview.dataSource = self
+        tableview.delegate = self
+        return tableview
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
-        let button = UIButton()
-        view.addSubview(button)
-        button.backgroundColor = UIColor.randomColor
-        button.setTitle("点我翻牌", for: .normal)
-        button.addTarget(self, action: #selector(showFlop), for: .touchUpInside)
-        button.snp.makeConstraints { (make) in
-            make.size.equalTo(120)
-            make.centerX.equalToSuperview()
-            make.top.equalTo(130)
-        }
-        
-        let button1 = UIButton()
-        view.addSubview(button1)
-        button1.backgroundColor = UIColor.randomColor
-        button1.setTitle("一个按钮", for: .normal)
-        button1.addTarget(self, action: #selector(showOne), for: .touchUpInside)
-        button1.snp.makeConstraints { (make) in
-            make.size.equalTo(120)
-            make.centerX.equalToSuperview()
-            make.top.equalTo(button.snp.bottom).offset(20)
-        }
-        
-        let button2 = UIButton()
-        view.addSubview(button2)
-        button2.backgroundColor = UIColor.randomColor
-        button2.setTitle("两个按钮", for: .normal)
-        button2.addTarget(self, action: #selector(showTwo), for: .touchUpInside)
-        button2.snp.makeConstraints { (make) in
-            make.size.equalTo(120)
-            make.centerX.equalToSuperview()
-            make.top.equalTo(button1.snp.bottom).offset(20)
-        }
-        
-        let button3 = UIButton()
-        view.addSubview(button3)
-        button3.backgroundColor = UIColor.randomColor
-        button3.setTitle("成功", for: .normal)
-        button3.addTarget(self, action: #selector(showSuccess), for: .touchUpInside)
-        button3.snp.makeConstraints { (make) in
-            make.size.equalTo(120)
-            make.centerX.equalToSuperview()
-            make.top.equalTo(button2.snp.bottom).offset(20)
+        initData()
+        view.addSubview(tableview)
+        tableview.snp.makeConstraints { (make) in
+            make.left.right.bottom.equalToSuperview()
+            if #available(iOS 11.0, *) {
+                make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            } else {
+                make.top.equalToSuperview()
+            }
         }
     }
 }
 extension CLPopupController {
-    @objc func showFlop() {
+    func initData() {
+        let model1 = CLPopupModel()
+        model1.title = "翻牌弹窗"
+        model1.callback = {[weak self] in
+            self?.showFlop()
+        }
+        arrayDS.append(model1)
+        
+        let model2 = CLPopupModel()
+        model2.title = "系统弹窗，一个按钮"
+        model2.callback = {[weak self] in
+            self?.showOne()
+        }
+        arrayDS.append(model2)
+        
+        let model3 = CLPopupModel()
+        model3.title = "系统弹窗，两个按钮"
+        model3.callback = {[weak self] in
+            self?.showTwo()
+        }
+        arrayDS.append(model3)
+        
+        let model4 = CLPopupModel()
+        model4.title = "成功弹窗"
+        model4.callback = {[weak self] in
+            self?.showSuccess()
+        }
+        arrayDS.append(model4)
+        
+        let model5 = CLPopupModel()
+        model5.title = "错误弹窗"
+        model5.callback = {[weak self] in
+            self?.showError()
+        }
+        arrayDS.append(model5)
+        
+        let model6 = CLPopupModel()
+        model6.title = "加载弹窗"
+        model6.callback = {[weak self] in
+            self?.showLoading()
+        }
+        arrayDS.append(model6)
+    }
+}
+extension CLPopupController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        arrayDS.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath)
+        cell.textLabel?.text = arrayDS[indexPath.row].title
+        return cell
+    }
+}
+extension CLPopupController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let model = arrayDS[indexPath.row]
+        model.callback?()
+    }
+}
+extension CLPopupController {
+    func showFlop() {
         CLPopupManager.showFlop()
         //        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
         //            CLPopupManager.showFlop(statusBarHidden: true)
@@ -69,20 +115,23 @@ extension CLPopupController {
         //            CLPopupManager.showFlop(statusBarStyle: .default)
         //        }
     }
-    @objc func showOne() {
+    func showOne() {
         CLPopupManager.showOneAlert(autorotate: true, title: "我是一个按钮", message: "我有一个按钮")
     }
-    @objc func showTwo() {
+    func showTwo() {
         CLPopupManager.showTwoAlert(autorotate: true, title: "我是两个按钮", message: "我有两个按钮")
     }
-    @objc func showSuccess() {
-//        CLMBProgressHUD.drawRoundLoadingView("AAAAAAAAA", view: view)
-//        CLPopupManager.showSuccess(autorotate: true, interfaceOrientationMask: .all, only: true, text: "显示成功", dismissCallback: {
-//            print("success animation dismiss")
-//        })
-//        CLPopupManager.showError(autorotate: true, interfaceOrientationMask: .all, only: true, text: "显示错误", dismissCallback: {
-//            print("error animation dismiss")
-//        })
+    func showSuccess() {
+        CLPopupManager.showSuccess(autorotate: true, interfaceOrientationMask: .all, only: true, text: "显示成功", dismissCallback: {
+            print("success animation dismiss")
+        })
+    }
+    func showError() {
+        CLPopupManager.showError(autorotate: true, interfaceOrientationMask: .all, only: true, text: "显示错误", dismissCallback: {
+            print("error animation dismiss")
+        })
+    }
+    func showLoading() {
         CLPopupManager.showLoading(autorotate: true, interfaceOrientationMask: .all, only: true, text: nil)
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 6) {
             CLPopupManager.dismissAll()
