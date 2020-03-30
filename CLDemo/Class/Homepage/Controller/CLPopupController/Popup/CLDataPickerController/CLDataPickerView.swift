@@ -12,6 +12,10 @@ import DateToolsSwift
 class CLDataPickerView: UIView {
     var cancelCallback: (() -> ())?
     var sureCallback: ((Int, Int, Int) -> ())?
+    var nowDate: Date = Date(timeIntervalSinceNow: 0)
+    var yearIndex: Int = 0
+    var monthIndex: Int = 0
+    var dayIndex: Int = 0
     lazy var yearArray: [Int] = {
         var yearArray = [Int]()
         for item in (nowDate.year - 10)...(nowDate.year) {
@@ -27,10 +31,6 @@ class CLDataPickerView: UIView {
         let dayArray = [Int]()
         return dayArray
     }()
-    var nowDate: Date = Date(timeIntervalSinceNow: 0)
-    var yearIndex: Int = 0
-    var monthIndex: Int = 0
-    var dayIndex: Int = 0
     lazy var topToolBar: UIButton = {
         let topToolBar = UIButton()
         topToolBar.backgroundColor = hexColor("#F8F6F9")
@@ -58,6 +58,30 @@ class CLDataPickerView: UIView {
         sureButton.addTarget(self, action: #selector(sureAction), for: .touchUpInside)
         return sureButton
     }()
+    lazy var yearLabel: UILabel = {
+        let yearLabel = UILabel()
+        yearLabel.textAlignment = .right
+        yearLabel.textColor = hexColor("#40B5AA")
+        yearLabel.font = UIFont.systemFont(ofSize: 14)
+        yearLabel.text = "年"
+        return yearLabel
+    }()
+    lazy var monthLabel: UILabel = {
+        let monthLabel = UILabel()
+        monthLabel.textAlignment = .right
+        monthLabel.textColor = hexColor("#40B5AA")
+        monthLabel.font = UIFont.systemFont(ofSize: 14)
+        monthLabel.text = "月"
+        return monthLabel
+    }()
+    lazy var dayLabel: UILabel = {
+        let dayLabel = UILabel()
+        dayLabel.textAlignment = .right
+        dayLabel.textColor = hexColor("#40B5AA")
+        dayLabel.font = UIFont.systemFont(ofSize: 14)
+        dayLabel.text = "日"
+        return dayLabel
+    }()
     lazy var pickerView: UIPickerView = {
         let pickerView = UIPickerView()
         pickerView.dataSource = self
@@ -81,6 +105,9 @@ extension CLDataPickerView {
         addSubview(topToolBar)
         topToolBar.addSubview(cancelButton)
         topToolBar.addSubview(sureButton)
+        addSubview(yearLabel)
+        addSubview(monthLabel)
+        addSubview(dayLabel)
         addSubview(pickerView)
     }
     func makeConstraints() {
@@ -91,7 +118,7 @@ extension CLDataPickerView {
         cancelButton.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
             if #available(iOS 11.0, *) {
-                make.left.equalTo(self.safeAreaLayoutGuide.snp.left).offset(15)
+                make.left.equalTo(self.safeAreaLayoutGuide).offset(15)
             } else {
                 make.left.equalTo(15)
             }
@@ -99,16 +126,35 @@ extension CLDataPickerView {
         sureButton.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
             if #available(iOS 11.0, *) {
-                make.right.equalTo(self.safeAreaLayoutGuide.snp.right).offset(-15)
+                make.right.equalTo(self.safeAreaLayoutGuide).offset(-15)
             } else {
                 make.right.equalTo(-15)
             }
         }
+        yearLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(pickerView)
+            make.centerY.equalTo(pickerView)
+        }
+        monthLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(yearLabel.snp.right)
+            make.centerY.equalTo(pickerView)
+            make.width.equalTo(yearLabel)
+        }
+        dayLabel.snp.makeConstraints { (make) in
+            make.right.equalTo(pickerView)
+            make.left.equalTo(monthLabel.snp.right)
+            make.centerY.equalTo(pickerView)
+            make.width.equalTo(monthLabel)
+        }
         pickerView.snp.makeConstraints { (make) in
             if #available(iOS 11.0, *) {
-                make.left.right.bottom.equalTo(self.safeAreaLayoutGuide)
+                make.left.equalTo(self.safeAreaLayoutGuide).offset(15)
+                make.right.equalTo(self.safeAreaLayoutGuide).offset(-15)
+                make.bottom.equalTo(self.safeAreaLayoutGuide)
             } else {
-                make.left.right.bottom.equalToSuperview()
+                make.left.equalToSuperview().offset(15)
+                make.right.equalToSuperview().offset(-15)
+                make.bottom.equalToSuperview()
             }
             make.top.equalTo(topToolBar.snp.bottom)
         }
