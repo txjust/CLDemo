@@ -10,6 +10,8 @@ import UIKit
 import DateToolsSwift
 
 class CLDataPickerView: UIView {
+    var cancelCallback: (() -> ())?
+    var sureCallback: ((Int, Int, Int) -> ())?
     lazy var yearArray: [Int] = {
         var yearArray = [Int]()
         for item in (nowDate.year - 10)...(nowDate.year) {
@@ -19,9 +21,6 @@ class CLDataPickerView: UIView {
     }()
     lazy var monthArray: [Int] = {
         var monthArray = [Int]()
-//        for item in 1...12 {
-//            monthArray.append(item)
-//        }
         return monthArray
     }()
     lazy var dayArray: [Int] = {
@@ -205,9 +204,9 @@ extension CLDataPickerView {
 }
 extension CLDataPickerView {
     @objc func cancelAction() {
-        
+        cancelCallback?()
     }
     @objc func sureAction() {
-        
+        sureCallback?(yearArray[yearIndex], monthArray[monthIndex], dayArray[dayIndex])
     }
 }

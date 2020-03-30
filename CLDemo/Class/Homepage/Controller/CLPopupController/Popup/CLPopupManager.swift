@@ -254,12 +254,13 @@ extension CLPopupManager {
         showCustom(with: controller, only: only)
     }
     ///显示时间选择器
-    class func showDataPicker(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = true, interfaceOrientationMask: UIInterfaceOrientationMask = .all, only: Bool = true) {
+    class func showDataPicker(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = true, interfaceOrientationMask: UIInterfaceOrientationMask = .all, only: Bool = true, dateCallback: ((Int, Int, Int) -> ())? = nil) {
         let controller = CLDataPickerController()
         controller.statusBarStyle = statusBarStyle
         controller.statusBarHidden = statusBarHidden
         controller.autorotate = autorotate
         controller.interfaceOrientationMask = interfaceOrientationMask
+        controller.dateCallback = dateCallback
         showCustom(with: controller, only: only)
     }
 }

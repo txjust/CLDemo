@@ -9,8 +9,16 @@
 import UIKit
 
 class CLDataPickerController: CLPopupManagerBaseController {
+    var dateCallback: ((Int, Int, Int) -> ())?
     lazy var dataPick: CLDataPickerView = {
         let dataPick = CLDataPickerView()
+        dataPick.cancelCallback = {[weak self] in
+            self?.dismissAnimation()
+        }
+        dataPick.sureCallback = {[weak self](year, month, day) in
+            self?.dateCallback?(year, month, day)
+            self?.dismissAnimation()
+        }
         return dataPick
     }()
     override func viewDidLoad() {

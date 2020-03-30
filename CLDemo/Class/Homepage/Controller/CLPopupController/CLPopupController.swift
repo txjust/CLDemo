@@ -145,6 +145,8 @@ extension CLPopupController {
         }
     }
     func showDataPicker() {
-        CLPopupManager.showDataPicker()
+        CLPopupManager.showDataPicker { (year, month, day) in
+            print("选中-----\(year)年\(month)月\(day)日")
+        }
     }
 }
