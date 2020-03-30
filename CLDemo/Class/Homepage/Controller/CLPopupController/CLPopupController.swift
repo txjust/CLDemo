@@ -83,6 +83,13 @@ extension CLPopupController {
             self?.showLoading()
         }
         arrayDS.append(model6)
+        
+        let model7 = CLPopupModel()
+        model7.title = "时间选择"
+        model7.callback = {[weak self] in
+            self?.showDataPicker()
+        }
+        arrayDS.append(model7)
     }
 }
 extension CLPopupController: UITableViewDataSource {
@@ -136,5 +143,8 @@ extension CLPopupController {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 6) {
             CLPopupManager.dismissAll()
         }
+    }
+    func showDataPicker() {
+        CLPopupManager.showDataPicker()
     }
 }

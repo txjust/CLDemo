@@ -253,4 +253,13 @@ extension CLPopupManager {
         controller.animationSize = CGSize(width: 80, height: 80)
         showCustom(with: controller, only: only)
     }
+    ///显示时间选择器
+    class func showDataPicker(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = true, interfaceOrientationMask: UIInterfaceOrientationMask = .all, only: Bool = true) {
+        let controller = CLDataPickerController()
+        controller.statusBarStyle = statusBarStyle
+        controller.statusBarHidden = statusBarHidden
+        controller.autorotate = autorotate
+        controller.interfaceOrientationMask = interfaceOrientationMask
+        showCustom(with: controller, only: only)
+    }
 }
