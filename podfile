@@ -12,5 +12,6 @@ pod 'SnapKit'
 pod 'SDWebImage'
 pod 'SDWebImageWebPCoder'
 pod 'lottie-ios'
+pod 'DateToolsSwift'
 
 end

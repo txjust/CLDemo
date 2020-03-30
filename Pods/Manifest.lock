@@ -1,5 +1,6 @@
 PODS:
   - DateTools (2.0.0)
+  - DateToolsSwift (5.0.0)
   - libwebp (1.1.0):
     - libwebp/demux (= 1.1.0)
     - libwebp/mux (= 1.1.0)
@@ -23,6 +24,7 @@ PODS:
 
 DEPENDENCIES:
   - DateTools
+  - DateToolsSwift
   - lottie-ios
   - Masonry
   - MJExtension
@@ -34,6 +36,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - DateTools
+    - DateToolsSwift
     - libwebp
     - lottie-ios
     - Masonry
@@ -45,6 +48,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   DateTools: 933ac9c490f21f92127cf690ccd8c397e0126caf
+  DateToolsSwift: 4207ada6ad615d8dc076323d27037c94916dbfa6
   libwebp: 946cb3063cea9236285f7e9a8505d806d30e07f3
   lottie-ios: 85ce835dd8c53e02509f20729fc7d6a4e6645a0a
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
@@ -54,6 +58,6 @@ SPEC CHECKSUMS:
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   Then: 90cd104fd951cec1980a03f57704ad8f784d4d79
 
-PODFILE CHECKSUM: 7ec83b9762fcd0f08c28b99afa92233fb040ac27
+PODFILE CHECKSUM: 6861a573ac3cccbdae2ccd09ffbc447b68b58f03
 
 COCOAPODS: 1.8.4
