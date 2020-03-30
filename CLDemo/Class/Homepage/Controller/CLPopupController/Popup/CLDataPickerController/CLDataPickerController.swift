@@ -38,7 +38,7 @@ extension CLDataPickerController {
             make.left.right.bottom.equalToSuperview()
             make.height.equalTo(302.5)
         }
-        UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseInOut, animations: {
             self.view.setNeedsLayout()
             self.view.layoutIfNeeded()
         }) { (_) in
@@ -51,11 +51,11 @@ extension CLDataPickerController {
             make.top.equalTo(view.snp.bottom)
             make.height.equalTo(302.5)
         }
-        UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseIn, animations: {
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseInOut, animations: {
             self.view.setNeedsLayout()
             self.view.layoutIfNeeded()
         }) { (_) in
-            
+            CLPopupManager.dismissAll(false)
         }
     }
 }
