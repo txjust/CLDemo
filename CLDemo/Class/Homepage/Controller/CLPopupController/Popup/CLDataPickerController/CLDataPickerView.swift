@@ -38,7 +38,8 @@ class CLDataPickerView: UIView {
     }()
     lazy var pickerView: UIPickerView = {
         let pickerView = UIPickerView()
-        pickerView.backgroundColor = UIColor.orange
+        pickerView.dataSource = self
+        pickerView.delegate = self
         return pickerView
     }()
     override init(frame: CGRect) {
@@ -52,6 +53,7 @@ class CLDataPickerView: UIView {
 }
 extension CLDataPickerView {
     func initUI() {
+        backgroundColor = UIColor.white
         addSubview(topToolBar)
         topToolBar.addSubview(cancelButton)
         topToolBar.addSubview(sureButton)
@@ -63,17 +65,50 @@ extension CLDataPickerView {
             make.height.equalTo(50)
         }
         cancelButton.snp.makeConstraints { (make) in
-            make.left.equalTo(15)
             make.centerY.equalToSuperview()
+            if #available(iOS 11.0, *) {
+                make.left.equalTo(self.safeAreaLayoutGuide.snp.left).offset(15)
+            } else {
+                make.left.equalTo(15)
+            }
         }
         sureButton.snp.makeConstraints { (make) in
-            make.right.equalTo(-15)
             make.centerY.equalToSuperview()
+            if #available(iOS 11.0, *) {
+                make.right.equalTo(self.safeAreaLayoutGuide.snp.right).offset(-15)
+            } else {
+                make.right.equalTo(-15)
+            }
         }
         pickerView.snp.makeConstraints { (make) in
-            make.left.right.bottom.equalToSuperview()
+            if #available(iOS 11.0, *) {
+                make.left.right.bottom.equalTo(self.safeAreaLayoutGuide)
+            } else {
+                make.left.right.bottom.equalToSuperview()
+            }
             make.top.equalTo(topToolBar.snp.bottom)
         }
+    }
+}
+extension CLDataPickerView: UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 3
+    }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return 20
+    }
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return 50
+    }
+}
+extension CLDataPickerView: UIPickerViewDelegate {
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let label: UILabel = (view as? UILabel) ?? UILabel()
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 18)
+        label.textColor = hexColor("#333333")
+        label.text = "121212"
+        return label
     }
 }
 extension CLDataPickerView {

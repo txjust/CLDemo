@@ -11,7 +11,6 @@ import UIKit
 class CLDataPickerController: CLPopupManagerBaseController {
     lazy var dataPick: CLDataPickerView = {
         let dataPick = CLDataPickerView()
-        dataPick.backgroundColor = UIColor.red
         return dataPick
     }()
     override func viewDidLoad() {
@@ -22,6 +21,7 @@ class CLDataPickerController: CLPopupManagerBaseController {
 }
 extension CLDataPickerController {
     func initUI() {
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.0)
         view.addSubview(dataPick)
     }
 }
@@ -38,7 +38,8 @@ extension CLDataPickerController {
             make.left.right.bottom.equalToSuperview()
             make.height.equalTo(302.5)
         }
-        UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 0.35, delay: 0.0, options: .curveEaseInOut, animations: {
+            self.view.backgroundColor = UIColor.black.withAlphaComponent(0.3)
             self.view.setNeedsLayout()
             self.view.layoutIfNeeded()
         }) { (_) in
@@ -51,7 +52,8 @@ extension CLDataPickerController {
             make.top.equalTo(view.snp.bottom)
             make.height.equalTo(302.5)
         }
-        UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 0.35, delay: 0.0, options: .curveEaseInOut, animations: {
+            self.view.backgroundColor = UIColor.black.withAlphaComponent(0.0)
             self.view.setNeedsLayout()
             self.view.layoutIfNeeded()
         }) { (_) in
