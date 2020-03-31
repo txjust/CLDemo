@@ -166,7 +166,7 @@ extension CLPopupManager {
         showCustom(with: controller, only: only)
     }
     ///显示提示弹窗
-    class func showTips(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = false, interfaceOrientationMask: UIInterfaceOrientationMask = .all, only: Bool = true, dismissInterval: TimeInterval = 0.5, text: String) {
+    class func showTips(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = false, interfaceOrientationMask: UIInterfaceOrientationMask = .all, only: Bool = true, text: String, dismissInterval: TimeInterval = 1.0) {
         let controller = CLTipsPopupController()
         controller.statusBarStyle = statusBarStyle
         controller.statusBarHidden = statusBarHidden
@@ -254,7 +254,7 @@ extension CLPopupManager {
         showCustom(with: controller, only: only)
     }
     ///显示时间选择器
-    class func showDataPicker(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = true, interfaceOrientationMask: UIInterfaceOrientationMask = .all, only: Bool = true, dateCallback: ((Int, Int, Int) -> ())? = nil) {
+    class func showYearMonthDayDataPicker(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = true, interfaceOrientationMask: UIInterfaceOrientationMask = .all, only: Bool = true, dateCallback: ((Int, Int, Int) -> ())? = nil) {
         let controller = CLDataPickerController()
         controller.statusBarStyle = statusBarStyle
         controller.statusBarHidden = statusBarHidden

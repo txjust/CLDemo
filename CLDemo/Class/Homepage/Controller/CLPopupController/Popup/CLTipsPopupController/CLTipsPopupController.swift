@@ -14,19 +14,19 @@ class CLTipsPopupController: CLPopupManagerBaseController {
             label.text = text
         }
     }
-    var dismissInterval: TimeInterval = 0.5
+    var dismissInterval: TimeInterval = 1.0
     
     private lazy var label: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
-        label.textColor = hexColor("#BABAE2")
+        label.textColor = UIColor.white
         label.numberOfLines = 0
         return label
     }()
     private lazy var backgroundView: UIView = {
         let backgroundView = UIView()
         backgroundView.alpha = 0.0
-        backgroundView.backgroundColor = hexColor("#5C5C71")
+        backgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
         return backgroundView
     }()
 }
@@ -39,7 +39,7 @@ extension CLTipsPopupController {
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        backgroundView.layer.cornerRadius = backgroundView.frame.height * 0.3
+        backgroundView.layer.cornerRadius = backgroundView.frame.height * 0.25
         backgroundView.clipsToBounds = true
     }
 }
@@ -55,8 +55,8 @@ extension CLTipsPopupController {
             make.width.lessThanOrEqualToSuperview().multipliedBy(0.75)
         }
         label.snp.makeConstraints { (make) in
-            make.left.top.equalToSuperview().offset(5)
-            make.right.bottom.equalToSuperview().offset(-5)
+            make.left.top.equalToSuperview().offset(10)
+            make.right.bottom.equalToSuperview().offset(-10)
         }
     }
 }

@@ -50,16 +50,16 @@ extension CLPopupController {
         arrayDS.append(model1)
         
         let model2 = CLPopupModel()
-        model2.title = "系统弹窗，一个按钮"
+        model2.title = "一个按钮"
         model2.callback = {[weak self] in
-            self?.showOne()
+            self?.showOneAlert()
         }
         arrayDS.append(model2)
         
         let model3 = CLPopupModel()
-        model3.title = "系统弹窗，两个按钮"
+        model3.title = "两个按钮"
         model3.callback = {[weak self] in
-            self?.showTwo()
+            self?.showTwoAlert()
         }
         arrayDS.append(model3)
         
@@ -85,11 +85,18 @@ extension CLPopupController {
         arrayDS.append(model6)
         
         let model7 = CLPopupModel()
-        model7.title = "时间选择"
+        model7.title = "提示弹窗"
         model7.callback = {[weak self] in
-            self?.showDataPicker()
+            self?.showTips()
         }
         arrayDS.append(model7)
+        
+        let model8 = CLPopupModel()
+        model8.title = "年月日选择"
+        model8.callback = {[weak self] in
+            self?.showYearMonthDayDataPicker()
+        }
+        arrayDS.append(model8)
     }
 }
 extension CLPopupController: UITableViewDataSource {
@@ -122,10 +129,10 @@ extension CLPopupController {
         //            CLPopupManager.showFlop(statusBarStyle: .default)
         //        }
     }
-    func showOne() {
+    func showOneAlert() {
         CLPopupManager.showOneAlert(autorotate: true, title: "我是一个按钮", message: "我有一个按钮")
     }
-    func showTwo() {
+    func showTwoAlert() {
         CLPopupManager.showTwoAlert(autorotate: true, title: "我是两个按钮", message: "我有两个按钮")
     }
     func showSuccess() {
@@ -144,8 +151,11 @@ extension CLPopupController {
             CLPopupManager.dismissAll()
         }
     }
-    func showDataPicker() {
-        CLPopupManager.showDataPicker { (year, month, day) in
+    func showTips() {
+        CLPopupManager.showTips(text: "AAAAAAAAAAAAAAAAAAAA")
+    }
+    func showYearMonthDayDataPicker() {
+        CLPopupManager.showYearMonthDayDataPicker { (year, month, day) in
             print("选中-----\(year)年\(month)月\(day)日")
         }
     }
