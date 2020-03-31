@@ -141,13 +141,13 @@ extension CLYearMonthDayDataPickerView: UIPickerViewDelegate {
         let currentColor = hexColor("#333333")
         if component == 0 {
             textColor  = yearIndex == row ? currentColor : textColor
-            label.text =  String(yearArray[row])
+            label.text =  String(format: "%02d", yearArray[row])
         }else if component == 1 {
             textColor  = monthIndex == row ? currentColor : textColor
-            label.text =  String(monthArray[row])
+            label.text =  String(format: "%02d", monthArray[row])
         }else if component == 2 {
             textColor  = dayIndex == row ? currentColor : textColor
-            label.text =  String(dayArray[row])
+            label.text =  String(format: "%02d", dayArray[row])
         }
         label.textColor = textColor
         return label

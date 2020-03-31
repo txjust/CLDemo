@@ -93,10 +93,10 @@ extension CLHourMinuteDataPickerView: UIPickerViewDelegate {
         let currentColor = hexColor("#40B5AA")
         if component == 0 {
             textColor  = hourIndex == row ? currentColor : textColor
-            label.text =  String(hourArray[row])
+            label.text =  String(format: "%02d", hourArray[row])
         }else if component == 1 {
             textColor  = minuteIndex == row ? currentColor : textColor
-            label.text =  String(minuteArray[row])
+            label.text =  String(format: "%02d", minuteArray[row])
         }
         label.textColor = textColor
         return label
