@@ -9,7 +9,7 @@
 import UIKit
 import DateToolsSwift
 
-class CLDataPickerView: UIView {
+class CLYearMonthDayDataPickerView: UIView {
     var cancelCallback: (() -> ())?
     var sureCallback: ((Int, Int, Int) -> ())?
     var nowDate: Date = Date(timeIntervalSinceNow: 0)
@@ -99,7 +99,7 @@ class CLDataPickerView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 }
-extension CLDataPickerView {
+extension CLYearMonthDayDataPickerView {
     func initUI() {
         backgroundColor = UIColor.white
         addSubview(topToolBar)
@@ -160,7 +160,7 @@ extension CLDataPickerView {
         }
     }
 }
-extension CLDataPickerView: UIPickerViewDataSource {
+extension CLYearMonthDayDataPickerView: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 3
     }
@@ -175,7 +175,7 @@ extension CLDataPickerView: UIPickerViewDataSource {
         return 50
     }
 }
-extension CLDataPickerView: UIPickerViewDelegate {
+extension CLYearMonthDayDataPickerView: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let label: UILabel = (view as? UILabel) ?? UILabel()
         label.textAlignment = .center
@@ -212,7 +212,7 @@ extension CLDataPickerView: UIPickerViewDelegate {
         pickerView.reloadAllComponents()
     }
 }
-extension CLDataPickerView {
+extension CLYearMonthDayDataPickerView {
     @discardableResult func monthFrom(year: Int) -> Int {
         let month = year == nowDate.year ? nowDate.month : 12
         monthArray = Array(1...month)
@@ -241,7 +241,7 @@ extension CLDataPickerView {
         return 0
     }
 }
-extension CLDataPickerView {
+extension CLYearMonthDayDataPickerView {
     func select(year: Int, month: Int, day: Int) {
         yearIndex = yearArray.firstIndex(of: year) ?? 0
         monthFrom(year: year)
@@ -253,7 +253,7 @@ extension CLDataPickerView {
         pickerView.selectRow(dayIndex, inComponent: 2, animated: true)
     }
 }
-extension CLDataPickerView {
+extension CLYearMonthDayDataPickerView {
     @objc func cancelAction() {
         cancelCallback?()
     }
