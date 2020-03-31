@@ -10,8 +10,6 @@ import UIKit
 import DateToolsSwift
 
 class CLYearMonthDayDataPickerView: UIView {
-    var cancelCallback: (() -> ())?
-    var sureCallback: ((Int, Int, Int) -> ())?
     var nowDate: Date = Date(timeIntervalSinceNow: 0)
     var yearIndex: Int = 0
     var monthIndex: Int = 0
@@ -30,33 +28,6 @@ class CLYearMonthDayDataPickerView: UIView {
     lazy var dayArray: [Int] = {
         let dayArray = [Int]()
         return dayArray
-    }()
-    lazy var topToolBar: UIButton = {
-        let topToolBar = UIButton()
-        topToolBar.backgroundColor = hexColor("#F8F6F9")
-        return topToolBar
-    }()
-    lazy var cancelButton: UIButton = {
-        let cancelButton = UIButton()
-        cancelButton.setTitle("取消", for: .normal)
-        cancelButton.setTitle("取消", for: .selected)
-        cancelButton.setTitle("取消", for: .highlighted)
-        cancelButton.setTitleColor(hexColor("#666666"), for: .normal)
-        cancelButton.setTitleColor(hexColor("#666666"), for: .selected)
-        cancelButton.setTitleColor(hexColor("#666666"), for: .highlighted)
-        cancelButton.addTarget(self, action: #selector(cancelAction), for: .touchUpInside)
-        return cancelButton
-    }()
-    lazy var sureButton: UIButton = {
-        let sureButton = UIButton()
-        sureButton.setTitle("确定", for: .normal)
-        sureButton.setTitle("确定", for: .selected)
-        sureButton.setTitle("确定", for: .highlighted)
-        sureButton.setTitleColor(hexColor("#40B5AA"), for: .normal)
-        sureButton.setTitleColor(hexColor("#40B5AA"), for: .selected)
-        sureButton.setTitleColor(hexColor("#40B5AA"), for: .highlighted)
-        sureButton.addTarget(self, action: #selector(sureAction), for: .touchUpInside)
-        return sureButton
     }()
     lazy var yearLabel: UILabel = {
         let yearLabel = UILabel()
@@ -102,35 +73,12 @@ class CLYearMonthDayDataPickerView: UIView {
 extension CLYearMonthDayDataPickerView {
     func initUI() {
         backgroundColor = UIColor.white
-        addSubview(topToolBar)
-        topToolBar.addSubview(cancelButton)
-        topToolBar.addSubview(sureButton)
         addSubview(yearLabel)
         addSubview(monthLabel)
         addSubview(dayLabel)
         addSubview(pickerView)
     }
     func makeConstraints() {
-        topToolBar.snp.makeConstraints { (make) in
-            make.left.top.right.equalToSuperview()
-            make.height.equalTo(50)
-        }
-        cancelButton.snp.makeConstraints { (make) in
-            make.centerY.equalToSuperview()
-            if #available(iOS 11.0, *) {
-                make.left.equalTo(self.safeAreaLayoutGuide).offset(15)
-            } else {
-                make.left.equalTo(15)
-            }
-        }
-        sureButton.snp.makeConstraints { (make) in
-            make.centerY.equalToSuperview()
-            if #available(iOS 11.0, *) {
-                make.right.equalTo(self.safeAreaLayoutGuide).offset(-15)
-            } else {
-                make.right.equalTo(-15)
-            }
-        }
         yearLabel.snp.makeConstraints { (make) in
             make.left.equalTo(pickerView)
             make.centerY.equalTo(pickerView)
@@ -156,7 +104,7 @@ extension CLYearMonthDayDataPickerView {
                 make.right.equalToSuperview().offset(-15)
                 make.bottom.equalToSuperview()
             }
-            make.top.equalTo(topToolBar.snp.bottom)
+            make.top.equalToSuperview()
         }
     }
 }
@@ -181,7 +129,7 @@ extension CLYearMonthDayDataPickerView: UIPickerViewDelegate {
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 18)
         var textColor = hexColor("#333333")
-        let currentColor = UIColor.purple
+        let currentColor = hexColor("#333333")
         if component == 0 {
             textColor  = yearIndex == row ? currentColor : textColor
             label.text =  String(yearArray[row])
@@ -253,11 +201,4 @@ extension CLYearMonthDayDataPickerView {
         pickerView.selectRow(dayIndex, inComponent: 2, animated: true)
     }
 }
-extension CLYearMonthDayDataPickerView {
-    @objc func cancelAction() {
-        cancelCallback?()
-    }
-    @objc func sureAction() {
-        sureCallback?(yearArray[yearIndex], monthArray[monthIndex], dayArray[dayIndex])
-    }
-}
+

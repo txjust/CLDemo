@@ -10,8 +10,6 @@ import UIKit
 import DateToolsSwift
 
 class CLHourMinuteDataPickerView: UIView {
-    var cancelCallback: (() -> ())?
-    var sureCallback: ((Int, Int) -> ())?
     var hourIndex: Int = 0
     var minuteIndex: Int = 0
     lazy var hourArray: [Int] = {
@@ -21,33 +19,6 @@ class CLHourMinuteDataPickerView: UIView {
     lazy var minuteArray: [Int] = {
         let minuteArray = Array(0...59)
         return minuteArray
-    }()
-    lazy var topToolBar: UIButton = {
-        let topToolBar = UIButton()
-        topToolBar.backgroundColor = hexColor("#F8F6F9")
-        return topToolBar
-    }()
-    lazy var cancelButton: UIButton = {
-        let cancelButton = UIButton()
-        cancelButton.setTitle("取消", for: .normal)
-        cancelButton.setTitle("取消", for: .selected)
-        cancelButton.setTitle("取消", for: .highlighted)
-        cancelButton.setTitleColor(hexColor("#666666"), for: .normal)
-        cancelButton.setTitleColor(hexColor("#666666"), for: .selected)
-        cancelButton.setTitleColor(hexColor("#666666"), for: .highlighted)
-        cancelButton.addTarget(self, action: #selector(cancelAction), for: .touchUpInside)
-        return cancelButton
-    }()
-    lazy var sureButton: UIButton = {
-        let sureButton = UIButton()
-        sureButton.setTitle("确定", for: .normal)
-        sureButton.setTitle("确定", for: .selected)
-        sureButton.setTitle("确定", for: .highlighted)
-        sureButton.setTitleColor(hexColor("#40B5AA"), for: .normal)
-        sureButton.setTitleColor(hexColor("#40B5AA"), for: .selected)
-        sureButton.setTitleColor(hexColor("#40B5AA"), for: .highlighted)
-        sureButton.addTarget(self, action: #selector(sureAction), for: .touchUpInside)
-        return sureButton
     }()
     lazy var lineView: UILabel = {
         let lineView = UILabel()
@@ -64,8 +35,6 @@ class CLHourMinuteDataPickerView: UIView {
         super.init(frame: frame)
         initUI()
         makeConstraints()
-        
-//        select(year: nowDate.year, month: nowDate.month, day: nowDate.day)
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -74,33 +43,10 @@ class CLHourMinuteDataPickerView: UIView {
 extension CLHourMinuteDataPickerView {
     func initUI() {
         backgroundColor = UIColor.white
-        addSubview(topToolBar)
-        topToolBar.addSubview(cancelButton)
-        topToolBar.addSubview(sureButton)
         addSubview(pickerView)
         pickerView.addSubview(lineView)
     }
     func makeConstraints() {
-        topToolBar.snp.makeConstraints { (make) in
-            make.left.top.right.equalToSuperview()
-            make.height.equalTo(50)
-        }
-        cancelButton.snp.makeConstraints { (make) in
-            make.centerY.equalToSuperview()
-            if #available(iOS 11.0, *) {
-                make.left.equalTo(self.safeAreaLayoutGuide).offset(15)
-            } else {
-                make.left.equalTo(15)
-            }
-        }
-        sureButton.snp.makeConstraints { (make) in
-            make.centerY.equalToSuperview()
-            if #available(iOS 11.0, *) {
-                make.right.equalTo(self.safeAreaLayoutGuide).offset(-15)
-            } else {
-                make.right.equalTo(-15)
-            }
-        }
         lineView.snp.makeConstraints { (make) in
             make.center.equalToSuperview()
             make.width.equalTo(0.5)
@@ -116,7 +62,7 @@ extension CLHourMinuteDataPickerView {
                 make.right.equalToSuperview().offset(-15)
                 make.bottom.equalToSuperview()
             }
-            make.top.equalTo(topToolBar.snp.bottom)
+            make.top.equalToSuperview()
         }
     }
 }
@@ -158,11 +104,4 @@ extension CLHourMinuteDataPickerView: UIPickerViewDelegate {
         pickerView.reloadAllComponents()
     }
 }
-extension CLHourMinuteDataPickerView {
-    @objc func cancelAction() {
-        cancelCallback?()
-    }
-    @objc func sureAction() {
-        sureCallback?(hourArray[hourIndex], minuteArray[minuteIndex])
-    }
-}
+
