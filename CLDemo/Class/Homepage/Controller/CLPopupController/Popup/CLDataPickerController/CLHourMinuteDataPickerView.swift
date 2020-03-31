@@ -10,22 +10,28 @@ import UIKit
 import DateToolsSwift
 
 class CLHourMinuteDataPickerView: UIView {
-    var hourIndex: Int = 0
-    var minuteIndex: Int = 0
-    lazy var hourArray: [Int] = {
+    var hour: Int {
+        return hourArray[hourIndex]
+    }
+    var minute: Int {
+        return minuteArray[minuteIndex]
+    }
+    private var hourIndex: Int = 0
+    private var minuteIndex: Int = 0
+    private lazy var hourArray: [Int] = {
         var hourArray = Array(0...23)
         return hourArray
     }()
-    lazy var minuteArray: [Int] = {
+    private lazy var minuteArray: [Int] = {
         let minuteArray = Array(0...59)
         return minuteArray
     }()
-    lazy var lineView: UILabel = {
+    private lazy var lineView: UILabel = {
         let lineView = UILabel()
         lineView.backgroundColor = hexColor("#40B5AA")
         return lineView
     }()
-    lazy var pickerView: UIPickerView = {
+    private lazy var pickerView: UIPickerView = {
         let pickerView = UIPickerView()
         pickerView.dataSource = self
         pickerView.delegate = self
@@ -41,12 +47,12 @@ class CLHourMinuteDataPickerView: UIView {
     }
 }
 extension CLHourMinuteDataPickerView {
-    func initUI() {
+    private func initUI() {
         backgroundColor = UIColor.white
         addSubview(pickerView)
         pickerView.addSubview(lineView)
     }
-    func makeConstraints() {
+    private func makeConstraints() {
         lineView.snp.makeConstraints { (make) in
             make.center.equalToSuperview()
             make.width.equalTo(0.5)

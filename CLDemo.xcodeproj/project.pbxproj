@@ -150,7 +150,6 @@
 		5B3327EA23DF41E800CA315C /* CLChatRecordTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3327E923DF41E800CA315C /* CLChatRecordTimeView.swift */; };
 		5B39CED11DE2BE6800C7DD5C /* CLTitleControllerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B39CED01DE2BE6800C7DD5C /* CLTitleControllerView.m */; };
 		5B44D0DA243398EF0059476D /* CLHourMinuteDataPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B44D0D9243398EF0059476D /* CLHourMinuteDataPickerView.swift */; };
-		5B44D0DC2433A0C60059476D /* CLDataPickerToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B44D0DB2433A0C60059476D /* CLDataPickerToolBar.swift */; };
 		5B49566423B4FF4800212772 /* CLFlipController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B49566323B4FF4800212772 /* CLFlipController.swift */; };
 		5B49566623B507A700212772 /* CLFlipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B49566523B507A700212772 /* CLFlipView.swift */; };
 		5B49566823B50ED700212772 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B49566723B50ED700212772 /* UIColor+Extension.swift */; };
@@ -465,7 +464,6 @@
 		5B39CECF1DE2BE6800C7DD5C /* CLTitleControllerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLTitleControllerView.h; sourceTree = "<group>"; };
 		5B39CED01DE2BE6800C7DD5C /* CLTitleControllerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLTitleControllerView.m; sourceTree = "<group>"; };
 		5B44D0D9243398EF0059476D /* CLHourMinuteDataPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLHourMinuteDataPickerView.swift; sourceTree = "<group>"; };
-		5B44D0DB2433A0C60059476D /* CLDataPickerToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLDataPickerToolBar.swift; sourceTree = "<group>"; };
 		5B49566323B4FF4800212772 /* CLFlipController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLFlipController.swift; sourceTree = "<group>"; };
 		5B49566523B507A700212772 /* CLFlipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLFlipView.swift; sourceTree = "<group>"; };
 		5B49566723B50ED700212772 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -1731,7 +1729,6 @@
 			isa = PBXGroup;
 			children = (
 				5B8B7D2F24319701005C8530 /* CLDataPickerController.swift */,
-				5B44D0DB2433A0C60059476D /* CLDataPickerToolBar.swift */,
 				5B8B7D31243197D6005C8530 /* CLYearMonthDayDataPickerView.swift */,
 				5B44D0D9243398EF0059476D /* CLHourMinuteDataPickerView.swift */,
 			);
@@ -2211,7 +2208,6 @@
 				0CE733422191CBC700270851 /* UIView+CLSetRect.m in Sources */,
 				0C7316AA222814AB005ACFE7 /* CLJumpManager.m in Sources */,
 				0C3CAA5821AF8A3B00A352F0 /* CLRotateAnimationView.m in Sources */,
-				5B44D0DC2433A0C60059476D /* CLDataPickerToolBar.swift in Sources */,
 				0CF6B84B2386619C00F10986 /* CLVerticalCell.m in Sources */,
 				0C0F374522D1E72C005E496D /* SimplePing.m in Sources */,
 				0C2AE876223F878D007D5DC5 /* CLWaveView.swift in Sources */,

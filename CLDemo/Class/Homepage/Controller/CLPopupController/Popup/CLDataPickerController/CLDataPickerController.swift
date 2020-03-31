@@ -8,8 +8,14 @@
 
 import UIKit
 
+enum CLDataPickerType {
+    case yearMonthDay
+    case hourMinute
+}
 class CLDataPickerController: CLPopupManagerBaseController {
-    var dateCallback: ((Int, Int, Int) -> ())?
+    var yearMonthDayCallback: ((Int, Int, Int) -> ())?
+    var hourMinuteCallback: ((Int, Int) -> ())?
+    var type: CLDataPickerType = .yearMonthDay
     lazy var topToolBar: UIButton = {
         let topToolBar = UIButton()
         topToolBar.backgroundColor = hexColor("#F8F6F9")
@@ -37,8 +43,14 @@ class CLDataPickerController: CLPopupManagerBaseController {
         sureButton.addTarget(self, action: #selector(sureAction), for: .touchUpInside)
         return sureButton
     }()
-    lazy var dataPick: CLYearMonthDayDataPickerView = {
-        let dataPick = CLYearMonthDayDataPickerView()
+    lazy var dataPicker: UIView = {
+        let dataPick: UIView
+        switch type {
+        case .yearMonthDay:
+            dataPick = CLYearMonthDayDataPickerView()
+        case .hourMinute:
+            dataPick = CLHourMinuteDataPickerView()
+        }
         return dataPick
     }()
     override func viewDidLoad() {
@@ -53,7 +65,7 @@ extension CLDataPickerController {
         view.addSubview(topToolBar)
         topToolBar.addSubview(cancelButton)
         topToolBar.addSubview(sureButton)
-        view.addSubview(dataPick)
+        view.addSubview(dataPicker)
     }
 }
 extension CLDataPickerController {
@@ -79,7 +91,7 @@ extension CLDataPickerController {
                 make.right.equalTo(-15)
             }
         }
-        dataPick.snp.makeConstraints { (make) in
+        dataPicker.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
             make.top.equalTo(topToolBar.snp.bottom)
             make.height.equalTo(302.5)
@@ -115,7 +127,11 @@ extension CLDataPickerController {
         dismissAnimation()
     }
     @objc func sureAction() {
-//        dateCallback?(year, month, day)
+        if let picker = dataPicker as? CLYearMonthDayDataPickerView {
+            yearMonthDayCallback?(picker.year, picker.month, picker.day)
+        }else if let picker = dataPicker as? CLHourMinuteDataPickerView {
+            hourMinuteCallback?(picker.hour, picker.minute)
+        }
         dismissAnimation()
     }
 }

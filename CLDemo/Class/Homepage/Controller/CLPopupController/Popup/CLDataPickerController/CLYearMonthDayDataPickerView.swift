@@ -10,26 +10,35 @@ import UIKit
 import DateToolsSwift
 
 class CLYearMonthDayDataPickerView: UIView {
-    var nowDate: Date = Date(timeIntervalSinceNow: 0)
-    var yearIndex: Int = 0
-    var monthIndex: Int = 0
-    var dayIndex: Int = 0
-    lazy var yearArray: [Int] = {
+    var year: Int {
+        return yearArray[yearIndex]
+    }
+    var month: Int {
+        return monthArray[monthIndex]
+    }
+    var day: Int {
+        return dayArray[dayIndex]
+    }
+    private var nowDate: Date = Date(timeIntervalSinceNow: 0)
+    private var yearIndex: Int = 0
+    private var monthIndex: Int = 0
+    private var dayIndex: Int = 0
+    private lazy var yearArray: [Int] = {
         var yearArray = [Int]()
         for item in (nowDate.year - 10)...(nowDate.year) {
             yearArray.append(item)
         }
         return yearArray
     }()
-    lazy var monthArray: [Int] = {
+    private lazy var monthArray: [Int] = {
         var monthArray = [Int]()
         return monthArray
     }()
-    lazy var dayArray: [Int] = {
+    private lazy var dayArray: [Int] = {
         let dayArray = [Int]()
         return dayArray
     }()
-    lazy var yearLabel: UILabel = {
+    private lazy var yearLabel: UILabel = {
         let yearLabel = UILabel()
         yearLabel.textAlignment = .right
         yearLabel.textColor = hexColor("#40B5AA")
@@ -37,7 +46,7 @@ class CLYearMonthDayDataPickerView: UIView {
         yearLabel.text = "年"
         return yearLabel
     }()
-    lazy var monthLabel: UILabel = {
+    private lazy var monthLabel: UILabel = {
         let monthLabel = UILabel()
         monthLabel.textAlignment = .right
         monthLabel.textColor = hexColor("#40B5AA")
@@ -45,7 +54,7 @@ class CLYearMonthDayDataPickerView: UIView {
         monthLabel.text = "月"
         return monthLabel
     }()
-    lazy var dayLabel: UILabel = {
+    private lazy var dayLabel: UILabel = {
         let dayLabel = UILabel()
         dayLabel.textAlignment = .right
         dayLabel.textColor = hexColor("#40B5AA")
@@ -53,7 +62,7 @@ class CLYearMonthDayDataPickerView: UIView {
         dayLabel.text = "日"
         return dayLabel
     }()
-    lazy var pickerView: UIPickerView = {
+    private lazy var pickerView: UIPickerView = {
         let pickerView = UIPickerView()
         pickerView.dataSource = self
         pickerView.delegate = self
@@ -71,14 +80,14 @@ class CLYearMonthDayDataPickerView: UIView {
     }
 }
 extension CLYearMonthDayDataPickerView {
-    func initUI() {
+    private func initUI() {
         backgroundColor = UIColor.white
         addSubview(yearLabel)
         addSubview(monthLabel)
         addSubview(dayLabel)
         addSubview(pickerView)
     }
-    func makeConstraints() {
+    private func makeConstraints() {
         yearLabel.snp.makeConstraints { (make) in
             make.left.equalTo(pickerView)
             make.centerY.equalTo(pickerView)
@@ -161,12 +170,12 @@ extension CLYearMonthDayDataPickerView: UIPickerViewDelegate {
     }
 }
 extension CLYearMonthDayDataPickerView {
-    @discardableResult func monthFrom(year: Int) -> Int {
+    @discardableResult private func monthFrom(year: Int) -> Int {
         let month = year == nowDate.year ? nowDate.month : 12
         monthArray = Array(1...month)
         return month
     }
-    @discardableResult func daysFrom(year: Int, month: Int) -> Int {
+    @discardableResult private func daysFrom(year: Int, month: Int) -> Int {
         let isRunNian = year % 4 == 0 ? (year % 100 == 0 ? (year % 400 == 0 ? true : false) : true) : false
         switch month {
         case 1, 3, 5, 7, 8, 10, 12:
@@ -190,7 +199,7 @@ extension CLYearMonthDayDataPickerView {
     }
 }
 extension CLYearMonthDayDataPickerView {
-    func select(year: Int, month: Int, day: Int) {
+    private func select(year: Int, month: Int, day: Int) {
         yearIndex = yearArray.firstIndex(of: year) ?? 0
         monthFrom(year: year)
         monthIndex = monthArray.firstIndex(of: month) ?? 0

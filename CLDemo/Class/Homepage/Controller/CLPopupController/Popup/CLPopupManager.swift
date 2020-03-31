@@ -253,14 +253,26 @@ extension CLPopupManager {
         controller.animationSize = CGSize(width: 80, height: 80)
         showCustom(with: controller, only: only)
     }
-    ///显示时间选择器
-    class func showYearMonthDayDataPicker(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = true, interfaceOrientationMask: UIInterfaceOrientationMask = .all, only: Bool = true, dateCallback: ((Int, Int, Int) -> ())? = nil) {
+    ///显示年月日选择器
+    class func showYearMonthDayDataPicker(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = true, interfaceOrientationMask: UIInterfaceOrientationMask = .all, only: Bool = true, yearMonthDayCallback: ((Int, Int, Int) -> ())? = nil) {
         let controller = CLDataPickerController()
         controller.statusBarStyle = statusBarStyle
         controller.statusBarHidden = statusBarHidden
         controller.autorotate = autorotate
         controller.interfaceOrientationMask = interfaceOrientationMask
-        controller.dateCallback = dateCallback
+        controller.type = .yearMonthDay
+        controller.yearMonthDayCallback = yearMonthDayCallback
+        showCustom(with: controller, only: only)
+    }
+    ///显示时分选择器
+    class func showHourMinuteDataPicker(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = true, interfaceOrientationMask: UIInterfaceOrientationMask = .all, only: Bool = true, hourMinuteCallback: ((Int, Int) -> ())? = nil) {
+        let controller = CLDataPickerController()
+        controller.statusBarStyle = statusBarStyle
+        controller.statusBarHidden = statusBarHidden
+        controller.autorotate = autorotate
+        controller.interfaceOrientationMask = interfaceOrientationMask
+        controller.type = .hourMinute
+        controller.hourMinuteCallback = hourMinuteCallback
         showCustom(with: controller, only: only)
     }
 }

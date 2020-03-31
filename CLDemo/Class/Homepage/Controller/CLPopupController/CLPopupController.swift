@@ -99,9 +99,9 @@ extension CLPopupController {
         arrayDS.append(model8)
         
         let model9 = CLPopupModel()
-        model9.title = "时间选择"
+        model9.title = "时分选择"
         model9.callback = {[weak self] in
-            self?.showDataPicker()
+            self?.showHourMinuteDataPicker()
         }
         arrayDS.append(model9)
 
@@ -167,7 +167,9 @@ extension CLPopupController {
             print("选中-----\(year)年\(month)月\(day)日")
         }
     }
-    func showDataPicker() {
-        
+    func showHourMinuteDataPicker() {
+        CLPopupManager.showHourMinuteDataPicker { (hour, minute) in
+            print("选中-----\(hour)时\(minute)分")
+        }
     }
 }
