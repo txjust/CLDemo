@@ -97,6 +97,14 @@ extension CLPopupController {
             self?.showYearMonthDayDataPicker()
         }
         arrayDS.append(model8)
+        
+        let model9 = CLPopupModel()
+        model9.title = "时间选择"
+        model9.callback = {[weak self] in
+            self?.showDataPicker()
+        }
+        arrayDS.append(model9)
+
     }
 }
 extension CLPopupController: UITableViewDataSource {
@@ -158,5 +166,8 @@ extension CLPopupController {
         CLPopupManager.showYearMonthDayDataPicker { (year, month, day) in
             print("选中-----\(year)年\(month)月\(day)日")
         }
+    }
+    func showDataPicker() {
+        
     }
 }

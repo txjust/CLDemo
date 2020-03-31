@@ -180,14 +180,19 @@ extension CLDataPickerView: UIPickerViewDelegate {
         let label: UILabel = (view as? UILabel) ?? UILabel()
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 18)
-        label.textColor = hexColor("#333333")
+        var textColor = hexColor("#333333")
+        let currentColor = UIColor.purple
         if component == 0 {
+            textColor  = yearIndex == row ? currentColor : textColor
             label.text =  String(yearArray[row])
         }else if component == 1 {
+            textColor  = monthIndex == row ? currentColor : textColor
             label.text =  String(monthArray[row])
         }else if component == 2 {
+            textColor  = dayIndex == row ? currentColor : textColor
             label.text =  String(dayArray[row])
         }
+        label.textColor = textColor
         return label
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
