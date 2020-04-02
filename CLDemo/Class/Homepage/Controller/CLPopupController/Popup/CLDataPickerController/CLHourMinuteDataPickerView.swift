@@ -28,7 +28,8 @@ class CLHourMinuteDataPickerView: UIView {
     }()
     private lazy var lineView: UILabel = {
         let lineView = UILabel()
-        lineView.backgroundColor = hexColor("#40B5AA")
+        lineView.text = ":"
+        lineView.textColor = hexColor("#40B5AA")
         return lineView
     }()
     private lazy var pickerView: UIPickerView = {
@@ -55,8 +56,6 @@ extension CLHourMinuteDataPickerView {
     private func makeConstraints() {
         lineView.snp.makeConstraints { (make) in
             make.center.equalToSuperview()
-            make.width.equalTo(0.5)
-            make.height.equalTo(16)
         }
         pickerView.snp.makeConstraints { (make) in
             if #available(iOS 11.0, *) {
