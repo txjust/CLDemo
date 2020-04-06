@@ -143,6 +143,7 @@
 		5B1C74261E78F120000AB534 /* CLChartXLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1C74251E78F120000AB534 /* CLChartXLabel.m */; };
 		5B2411922438EF4F00B2E0DC /* CLTagsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2411912438EF4F00B2E0DC /* CLTagsCell.swift */; };
 		5B241196243B039200B2E0DC /* CLTagsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B241195243B039200B2E0DC /* CLTagsItem.swift */; };
+		5B24119A243B1BB100B2E0DC /* CLTagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B241199243B1BB100B2E0DC /* CLTagsView.swift */; };
 		5B28650E21EE428200334E6C /* CLCoreTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B28650D21EE428200334E6C /* CLCoreTextView.m */; };
 		5B32C81C1E7A4AF8000C1749 /* CLChartNameToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B32C81B1E7A4AF8000C1749 /* CLChartNameToolBar.m */; };
 		5B3327E123DF352900CA315C /* CLConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3327E023DF352800CA315C /* CLConst.swift */; };
@@ -458,6 +459,7 @@
 		5B1C74251E78F120000AB534 /* CLChartXLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLChartXLabel.m; sourceTree = "<group>"; };
 		5B2411912438EF4F00B2E0DC /* CLTagsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLTagsCell.swift; sourceTree = "<group>"; };
 		5B241195243B039200B2E0DC /* CLTagsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLTagsItem.swift; sourceTree = "<group>"; };
+		5B241199243B1BB100B2E0DC /* CLTagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLTagsView.swift; sourceTree = "<group>"; };
 		5B28650C21EE428200334E6C /* CLCoreTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLCoreTextView.h; sourceTree = "<group>"; };
 		5B28650D21EE428200334E6C /* CLCoreTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLCoreTextView.m; sourceTree = "<group>"; };
 		5B32C81A1E7A4AF8000C1749 /* CLChartNameToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLChartNameToolBar.h; sourceTree = "<group>"; };
@@ -1390,6 +1392,7 @@
 				5B44D1292435C61E0059476D /* CLTagsController.swift */,
 				5B241195243B039200B2E0DC /* CLTagsItem.swift */,
 				5B2411912438EF4F00B2E0DC /* CLTagsCell.swift */,
+				5B241199243B1BB100B2E0DC /* CLTagsView.swift */,
 			);
 			path = CLTagsController;
 			sourceTree = "<group>";
@@ -2148,6 +2151,7 @@
 				0CA1237522255B81007DDE6D /* CLCardController.m in Sources */,
 				0C3CAA5521AF89BD00A352F0 /* CLRotateAnimationController.m in Sources */,
 				0CF79AE72195B1C800DD0BF1 /* UIButton+CLBlockAction.m in Sources */,
+				5B24119A243B1BB100B2E0DC /* CLTagsView.swift in Sources */,
 				B51EE6E923DF138200146862 /* CLChatEmojiTextCell.swift in Sources */,
 				B51EE6E223DF138200146862 /* CLChatInputToolBar.swift in Sources */,
 				0C9235AB22F5589100EA3E9F /* CLMailBoxTextView.m in Sources */,

@@ -9,7 +9,7 @@
 import UIKit
 
 class CLTagsCell: UITableViewCell {
-    private var viewArray: [UILabel] = [UILabel]()
+    private var viewArray: [CLTagsView] = [CLTagsView]()
     var tagsItem: CLTagsItem? {
         didSet {
             reSetTags()
@@ -18,7 +18,7 @@ class CLTagsCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .none
-        contentView.layer.borderColor = UIColor.randomColor.cgColor
+        contentView.layer.borderColor = UIColor.red.cgColor
         contentView.layer.borderWidth = 1
     }
     required init?(coder: NSCoder) {
@@ -32,28 +32,22 @@ extension CLTagsCell {
             }
             let count = max(tagsItem.tags.count, viewArray.count)
             for i in 0..<count {
-                var label: UILabel!
+                var tagView: CLTagsView!
                 if i < viewArray.count {
-                    label = viewArray[i]
+                    tagView = viewArray[i]
                 }else {
-                    label = UILabel()
-                    label.textAlignment = .center
-                    label.textColor = UIColor.randomColor
-                    label.font = tagsItem.font
-                    label.backgroundColor = UIColor.white
-                    label.layer.borderWidth = 1
-                    label.layer.borderColor = UIColor.lightGray.cgColor
-                    label.layer.cornerRadius = 4
-                    label.layer.masksToBounds = true
-                    contentView.addSubview(label)
-                    viewArray.append(label)
+                    tagView = CLTagsView()
+                    tagView.label.font = tagsItem.font
+                    contentView.addSubview(tagView)
+                    viewArray.append(tagView)
                 }
                 if i < tagsItem.tags.count {
-                    label.isHidden = false
-                    label.text = tagsItem.tags[i]
-                    label.frame = tagsItem.tagsFrames[i]
+                    tagView.isHidden = false
+                    tagView.tagsMinPadding = tagsItem.tagsMinPadding
+                    tagView.label.text = tagsItem.tags[i]
+                    tagView.frame = tagsItem.tagsFrames[i]
                 }else {
-                    label.isHidden = true
+                    tagView.isHidden = true
                 }
             }
         }
