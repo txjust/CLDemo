@@ -9,8 +9,8 @@
 import UIKit
 
 class CLTagsFrameConfigure: NSObject {
-    /// 标签宽度
-    var width: CGFloat = cl_screenWidth()
+    /// 标签最大宽度
+    var maxWidth: CGFloat = 0.0
     /// 单个标签高度
     var tagHeight: CGFloat = 30.0
     /// 标签间距
@@ -58,8 +58,8 @@ extension CLTagsFrameHelper {
                 nextWidth = (tagsArray[i + 1] as NSString).size(withAttributes: attributedFont).width + defaultConfigure.tagsMinPadding * 2
             }
             let nextX: CGFloat = textX + textWidht + defaultConfigure.tagsMargin
-            if (nextX + nextWidth) > (defaultConfigure.width - defaultConfigure.tagsMargin) {
-                moreWidth = defaultConfigure.width - nextX
+            if (nextX + nextWidth) > (defaultConfigure.maxWidth - defaultConfigure.tagsMargin) {
+                moreWidth = defaultConfigure.maxWidth - nextX
                 lastIndexs.append(i)
                 moreWidths.append(defaultConfigure.isAlignment ? moreWidth : 0)
                 textX = defaultConfigure.tagsMargin

@@ -141,7 +141,6 @@
 		5B190E7223B66811005A2474 /* CLFlopController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B190E6723B66811005A2474 /* CLFlopController.swift */; };
 		5B190E7323B66811005A2474 /* CLPopupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B190E6823B66811005A2474 /* CLPopupManager.swift */; };
 		5B1C74261E78F120000AB534 /* CLChartXLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1C74251E78F120000AB534 /* CLChartXLabel.m */; };
-		5B2411902438EE8B00B2E0DC /* CLTagsTableviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B24118F2438EE8B00B2E0DC /* CLTagsTableviewController.swift */; };
 		5B2411922438EF4F00B2E0DC /* CLTagsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2411912438EF4F00B2E0DC /* CLTagsCell.swift */; };
 		5B241196243B039200B2E0DC /* CLTagsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B241195243B039200B2E0DC /* CLTagsItem.swift */; };
 		5B28650E21EE428200334E6C /* CLCoreTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B28650D21EE428200334E6C /* CLCoreTextView.m */; };
@@ -457,7 +456,6 @@
 		5B190E6823B66811005A2474 /* CLPopupManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLPopupManager.swift; sourceTree = "<group>"; };
 		5B1C74241E78F120000AB534 /* CLChartXLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLChartXLabel.h; sourceTree = "<group>"; };
 		5B1C74251E78F120000AB534 /* CLChartXLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLChartXLabel.m; sourceTree = "<group>"; };
-		5B24118F2438EE8B00B2E0DC /* CLTagsTableviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLTagsTableviewController.swift; sourceTree = "<group>"; };
 		5B2411912438EF4F00B2E0DC /* CLTagsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLTagsCell.swift; sourceTree = "<group>"; };
 		5B241195243B039200B2E0DC /* CLTagsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLTagsItem.swift; sourceTree = "<group>"; };
 		5B28650C21EE428200334E6C /* CLCoreTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLCoreTextView.h; sourceTree = "<group>"; };
@@ -1390,7 +1388,6 @@
 			children = (
 				5B44D12B2435C6F10059476D /* CLTagsFrameHelper.swift */,
 				5B44D1292435C61E0059476D /* CLTagsController.swift */,
-				5B24118F2438EE8B00B2E0DC /* CLTagsTableviewController.swift */,
 				5B241195243B039200B2E0DC /* CLTagsItem.swift */,
 				5B2411912438EF4F00B2E0DC /* CLTagsCell.swift */,
 			);
@@ -2228,7 +2225,6 @@
 				5BBB62921E7444A100B28FC3 /* CLChartToolBar.m in Sources */,
 				5B80D9E91DDD976A00A20E34 /* main.m in Sources */,
 				0C30ED4C231E48FC00364327 /* CLLineChartViewController.m in Sources */,
-				5B2411902438EE8B00B2E0DC /* CLTagsTableviewController.swift in Sources */,
 				5B3327E123DF352900CA315C /* CLConst.swift in Sources */,
 				5BD661D9240CCA30009508CD /* CLMessagePopupController.swift in Sources */,
 				0CCDA30B219850EF0057BA14 /* CLChangeFontSizeController.m in Sources */,

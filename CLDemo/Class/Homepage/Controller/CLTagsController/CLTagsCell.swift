@@ -18,7 +18,7 @@ class CLTagsCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .none
-        contentView.layer.borderColor = UIColor.orange.cgColor
+        contentView.layer.borderColor = UIColor.randomColor.cgColor
         contentView.layer.borderWidth = 1
     }
     required init?(coder: NSCoder) {
