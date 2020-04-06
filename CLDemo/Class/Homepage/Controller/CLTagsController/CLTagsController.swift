@@ -9,8 +9,26 @@
 import UIKit
 
 class CLTagsController: CLBaseViewController {
+    private lazy var contentView: UIView = {
+        let contentView = UIView()
+        return contentView
+    }()
+    private lazy var button: UIButton = {
+        let button = UIButton()
+        button.setTitle("跳转", for: .normal)
+        button.setTitleColor(UIColor.red, for: .normal)
+        button.addTarget(self, action: #selector(nextAction), for: .touchUpInside)
+        return button
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.addSubview(contentView)
+        view.addSubview(button)
+        
+        button.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(contentView.snp.bottom).offset(40)
+        }
         createTags()
     }
     func createTags() {
@@ -22,11 +40,8 @@ class CLTagsController: CLBaseViewController {
             configure.tagsTitleFont = font
 //            configure.isAlignment = false
         }, tagsArray: tagsArray)
-        
-        let backView = UIView()
-        backView.frame = CGRect(x: 0, y: cl_safeAreaInsets().top + 44 + 100, width: view.frame.size.width, height: tagsFrame.tagsHeight)
-        backView.backgroundColor = UIColor.orange
-        view.addSubview(backView)
+        contentView.frame = CGRect(x: 0, y: cl_safeAreaInsets().top + 44 + 100, width: view.frame.size.width, height: tagsFrame.tagsHeight)
+        contentView.backgroundColor = UIColor.orange
         
         for i in 0..<tagsArray.count {
             let tagsLable = UILabel()
@@ -40,7 +55,13 @@ class CLTagsController: CLBaseViewController {
             tagsLable.layer.cornerRadius = 4
             tagsLable.layer.masksToBounds = true
             tagsLable.frame = tagsFrame.tagsFrames[i]
-            backView.addSubview(tagsLable)
+            contentView.addSubview(tagsLable)
         }
+    }
+}
+extension CLTagsController {
+    @objc func nextAction() {
+        let controller = CLTagsTableviewController()
+        navigationController?.pushViewController(controller, animated: true)
     }
 }
