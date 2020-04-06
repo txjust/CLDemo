@@ -87,6 +87,7 @@ extension CLTagsFrameHelper {
             let tagY = CGFloat(defaultConfigure.tagsLineSpacing + (defaultConfigure.tagsLineSpacing + defaultConfigure.tagHeight) * CGFloat(i))
             for item in rowArray {
                 tagWidth = (item as NSString).size(withAttributes: attributedFont).width + defaultConfigure.tagsMinPadding * 2 + averageWidth
+                tagWidth = min(tagWidth, defaultConfigure.maxWidth - defaultConfigure.tagsMargin * 2)
                 let frame = CGRect(x: tagX, y: tagY, width: tagWidth, height: defaultConfigure.tagHeight)
                 tagsFrames.append(frame)
                 tagX += tagWidth + defaultConfigure.tagsMargin

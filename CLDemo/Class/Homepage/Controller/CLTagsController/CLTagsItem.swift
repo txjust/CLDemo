@@ -13,7 +13,7 @@ class CLTagsItem: NSObject {
     private (set) var tags: [String]!
     private (set) var tagsFrames: [CGRect]!
     private (set) var tagsHeight: CGFloat = 0.0
-    init(with tags: [String], font: UIFont = UIFont.systemFont(ofSize: 15), maxWidth: CGFloat) {
+    init(with tags: [String], maxWidth: CGFloat, font: UIFont = UIFont.systemFont(ofSize: 15), isAlignment: Bool = true) {
         super.init()
         self.tags = tags
         self.font = font
@@ -22,7 +22,7 @@ class CLTagsItem: NSObject {
             configure.tagHeight = font.lineHeight + 10
             configure.tagsTitleFont = font
             configure.maxWidth = maxWidth
-//            configure.isAlignment = false
+            configure.isAlignment = false
         }, tagsArray: tags)
         tagsFrames = tagsInfo.tagsFrames
         tagsHeight = tagsInfo.tagsHeight
