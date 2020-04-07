@@ -53,44 +53,34 @@ class CLYearMonthDayHourMinuteDataPickerView: UIView {
         let minuteArray = Array(0...59)
         return minuteArray
     }()
-    private lazy var yearLabel: UILabel = {
-        let yearLabel = UILabel()
-        yearLabel.textAlignment = .right
-        yearLabel.textColor = hexColor("#40B5AA")
-        yearLabel.font = UIFont.systemFont(ofSize: 14)
+    private lazy var yearLabel: CLDataPickerTitleView = {
+        let yearLabel = CLDataPickerTitleView()
         yearLabel.text = "年"
+        yearLabel.margin = 30
         return yearLabel
     }()
-    private lazy var monthLabel: UILabel = {
-        let monthLabel = UILabel()
-        monthLabel.textAlignment = .right
-        monthLabel.textColor = hexColor("#40B5AA")
-        monthLabel.font = UIFont.systemFont(ofSize: 14)
+    private lazy var monthLabel: CLDataPickerTitleView = {
+        let monthLabel = CLDataPickerTitleView()
         monthLabel.text = "月"
+        monthLabel.margin = 21
         return monthLabel
     }()
-    private lazy var dayLabel: UILabel = {
-        let dayLabel = UILabel()
-        dayLabel.textAlignment = .right
-        dayLabel.textColor = hexColor("#40B5AA")
-        dayLabel.font = UIFont.systemFont(ofSize: 14)
+    private lazy var dayLabel: CLDataPickerTitleView = {
+        let dayLabel = CLDataPickerTitleView()
         dayLabel.text = "日"
+        dayLabel.margin = 21
         return dayLabel
     }()
-    private lazy var hourLabel: UILabel = {
-        let hourLabel = UILabel()
-        hourLabel.textAlignment = .right
-        hourLabel.textColor = hexColor("#40B5AA")
-        hourLabel.font = UIFont.systemFont(ofSize: 14)
+    private lazy var hourLabel: CLDataPickerTitleView = {
+        let hourLabel = CLDataPickerTitleView()
         hourLabel.text = "时"
+        hourLabel.margin = 21
         return hourLabel
     }()
-    private lazy var minuteLabel: UILabel = {
-        let minuteLabel = UILabel()
-        minuteLabel.textAlignment = .right
-        minuteLabel.textColor = hexColor("#40B5AA")
-        minuteLabel.font = UIFont.systemFont(ofSize: 14)
+    private lazy var minuteLabel: CLDataPickerTitleView = {
+        let minuteLabel = CLDataPickerTitleView()
         minuteLabel.text = "分"
+        minuteLabel.margin = 21
         return minuteLabel
     }()
     private lazy var pickerView: UIPickerView = {
@@ -124,27 +114,27 @@ extension CLYearMonthDayHourMinuteDataPickerView {
         yearLabel.snp.makeConstraints { (make) in
             make.left.equalTo(pickerView)
             make.centerY.equalTo(pickerView)
-            make.width.equalTo(pickerView).multipliedBy(0.2).offset(10)
         }
         monthLabel.snp.makeConstraints { (make) in
             make.left.equalTo(yearLabel.snp.right)
             make.centerY.equalTo(pickerView)
-            make.width.equalTo(pickerView).multipliedBy(0.2).offset(-3)
+            make.width.equalTo(yearLabel)
         }
         dayLabel.snp.makeConstraints { (make) in
             make.left.equalTo(monthLabel.snp.right)
             make.centerY.equalTo(pickerView)
-            make.width.equalTo(pickerView).multipliedBy(0.2).offset(1)
+            make.width.equalTo(monthLabel)
         }
         hourLabel.snp.makeConstraints { (make) in
             make.left.equalTo(dayLabel.snp.right)
             make.centerY.equalTo(pickerView)
-            make.width.equalTo(pickerView).multipliedBy(0.2).offset(1)
+            make.width.equalTo(dayLabel)
         }
         minuteLabel.snp.makeConstraints { (make) in
             make.left.equalTo(hourLabel.snp.right)
+            make.right.equalTo(pickerView)
             make.centerY.equalTo(pickerView)
-            make.width.equalTo(pickerView).multipliedBy(0.2).offset(-3)
+            make.width.equalTo(hourLabel)
         }
         pickerView.snp.makeConstraints { (make) in
             if #available(iOS 11.0, *) {
