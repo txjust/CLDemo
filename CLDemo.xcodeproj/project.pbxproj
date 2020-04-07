@@ -144,6 +144,7 @@
 		5B2411922438EF4F00B2E0DC /* CLTagsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2411912438EF4F00B2E0DC /* CLTagsCell.swift */; };
 		5B241196243B039200B2E0DC /* CLTagsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B241195243B039200B2E0DC /* CLTagsItem.swift */; };
 		5B24119A243B1BB100B2E0DC /* CLTagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B241199243B1BB100B2E0DC /* CLTagsView.swift */; };
+		5B2411AC243C7FB600B2E0DC /* CLYearMonthDayHourMinuteDataPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2411AB243C7FB600B2E0DC /* CLYearMonthDayHourMinuteDataPickerView.swift */; };
 		5B28650E21EE428200334E6C /* CLCoreTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B28650D21EE428200334E6C /* CLCoreTextView.m */; };
 		5B32C81C1E7A4AF8000C1749 /* CLChartNameToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B32C81B1E7A4AF8000C1749 /* CLChartNameToolBar.m */; };
 		5B3327E123DF352900CA315C /* CLConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3327E023DF352800CA315C /* CLConst.swift */; };
@@ -460,6 +461,7 @@
 		5B2411912438EF4F00B2E0DC /* CLTagsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLTagsCell.swift; sourceTree = "<group>"; };
 		5B241195243B039200B2E0DC /* CLTagsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLTagsItem.swift; sourceTree = "<group>"; };
 		5B241199243B1BB100B2E0DC /* CLTagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLTagsView.swift; sourceTree = "<group>"; };
+		5B2411AB243C7FB600B2E0DC /* CLYearMonthDayHourMinuteDataPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLYearMonthDayHourMinuteDataPickerView.swift; sourceTree = "<group>"; };
 		5B28650C21EE428200334E6C /* CLCoreTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLCoreTextView.h; sourceTree = "<group>"; };
 		5B28650D21EE428200334E6C /* CLCoreTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLCoreTextView.m; sourceTree = "<group>"; };
 		5B32C81A1E7A4AF8000C1749 /* CLChartNameToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLChartNameToolBar.h; sourceTree = "<group>"; };
@@ -1754,6 +1756,7 @@
 				5B8B7D2F24319701005C8530 /* CLDataPickerController.swift */,
 				5B8B7D31243197D6005C8530 /* CLYearMonthDayDataPickerView.swift */,
 				5B44D0D9243398EF0059476D /* CLHourMinuteDataPickerView.swift */,
+				5B2411AB243C7FB600B2E0DC /* CLYearMonthDayHourMinuteDataPickerView.swift */,
 			);
 			path = CLDataPickerController;
 			sourceTree = "<group>";
@@ -2212,6 +2215,7 @@
 				B51EE6E723DF138200146862 /* CLChatEmojTextItem.swift in Sources */,
 				5B190E5C23B66803005A2474 /* CLPopupController.swift in Sources */,
 				0CC7796622D9D7E10027B310 /* CLPhotoBrowserViewController.m in Sources */,
+				5B2411AC243C7FB600B2E0DC /* CLYearMonthDayHourMinuteDataPickerView.swift in Sources */,
 				5B44D12A2435C61E0059476D /* CLTagsController.swift in Sources */,
 				0CB60B14237EC51100D10317 /* CLHorizontalCell.m in Sources */,
 				0CC171422248B4D2005B0F0A /* CLGCDTimerManager.m in Sources */,

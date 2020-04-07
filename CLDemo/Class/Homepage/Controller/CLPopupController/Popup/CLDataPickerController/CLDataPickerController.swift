@@ -11,10 +11,12 @@ import UIKit
 enum CLDataPickerType {
     case yearMonthDay
     case hourMinute
+    case yearMonthDayHourMinute
 }
 class CLDataPickerController: CLPopupManagerBaseController {
     var yearMonthDayCallback: ((Int, Int, Int) -> ())?
     var hourMinuteCallback: ((Int, Int) -> ())?
+    var yearMonthDayHourMinuteCallback: ((Int, Int, Int, Int, Int) -> ())?
     var type: CLDataPickerType = .yearMonthDay
     lazy var topToolBar: UIButton = {
         let topToolBar = UIButton()
@@ -50,6 +52,8 @@ class CLDataPickerController: CLPopupManagerBaseController {
             dataPick = CLYearMonthDayDataPickerView()
         case .hourMinute:
             dataPick = CLHourMinuteDataPickerView()
+        case .yearMonthDayHourMinute:
+            dataPick = CLYearMonthDayHourMinuteDataPickerView()
         }
         return dataPick
     }()
@@ -101,13 +105,11 @@ extension CLDataPickerController {
         topToolBar.snp.updateConstraints { (make) in
             make.top.equalTo(view.snp.bottom).offset(-50 - 302.5)
         }
-        UIView.animate(withDuration: 0.35, delay: 0.0, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 0.35, delay: 0.0, options: .curveEaseOut, animations: {
             self.view.backgroundColor = UIColor.black.withAlphaComponent(0.3)
             self.view.setNeedsLayout()
             self.view.layoutIfNeeded()
-        }) { (_) in
-            
-        }
+        }, completion: nil)
     }
     func dismissAnimation() {
         topToolBar.snp.updateConstraints { (make) in
@@ -131,6 +133,8 @@ extension CLDataPickerController {
             yearMonthDayCallback?(picker.year, picker.month, picker.day)
         }else if let picker = dataPicker as? CLHourMinuteDataPickerView {
             hourMinuteCallback?(picker.hour, picker.minute)
+        }else if let picker = dataPicker as? CLYearMonthDayHourMinuteDataPickerView {
+            yearMonthDayHourMinuteCallback?(picker.year, picker.month, picker.day, picker.hour, picker.minute)
         }
         dismissAnimation()
     }

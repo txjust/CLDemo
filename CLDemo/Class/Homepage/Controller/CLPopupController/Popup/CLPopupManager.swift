@@ -275,4 +275,15 @@ extension CLPopupManager {
         controller.hourMinuteCallback = hourMinuteCallback
         showCustom(with: controller, only: only)
     }
+    ///显示年月日选择器
+    class func showYearMonthDayHourMinuteDataPicker(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = true, interfaceOrientationMask: UIInterfaceOrientationMask = .all, only: Bool = true, yearMonthDayHourMinuteCallback: ((Int, Int, Int, Int, Int) -> ())? = nil) {
+        let controller = CLDataPickerController()
+        controller.statusBarStyle = statusBarStyle
+        controller.statusBarHidden = statusBarHidden
+        controller.autorotate = autorotate
+        controller.interfaceOrientationMask = interfaceOrientationMask
+        controller.type = .yearMonthDayHourMinute
+        controller.yearMonthDayHourMinuteCallback = yearMonthDayHourMinuteCallback
+        showCustom(with: controller, only: only)
+    }
 }

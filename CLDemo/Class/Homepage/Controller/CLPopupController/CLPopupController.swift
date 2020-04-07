@@ -105,6 +105,14 @@ extension CLPopupController {
         }
         arrayDS.append(model9)
 
+        let model10 = CLPopupModel()
+        model10.title = "年月日时分选择"
+        model10.callback = {[weak self] in
+            self?.showYearMonthDayHourMinuteDataPicker()
+        }
+        arrayDS.append(model10)
+        
+        
     }
 }
 extension CLPopupController: UITableViewDataSource {
@@ -170,6 +178,11 @@ extension CLPopupController {
     func showHourMinuteDataPicker() {
         CLPopupManager.showHourMinuteDataPicker { (hour, minute) in
             print("选中-----\(hour)时\(minute)分")
+        }
+    }
+    func showYearMonthDayHourMinuteDataPicker()  {
+        CLPopupManager.showYearMonthDayHourMinuteDataPicker { (year, month, day, hour, minute) in
+            print("选中-----\(year)年\(month)月\(day)日\(hour)时\(minute)分")
         }
     }
 }
