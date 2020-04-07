@@ -177,25 +177,29 @@ extension CLYearMonthDayDataPickerView {
     }
     @discardableResult private func daysFrom(year: Int, month: Int) -> Int {
         let isRunNian = year % 4 == 0 ? (year % 100 == 0 ? (year % 400 == 0 ? true : false) : true) : false
+        var days: Int = 0
         switch month {
         case 1, 3, 5, 7, 8, 10, 12:
             dayArray = Array(1...31)
-            return 31
+            days = 31
         case 4, 6, 9, 11:
             dayArray = Array(1...30)
-            return 30
+            days = 30
         case 2:
             if isRunNian {
                 dayArray = Array(1...29)
-                return 29
+                days = 29
             } else {
                 dayArray = Array(1...28)
-                return 28
+                days = 28
             }
         default:
             break
         }
-        return 0
+        if year == nowDate.year, month == nowDate.month {
+            days = nowDate.day
+        }
+        return days
     }
 }
 extension CLYearMonthDayDataPickerView {
