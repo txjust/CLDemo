@@ -77,6 +77,22 @@ class CLYearMonthDayHourMinuteDataPickerView: UIView {
         dayLabel.text = "日"
         return dayLabel
     }()
+    private lazy var hourLabel: UILabel = {
+        let hourLabel = UILabel()
+        hourLabel.textAlignment = .right
+        hourLabel.textColor = hexColor("#40B5AA")
+        hourLabel.font = UIFont.systemFont(ofSize: 14)
+        hourLabel.text = "时"
+        return hourLabel
+    }()
+    private lazy var minuteLabel: UILabel = {
+        let minuteLabel = UILabel()
+        minuteLabel.textAlignment = .right
+        minuteLabel.textColor = hexColor("#40B5AA")
+        minuteLabel.font = UIFont.systemFont(ofSize: 14)
+        minuteLabel.text = "分"
+        return minuteLabel
+    }()
     private lazy var pickerView: UIPickerView = {
         let pickerView = UIPickerView()
         pickerView.dataSource = self
@@ -100,6 +116,8 @@ extension CLYearMonthDayHourMinuteDataPickerView {
         addSubview(yearLabel)
         addSubview(monthLabel)
         addSubview(dayLabel)
+        addSubview(hourLabel)
+        addSubview(minuteLabel)
         addSubview(pickerView)
     }
     private func makeConstraints() {
@@ -113,10 +131,20 @@ extension CLYearMonthDayHourMinuteDataPickerView {
             make.width.equalTo(yearLabel)
         }
         dayLabel.snp.makeConstraints { (make) in
-            make.right.equalTo(pickerView)
             make.left.equalTo(monthLabel.snp.right)
             make.centerY.equalTo(pickerView)
             make.width.equalTo(monthLabel)
+        }
+        hourLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(dayLabel.snp.right)
+            make.centerY.equalTo(pickerView)
+            make.width.equalTo(dayLabel)
+        }
+        minuteLabel.snp.makeConstraints { (make) in
+            make.right.equalTo(pickerView)
+            make.left.equalTo(hourLabel.snp.right)
+            make.centerY.equalTo(pickerView)
+            make.width.equalTo(hourLabel)
         }
         pickerView.snp.makeConstraints { (make) in
             if #available(iOS 11.0, *) {
@@ -233,14 +261,14 @@ extension CLYearMonthDayHourMinuteDataPickerView {
     @discardableResult private func hourFrom(year: Int, month: Int, day: Int) -> Int {
         var hours: Int = 24
         if year == nowDate.year, month == nowDate.month, day == nowDate.day {
-            hours = nowDate.hour
+            hours = nowDate.hour + 1
         }
         return hours
     }
     @discardableResult private func minuteFrom(year: Int, month: Int, day: Int, hour: Int) -> Int {
         var minute: Int = 60
-        if year == nowDate.year, month == nowDate.month, day == nowDate.day, hour == nowDate.day {
-            minute = nowDate.minute
+        if year == nowDate.year, month == nowDate.month, day == nowDate.day, hour == nowDate.hour {
+            minute = nowDate.minute + 1
         }
         return minute
     }
