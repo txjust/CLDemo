@@ -16,6 +16,7 @@ class CLHourMinuteDataPickerView: UIView {
     var minute: Int {
         return minuteArray[minuteIndex]
     }
+    private var nowDate: Date = Date(timeIntervalSinceNow: 0)
     private var hourIndex: Int = 0
     private var minuteIndex: Int = 0
     private lazy var hourArray: [Int] = {
@@ -42,6 +43,7 @@ class CLHourMinuteDataPickerView: UIView {
         super.init(frame: frame)
         initUI()
         makeConstraints()
+        select(hour: nowDate.hour, minute: nowDate.minute)
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -107,6 +109,15 @@ extension CLHourMinuteDataPickerView: UIPickerViewDelegate {
             minuteIndex = row
         }
         pickerView.reloadAllComponents()
+    }
+}
+extension CLHourMinuteDataPickerView {
+    private func select(hour: Int, minute: Int) {
+        hourIndex = hourArray.firstIndex(of: hour) ?? 0
+        minuteIndex = minuteArray.firstIndex(of: minute) ?? 0
+        
+        pickerView.selectRow(hourIndex, inComponent: 0, animated: true)
+        pickerView.selectRow(minuteIndex, inComponent: 1, animated: true)
     }
 }
 
