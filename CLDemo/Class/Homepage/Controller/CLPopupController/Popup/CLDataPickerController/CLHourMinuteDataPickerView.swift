@@ -19,7 +19,7 @@ class CLHourMinuteDataPickerView: UIView {
     private var hourIndex: Int = 0
     private var minuteIndex: Int = 0
     private lazy var hourArray: [Int] = {
-        var hourArray = Array(0...23)
+        let hourArray = Array(0...23)
         return hourArray
     }()
     private lazy var minuteArray: [Int] = {

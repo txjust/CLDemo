@@ -46,7 +46,7 @@ class CLYearMonthDayHourMinuteDataPickerView: UIView {
         return dayArray
     }()
     private lazy var hourArray: [Int] = {
-        var hourArray = Array(0...23)
+        let hourArray = Array(0...23)
         return hourArray
     }()
     private lazy var minuteArray: [Int] = {
@@ -140,7 +140,9 @@ extension CLYearMonthDayHourMinuteDataPickerView: UIPickerViewDataSource {
         let years = yearArray.count
         let months = monthFrom(year: yearArray[yearIndex])
         let days = daysFrom(year: yearArray[yearIndex], month: monthArray[monthIndex])
-        let array = [years, months, days, hourArray.count, minuteArray.count]
+        let hours = hourFrom(year: yearArray[yearIndex], month: monthArray[monthIndex], day: dayArray[dayIndex])
+        let minutes = minuteFrom(year: yearArray[yearIndex], month: monthArray[monthIndex], day: dayArray[dayIndex], hour: hourArray[hourIndex])
+        let array = [years, months, days, hours, minutes]
         return array[component]
     }
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
@@ -185,11 +187,13 @@ extension CLYearMonthDayHourMinuteDataPickerView: UIPickerViewDelegate {
         }else if component == 4 {
             minuteIndex = row
         }
-        if component < 2 {
-            let month = monthFrom(year: yearArray[yearIndex])
-            monthIndex = min(monthIndex, month - 1)
+        if component < 4 {
+            let months = monthFrom(year: yearArray[yearIndex])
+            monthIndex = min(monthIndex, months - 1)
             let days = daysFrom(year: yearArray[yearIndex], month: monthArray[monthIndex])
             dayIndex = min(dayIndex, days - 1)
+            let hours = hourFrom(year: yearArray[yearIndex], month: monthArray[monthIndex], day: dayArray[dayIndex])
+            hourIndex = min(hourIndex, hours - 1)
         }
         pickerView.reloadAllComponents()
     }
@@ -225,6 +229,20 @@ extension CLYearMonthDayHourMinuteDataPickerView {
             days = nowDate.day
         }
         return days
+    }
+    @discardableResult private func hourFrom(year: Int, month: Int, day: Int) -> Int {
+        var hours: Int = 24
+        if year == nowDate.year, month == nowDate.month, day == nowDate.day {
+            hours = nowDate.hour
+        }
+        return hours
+    }
+    @discardableResult private func minuteFrom(year: Int, month: Int, day: Int, hour: Int) -> Int {
+        var minute: Int = 60
+        if year == nowDate.year, month == nowDate.month, day == nowDate.day, hour == nowDate.day {
+            minute = nowDate.minute
+        }
+        return minute
     }
 }
 extension CLYearMonthDayHourMinuteDataPickerView {
