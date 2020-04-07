@@ -124,27 +124,27 @@ extension CLYearMonthDayHourMinuteDataPickerView {
         yearLabel.snp.makeConstraints { (make) in
             make.left.equalTo(pickerView)
             make.centerY.equalTo(pickerView)
+            make.width.equalTo(pickerView).multipliedBy(0.2).offset(10)
         }
         monthLabel.snp.makeConstraints { (make) in
             make.left.equalTo(yearLabel.snp.right)
             make.centerY.equalTo(pickerView)
-            make.width.equalTo(yearLabel)
+            make.width.equalTo(pickerView).multipliedBy(0.2).offset(-3)
         }
         dayLabel.snp.makeConstraints { (make) in
             make.left.equalTo(monthLabel.snp.right)
             make.centerY.equalTo(pickerView)
-            make.width.equalTo(monthLabel)
+            make.width.equalTo(pickerView).multipliedBy(0.2).offset(1)
         }
         hourLabel.snp.makeConstraints { (make) in
             make.left.equalTo(dayLabel.snp.right)
             make.centerY.equalTo(pickerView)
-            make.width.equalTo(dayLabel)
+            make.width.equalTo(pickerView).multipliedBy(0.2).offset(1)
         }
         minuteLabel.snp.makeConstraints { (make) in
-            make.right.equalTo(pickerView)
             make.left.equalTo(hourLabel.snp.right)
             make.centerY.equalTo(pickerView)
-            make.width.equalTo(hourLabel)
+            make.width.equalTo(pickerView).multipliedBy(0.2).offset(-3)
         }
         pickerView.snp.makeConstraints { (make) in
             if #available(iOS 11.0, *) {

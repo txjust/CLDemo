@@ -38,28 +38,22 @@ class CLYearMonthDayDataPickerView: UIView {
         let dayArray = [Int]()
         return dayArray
     }()
-    private lazy var yearLabel: UILabel = {
-        let yearLabel = UILabel()
-        yearLabel.textAlignment = .right
-        yearLabel.textColor = hexColor("#40B5AA")
-        yearLabel.font = UIFont.systemFont(ofSize: 14)
+    private lazy var yearLabel: CLDataPickerTitleView = {
+        let yearLabel = CLDataPickerTitleView()
         yearLabel.text = "年"
+        yearLabel.margin = 30
         return yearLabel
     }()
-    private lazy var monthLabel: UILabel = {
-        let monthLabel = UILabel()
-        monthLabel.textAlignment = .right
-        monthLabel.textColor = hexColor("#40B5AA")
-        monthLabel.font = UIFont.systemFont(ofSize: 14)
+    private lazy var monthLabel: CLDataPickerTitleView = {
+        let monthLabel = CLDataPickerTitleView()
         monthLabel.text = "月"
+        monthLabel.margin = 21
         return monthLabel
     }()
-    private lazy var dayLabel: UILabel = {
-        let dayLabel = UILabel()
-        dayLabel.textAlignment = .right
-        dayLabel.textColor = hexColor("#40B5AA")
-        dayLabel.font = UIFont.systemFont(ofSize: 14)
+    private lazy var dayLabel: CLDataPickerTitleView = {
+        let dayLabel = CLDataPickerTitleView()
         dayLabel.text = "日"
+        dayLabel.margin = 21
         return dayLabel
     }()
     private lazy var pickerView: UIPickerView = {
