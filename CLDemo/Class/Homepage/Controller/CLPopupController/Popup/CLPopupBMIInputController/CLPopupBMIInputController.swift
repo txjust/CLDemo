@@ -11,6 +11,7 @@ import UIKit
 class CLPopupBMIInputController: CLPopupManagerBaseController {
     var bmiCallback: ((CGFloat) -> ())?
     private var bmiValue: CGFloat = 0.0
+    private var isDismiss: Bool = false
     private lazy var contentView: UIView = {
         let contentView = UIView()
         contentView.backgroundColor = .white
@@ -106,6 +107,8 @@ extension CLPopupBMIInputController {
         makeConstraints()
         showAnimation()
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(notification:)), name: UITextField.textDidChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name:UIResponder.keyboardWillShowNotification,object: nil)
+        NotificationCenter.default.addObserver(self,selector: #selector(keyboardWillHide(notification:)),name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 }
 extension CLPopupBMIInputController {
@@ -243,6 +246,43 @@ extension CLPopupBMIInputController {
     }
 }
 extension CLPopupBMIInputController {
+    // 键盘显示
+    @objc func keyboardWillShow(notification: Notification) {
+        DispatchQueue.main.async {
+            guard let userInfo = notification.userInfo, let keyboardRect = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect, let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval, let options = userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? NSInteger else {return}
+            let margin = keyboardRect.minY - 10
+            if margin > 0 {
+                self.contentView.snp.remakeConstraints { (make) in
+                    make.left.equalTo(36)
+                    make.right.equalTo(-36)
+                    make.bottom.equalTo(self.view.snp.top).offset(margin)
+                }
+                UIView.animate(withDuration: duration, delay: 0, options: UIView.AnimationOptions(rawValue: UIView.AnimationOptions.RawValue(options)), animations: {
+                    self.view.setNeedsLayout()
+                    self.view.layoutIfNeeded()
+                })
+            }
+        }
+    }
+    // 键盘隐藏
+    @objc func keyboardWillHide(notification: Notification) {
+        guard let userInfo = notification.userInfo, let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval, let options = userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? NSInteger else {return}
+        if !isDismiss {
+            DispatchQueue.main.async {
+                self.contentView.snp.remakeConstraints { (make) in
+                    make.left.equalTo(36)
+                    make.right.equalTo(-36)
+                    make.center.equalToSuperview()
+                }
+                UIView.animate(withDuration: duration, delay: 0, options: UIView.AnimationOptions(rawValue: UIView.AnimationOptions.RawValue(options)), animations: {
+                    self.view.setNeedsLayout()
+                    self.view.layoutIfNeeded()
+                })
+            }
+        }
+    }
+}
+extension CLPopupBMIInputController {
     @objc func fristTapViewAction() {
         fristTextField.becomeFirstResponder()
     }
@@ -250,10 +290,12 @@ extension CLPopupBMIInputController {
         secondTextField.becomeFirstResponder()
     }
     @objc func sureAction() {
+        isDismiss = true
         bmiCallback?(bmiValue)
         closeAction()
     }
     @objc func closeAction() {
+        isDismiss = true
         view.endEditing(true)
         dismissAnimation { (_) in
             CLPopupManager.dismissAll(false)
