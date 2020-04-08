@@ -158,7 +158,7 @@ extension CLPopupManager {
     ///   - interfaceOrientationMask: 页面旋转支持方向
     ///   - only: 是否唯一弹窗(自动顶掉前面所有弹窗)
     class func showFlop(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = false, interfaceOrientationMask: UIInterfaceOrientationMask = .all, only: Bool = false) {
-        let controller = CLFlopController()
+        let controller = CLPopupFlopController()
         controller.statusBarStyle = statusBarStyle
         controller.statusBarHidden = statusBarHidden
         controller.autorotate = autorotate
@@ -167,7 +167,7 @@ extension CLPopupManager {
     }
     ///显示提示弹窗
     class func showTips(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = false, interfaceOrientationMask: UIInterfaceOrientationMask = .all, only: Bool = true, text: String, dismissInterval: TimeInterval = 1.0) {
-        let controller = CLTipsPopupController()
+        let controller = CLPopupTipsController()
         controller.statusBarStyle = statusBarStyle
         controller.statusBarHidden = statusBarHidden
         controller.autorotate = autorotate
@@ -178,7 +178,7 @@ extension CLPopupManager {
     }
     ///显示一个消息弹窗
     class func showOneAlert(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = false, interfaceOrientationMask: UIInterfaceOrientationMask = .all, only: Bool = true, title: String? = nil, message: String? = nil, sure: String = "确定", sureCallBack: (() -> ())? = nil) {
-        let controller = CLMessagePopupController()
+        let controller = CLPopupMessageController()
         controller.statusBarStyle = statusBarStyle
         controller.statusBarHidden = statusBarHidden
         controller.autorotate = autorotate
@@ -194,7 +194,7 @@ extension CLPopupManager {
     }
     ///显示两个消息弹窗
     class func showTwoAlert(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = false, interfaceOrientationMask: UIInterfaceOrientationMask = .all, only: Bool = true, title: String? = nil, message: String? = nil, left: String = "取消", right: String = "确定", leftCallBack: (() -> ())? = nil, rightCallBack: (() -> ())? = nil) {
-        let controller = CLMessagePopupController()
+        let controller = CLPopupMessageController()
         controller.statusBarStyle = statusBarStyle
         controller.statusBarHidden = statusBarHidden
         controller.autorotate = autorotate
@@ -214,7 +214,7 @@ extension CLPopupManager {
     }
     ///显示成功
     class func showSuccess(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = false, interfaceOrientationMask: UIInterfaceOrientationMask = .all, only: Bool = true, strokeColor: UIColor = UIColor.red, text: String? = nil, dismissDuration: CGFloat = 1.0, dismissCallback: (() -> ())? = nil) {
-        let controller = CLHudController()
+        let controller = CLPopupHudController()
         controller.animationType = .success
         controller.statusBarStyle = statusBarStyle
         controller.statusBarHidden = statusBarHidden
@@ -228,7 +228,7 @@ extension CLPopupManager {
     }
     ///显示错误
     class func showError(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = false, interfaceOrientationMask: UIInterfaceOrientationMask = .all, only: Bool = true, strokeColor: UIColor = UIColor.red, text: String? = nil, dismissDuration: CGFloat = 1.0, dismissCallback: (() -> ())? = nil) {
-        let controller = CLHudController()
+        let controller = CLPopupHudController()
         controller.animationType = .error
         controller.statusBarStyle = statusBarStyle
         controller.statusBarHidden = statusBarHidden
@@ -242,7 +242,7 @@ extension CLPopupManager {
     }
     ///显示加载
     class func showLoading(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = false, interfaceOrientationMask: UIInterfaceOrientationMask = .all, only: Bool = true, strokeColor: UIColor = UIColor.red, text: String? = nil) {
-        let controller = CLHudController()
+        let controller = CLPopupHudController()
         controller.animationType = .loading
         controller.statusBarStyle = statusBarStyle
         controller.statusBarHidden = statusBarHidden
@@ -255,7 +255,7 @@ extension CLPopupManager {
     }
     ///显示年月日选择器
     class func showYearMonthDayDataPicker(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = true, interfaceOrientationMask: UIInterfaceOrientationMask = .all, only: Bool = true, yearMonthDayCallback: ((Int, Int, Int) -> ())? = nil) {
-        let controller = CLDataPickerController()
+        let controller = CLPopupDataPickerController()
         controller.statusBarStyle = statusBarStyle
         controller.statusBarHidden = statusBarHidden
         controller.autorotate = autorotate
@@ -266,7 +266,7 @@ extension CLPopupManager {
     }
     ///显示时分选择器
     class func showHourMinuteDataPicker(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = true, interfaceOrientationMask: UIInterfaceOrientationMask = .all, only: Bool = true, hourMinuteCallback: ((Int, Int) -> ())? = nil) {
-        let controller = CLDataPickerController()
+        let controller = CLPopupDataPickerController()
         controller.statusBarStyle = statusBarStyle
         controller.statusBarHidden = statusBarHidden
         controller.autorotate = autorotate
@@ -277,7 +277,7 @@ extension CLPopupManager {
     }
     ///显示年月日选择器
     class func showYearMonthDayHourMinuteDataPicker(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = true, interfaceOrientationMask: UIInterfaceOrientationMask = .all, only: Bool = true, yearMonthDayHourMinuteCallback: ((Int, Int, Int, Int, Int) -> ())? = nil) {
-        let controller = CLDataPickerController()
+        let controller = CLPopupDataPickerController()
         controller.statusBarStyle = statusBarStyle
         controller.statusBarHidden = statusBarHidden
         controller.autorotate = autorotate

@@ -1,5 +1,5 @@
 //
-//  CLDataPickerController.swift
+//  CLPopupDataPickerController.swift
 //  CLDemo
 //
 //  Created by JmoVxia on 2020/3/30.
@@ -13,7 +13,7 @@ enum CLDataPickerType {
     case hourMinute
     case yearMonthDayHourMinute
 }
-class CLDataPickerController: CLPopupManagerBaseController {
+class CLPopupDataPickerController: CLPopupManagerBaseController {
     var yearMonthDayCallback: ((Int, Int, Int) -> ())?
     var hourMinuteCallback: ((Int, Int) -> ())?
     var yearMonthDayHourMinuteCallback: ((Int, Int, Int, Int, Int) -> ())?
@@ -63,7 +63,7 @@ class CLDataPickerController: CLPopupManagerBaseController {
         showAnimation()
     }
 }
-extension CLDataPickerController {
+extension CLPopupDataPickerController {
     func initUI() {
         view.backgroundColor = UIColor.black.withAlphaComponent(0.0)
         view.addSubview(topToolBar)
@@ -72,7 +72,7 @@ extension CLDataPickerController {
         view.addSubview(dataPicker)
     }
 }
-extension CLDataPickerController {
+extension CLPopupDataPickerController {
     func showAnimation() {
         topToolBar.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
@@ -124,7 +124,7 @@ extension CLDataPickerController {
         }
     }
 }
-extension CLDataPickerController {
+extension CLPopupDataPickerController {
     @objc func cancelAction() {
         dismissAnimation()
     }
@@ -139,7 +139,7 @@ extension CLDataPickerController {
         dismissAnimation()
     }
 }
-extension CLDataPickerController {
+extension CLPopupDataPickerController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         dismissAnimation()

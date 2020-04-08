@@ -1,5 +1,5 @@
 //
-//  CLHudController.swift
+//  CLPopupHudController.swift
 //  CLDemo
 //
 //  Created by JmoVxia on 2020/3/3.
@@ -20,7 +20,7 @@ enum CLHudType {
 }
 
 
-class CLHudController: CLPopupManagerBaseController {
+class CLPopupHudController: CLPopupManagerBaseController {
     var animationType: CLHudType = .success
     var dismissCallback: (() -> ())?
     var text: String? {
@@ -93,7 +93,7 @@ class CLHudController: CLPopupManagerBaseController {
         return rightLayer
     }()
 }
-extension CLHudController {
+extension CLPopupHudController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initUI()
@@ -110,7 +110,7 @@ extension CLHudController {
         }
     }
 }
-extension CLHudController {
+extension CLPopupHudController {
     private func initUI() {
         view.addSubview(contentView)
         if textLabel.text != nil {
@@ -141,7 +141,7 @@ extension CLHudController {
         }
     }
 }
-extension CLHudController {
+extension CLPopupHudController {
     private func successAnimation() {
         animationView.layer.addSublayer(shapeLayer)
         addAlphaLineLayer()
@@ -247,7 +247,7 @@ extension CLHudController {
         shapeLayer.add(rotateAnimation, forKey: "transfrom.rotation.z")
     }
 }
-extension CLHudController {
+extension CLPopupHudController {
     func addAlphaLineLayer() {
         let circlePath = UIBezierPath()
         circlePath.addArc(withCenter: CGPoint(x: animationSize.width / 2, y: animationSize.height / 2), radius: animationSize.width / 2 - lineWidth, startAngle: 0 * .pi / 180, endAngle: 360 * .pi / 180, clockwise: false)
@@ -259,7 +259,7 @@ extension CLHudController {
         shapeLayer.addSublayer(alphaLineLayer)
     }
 }
-extension CLHudController {
+extension CLPopupHudController {
     private func dismiss(duration: Double) {
          DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + duration + 0.6) {
              UIView.animate(withDuration: 0.3, animations: {

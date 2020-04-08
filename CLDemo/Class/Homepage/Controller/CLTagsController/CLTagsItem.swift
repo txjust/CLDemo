@@ -25,6 +25,7 @@ class CLTagsItem: NSObject {
             configure.tagsMinPadding = tagsMinPadding
             configure.tagHeight = font.lineHeight + 10
             configure.tagsTitleFont = font
+            configure.tagsMargin = 20
             configure.maxWidth = maxWidth
             configure.isAlignment = isAlignment
         }, tagsArray: tags)

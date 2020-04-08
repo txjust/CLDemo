@@ -112,6 +112,12 @@ extension CLPopupController {
         }
         arrayDS.append(model10)
         
+        let model11 = CLPopupModel()
+        model11.title = "2个输入框"
+        model11.callback = {[weak self] in
+            self?.showYearMonthDayHourMinuteDataPicker()
+        }
+        arrayDS.append(model11)
         
     }
 }

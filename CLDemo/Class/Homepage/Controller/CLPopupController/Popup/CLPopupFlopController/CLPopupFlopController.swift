@@ -1,5 +1,5 @@
 //
-//  CLFlopController.swift
+//  CLPopupFlopController.swift
 //  FUSHENG
 //
 //  Created by JmoVxia on 2019/12/25.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CLFlopController: CLPopupManagerBaseController {
+class CLPopupFlopController: CLPopupManagerBaseController {
     var clickWantCallBack: (() -> ())?
     private var isFlop: Bool = false
     private lazy var contentView: UIView = {

@@ -8,15 +8,15 @@
 import UIKit
 import SnapKit
 
-enum PTKnockMessagePopupType {
+enum CLPopupMessageType {
     ///一个按钮
     case one
     ///两个按钮
     case two
 }
 
-class CLMessagePopupController: CLPopupManagerBaseController {
-    var type: PTKnockMessagePopupType = .one
+class CLPopupMessageController: CLPopupManagerBaseController {
+    var type: CLPopupMessageType = .one
     var sureCallBack: (() -> ())?
     var leftCallBack: (() -> ())?
     var rightCallBack: (() -> ())?
@@ -91,7 +91,7 @@ class CLMessagePopupController: CLPopupManagerBaseController {
         return rightButton
     }()
 }
-extension CLMessagePopupController {
+extension CLPopupMessageController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initUI()
@@ -99,7 +99,7 @@ extension CLMessagePopupController {
         showAnimation()
     }
 }
-extension CLMessagePopupController {
+extension CLPopupMessageController {
     private func initUI() {
         view.backgroundColor = UIColor(red:0.00, green:0.00, blue:0.00, alpha:0.00)
         view.addSubview(contentView)
@@ -159,7 +159,7 @@ extension CLMessagePopupController {
         }
     }
 }
-extension CLMessagePopupController {
+extension CLPopupMessageController {
     private func showAnimation() {
         UIView.animate(withDuration: 0.2) {
             self.view.backgroundColor = UIColor(red:0.00, green:0.00, blue:0.00, alpha:0.40)
@@ -177,7 +177,7 @@ extension CLMessagePopupController {
         }, completion: completion)
     }
 }
-extension CLMessagePopupController {
+extension CLPopupMessageController {
     @objc func sureButtonAction() {
         dismissAnimation { (_) in
             CLPopupManager.dismissAll(false)

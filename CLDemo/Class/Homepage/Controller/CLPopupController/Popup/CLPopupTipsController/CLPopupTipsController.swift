@@ -1,5 +1,5 @@
 //
-//  PTTipsPopupController.swift
+//  CLPopupTipsController.swift
 //  Potato
 //
 //  Created by Emma on 2020/1/8.
@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class CLTipsPopupController: CLPopupManagerBaseController {
+class CLPopupTipsController: CLPopupManagerBaseController {
     var text: String? {
         didSet {
             label.text = text
@@ -30,7 +30,7 @@ class CLTipsPopupController: CLPopupManagerBaseController {
         return backgroundView
     }()
 }
-extension CLTipsPopupController {
+extension CLPopupTipsController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initUI()
@@ -43,7 +43,7 @@ extension CLTipsPopupController {
         backgroundView.clipsToBounds = true
     }
 }
-extension CLTipsPopupController {
+extension CLPopupTipsController {
     private func initUI() {
         view.backgroundColor = UIColor.clear
         view.addSubview(backgroundView)
@@ -60,7 +60,7 @@ extension CLTipsPopupController {
         }
     }
 }
-extension CLTipsPopupController {
+extension CLPopupTipsController {
     private func showAnimation() {
         UIView.animate(withDuration: 0.35, animations: {
             self.backgroundView.alpha = 1.0
