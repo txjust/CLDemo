@@ -1,5 +1,5 @@
 //
-//  CLPopupInputController.swift
+//  CLPopupBMIInputController.swift
 //  CLDemo
 //
 //  Created by JmoVxia on 2020/4/8.
@@ -8,7 +8,9 @@
 
 import UIKit
 
-class CLPopupInputController: CLPopupManagerBaseController {
+class CLPopupBMIInputController: CLPopupManagerBaseController {
+    var bmiCallback: ((CGFloat) -> ())?
+    private var bmiValue: CGFloat = 0.0
     private lazy var contentView: UIView = {
         let contentView = UIView()
         contentView.backgroundColor = .white
@@ -16,36 +18,54 @@ class CLPopupInputController: CLPopupManagerBaseController {
         contentView.clipsToBounds = true
         return contentView
     }()
-    lazy var titleLabel: UILabel = {
+    private lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
+        titleLabel.text = "BMI"
         titleLabel.textAlignment = .center
         titleLabel.font = UIFont.boldSystemFont(ofSize: 18)
         titleLabel.textColor = hexColor("#40B5AA")
         titleLabel.numberOfLines = 0
         return titleLabel
     }()
-    lazy var fristTextField: UITextField = {
+    private lazy var fristTextField: UITextField = {
         let fristTextField = UITextField()
+        fristTextField.keyboardType = .decimalPad
+        fristTextField.delegate = self
+        fristTextField.setPlaceholder("请输入体重(kg)", color: hexColor("#999999"), font: UIFont.systemFont(ofSize: 16))
         fristTextField.textAlignment = .center
         return fristTextField
-    }()
-    lazy var secondTextField: UITextField = {
-        let secondTextField = UITextField()
-        secondTextField.textAlignment = .center
-        return secondTextField
     }()
     private lazy var fristLineView: UIView = {
         let fristLineView = UIView()
         fristLineView.backgroundColor = hexColor("#F0F0F0")
         return fristLineView
     }()
+    private lazy var fristTapView: UIControl = {
+        let fristTapView = UIControl()
+        fristTapView.addTarget(self, action: #selector(fristTapViewAction), for: .touchUpInside)
+        return fristTapView
+    }()
+    private lazy var secondTextField: UITextField = {
+        let secondTextField = UITextField()
+        secondTextField.keyboardType = .decimalPad
+        secondTextField.delegate = self
+        secondTextField.setPlaceholder("请输入身高(cm)", color: hexColor("#999999"), font: UIFont.systemFont(ofSize: 16))
+        secondTextField.textAlignment = .center
+        return secondTextField
+    }()
     private lazy var secondLineView: UIView = {
         let secondLineView = UIView()
         secondLineView.backgroundColor = hexColor("#F0F0F0")
         return secondLineView
     }()
-    lazy var subTitleLabel: UILabel = {
+    private lazy var secondTapView: UIControl = {
+        let secondTapView = UIControl()
+        secondTapView.addTarget(self, action: #selector(secondTapViewAction), for: .touchUpInside)
+        return secondTapView
+    }()
+    private lazy var subTitleLabel: UILabel = {
         let subTitleLabel = UILabel()
+        subTitleLabel.text = "您的BMI：--"
         subTitleLabel.textAlignment = .center
         subTitleLabel.font = UIFont.systemFont(ofSize: 16)
         subTitleLabel.textColor = hexColor("#666666")
@@ -64,6 +84,7 @@ class CLPopupInputController: CLPopupManagerBaseController {
         sureButton.backgroundColor = hexColor("#40B5AA")
         sureButton.layer.cornerRadius = 20
         sureButton.clipsToBounds = true
+        sureButton.addTarget(self, action: #selector(sureAction), for: .touchUpInside)
         return sureButton
     }()
     private lazy var closeButton: UIButton = {
@@ -74,33 +95,35 @@ class CLPopupInputController: CLPopupManagerBaseController {
         closeButton.addTarget(self, action: #selector(closeAction), for: .touchUpInside)
         return closeButton
     }()
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 }
-extension CLPopupInputController {
+extension CLPopupBMIInputController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initUI()
         makeConstraints()
         showAnimation()
+        NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(notification:)), name: UITextField.textDidChangeNotification, object: nil)
     }
 }
-extension CLPopupInputController {
+extension CLPopupBMIInputController {
     private func initUI() {
         view.backgroundColor = UIColor(red:0.00, green:0.00, blue:0.00, alpha:0.00)
         view.addSubview(contentView)
         contentView.addSubview(titleLabel)
         contentView.addSubview(fristTextField)
         contentView.addSubview(fristLineView)
+        contentView.addSubview(fristTapView)
         contentView.addSubview(secondTextField)
         contentView.addSubview(secondLineView)
+        contentView.addSubview(secondTapView)
         contentView.addSubview(subTitleLabel)
         contentView.addSubview(sureButton)
         view.addSubview(closeButton)
-        titleLabel.isHidden = titleLabel.text == nil
-        subTitleLabel.isHidden = subTitleLabel.text == nil
     }
     private func makeConstraints() {
-        let hasTitle = titleLabel.text != nil
-        let hasSubTitle = subTitleLabel.text != nil
         contentView.snp.makeConstraints { (make) in
             make.left.equalTo(36)
             make.right.equalTo(-36)
@@ -112,11 +135,7 @@ extension CLPopupInputController {
             make.right.equalTo(-21)
         }
         fristTextField.snp.makeConstraints { (make) in
-            if hasTitle {
-                make.top.equalTo(titleLabel.snp.bottom).offset(36)
-            }else {
-                make.top.equalTo(36)
-            }
+            make.top.equalTo(titleLabel.snp.bottom).offset(36)
             make.left.equalTo(21)
             make.right.equalTo(-21)
         }
@@ -125,6 +144,11 @@ extension CLPopupInputController {
             make.left.equalTo(21)
             make.right.equalTo(-21)
             make.height.equalTo(0.5)
+        }
+        fristTapView.snp.makeConstraints { (make) in
+            make.left.right.equalToSuperview()
+            make.top.equalTo(titleLabel.snp.bottom)
+            make.bottom.equalTo(fristLineView)
         }
         secondTextField.snp.makeConstraints { (make) in
             make.top.equalTo(fristLineView.snp.bottom).offset(36)
@@ -137,6 +161,11 @@ extension CLPopupInputController {
             make.right.equalTo(-21)
             make.height.equalTo(0.5)
         }
+        secondTapView.snp.makeConstraints { (make) in
+            make.left.right.equalToSuperview()
+            make.top.equalTo(fristLineView.snp.bottom)
+            make.bottom.equalTo(secondLineView)
+        }
         subTitleLabel.snp.makeConstraints { (make) in
             make.top.equalTo(secondLineView.snp.bottom).offset(22)
             make.left.equalTo(21)
@@ -147,11 +176,7 @@ extension CLPopupInputController {
             make.right.equalTo(-70)
             make.height.equalTo(40)
             make.bottom.equalTo(-32)
-            if hasSubTitle {
-                make.top.equalTo(subTitleLabel.snp.bottom).offset(12)
-            }else {
-                make.top.equalTo(secondLineView.snp.bottom).offset(12)
-            }
+            make.top.equalTo(subTitleLabel.snp.bottom).offset(12)
         }
         closeButton.snp.makeConstraints { (make) in
             make.size.equalTo(30)
@@ -160,7 +185,7 @@ extension CLPopupInputController {
         }
     }
 }
-extension CLPopupInputController {
+extension CLPopupBMIInputController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         DispatchQueue.main.async {
@@ -168,7 +193,74 @@ extension CLPopupInputController {
         }
     }
 }
-extension CLPopupInputController {
+extension CLPopupBMIInputController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == fristTextField {
+            secondTextField.becomeFirstResponder()
+        }else {
+            view.endEditing(true)
+        }
+        return true
+    }
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let textFieldText = textField.text else {
+            return true
+        }
+        let text = (textFieldText as NSString).replacingCharacters(in: range, with: string)
+        if (string == "") {
+            return true
+        }
+        return text.isValidDecimalPointCount(2)
+    }
+}
+extension CLPopupBMIInputController {
+    @objc func textDidChange(notification: Notification) {
+        let textField = notification.object as? UITextField
+        if textField == fristTextField {
+            calculateBMI()
+        }else if textField == secondTextField {
+            calculateBMI()
+        }
+    }
+}
+extension CLPopupBMIInputController {
+    func calculateBMI() {
+        guard let fristText = fristTextField.text, let secondText = secondTextField.text else {
+            return
+        }
+        let weight = NSDecimalNumber(string: fristText)
+        let height = NSDecimalNumber(string: secondText)
+        var bmi: String = "--"
+        if height.doubleValue > 0.0 , weight.doubleValue > 0.0 {
+            let plain = NSDecimalNumberHandler(roundingMode: .plain, scale: 1, raiseOnExactness: true, raiseOnOverflow: true, raiseOnUnderflow: true, raiseOnDivideByZero: true)
+            let bmiDecimalNumber = weight.dividing(by: height.multiplying(by: height)).multiplying(by: NSDecimalNumber(string: "10000"), withBehavior: plain)
+            bmi = bmiDecimalNumber.stringValue
+            bmiValue = CGFloat(bmiDecimalNumber.floatValue)
+        }else {
+            bmiValue = 0.0
+        }
+        subTitleLabel.text = "您的BMI：\(bmi)"
+    }
+}
+extension CLPopupBMIInputController {
+    @objc func fristTapViewAction() {
+        fristTextField.becomeFirstResponder()
+    }
+    @objc func secondTapViewAction() {
+        secondTextField.becomeFirstResponder()
+    }
+    @objc func sureAction() {
+        bmiCallback?(bmiValue)
+        closeAction()
+    }
+    @objc func closeAction() {
+        view.endEditing(true)
+        dismissAnimation { (_) in
+            CLPopupManager.dismissAll(false)
+        }
+    }
+}
+extension CLPopupBMIInputController {
     private func showAnimation() {
         view.setNeedsLayout()
         view.layoutIfNeeded()
@@ -187,19 +279,12 @@ extension CLPopupInputController {
         contentView.snp.remakeConstraints { (make) in
             make.left.equalTo(36)
             make.right.equalTo(-36)
-            make.top.equalTo(view.snp.bottom).offset(45)
+            make.bottom.equalTo(view.snp.top)
         }
         UIView.animate(withDuration: 0.35, animations: {
             self.view.backgroundColor = UIColor(red:0.00, green:0.00, blue:0.00, alpha:0.00)
             self.view.setNeedsLayout()
             self.view.layoutIfNeeded()
         }, completion: completion)
-    }
-}
-extension CLPopupInputController {
-    @objc func closeAction() {
-        dismissAnimation { (_) in
-            CLPopupManager.dismissAll(false)
-        }
     }
 }

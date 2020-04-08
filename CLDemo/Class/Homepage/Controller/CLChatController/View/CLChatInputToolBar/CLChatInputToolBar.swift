@@ -153,7 +153,7 @@ class CLChatInputToolBar: UIView {
             self?.textViewHeightChange(height: height)
         }
         textView.textDidChangeCallBack = {[weak self](text) in
-            self?.isHiddenSend = text.isEmpty || (text as NSString).isValidAllEmpty()
+            self?.isHiddenSend = text.isEmpty || (text).isValidAllEmpty()
         }
         return textView
     }()
@@ -505,7 +505,7 @@ extension CLChatInputToolBar {
         }
     }
     @objc private func sendButtonAction() {
-        if !(textView.text as NSString).isValidAllEmpty() {
+        if !(textView.text).isValidAllEmpty() {
             delegate?.inputBarWillSendText(text: textView.text)
             textView.text = ""
         }

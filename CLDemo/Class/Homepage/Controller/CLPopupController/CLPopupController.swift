@@ -113,9 +113,9 @@ extension CLPopupController {
         arrayDS.append(model10)
         
         let model11 = CLPopupModel()
-        model11.title = "标题+2个输入框"
+        model11.title = "BMI计算"
         model11.callback = {[weak self] in
-            self?.showInput()
+            self?.showBMIInput()
         }
         arrayDS.append(model11)
         
@@ -191,7 +191,9 @@ extension CLPopupController {
             print("选中-----\(year)年\(month)月\(day)日\(hour)时\(minute)分")
         }
     }
-    func showInput() {
-        CLPopupManager.showInputTextField(title: "BMI", subTitle: "您的BMI：--")
+    func showBMIInput() {
+        CLPopupManager.showBMIInput { (bmi) in
+            print("BMI-----\(bmi)")
+        }
     }
 }
