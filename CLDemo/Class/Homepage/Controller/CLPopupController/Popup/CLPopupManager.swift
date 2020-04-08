@@ -286,4 +286,17 @@ extension CLPopupManager {
         controller.yearMonthDayHourMinuteCallback = yearMonthDayHourMinuteCallback
         showCustom(with: controller, only: only)
     }
+    ///显示输入弹窗
+    class func showInputTextField(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = true, interfaceOrientationMask: UIInterfaceOrientationMask = .all, only: Bool = true, title: String, subTitle: String, fristPlaceholder: String = "请输入...", secondPlaceholder: String = "请输入...") {
+        let controller = CLPopupInputController()
+        controller.statusBarStyle = statusBarStyle
+        controller.statusBarHidden = statusBarHidden
+        controller.autorotate = autorotate
+        controller.interfaceOrientationMask = interfaceOrientationMask
+        controller.titleLabel.text = title
+        controller.subTitleLabel.text = subTitle
+        controller.fristTextField.setPlaceholder(fristPlaceholder)
+        controller.secondTextField.setPlaceholder(secondPlaceholder)
+        showCustom(with: controller, only: only)
+    }
 }

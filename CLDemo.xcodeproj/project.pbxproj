@@ -195,6 +195,7 @@
 		5BE0FA3C1E03C2C400914DFF /* NSString+CLCalculateSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BE0FA3B1E03C2C400914DFF /* NSString+CLCalculateSize.m */; };
 		5BE0FA3F1E03E03900914DFF /* CLSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BE0FA3E1E03E03900914DFF /* CLSearchBar.m */; };
 		5BEA5A0C243DC5540076BA9F /* CLPopupInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEA5A0B243DC5540076BA9F /* CLPopupInputController.swift */; };
+		5BEA5A0E243DC96D0076BA9F /* UITextField+CLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEA5A0D243DC96D0076BA9F /* UITextField+CLExtension.swift */; };
 		B51EE6C723DF092400146862 /* CLChatLayoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51EE6C623DF092400146862 /* CLChatLayoutCell.swift */; };
 		B51EE6C923DF093E00146862 /* CLChatLayoutItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51EE6C823DF093E00146862 /* CLChatLayoutItem.swift */; };
 		B51EE6CC23DF104800146862 /* CLGradientLayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51EE6CB23DF104800146862 /* CLGradientLayerView.swift */; };
@@ -552,6 +553,7 @@
 		5BE0FA3D1E03E03900914DFF /* CLSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLSearchBar.h; sourceTree = "<group>"; };
 		5BE0FA3E1E03E03900914DFF /* CLSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLSearchBar.m; sourceTree = "<group>"; };
 		5BEA5A0B243DC5540076BA9F /* CLPopupInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLPopupInputController.swift; sourceTree = "<group>"; };
+		5BEA5A0D243DC96D0076BA9F /* UITextField+CLExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+CLExtension.swift"; sourceTree = "<group>"; };
 		7F29D2D63E4FCF727DAB90EE /* Pods-CLDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CLDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CLDemo/Pods-CLDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		AFF9BFDE81DC6F568D3C9863 /* Pods-CLDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CLDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-CLDemo/Pods-CLDemo.release.xcconfig"; sourceTree = "<group>"; };
 		B51EE6C623DF092400146862 /* CLChatLayoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLChatLayoutCell.swift; sourceTree = "<group>"; };
@@ -1733,6 +1735,7 @@
 				5B49566723B50ED700212772 /* UIColor+Extension.swift */,
 				5B3327E223DF366600CA315C /* UIImage+Extension.swift */,
 				5B3327E423DF384800CA315C /* NSString+Extension.swift */,
+				5BEA5A0D243DC96D0076BA9F /* UITextField+CLExtension.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -2254,6 +2257,7 @@
 				0CCDA30B219850EF0057BA14 /* CLChangeFontSizeController.m in Sources */,
 				5B12FC761E7157BF0091A0E2 /* CLChartView.m in Sources */,
 				0CE733422191CBC700270851 /* UIView+CLSetRect.m in Sources */,
+				5BEA5A0E243DC96D0076BA9F /* UITextField+CLExtension.swift in Sources */,
 				0C7316AA222814AB005ACFE7 /* CLJumpManager.m in Sources */,
 				0C3CAA5821AF8A3B00A352F0 /* CLRotateAnimationView.m in Sources */,
 				0CF6B84B2386619C00F10986 /* CLVerticalCell.m in Sources */,
