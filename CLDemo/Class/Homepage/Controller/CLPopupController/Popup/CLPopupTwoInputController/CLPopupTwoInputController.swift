@@ -38,7 +38,7 @@ class CLPopupTwoInputController: CLPopupManagerBaseController {
                 titleLabel.text = "血糖"
                 fristTextField.isUserInteractionEnabled = false
                 fristTextField.setPlaceholder("请选择测量时间", color: hexColor("#999999"), font: UIFont.systemFont(ofSize: 16))
-                secondTextField.keyboardType = .numberPad
+                secondTextField.keyboardType = .decimalPad
                 secondTextField.setPlaceholder("请输入血糖值", color: hexColor("#999999"), font: UIFont.systemFont(ofSize: 16))
             }
         }
