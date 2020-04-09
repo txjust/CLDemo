@@ -296,16 +296,26 @@ extension CLPopupManager {
         controller.bmiCallback = bmiCallback
         showCustom(with: controller, only: only)
     }
-    ///显示呼吸频次输入框弹窗
-    class func showRespiratoryFrequencyInput(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = true, interfaceOrientationMask: UIInterfaceOrientationMask = .all, only: Bool = true, sureCallback: ((String?) -> ())? = nil) {
+    ///显示一个输入框弹窗
+    class func showOneInput(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = true, interfaceOrientationMask: UIInterfaceOrientationMask = .all, only: Bool = true, type: CLPopupOneInputType, sureCallback: ((String?) -> ())? = nil) {
         let controller = CLPopupOneInputController()
         controller.statusBarStyle = statusBarStyle
         controller.statusBarHidden = statusBarHidden
         controller.autorotate = autorotate
         controller.interfaceOrientationMask = interfaceOrientationMask
-        controller.type = .respiratoryFrequency
+        controller.type = type
         controller.sureCallback = sureCallback
         showCustom(with: controller, only: only)
     }
-
+    ///显示两个输入框弹窗
+    class func showTwoInput(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = true, interfaceOrientationMask: UIInterfaceOrientationMask = .all, only: Bool = true, type: CLPopupTwoInputType, sureCallback: ((String?, String?) -> ())? = nil) {
+        let controller = CLPopupTwoInputController()
+        controller.statusBarStyle = statusBarStyle
+        controller.statusBarHidden = statusBarHidden
+        controller.autorotate = autorotate
+        controller.interfaceOrientationMask = interfaceOrientationMask
+        controller.type = type
+        controller.sureCallback = sureCallback
+        showCustom(with: controller, only: only)
+    }
 }

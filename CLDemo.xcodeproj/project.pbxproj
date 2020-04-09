@@ -189,6 +189,7 @@
 		5B919B6A243CD03A000D5EDA /* CLDataPickerTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B919B69243CD03A000D5EDA /* CLDataPickerTitleView.swift */; };
 		5BAFEE38243ECFFB00E1E51E /* CLPopupOneInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAFEE37243ECFFB00E1E51E /* CLPopupOneInputController.swift */; };
 		5BB848261E00237900BB266D /* CLEssenceListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB848251E00237900BB266D /* CLEssenceListController.m */; };
+		5BBA5762243F6E7A0003AE00 /* CLPopupTwoInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBA5761243F6E7A0003AE00 /* CLPopupTwoInputController.swift */; };
 		5BBB62921E7444A100B28FC3 /* CLChartToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BBB62911E7444A100B28FC3 /* CLChartToolBar.m */; };
 		5BC3FB8921CE96A400B7FF82 /* CLRotatingPictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC3FB8821CE96A400B7FF82 /* CLRotatingPictureViewController.swift */; };
 		5BD661D9240CCA30009508CD /* CLPopupMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD661D7240CCA30009508CD /* CLPopupMessageController.swift */; };
@@ -544,6 +545,7 @@
 		5BB848241E00237900BB266D /* CLEssenceListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLEssenceListController.h; sourceTree = "<group>"; };
 		5BB848251E00237900BB266D /* CLEssenceListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLEssenceListController.m; sourceTree = "<group>"; };
 		5BB848271E002C5000BB266D /* Define.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Define.h; sourceTree = "<group>"; };
+		5BBA5761243F6E7A0003AE00 /* CLPopupTwoInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLPopupTwoInputController.swift; sourceTree = "<group>"; };
 		5BBB62901E7444A100B28FC3 /* CLChartToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLChartToolBar.h; sourceTree = "<group>"; };
 		5BBB62911E7444A100B28FC3 /* CLChartToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLChartToolBar.m; sourceTree = "<group>"; };
 		5BC3FB8521CE966A00B7FF82 /* CLDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CLDemo-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -1360,6 +1362,7 @@
 			isa = PBXGroup;
 			children = (
 				5B190E6823B66811005A2474 /* CLPopupManager.swift */,
+				5BBA5760243F6E660003AE00 /* CLPopupTwoInputController */,
 				5BAFEE36243ECFE800E1E51E /* CLPopupOneInputController */,
 				5B8B7D2E243196C5005C8530 /* CLPopupDataPickerController */,
 				5B0978FC240E345700EFE510 /* CLPopupHudController */,
@@ -1781,6 +1784,14 @@
 			path = CLPopupOneInputController;
 			sourceTree = "<group>";
 		};
+		5BBA5760243F6E660003AE00 /* CLPopupTwoInputController */ = {
+			isa = PBXGroup;
+			children = (
+				5BBA5761243F6E7A0003AE00 /* CLPopupTwoInputController.swift */,
+			);
+			path = CLPopupTwoInputController;
+			sourceTree = "<group>";
+		};
 		5BD661DB240CCD26009508CD /* CLPopupMessageController */ = {
 			isa = PBXGroup;
 			children = (
@@ -2111,6 +2122,7 @@
 				0CACA4AB224CC1DC0084ECC8 /* CLTextView.swift in Sources */,
 				0CB60B17237EC51100D10317 /* CLHorizontalItem.m in Sources */,
 				0CF6B84523865AF600F10986 /* CLHorizontalLayout.m in Sources */,
+				5BBA5762243F6E7A0003AE00 /* CLPopupTwoInputController.swift in Sources */,
 				0C1075F322E1AE8A005E5843 /* CLAnimatedTransitioning.m in Sources */,
 				5B12FC751E7157BF0091A0E2 /* CLChartMaskView.m in Sources */,
 				B5A705B223F29E5E007745BC /* CLChatPhotoAlbumContentView.swift in Sources */,

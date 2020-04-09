@@ -120,9 +120,9 @@ extension CLPopupController {
         arrayDS.append(model11)
         
         let model12 = CLPopupModel()
-        model12.title = "呼吸频次"
+        model12.title = "一个输入框"
         model12.callback = {[weak self] in
-            self?.showRespiratoryFrequencyInput()
+            self?.showOneInput()
         }
         arrayDS.append(model12)
         
@@ -210,12 +210,14 @@ extension CLPopupController {
             print("BMI-----\(bmi)")
         }
     }
-    func showRespiratoryFrequencyInput() {
-        CLPopupManager.showRespiratoryFrequencyInput { (value) in
-            print("呼吸频次-----\(String(describing: value))")
+    func showOneInput() {
+        CLPopupManager.showOneInput(type: .UrineVolume) { (value) in
+            print("-----\(String(describing: value))")
         }
     }
     func showTwoInput() {
-        
+        CLPopupManager.showTwoInput(type: .temperature) { (value1, value2) in
+            print("-----\(String(describing: value1))----------\(String(describing: value2))")
+        }
     }
 }

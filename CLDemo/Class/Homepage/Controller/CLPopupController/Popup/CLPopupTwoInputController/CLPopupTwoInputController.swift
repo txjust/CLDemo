@@ -1,5 +1,5 @@
 //
-//  CLPopupOneInputController.swift
+//  CLPopupTwoInputController.swift
 //  CLDemo
 //
 //  Created by JmoVxia on 2020/4/9.
@@ -8,38 +8,38 @@
 
 import UIKit
 
-enum CLPopupOneInputType {
-    ///呼吸频次
-    case respiratoryFrequency
-    ///尿量
-    case UrineVolume
-    ///心率
-    case heartRate
-    ///脉搏
-    case pulse
+enum CLPopupTwoInputType {
+    ///体温
+    case temperature
+    ///血压
+    case bloodPressure
+    ///血糖
+    case bloodSugar
 }
 
-class CLPopupOneInputController: CLPopupManagerBaseController {
-    var sureCallback: ((String?) -> ())?
-    var type: CLPopupOneInputType = .respiratoryFrequency {
+class CLPopupTwoInputController: CLPopupManagerBaseController {
+    var sureCallback: ((String?, String?) -> ())?
+    var type: CLPopupTwoInputType = .temperature {
         didSet {
             switch type {
-            case .respiratoryFrequency:
-                titleLabel.text = "呼吸频次"
-                textField.keyboardType = .numberPad
-                textField.setPlaceholder("请输入每分钟呼吸次数", color: hexColor("#999999"), font: UIFont.systemFont(ofSize: 16))
-            case .UrineVolume:
-                titleLabel.text = "尿量"
-                textField.keyboardType = .decimalPad
-                textField.setPlaceholder("请输入最近24小时尿量(ml)", color: hexColor("#999999"), font: UIFont.systemFont(ofSize: 16))
-            case .heartRate:
-                titleLabel.text = "心率"
-                textField.keyboardType = .numberPad
-                textField.setPlaceholder("请输入每分钟心跳次数", color: hexColor("#999999"), font: UIFont.systemFont(ofSize: 16))
-            case .pulse:
-                titleLabel.text = "脉搏"
-                textField.keyboardType = .numberPad
-                textField.setPlaceholder("请输入每分钟脉搏次数", color: hexColor("#999999"), font: UIFont.systemFont(ofSize: 16))
+            case .temperature:
+                titleLabel.text = "体温"
+                fristTextField.keyboardType = .default
+                fristTextField.setPlaceholder("请输入测量部位", color: hexColor("#999999"), font: UIFont.systemFont(ofSize: 16))
+                secondTextField.keyboardType = .decimalPad
+                secondTextField.setPlaceholder("请输入录入体温", color: hexColor("#999999"), font: UIFont.systemFont(ofSize: 16))
+            case .bloodPressure:
+                titleLabel.text = "血压"
+                fristTextField.keyboardType = .decimalPad
+                fristTextField.setPlaceholder("请输入收缩压(高压)", color: hexColor("#999999"), font: UIFont.systemFont(ofSize: 16))
+                secondTextField.keyboardType = .decimalPad
+                secondTextField.setPlaceholder("请输入舒张压(低压)", color: hexColor("#999999"), font: UIFont.systemFont(ofSize: 16))
+            case .bloodSugar:
+                titleLabel.text = "血糖"
+                fristTextField.keyboardType = .default
+                fristTextField.setPlaceholder("请选择测量时间", color: hexColor("#999999"), font: UIFont.systemFont(ofSize: 16))
+                secondTextField.keyboardType = .numberPad
+                secondTextField.setPlaceholder("请输入血糖值", color: hexColor("#999999"), font: UIFont.systemFont(ofSize: 16))
             }
         }
     }
@@ -60,11 +60,11 @@ class CLPopupOneInputController: CLPopupManagerBaseController {
         titleLabel.numberOfLines = 0
         return titleLabel
     }()
-    private lazy var textField: UITextField = {
-        let textField = UITextField()
-        textField.delegate = self
-        textField.textAlignment = .center
-        return textField
+    private lazy var fristTextField: UITextField = {
+        let fristTextField = UITextField()
+        fristTextField.delegate = self
+        fristTextField.textAlignment = .center
+        return fristTextField
     }()
     private lazy var fristLineView: UIView = {
         let fristLineView = UIView()
@@ -75,6 +75,22 @@ class CLPopupOneInputController: CLPopupManagerBaseController {
         let fristTapView = UIControl()
         fristTapView.addTarget(self, action: #selector(fristTapViewAction), for: .touchUpInside)
         return fristTapView
+    }()
+    private lazy var secondTextField: UITextField = {
+        let secondTextField = UITextField()
+        secondTextField.delegate = self
+        secondTextField.textAlignment = .center
+        return secondTextField
+    }()
+    private lazy var secondLineView: UIView = {
+        let secondLineView = UIView()
+        secondLineView.backgroundColor = hexColor("#F0F0F0")
+        return secondLineView
+    }()
+    private lazy var secondTapView: UIControl = {
+        let secondTapView = UIControl()
+        secondTapView.addTarget(self, action: #selector(secondTapViewAction), for: .touchUpInside)
+        return secondTapView
     }()
     private lazy var sureButton: UIButton = {
         let sureButton = UIButton()
@@ -103,24 +119,28 @@ class CLPopupOneInputController: CLPopupManagerBaseController {
         NotificationCenter.default.removeObserver(self)
     }
 }
-extension CLPopupOneInputController {
+extension CLPopupTwoInputController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initUI()
         makeConstraints()
         showAnimation()
+        NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(notification:)), name: UITextField.textDidChangeNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name:UIResponder.keyboardWillShowNotification,object: nil)
         NotificationCenter.default.addObserver(self,selector: #selector(keyboardWillHide(notification:)),name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 }
-extension CLPopupOneInputController {
+extension CLPopupTwoInputController {
     private func initUI() {
         view.backgroundColor = UIColor(red:0.00, green:0.00, blue:0.00, alpha:0.00)
         view.addSubview(contentView)
         contentView.addSubview(titleLabel)
-        contentView.addSubview(textField)
+        contentView.addSubview(fristTextField)
         contentView.addSubview(fristLineView)
         contentView.addSubview(fristTapView)
+        contentView.addSubview(secondTextField)
+        contentView.addSubview(secondLineView)
+        contentView.addSubview(secondTapView)
         contentView.addSubview(sureButton)
         view.addSubview(closeButton)
     }
@@ -135,13 +155,13 @@ extension CLPopupOneInputController {
             make.left.equalTo(21)
             make.right.equalTo(-21)
         }
-        textField.snp.makeConstraints { (make) in
+        fristTextField.snp.makeConstraints { (make) in
             make.top.equalTo(titleLabel.snp.bottom).offset(36)
             make.left.equalTo(21)
             make.right.equalTo(-21)
         }
         fristLineView.snp.makeConstraints { (make) in
-            make.top.equalTo(textField.snp.bottom).offset(16)
+            make.top.equalTo(fristTextField.snp.bottom).offset(16)
             make.left.equalTo(21)
             make.right.equalTo(-21)
             make.height.equalTo(0.5)
@@ -151,12 +171,28 @@ extension CLPopupOneInputController {
             make.top.equalTo(titleLabel.snp.bottom)
             make.bottom.equalTo(fristLineView)
         }
+        secondTextField.snp.makeConstraints { (make) in
+            make.top.equalTo(fristLineView.snp.bottom).offset(36)
+            make.left.equalTo(21)
+            make.right.equalTo(-21)
+        }
+        secondLineView.snp.makeConstraints { (make) in
+            make.top.equalTo(secondTextField.snp.bottom).offset(16)
+            make.left.equalTo(21)
+            make.right.equalTo(-21)
+            make.height.equalTo(0.5)
+        }
+        secondTapView.snp.makeConstraints { (make) in
+            make.left.right.equalToSuperview()
+            make.top.equalTo(fristLineView.snp.bottom)
+            make.bottom.equalTo(secondLineView)
+        }
         sureButton.snp.makeConstraints { (make) in
             make.left.equalTo(70)
             make.right.equalTo(-70)
             make.height.equalTo(40)
             make.bottom.equalTo(-32)
-            make.top.equalTo(fristLineView.snp.bottom).offset(20)
+            make.top.equalTo(secondLineView.snp.bottom).offset(20)
         }
         closeButton.snp.makeConstraints { (make) in
             make.size.equalTo(30)
@@ -165,7 +201,7 @@ extension CLPopupOneInputController {
         }
     }
 }
-extension CLPopupOneInputController {
+extension CLPopupTwoInputController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         DispatchQueue.main.async {
@@ -173,7 +209,7 @@ extension CLPopupOneInputController {
         }
     }
 }
-extension CLPopupOneInputController: UITextFieldDelegate {
+extension CLPopupTwoInputController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let textFieldText = textField.text else {
             return true
@@ -182,19 +218,20 @@ extension CLPopupOneInputController: UITextFieldDelegate {
         if (string == "") {
             return true
         }
-        switch type {
-        case .respiratoryFrequency:
-            return text.isValidPureNumbers()
-        case .UrineVolume:
-            return text.isValidDecimalPointCount(2)
-        case .heartRate:
-            return text.isValidPureNumbers()
-        case .pulse:
-            return text.isValidPureNumbers()
+        return text.isValidDecimalPointCount(2)
+    }
+}
+extension CLPopupTwoInputController {
+    @objc func textDidChange(notification: Notification) {
+        let textField = notification.object as? UITextField
+        if textField == fristTextField {
+
+        }else if textField == secondTextField {
+
         }
     }
 }
-extension CLPopupOneInputController {
+extension CLPopupTwoInputController {
     // 键盘显示
     @objc func keyboardWillShow(notification: Notification) {
         DispatchQueue.main.async {
@@ -232,15 +269,20 @@ extension CLPopupOneInputController {
         }
     }
 }
-extension CLPopupOneInputController {
+extension CLPopupTwoInputController {
     @objc func fristTapViewAction() {
         DispatchQueue.main.async {
-            self.textField.becomeFirstResponder()
+            self.fristTextField.becomeFirstResponder()
+        }
+    }
+    @objc func secondTapViewAction() {
+        DispatchQueue.main.async {
+            self.secondTextField.becomeFirstResponder()
         }
     }
     @objc func sureAction() {
         isDismiss = true
-        sureCallback?(textField.text)
+        sureCallback?(fristTextField.text, secondTextField.text)
         closeAction()
     }
     @objc func closeAction() {
@@ -253,7 +295,7 @@ extension CLPopupOneInputController {
         }
     }
 }
-extension CLPopupOneInputController {
+extension CLPopupTwoInputController {
     private func showAnimation() {
         view.setNeedsLayout()
         view.layoutIfNeeded()
@@ -281,3 +323,4 @@ extension CLPopupOneInputController {
         }, completion: completion)
     }
 }
+
