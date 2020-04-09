@@ -162,7 +162,7 @@ extension CLPopupController {
                     CLPopupManager.showFlop(statusBarStyle: .default, statusBarHidden: false)
                 }
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 6) {
-                    CLPopupManager.showFlop(statusBarStyle: .default, only: true)
+                    CLPopupManager.showFlop(statusBarStyle: .default, unique: true)
                 }
     }
     func showOneAlert() {
@@ -172,17 +172,17 @@ extension CLPopupController {
         CLPopupManager.showTwoAlert(autorotate: true, title: "我是两个按钮", message: "我有两个按钮")
     }
     func showSuccess() {
-        CLPopupManager.showSuccess(autorotate: true, interfaceOrientationMask: .all, only: true, text: "显示成功", dismissCallback: {
+        CLPopupManager.showSuccess(autorotate: true, interfaceOrientationMask: .all, text: "显示成功", dismissCallback: {
             print("success animation dismiss")
         })
     }
     func showError() {
-        CLPopupManager.showError(autorotate: true, interfaceOrientationMask: .all, only: true, text: "显示错误", dismissCallback: {
+        CLPopupManager.showError(autorotate: true, interfaceOrientationMask: .all, text: "显示错误", dismissCallback: {
             print("error animation dismiss")
         })
     }
     func showLoading() {
-        CLPopupManager.showLoading(autorotate: true, interfaceOrientationMask: .all, only: true, text: nil)
+        CLPopupManager.showLoading(autorotate: true, interfaceOrientationMask: .all, text: nil)
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 6) {
             CLPopupManager.dismissAll()
         }
@@ -216,7 +216,7 @@ extension CLPopupController {
         }
     }
     func showTwoInput() {
-        CLPopupManager.showTwoInput(type: .temperature) { (value1, value2) in
+        CLPopupManager.showTwoInput(type: .bloodSugar) { (value1, value2) in
             print("-----\(String(describing: value1))----------\(String(describing: value2))")
         }
     }

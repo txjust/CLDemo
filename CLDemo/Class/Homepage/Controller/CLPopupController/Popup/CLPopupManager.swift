@@ -93,10 +93,10 @@ extension CLPopupManager {
     /// 显示弹窗
     /// - Parameters:
     ///   - controller: 弹窗控制器
-    ///   - only: 是否唯一弹窗,唯一弹窗会自动销毁之前显示的弹窗
-    private class func makeKeyAndVisible(with controller: UIViewController, only: Bool) {
+    ///   - unique: 是否唯一弹窗,唯一弹窗会自动销毁之前显示的弹窗
+    private class func makeKeyAndVisible(with controller: UIViewController, unique: Bool) {
         let rootViewController = window.rootViewController
-        if let children = rootViewController?.children, only {
+        if let children = rootViewController?.children, unique {
             for childrenController in children {
                 childrenController.willMove(toParent: nil)
                 childrenController.view.removeFromSuperview()
@@ -137,10 +137,10 @@ extension CLPopupManager {
     /// 显示自定义弹窗
     /// - Parameters:
     ///   - controller: 自定义弹窗控制器
-    ///   - only: 唯一弹窗
-    class func showCustom(with controller: UIViewController, only: Bool = false) {
+    ///   - unique: 唯一弹窗
+    class func showCustom(with controller: UIViewController, unique: Bool = false) {
         DispatchQueue.main.async {
-            makeKeyAndVisible(with: controller, only: only)
+            makeKeyAndVisible(with: controller, unique: unique)
         }
     }
     /// 隐藏弹窗
@@ -156,17 +156,17 @@ extension CLPopupManager {
     ///   - statusBarHidden: 是否隐藏状态栏
     ///   - autorotate: 是否支持页面旋转
     ///   - interfaceOrientationMask: 页面旋转支持方向
-    ///   - only: 是否唯一弹窗(自动顶掉前面所有弹窗)
-    class func showFlop(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = false, interfaceOrientationMask: UIInterfaceOrientationMask = .all, only: Bool = false) {
+    ///   - unique: 是否唯一弹窗(自动顶掉前面所有弹窗)
+    class func showFlop(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = false, interfaceOrientationMask: UIInterfaceOrientationMask = .all, unique: Bool = false) {
         let controller = CLPopupFlopController()
         controller.statusBarStyle = statusBarStyle
         controller.statusBarHidden = statusBarHidden
         controller.autorotate = autorotate
         controller.interfaceOrientationMask = interfaceOrientationMask
-        showCustom(with: controller, only: only)
+        showCustom(with: controller, unique: unique)
     }
     ///显示提示弹窗
-    class func showTips(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = false, interfaceOrientationMask: UIInterfaceOrientationMask = .all, only: Bool = true, text: String, dismissInterval: TimeInterval = 1.0) {
+    class func showTips(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = false, interfaceOrientationMask: UIInterfaceOrientationMask = .all, unique: Bool = false, text: String, dismissInterval: TimeInterval = 1.0) {
         let controller = CLPopupTipsController()
         controller.statusBarStyle = statusBarStyle
         controller.statusBarHidden = statusBarHidden
@@ -174,10 +174,10 @@ extension CLPopupManager {
         controller.interfaceOrientationMask = interfaceOrientationMask
         controller.text = text
         controller.dismissInterval = dismissInterval
-        showCustom(with: controller, only: only)
+        showCustom(with: controller, unique: unique)
     }
     ///显示一个消息弹窗
-    class func showOneAlert(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = false, interfaceOrientationMask: UIInterfaceOrientationMask = .all, only: Bool = true, title: String? = nil, message: String? = nil, sure: String = "确定", sureCallBack: (() -> ())? = nil) {
+    class func showOneAlert(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = false, interfaceOrientationMask: UIInterfaceOrientationMask = .all, unique: Bool = false, title: String? = nil, message: String? = nil, sure: String = "确定", sureCallBack: (() -> ())? = nil) {
         let controller = CLPopupMessageController()
         controller.statusBarStyle = statusBarStyle
         controller.statusBarHidden = statusBarHidden
@@ -190,10 +190,10 @@ extension CLPopupManager {
         controller.sureButton.setTitle(sure, for: .selected)
         controller.sureButton.setTitle(sure, for: .highlighted)
         controller.sureCallBack = sureCallBack
-        showCustom(with: controller, only: only)
+        showCustom(with: controller, unique: unique)
     }
     ///显示两个消息弹窗
-    class func showTwoAlert(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = false, interfaceOrientationMask: UIInterfaceOrientationMask = .all, only: Bool = true, title: String? = nil, message: String? = nil, left: String = "取消", right: String = "确定", leftCallBack: (() -> ())? = nil, rightCallBack: (() -> ())? = nil) {
+    class func showTwoAlert(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = false, interfaceOrientationMask: UIInterfaceOrientationMask = .all, unique: Bool = false, title: String? = nil, message: String? = nil, left: String = "取消", right: String = "确定", leftCallBack: (() -> ())? = nil, rightCallBack: (() -> ())? = nil) {
         let controller = CLPopupMessageController()
         controller.statusBarStyle = statusBarStyle
         controller.statusBarHidden = statusBarHidden
@@ -210,10 +210,10 @@ extension CLPopupManager {
         controller.rightButton.setTitle(right, for: .highlighted)
         controller.leftCallBack = leftCallBack
         controller.rightCallBack = rightCallBack
-        showCustom(with: controller, only: only)
+        showCustom(with: controller, unique: unique)
     }
     ///显示成功
-    class func showSuccess(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = false, interfaceOrientationMask: UIInterfaceOrientationMask = .all, only: Bool = true, strokeColor: UIColor = UIColor.red, text: String? = nil, dismissDuration: CGFloat = 1.0, dismissCallback: (() -> ())? = nil) {
+    class func showSuccess(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = false, interfaceOrientationMask: UIInterfaceOrientationMask = .all, unique: Bool = false, strokeColor: UIColor = UIColor.red, text: String? = nil, dismissDuration: CGFloat = 1.0, dismissCallback: (() -> ())? = nil) {
         let controller = CLPopupHudController()
         controller.animationType = .success
         controller.statusBarStyle = statusBarStyle
@@ -224,10 +224,10 @@ extension CLPopupManager {
         controller.text = text
         controller.dismissDuration = dismissDuration
         controller.dismissCallback = dismissCallback
-        showCustom(with: controller, only: only)
+        showCustom(with: controller, unique: unique)
     }
     ///显示错误
-    class func showError(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = false, interfaceOrientationMask: UIInterfaceOrientationMask = .all, only: Bool = true, strokeColor: UIColor = UIColor.red, text: String? = nil, dismissDuration: CGFloat = 1.0, dismissCallback: (() -> ())? = nil) {
+    class func showError(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = false, interfaceOrientationMask: UIInterfaceOrientationMask = .all, unique: Bool = false, strokeColor: UIColor = UIColor.red, text: String? = nil, dismissDuration: CGFloat = 1.0, dismissCallback: (() -> ())? = nil) {
         let controller = CLPopupHudController()
         controller.animationType = .error
         controller.statusBarStyle = statusBarStyle
@@ -238,10 +238,10 @@ extension CLPopupManager {
         controller.text = text
         controller.dismissDuration = dismissDuration
         controller.dismissCallback = dismissCallback
-        showCustom(with: controller, only: only)
+        showCustom(with: controller, unique: unique)
     }
     ///显示加载
-    class func showLoading(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = false, interfaceOrientationMask: UIInterfaceOrientationMask = .all, only: Bool = true, strokeColor: UIColor = UIColor.red, text: String? = nil) {
+    class func showLoading(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = false, interfaceOrientationMask: UIInterfaceOrientationMask = .all, unique: Bool = false, strokeColor: UIColor = UIColor.red, text: String? = nil) {
         let controller = CLPopupHudController()
         controller.animationType = .loading
         controller.statusBarStyle = statusBarStyle
@@ -251,10 +251,10 @@ extension CLPopupManager {
         controller.strokeColor = strokeColor
         controller.text = text
         controller.animationSize = CGSize(width: 80, height: 80)
-        showCustom(with: controller, only: only)
+        showCustom(with: controller, unique: unique)
     }
     ///显示年月日选择器
-    class func showYearMonthDayDataPicker(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = true, interfaceOrientationMask: UIInterfaceOrientationMask = .all, only: Bool = true, yearMonthDayCallback: ((Int, Int, Int) -> ())? = nil) {
+    class func showYearMonthDayDataPicker(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = true, interfaceOrientationMask: UIInterfaceOrientationMask = .all, unique: Bool = false, yearMonthDayCallback: ((Int, Int, Int) -> ())? = nil) {
         let controller = CLPopupDataPickerController()
         controller.statusBarStyle = statusBarStyle
         controller.statusBarHidden = statusBarHidden
@@ -262,10 +262,10 @@ extension CLPopupManager {
         controller.interfaceOrientationMask = interfaceOrientationMask
         controller.type = .yearMonthDay
         controller.yearMonthDayCallback = yearMonthDayCallback
-        showCustom(with: controller, only: only)
+        showCustom(with: controller, unique: unique)
     }
     ///显示时分选择器
-    class func showHourMinuteDataPicker(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = true, interfaceOrientationMask: UIInterfaceOrientationMask = .all, only: Bool = true, hourMinuteCallback: ((Int, Int) -> ())? = nil) {
+    class func showHourMinuteDataPicker(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = true, interfaceOrientationMask: UIInterfaceOrientationMask = .all, unique: Bool = false, hourMinuteCallback: ((Int, Int) -> ())? = nil) {
         let controller = CLPopupDataPickerController()
         controller.statusBarStyle = statusBarStyle
         controller.statusBarHidden = statusBarHidden
@@ -273,10 +273,10 @@ extension CLPopupManager {
         controller.interfaceOrientationMask = interfaceOrientationMask
         controller.type = .hourMinute
         controller.hourMinuteCallback = hourMinuteCallback
-        showCustom(with: controller, only: only)
+        showCustom(with: controller, unique: unique)
     }
-    ///显示年月日选择器
-    class func showYearMonthDayHourMinuteDataPicker(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = true, interfaceOrientationMask: UIInterfaceOrientationMask = .all, only: Bool = true, yearMonthDayHourMinuteCallback: ((Int, Int, Int, Int, Int) -> ())? = nil) {
+    ///显示年月日时分选择器
+    class func showYearMonthDayHourMinuteDataPicker(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = true, interfaceOrientationMask: UIInterfaceOrientationMask = .all, unique: Bool = false, yearMonthDayHourMinuteCallback: ((Int, Int, Int, Int, Int) -> ())? = nil) {
         let controller = CLPopupDataPickerController()
         controller.statusBarStyle = statusBarStyle
         controller.statusBarHidden = statusBarHidden
@@ -284,20 +284,20 @@ extension CLPopupManager {
         controller.interfaceOrientationMask = interfaceOrientationMask
         controller.type = .yearMonthDayHourMinute
         controller.yearMonthDayHourMinuteCallback = yearMonthDayHourMinuteCallback
-        showCustom(with: controller, only: only)
+        showCustom(with: controller, unique: unique)
     }
     ///显示BMI输入弹窗
-    class func showBMIInput(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = true, interfaceOrientationMask: UIInterfaceOrientationMask = .all, only: Bool = true, bmiCallback: ((CGFloat) -> ())? = nil) {
+    class func showBMIInput(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = true, interfaceOrientationMask: UIInterfaceOrientationMask = .all, unique: Bool = false, bmiCallback: ((CGFloat) -> ())? = nil) {
         let controller = CLPopupBMIInputController()
         controller.statusBarStyle = statusBarStyle
         controller.statusBarHidden = statusBarHidden
         controller.autorotate = autorotate
         controller.interfaceOrientationMask = interfaceOrientationMask
         controller.bmiCallback = bmiCallback
-        showCustom(with: controller, only: only)
+        showCustom(with: controller, unique: unique)
     }
     ///显示一个输入框弹窗
-    class func showOneInput(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = true, interfaceOrientationMask: UIInterfaceOrientationMask = .all, only: Bool = true, type: CLPopupOneInputType, sureCallback: ((String?) -> ())? = nil) {
+    class func showOneInput(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = true, interfaceOrientationMask: UIInterfaceOrientationMask = .all, unique: Bool = false, type: CLPopupOneInputType, sureCallback: ((String?) -> ())? = nil) {
         let controller = CLPopupOneInputController()
         controller.statusBarStyle = statusBarStyle
         controller.statusBarHidden = statusBarHidden
@@ -305,10 +305,10 @@ extension CLPopupManager {
         controller.interfaceOrientationMask = interfaceOrientationMask
         controller.type = type
         controller.sureCallback = sureCallback
-        showCustom(with: controller, only: only)
+        showCustom(with: controller, unique: unique)
     }
     ///显示两个输入框弹窗
-    class func showTwoInput(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = true, interfaceOrientationMask: UIInterfaceOrientationMask = .all, only: Bool = true, type: CLPopupTwoInputType, sureCallback: ((String?, String?) -> ())? = nil) {
+    class func showTwoInput(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = true, interfaceOrientationMask: UIInterfaceOrientationMask = .all, unique: Bool = false, type: CLPopupTwoInputType, sureCallback: ((String?, String?) -> ())? = nil) {
         let controller = CLPopupTwoInputController()
         controller.statusBarStyle = statusBarStyle
         controller.statusBarHidden = statusBarHidden
@@ -316,6 +316,6 @@ extension CLPopupManager {
         controller.interfaceOrientationMask = interfaceOrientationMask
         controller.type = type
         controller.sureCallback = sureCallback
-        showCustom(with: controller, only: only)
+        showCustom(with: controller, unique: unique)
     }
 }

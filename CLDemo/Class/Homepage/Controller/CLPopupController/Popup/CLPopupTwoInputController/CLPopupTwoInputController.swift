@@ -36,7 +36,7 @@ class CLPopupTwoInputController: CLPopupManagerBaseController {
                 secondTextField.setPlaceholder("请输入舒张压(低压)", color: hexColor("#999999"), font: UIFont.systemFont(ofSize: 16))
             case .bloodSugar:
                 titleLabel.text = "血糖"
-                fristTextField.keyboardType = .default
+                fristTextField.isUserInteractionEnabled = false
                 fristTextField.setPlaceholder("请选择测量时间", color: hexColor("#999999"), font: UIFont.systemFont(ofSize: 16))
                 secondTextField.keyboardType = .numberPad
                 secondTextField.setPlaceholder("请输入血糖值", color: hexColor("#999999"), font: UIFont.systemFont(ofSize: 16))
@@ -125,7 +125,6 @@ extension CLPopupTwoInputController {
         initUI()
         makeConstraints()
         showAnimation()
-        NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(notification:)), name: UITextField.textDidChangeNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name:UIResponder.keyboardWillShowNotification,object: nil)
         NotificationCenter.default.addObserver(self,selector: #selector(keyboardWillHide(notification:)),name: UIResponder.keyboardWillHideNotification, object: nil)
     }
@@ -218,16 +217,21 @@ extension CLPopupTwoInputController: UITextFieldDelegate {
         if (string == "") {
             return true
         }
-        return text.isValidDecimalPointCount(2)
-    }
-}
-extension CLPopupTwoInputController {
-    @objc func textDidChange(notification: Notification) {
-        let textField = notification.object as? UITextField
-        if textField == fristTextField {
-
-        }else if textField == secondTextField {
-
+        switch type {
+        case .bloodPressure:
+            return text.isValidDecimalPointCount(1)
+        case .temperature:
+            if textField == fristTextField {
+                return true
+            }else {
+                return text.isValidDecimalPointCount(1)
+            }
+        case .bloodSugar:
+            if textField == fristTextField {
+                return true
+            }else {
+                return text.isValidDecimalPointCount(2)
+            }
         }
     }
 }
@@ -272,7 +276,14 @@ extension CLPopupTwoInputController {
 extension CLPopupTwoInputController {
     @objc func fristTapViewAction() {
         DispatchQueue.main.async {
-            self.fristTextField.becomeFirstResponder()
+            if self.type == .bloodSugar {
+                self.view.endEditing(true)
+                CLPopupManager.showYearMonthDayHourMinuteDataPicker() {[weak self] (year, month, day, hour, minute) in
+                    self?.fristTextField.text = "\(year)年\(month)月\(day)日\(hour)时\(minute)分"
+                }
+            }else {
+                self.fristTextField.becomeFirstResponder()
+            }
         }
     }
     @objc func secondTapViewAction() {
