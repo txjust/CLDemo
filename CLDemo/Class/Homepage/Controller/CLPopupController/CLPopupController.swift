@@ -119,6 +119,20 @@ extension CLPopupController {
         }
         arrayDS.append(model11)
         
+        let model12 = CLPopupModel()
+        model12.title = "呼吸频次"
+        model12.callback = {[weak self] in
+            self?.showRespiratoryFrequencyInput()
+        }
+        arrayDS.append(model12)
+        
+        let model13 = CLPopupModel()
+        model13.title = "两个输入框"
+        model13.callback = {[weak self] in
+            self?.showTwoInput()
+        }
+        arrayDS.append(model13)
+        
     }
 }
 extension CLPopupController: UITableViewDataSource {
@@ -141,15 +155,15 @@ extension CLPopupController: UITableViewDelegate {
 extension CLPopupController {
     func showFlop() {
         CLPopupManager.showFlop()
-        //        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
-        //            CLPopupManager.showFlop(statusBarHidden: true)
-        //        }
-        //        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 4) {
-        //            CLPopupManager.showFlop(statusBarStyle: .default, statusBarHidden: false)
-        //        }
-        //        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 6) {
-        //            CLPopupManager.showFlop(statusBarStyle: .default)
-        //        }
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+                    CLPopupManager.showFlop(statusBarHidden: true)
+                }
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 4) {
+                    CLPopupManager.showFlop(statusBarStyle: .default, statusBarHidden: false)
+                }
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 6) {
+                    CLPopupManager.showFlop(statusBarStyle: .default, only: true)
+                }
     }
     func showOneAlert() {
         CLPopupManager.showOneAlert(autorotate: true, title: "我是一个按钮", message: "我有一个按钮")
@@ -195,5 +209,13 @@ extension CLPopupController {
         CLPopupManager.showBMIInput { (bmi) in
             print("BMI-----\(bmi)")
         }
+    }
+    func showRespiratoryFrequencyInput() {
+        CLPopupManager.showRespiratoryFrequencyInput { (value) in
+            print("呼吸频次-----\(String(describing: value))")
+        }
+    }
+    func showTwoInput() {
+        
     }
 }

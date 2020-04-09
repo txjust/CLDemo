@@ -187,6 +187,7 @@
 		5B8B7D3024319701005C8530 /* CLPopupDataPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B7D2F24319701005C8530 /* CLPopupDataPickerController.swift */; };
 		5B8B7D32243197D6005C8530 /* CLYearMonthDayDataPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B7D31243197D6005C8530 /* CLYearMonthDayDataPickerView.swift */; };
 		5B919B6A243CD03A000D5EDA /* CLDataPickerTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B919B69243CD03A000D5EDA /* CLDataPickerTitleView.swift */; };
+		5BAFEE38243ECFFB00E1E51E /* CLPopupOneInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAFEE37243ECFFB00E1E51E /* CLPopupOneInputController.swift */; };
 		5BB848261E00237900BB266D /* CLEssenceListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB848251E00237900BB266D /* CLEssenceListController.m */; };
 		5BBB62921E7444A100B28FC3 /* CLChartToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BBB62911E7444A100B28FC3 /* CLChartToolBar.m */; };
 		5BC3FB8921CE96A400B7FF82 /* CLRotatingPictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC3FB8821CE96A400B7FF82 /* CLRotatingPictureViewController.swift */; };
@@ -539,6 +540,7 @@
 		5B8B7D2F24319701005C8530 /* CLPopupDataPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLPopupDataPickerController.swift; sourceTree = "<group>"; };
 		5B8B7D31243197D6005C8530 /* CLYearMonthDayDataPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLYearMonthDayDataPickerView.swift; sourceTree = "<group>"; };
 		5B919B69243CD03A000D5EDA /* CLDataPickerTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLDataPickerTitleView.swift; sourceTree = "<group>"; };
+		5BAFEE37243ECFFB00E1E51E /* CLPopupOneInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLPopupOneInputController.swift; sourceTree = "<group>"; };
 		5BB848241E00237900BB266D /* CLEssenceListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLEssenceListController.h; sourceTree = "<group>"; };
 		5BB848251E00237900BB266D /* CLEssenceListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLEssenceListController.m; sourceTree = "<group>"; };
 		5BB848271E002C5000BB266D /* Define.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Define.h; sourceTree = "<group>"; };
@@ -1358,6 +1360,7 @@
 			isa = PBXGroup;
 			children = (
 				5B190E6823B66811005A2474 /* CLPopupManager.swift */,
+				5BAFEE36243ECFE800E1E51E /* CLPopupOneInputController */,
 				5B8B7D2E243196C5005C8530 /* CLPopupDataPickerController */,
 				5B0978FC240E345700EFE510 /* CLPopupHudController */,
 				5BD661DC240CCD31009508CD /* CLPopupTipsController */,
@@ -1768,6 +1771,14 @@
 				5B2411AB243C7FB600B2E0DC /* CLYearMonthDayHourMinuteDataPickerView.swift */,
 			);
 			path = CLPopupDataPickerController;
+			sourceTree = "<group>";
+		};
+		5BAFEE36243ECFE800E1E51E /* CLPopupOneInputController */ = {
+			isa = PBXGroup;
+			children = (
+				5BAFEE37243ECFFB00E1E51E /* CLPopupOneInputController.swift */,
+			);
+			path = CLPopupOneInputController;
 			sourceTree = "<group>";
 		};
 		5BD661DB240CCD26009508CD /* CLPopupMessageController */ = {
@@ -2199,6 +2210,7 @@
 				0C03A16D22DB0C540064ADD5 /* CLPhotoBrowserTableViewController.m in Sources */,
 				0C93FADA22E1DECF002069F8 /* CLDrivenInteractiveTransition.m in Sources */,
 				5B190E6F23B66811005A2474 /* CLFlopPrizeView.swift in Sources */,
+				5BAFEE38243ECFFB00E1E51E /* CLPopupOneInputController.swift in Sources */,
 				5B8B7D32243197D6005C8530 /* CLYearMonthDayDataPickerView.swift in Sources */,
 				5B80961B221870BD000F72F3 /* CLBankCardModel.m in Sources */,
 				5B80DA4A1DDD993F00A20E34 /* CLHomepageController.m in Sources */,

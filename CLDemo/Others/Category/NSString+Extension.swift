@@ -57,7 +57,7 @@ extension String {
         let predicate = NSPredicate(format: "SELF MATCHES %@", regex)
         return predicate.evaluate(with: self)
     }
-    //MARK:JmoVxia---是否是有效英文姓名
+    ///是否是有效英文姓名
     func isValidEnglishName() -> Bool {
         let regex = "^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$"
         let predicate = NSPredicate(format: "SELF MATCHES %@", regex)

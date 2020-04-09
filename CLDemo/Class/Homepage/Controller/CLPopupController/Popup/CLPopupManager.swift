@@ -286,7 +286,7 @@ extension CLPopupManager {
         controller.yearMonthDayHourMinuteCallback = yearMonthDayHourMinuteCallback
         showCustom(with: controller, only: only)
     }
-    ///显示输入弹窗
+    ///显示BMI输入弹窗
     class func showBMIInput(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = true, interfaceOrientationMask: UIInterfaceOrientationMask = .all, only: Bool = true, bmiCallback: ((CGFloat) -> ())? = nil) {
         let controller = CLPopupBMIInputController()
         controller.statusBarStyle = statusBarStyle
@@ -296,4 +296,16 @@ extension CLPopupManager {
         controller.bmiCallback = bmiCallback
         showCustom(with: controller, only: only)
     }
+    ///显示呼吸频次输入框弹窗
+    class func showRespiratoryFrequencyInput(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = true, interfaceOrientationMask: UIInterfaceOrientationMask = .all, only: Bool = true, sureCallback: ((String?) -> ())? = nil) {
+        let controller = CLPopupOneInputController()
+        controller.statusBarStyle = statusBarStyle
+        controller.statusBarHidden = statusBarHidden
+        controller.autorotate = autorotate
+        controller.interfaceOrientationMask = interfaceOrientationMask
+        controller.type = .respiratoryFrequency
+        controller.sureCallback = sureCallback
+        showCustom(with: controller, only: only)
+    }
+
 }
