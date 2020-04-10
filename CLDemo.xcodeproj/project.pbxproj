@@ -729,6 +729,7 @@
 		0C1CFA7223744A35004B59CB /* CLInputPasswordViewController */ = {
 			isa = PBXGroup;
 			children = (
+				0C1CFA7423744AA5004B59CB /* CLInputToolbarController */,
 				0CF4EF8F2330834400D8B95E /* CLInputPasswordViewController.h */,
 				0CF4EF902330834400D8B95E /* CLInputPasswordViewController.m */,
 			);
@@ -1636,7 +1637,7 @@
 				5B49566223B4FE3D00212772 /* CLFlipController */,
 				5B8A4D4123B1189C00360631 /* CLChatController */,
 				0CFA5897237FE8ED007B8231 /* CLDrawImageController */,
-				0C1CFA7423744AA5004B59CB /* CLInputToolbarController */,
+				0C1CFA6C2374498A004B59CB /* CLChangeFontSizeController */,
 				0C1CFA7323744A42004B59CB /* CLLogViewController */,
 				0C1CFA7223744A35004B59CB /* CLInputPasswordViewController */,
 				0C1CFA7123744A0D004B59CB /* CLPasswordViewSwiftController */,
@@ -1644,7 +1645,6 @@
 				0C1CFA6F237449F2004B59CB /* CLRotatingPictureViewController */,
 				0C1CFA6E237449B4004B59CB /* CLRotateAnimationSwiftController */,
 				0C1CFA6D23744997004B59CB /* CLRotateAnimationController */,
-				0C1CFA6C2374498A004B59CB /* CLChangeFontSizeController */,
 				0C1CFA6B2374497E004B59CB /* CLChangeLanguageController */,
 				0C1CFA8023744B6D004B59CB /* CLBankCardScanController */,
 				0C1CFA7F23744B53004B59CB /* CLBankCardDetailController */,

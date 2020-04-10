@@ -54,8 +54,7 @@ class CLPopupManager: NSObject {
             return shareManager
         }
     }
-    var array = [UIWindow]()
-    
+    private var windowsArray = [CLPopupManagerWindow]()
     private override init() {
         super.init()
     }
@@ -70,24 +69,24 @@ extension CLPopupManager {
     ///   - unique: 是否唯一弹窗,唯一弹窗会自动销毁之前显示的弹窗
     private class func makeKeyAndVisible(with controller: UIViewController, unique: Bool) {
         if unique {
-            share.array.removeAll()
+            share.windowsArray.removeAll()
         }
         let popupManagerWindow = CLPopupManagerWindow(frame: UIScreen.main.bounds)
         popupManagerWindow.windowLevel = UIWindow.Level.statusBar
         popupManagerWindow.isUserInteractionEnabled = true
         popupManagerWindow.rootViewController = controller
-        share.array.append(popupManagerWindow)
+        share.windowsArray.append(popupManagerWindow)
         popupManagerWindow.makeKeyAndVisible()
     }
     /// 销毁弹窗
     /// - Parameter all: 是否销毁所有弹窗
     private class func destroyAll(_ all: Bool = true) {
         if all {
-            share.array.removeAll()
+            share.windowsArray.removeAll()
         }else {
-            share.array.removeLast()
+            share.windowsArray.removeLast()
         }
-        if share.array.count == 0 {
+        if share.windowsArray.count == 0 {
             manager = nil
         }
     }
