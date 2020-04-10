@@ -216,7 +216,7 @@ extension CLPopupController {
         }
     }
     func showTwoInput() {
-        CLPopupManager.showTwoInput(statusBarStyle: .lightContent, statusBarHidden: true, autorotate: true, interfaceOrientationMask: .portrait, unique: false, type: .bloodSugar) { (_, _) in
+        CLPopupManager.showTwoInput(autorotate: false, interfaceOrientationMask: .portrait, unique: false, type: .bloodSugar) { (_, _) in
             
         }
 //        CLPopupManager.showTwoInput(type: .bloodSugar) { (value1, value2) in

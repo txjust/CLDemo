@@ -8,7 +8,8 @@
 
 import UIKit
 //MARK: - 弹窗父类控制器
-class CLPopupManagerBaseController: UIViewController {
+
+@objcMembers class CLPopupManagerBaseController: UIViewController {
     ///状态栏颜色
     var statusBarStyle: UIStatusBarStyle = UIApplication.shared.statusBarStyle
     ///是否自动旋转
@@ -33,7 +34,7 @@ extension CLPopupManagerBaseController {
     }
 }
 //MARK: - 弹窗Window
-class CLPopupManagerWindow: UIWindow {
+@objcMembers class CLPopupManagerWindow: UIWindow {
 //    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
 //        let view = super.hitTest(point, with: event)
 //        if view == rootViewController?.view {
@@ -43,7 +44,7 @@ class CLPopupManagerWindow: UIWindow {
 //    }
 }
 //MARK: - 弹窗管理者
-class CLPopupManager: NSObject {
+@objcMembers class CLPopupManager: NSObject {
     private static var manager: CLPopupManager?
     private class var share: CLPopupManager {
         get {
@@ -75,8 +76,8 @@ extension CLPopupManager {
         popupManagerWindow.windowLevel = UIWindow.Level.statusBar
         popupManagerWindow.isUserInteractionEnabled = true
         popupManagerWindow.rootViewController = controller
-        share.windowsArray.append(popupManagerWindow)
         popupManagerWindow.makeKeyAndVisible()
+        share.windowsArray.append(popupManagerWindow)
     }
     /// 销毁弹窗
     /// - Parameter all: 是否销毁所有弹窗
