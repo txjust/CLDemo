@@ -162,7 +162,7 @@ extension CLPopupController {
                     CLPopupManager.showFlop(statusBarStyle: .default, statusBarHidden: false)
                 }
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 6) {
-                    CLPopupManager.showFlop(statusBarStyle: .default, unique: true)
+                    CLPopupManager.showFlop(statusBarStyle: .default, displacement: true)
                 }
     }
     func showOneAlert() {
@@ -216,7 +216,7 @@ extension CLPopupController {
         }
     }
     func showTwoInput() {
-        CLPopupManager.showTwoInput(autorotate: false, interfaceOrientationMask: .portrait, unique: false, type: .bloodSugar) { (_, _) in
+        CLPopupManager.showTwoInput(autorotate: false, interfaceOrientationMask: .portrait, displacement: false, passedDown: true, type: .bloodSugar) { (_, _) in
             
         }
 //        CLPopupManager.showTwoInput(type: .bloodSugar) { (value1, value2) in
