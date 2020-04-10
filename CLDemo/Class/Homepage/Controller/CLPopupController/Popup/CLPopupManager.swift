@@ -32,30 +32,15 @@ extension CLPopupManagerBaseController {
         return statusBarHidden
     }
 }
-//MARK: - 弹窗根控制器
-class CLPopupManagerRootController: CLPopupManagerBaseController {
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return children.last?.preferredStatusBarStyle ?? .lightContent
-    }
-    override var shouldAutorotate: Bool {
-        return children.last?.shouldAutorotate ?? true
-    }
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return children.last?.supportedInterfaceOrientations ?? .all
-    }
-    override var prefersStatusBarHidden: Bool {
-        return children.last?.prefersStatusBarHidden ?? false
-    }
-}
 //MARK: - 弹窗Window
 class CLPopupManagerWindow: UIWindow {
-    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-        let view = super.hitTest(point, with: event)
-        if view == rootViewController?.view {
-            return nil
-        }
-        return view
-    }
+//    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+//        let view = super.hitTest(point, with: event)
+//        if view == rootViewController?.view {
+//            return nil
+//        }
+//        return view
+//    }
 }
 //MARK: - 弹窗管理者
 class CLPopupManager: NSObject {
@@ -69,19 +54,8 @@ class CLPopupManager: NSObject {
             return shareManager
         }
     }
-    private var popupManagerWindow: CLPopupManagerWindow?
-    private class var window: CLPopupManagerWindow {
-        get {
-            guard let window = share.popupManagerWindow else {
-                share.popupManagerWindow = CLPopupManagerWindow(frame: UIScreen.main.bounds)
-                share.popupManagerWindow!.windowLevel = UIWindow.Level.statusBar
-                share.popupManagerWindow!.isUserInteractionEnabled = true
-                share.popupManagerWindow?.rootViewController = CLPopupManagerRootController()
-                return share.popupManagerWindow!
-            }
-            return window
-        }
-    }
+    var array = [UIWindow]()
+    
     private override init() {
         super.init()
     }
@@ -95,42 +69,27 @@ extension CLPopupManager {
     ///   - controller: 弹窗控制器
     ///   - unique: 是否唯一弹窗,唯一弹窗会自动销毁之前显示的弹窗
     private class func makeKeyAndVisible(with controller: UIViewController, unique: Bool) {
-        let rootViewController = window.rootViewController
-        if let children = rootViewController?.children, unique {
-            for childrenController in children {
-                childrenController.willMove(toParent: nil)
-                childrenController.view.removeFromSuperview()
-                childrenController.removeFromParent()
-            }
+        if unique {
+            share.array.removeAll()
         }
-        controller.modalPresentationStyle = .custom
-        rootViewController?.addChild(controller)
-        rootViewController?.view.addSubview(controller.view)
-        controller.didMove(toParent: rootViewController)
-        window.makeKeyAndVisible()
-        refresh()
+        let popupManagerWindow = CLPopupManagerWindow(frame: UIScreen.main.bounds)
+        popupManagerWindow.windowLevel = UIWindow.Level.statusBar
+        popupManagerWindow.isUserInteractionEnabled = true
+        popupManagerWindow.rootViewController = controller
+        share.array.append(popupManagerWindow)
+        popupManagerWindow.makeKeyAndVisible()
     }
     /// 销毁弹窗
     /// - Parameter all: 是否销毁所有弹窗
     private class func destroyAll(_ all: Bool = true) {
-        guard let childrenController = window.rootViewController?.children else {
-            return
+        if all {
+            share.array.removeAll()
+        }else {
+            share.array.removeLast()
         }
-        let controller = childrenController.last
-        controller?.willMove(toParent: nil)
-        controller?.view.removeFromSuperview()
-        controller?.removeFromParent()
-        refresh()
-        if childrenController.count == 1 || all {
-            window.resignKey()
-            window.isHidden = true
-            share.popupManagerWindow = nil
+        if share.array.count == 0 {
             manager = nil
         }
-    }
-    /// 刷新状态栏
-    private class func refresh() {
-        window.rootViewController?.setNeedsStatusBarAppearanceUpdate()
     }
 }
 extension CLPopupManager {
@@ -308,7 +267,7 @@ extension CLPopupManager {
         showCustom(with: controller, unique: unique)
     }
     ///显示两个输入框弹窗
-    class func showTwoInput(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = true, interfaceOrientationMask: UIInterfaceOrientationMask = .all, unique: Bool = false, type: CLPopupTwoInputType, sureCallback: ((String?, String?) -> ())? = nil) {
+    class func showTwoInput(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = false, interfaceOrientationMask: UIInterfaceOrientationMask = .all, unique: Bool = false, type: CLPopupTwoInputType, sureCallback: ((String?, String?) -> ())? = nil) {
         let controller = CLPopupTwoInputController()
         controller.statusBarStyle = statusBarStyle
         controller.statusBarHidden = statusBarHidden

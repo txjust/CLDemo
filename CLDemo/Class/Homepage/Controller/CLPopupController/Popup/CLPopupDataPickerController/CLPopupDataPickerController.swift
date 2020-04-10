@@ -62,6 +62,9 @@ class CLPopupDataPickerController: CLPopupManagerBaseController {
         initUI()
         showAnimation()
     }
+    deinit {
+        print("============CLPopupDataPickerController deinit============")
+    }
 }
 extension CLPopupDataPickerController {
     func initUI() {

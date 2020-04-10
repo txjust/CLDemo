@@ -117,6 +117,7 @@ class CLPopupTwoInputController: CLPopupManagerBaseController {
     }()
     deinit {
         NotificationCenter.default.removeObserver(self)
+        print("============CLPopupTwoInputController deinit============")
     }
 }
 extension CLPopupTwoInputController {

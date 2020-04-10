@@ -216,8 +216,11 @@ extension CLPopupController {
         }
     }
     func showTwoInput() {
-        CLPopupManager.showTwoInput(type: .bloodSugar) { (value1, value2) in
-            print("-----\(String(describing: value1))----------\(String(describing: value2))")
+        CLPopupManager.showTwoInput(statusBarStyle: .lightContent, statusBarHidden: true, autorotate: true, interfaceOrientationMask: .portrait, unique: false, type: .bloodSugar) { (_, _) in
+            
         }
+//        CLPopupManager.showTwoInput(type: .bloodSugar) { (value1, value2) in
+//            print("-----\(String(describing: value1))----------\(String(describing: value2))")
+//        }
     }
 }
