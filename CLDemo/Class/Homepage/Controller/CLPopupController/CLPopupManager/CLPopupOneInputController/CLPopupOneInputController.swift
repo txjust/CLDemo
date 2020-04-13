@@ -101,6 +101,7 @@ class CLPopupOneInputController: CLPopupManagerBaseController {
     }()
     deinit {
         NotificationCenter.default.removeObserver(self)
+        print("============CLPopupOneInputController deinit============")
     }
 }
 extension CLPopupOneInputController {

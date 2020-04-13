@@ -1354,12 +1354,12 @@
 			isa = PBXGroup;
 			children = (
 				5B190E5B23B66803005A2474 /* CLPopupController.swift */,
-				5B190E5D23B66811005A2474 /* Popup */,
+				5B190E5D23B66811005A2474 /* CLPopupManager */,
 			);
 			path = CLPopupController;
 			sourceTree = "<group>";
 		};
-		5B190E5D23B66811005A2474 /* Popup */ = {
+		5B190E5D23B66811005A2474 /* CLPopupManager */ = {
 			isa = PBXGroup;
 			children = (
 				5B190E6823B66811005A2474 /* CLPopupManager.swift */,
@@ -1372,7 +1372,7 @@
 				5BEA5A0A243DC4FD0076BA9F /* CLPopupBMIInputController */,
 				5B190E6323B66811005A2474 /* CLPopupFlopController */,
 			);
-			path = Popup;
+			path = CLPopupManager;
 			sourceTree = "<group>";
 		};
 		5B190E6323B66811005A2474 /* CLPopupFlopController */ = {
