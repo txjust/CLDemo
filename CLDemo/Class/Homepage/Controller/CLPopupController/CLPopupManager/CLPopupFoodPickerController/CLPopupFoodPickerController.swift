@@ -34,7 +34,7 @@ class CLPopupFoodPickerController: CLPopupManagerBaseController {
         return view
     }()
     lazy var foodPicker: CLPopupFoodPickerView = {
-        let view = CLPopupFoodPickerView()
+        let view = CLPopupFoodPickerView(frame: CGRect(x: 0, y: 50, width: cl_screenWidth(), height: 302.5), titleArray: ["小麦","大豆","玉米"])
         view.backgroundColor = .white
         return view
     }()

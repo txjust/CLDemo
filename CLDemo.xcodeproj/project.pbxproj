@@ -190,8 +190,8 @@
 		5BAFEE38243ECFFB00E1E51E /* CLPopupOneInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAFEE37243ECFFB00E1E51E /* CLPopupOneInputController.swift */; };
 		5BB0774A2444552C00EF9D3E /* CLPopupFoodPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB077492444552C00EF9D3E /* CLPopupFoodPickerController.swift */; };
 		5BB0774C2444570E00EF9D3E /* CLPopupFoodPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB0774B2444570E00EF9D3E /* CLPopupFoodPickerView.swift */; };
-		5BB0774E24445E1300EF9D3E /* CLPopupFoodPickerHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB0774D24445E1300EF9D3E /* CLPopupFoodPickerHeaderView.swift */; };
-		5BB328AA2444670D0049ADE8 /* CLPopupFoodPickerHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB328A92444670D0049ADE8 /* CLPopupFoodPickerHeaderCell.swift */; };
+		5BB328AE244491F60049ADE8 /* CLPopupFoodPickerContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB328AD244491F60049ADE8 /* CLPopupFoodPickerContentView.swift */; };
+		5BB328B0244498230049ADE8 /* UIView+CLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB328AF244498230049ADE8 /* UIView+CLExtension.swift */; };
 		5BB848261E00237900BB266D /* CLEssenceListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB848251E00237900BB266D /* CLEssenceListController.m */; };
 		5BBA5762243F6E7A0003AE00 /* CLPopupTwoInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBA5761243F6E7A0003AE00 /* CLPopupTwoInputController.swift */; };
 		5BBB62921E7444A100B28FC3 /* CLChartToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BBB62911E7444A100B28FC3 /* CLChartToolBar.m */; };
@@ -548,8 +548,8 @@
 		5BAFEE37243ECFFB00E1E51E /* CLPopupOneInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLPopupOneInputController.swift; sourceTree = "<group>"; };
 		5BB077492444552C00EF9D3E /* CLPopupFoodPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLPopupFoodPickerController.swift; sourceTree = "<group>"; };
 		5BB0774B2444570E00EF9D3E /* CLPopupFoodPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLPopupFoodPickerView.swift; sourceTree = "<group>"; };
-		5BB0774D24445E1300EF9D3E /* CLPopupFoodPickerHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLPopupFoodPickerHeaderView.swift; sourceTree = "<group>"; };
-		5BB328A92444670D0049ADE8 /* CLPopupFoodPickerHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLPopupFoodPickerHeaderCell.swift; sourceTree = "<group>"; };
+		5BB328AD244491F60049ADE8 /* CLPopupFoodPickerContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLPopupFoodPickerContentView.swift; sourceTree = "<group>"; };
+		5BB328AF244498230049ADE8 /* UIView+CLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+CLExtension.swift"; sourceTree = "<group>"; };
 		5BB848241E00237900BB266D /* CLEssenceListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLEssenceListController.h; sourceTree = "<group>"; };
 		5BB848251E00237900BB266D /* CLEssenceListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLEssenceListController.m; sourceTree = "<group>"; };
 		5BB848271E002C5000BB266D /* Define.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Define.h; sourceTree = "<group>"; };
@@ -1751,6 +1751,7 @@
 				5B3327E223DF366600CA315C /* UIImage+Extension.swift */,
 				5B3327E423DF384800CA315C /* NSString+Extension.swift */,
 				5BEA5A0D243DC96D0076BA9F /* UITextField+CLExtension.swift */,
+				5BB328AF244498230049ADE8 /* UIView+CLExtension.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -1798,8 +1799,7 @@
 			children = (
 				5BB077492444552C00EF9D3E /* CLPopupFoodPickerController.swift */,
 				5BB0774B2444570E00EF9D3E /* CLPopupFoodPickerView.swift */,
-				5BB0774D24445E1300EF9D3E /* CLPopupFoodPickerHeaderView.swift */,
-				5BB328A92444670D0049ADE8 /* CLPopupFoodPickerHeaderCell.swift */,
+				5BB328AD244491F60049ADE8 /* CLPopupFoodPickerContentView.swift */,
 			);
 			path = CLPopupFoodPickerController;
 			sourceTree = "<group>";
@@ -2142,13 +2142,13 @@
 				0CACA4AB224CC1DC0084ECC8 /* CLTextView.swift in Sources */,
 				0CB60B17237EC51100D10317 /* CLHorizontalItem.m in Sources */,
 				0CF6B84523865AF600F10986 /* CLHorizontalLayout.m in Sources */,
-				5BB328AA2444670D0049ADE8 /* CLPopupFoodPickerHeaderCell.swift in Sources */,
 				5BBA5762243F6E7A0003AE00 /* CLPopupTwoInputController.swift in Sources */,
 				0C1075F322E1AE8A005E5843 /* CLAnimatedTransitioning.m in Sources */,
 				5B12FC751E7157BF0091A0E2 /* CLChartMaskView.m in Sources */,
 				B5A705B223F29E5E007745BC /* CLChatPhotoAlbumContentView.swift in Sources */,
 				B5A705B423F2AE1C007745BC /* CLChatPhotoAlbumCell.swift in Sources */,
 				0CE7333F2191CB9D00270851 /* Tools.m in Sources */,
+				5BB328AE244491F60049ADE8 /* CLPopupFoodPickerContentView.swift in Sources */,
 				B51EE6C923DF093E00146862 /* CLChatLayoutItem.swift in Sources */,
 				5B44D0DA243398EF0059476D /* CLHourMinuteDataPickerView.swift in Sources */,
 				0C9FF01622E0A2C100BA0B6E /* CLPhotoBrowserImageScaleHelper.m in Sources */,
@@ -2168,7 +2168,6 @@
 				5B1C74261E78F120000AB534 /* CLChartXLabel.m in Sources */,
 				0C223C772243811200E319E2 /* CLRotateAnimationSwiftController.swift in Sources */,
 				5B80DA471DDD993F00A20E34 /* CLMyController.m in Sources */,
-				5BB0774E24445E1300EF9D3E /* CLPopupFoodPickerHeaderView.swift in Sources */,
 				0CCDA40022D9D1C5007B41C4 /* CLPhotoBrowserTransitioningDelegate.m in Sources */,
 				0C558A9521ED956700C2C096 /* CLPasswordInputView.m in Sources */,
 				5B809616221870BD000F72F3 /* CLScanBankCardManager.m in Sources */,
@@ -2322,6 +2321,7 @@
 				0CF79B012196792700DD0BF1 /* Aspects.m in Sources */,
 				0CF6B84423865AF600F10986 /* CLVerticalLayout.m in Sources */,
 				5B80DA551DDD9BD500A20E34 /* CLBaseNavigationController.m in Sources */,
+				5BB328B0244498230049ADE8 /* UIView+CLExtension.swift in Sources */,
 				0CCDA40322D9D1C5007B41C4 /* CLPhotoBrowser.m in Sources */,
 				5B8B7D3024319701005C8530 /* CLPopupDataPickerController.swift in Sources */,
 				0C52EF6721928C5C0079A0E7 /* CLLanguageManager.m in Sources */,
