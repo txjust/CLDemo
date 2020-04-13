@@ -280,7 +280,7 @@ extension CLPopupTwoInputController {
             if self.type == .bloodSugar {
                 self.view.endEditing(true)
                 CLPopupManager.showYearMonthDayHourMinuteDataPicker() {[weak self] (year, month, day, hour, minute) in
-                    self?.fristTextField.text = "\(year)年\(month)月\(day)日\(hour)时\(minute)分"
+                    self?.fristTextField.text = String(format: "%02d年%02d月%02d日%02d时%02d分", year,month,day,hour,minute)
                 }
             }else {
                 self.fristTextField.becomeFirstResponder()

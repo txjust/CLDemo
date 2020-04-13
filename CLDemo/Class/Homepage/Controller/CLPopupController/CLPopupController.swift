@@ -133,6 +133,12 @@ extension CLPopupController {
         }
         arrayDS.append(model13)
         
+        let model14 = CLPopupModel()
+        model14.title = "食物选择"
+        model14.callback = {[weak self] in
+            self?.showFoodPicker()
+        }
+        arrayDS.append(model14)
     }
 }
 extension CLPopupController: UITableViewDataSource {
@@ -216,11 +222,11 @@ extension CLPopupController {
         }
     }
     func showTwoInput() {
-        CLPopupManager.showTwoInput(autorotate: false, interfaceOrientationMask: .portrait, displacement: false, passedDown: true, type: .bloodSugar) { (_, _) in
-            
+        CLPopupManager.showTwoInput(autorotate: false, interfaceOrientationMask: .portrait, displacement: false, type: .bloodSugar) { (value1, value2) in
+            print("-----\(String(describing: value1))----------\(String(describing: value2))")
         }
-//        CLPopupManager.showTwoInput(type: .bloodSugar) { (value1, value2) in
-//            print("-----\(String(describing: value1))----------\(String(describing: value2))")
-//        }
+    }
+    func showFoodPicker() {
+        CLPopupManager.showFoodPicker()
     }
 }
