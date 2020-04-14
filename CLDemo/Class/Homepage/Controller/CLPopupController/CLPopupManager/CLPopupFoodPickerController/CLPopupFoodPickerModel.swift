@@ -117,7 +117,7 @@ struct CLPopupFoodPickerGroup {
 struct CLPopupFoodPickerBaseGroup {
     var group = [CLPopupFoodPickerGroup]()
     var foodBaseGroupName: String?
-
+    
     init(json: JSON) {
         group = json["group"].arrayValue.compactMap({ CLPopupFoodPickerGroup(json: $0)})
         foodBaseGroupName = json["foodBaseGroupName"].stringValue
