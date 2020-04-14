@@ -20,6 +20,7 @@ PODS:
     - libwebp (~> 1.0)
     - SDWebImage/Core (~> 5.5)
   - SnapKit (5.0.1)
+  - SwiftyJSON (5.0.0)
   - Then (2.6.0)
 
 DEPENDENCIES:
@@ -31,6 +32,7 @@ DEPENDENCIES:
   - SDWebImage
   - SDWebImageWebPCoder
   - SnapKit
+  - SwiftyJSON
   - Then
 
 SPEC REPOS:
@@ -44,6 +46,7 @@ SPEC REPOS:
     - SDWebImage
     - SDWebImageWebPCoder
     - SnapKit
+    - SwiftyJSON
     - Then
 
 SPEC CHECKSUMS:
@@ -56,8 +59,9 @@ SPEC CHECKSUMS:
   SDWebImage: 4d5c027c935438f341ed33dbac53ff9f479922ca
   SDWebImageWebPCoder: e7ae855f058e3dcae99696920b6a5d134e9dcddf
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   Then: 90cd104fd951cec1980a03f57704ad8f784d4d79
 
-PODFILE CHECKSUM: 6861a573ac3cccbdae2ccd09ffbc447b68b58f03
+PODFILE CHECKSUM: 0543611d63434ebe1757099dfe7b9dfc4c318b40
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.9.1

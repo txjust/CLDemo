@@ -7,10 +7,10 @@
 //
 
 import UIKit
-
-import UIKit
+import SwiftyJSON
 
 class CLPopupFoodPickerView: UIView {
+    var foodModel: CLPopupFoodPickerModel?
     private var titleAttay = [String]()
     private var buttonArray = [UIButton]()
     private lazy var clipView: UIView = {
@@ -47,6 +47,7 @@ class CLPopupFoodPickerView: UIView {
     init(frame: CGRect, titleArray :[String]) {
         super.init(frame: frame)
         self.titleAttay = titleArray
+        initData()
         initUI()
     }
     
@@ -55,6 +56,15 @@ class CLPopupFoodPickerView: UIView {
     }
 }
 extension CLPopupFoodPickerView {
+    func initData() {
+        DispatchQueue.global().async {
+            let path = Bundle.main.path(forResource: "food", ofType: "json")
+            let url = URL(fileURLWithPath: path!)
+            if let data = try? Data(contentsOf: url), let json = try? JSON(data: data) {
+                self.foodModel = CLPopupFoodPickerModel(json: json)
+            }
+        }
+    }
     private func initUI() {
         let width: CGFloat = (frame.width) / 4.0
         let height: CGFloat = 40;

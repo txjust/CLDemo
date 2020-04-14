@@ -13,5 +13,6 @@ pod 'SDWebImage'
 pod 'SDWebImageWebPCoder'
 pod 'lottie-ios'
 pod 'DateToolsSwift'
+pod 'SwiftyJSON'
 
 end

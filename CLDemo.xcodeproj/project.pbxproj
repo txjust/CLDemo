@@ -160,6 +160,7 @@
 		5B49566623B507A700212772 /* CLFlipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B49566523B507A700212772 /* CLFlipView.swift */; };
 		5B49566823B50ED700212772 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B49566723B50ED700212772 /* UIColor+Extension.swift */; };
 		5B49566D23B5DD0100212772 /* CLTwoSidedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B49566C23B5DD0100212772 /* CLTwoSidedView.swift */; };
+		5B7C86EE2444B3E50086DC9C /* CLPopupFoodPickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7C86ED2444B3E50086DC9C /* CLPopupFoodPickerModel.swift */; };
 		5B8095F62218700E000F72F3 /* CLBankCardScanController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8095F52218700E000F72F3 /* CLBankCardScanController.m */; };
 		5B809615221870BD000F72F3 /* CLBankCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8095FE221870BC000F72F3 /* CLBankCardView.m */; };
 		5B809616221870BD000F72F3 /* CLScanBankCardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B809601221870BC000F72F3 /* CLScanBankCardManager.m */; };
@@ -186,6 +187,7 @@
 		5B8A4D4323B118CC00360631 /* CLChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8A4D4223B118CC00360631 /* CLChatController.swift */; };
 		5B8B7D3024319701005C8530 /* CLPopupDataPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B7D2F24319701005C8530 /* CLPopupDataPickerController.swift */; };
 		5B8B7D32243197D6005C8530 /* CLYearMonthDayDataPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B7D31243197D6005C8530 /* CLYearMonthDayDataPickerView.swift */; };
+		5B8EAFED2444A29800317DC1 /* food.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B8EAFEC2444A29700317DC1 /* food.json */; };
 		5B919B6A243CD03A000D5EDA /* CLDataPickerTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B919B69243CD03A000D5EDA /* CLDataPickerTitleView.swift */; };
 		5BAFEE38243ECFFB00E1E51E /* CLPopupOneInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAFEE37243ECFFB00E1E51E /* CLPopupOneInputController.swift */; };
 		5BB0774A2444552C00EF9D3E /* CLPopupFoodPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB077492444552C00EF9D3E /* CLPopupFoodPickerController.swift */; };
@@ -489,6 +491,7 @@
 		5B49566523B507A700212772 /* CLFlipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLFlipView.swift; sourceTree = "<group>"; };
 		5B49566723B50ED700212772 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		5B49566C23B5DD0100212772 /* CLTwoSidedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLTwoSidedView.swift; sourceTree = "<group>"; };
+		5B7C86ED2444B3E50086DC9C /* CLPopupFoodPickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLPopupFoodPickerModel.swift; sourceTree = "<group>"; };
 		5B8095F42218700E000F72F3 /* CLBankCardScanController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLBankCardScanController.h; sourceTree = "<group>"; };
 		5B8095F52218700E000F72F3 /* CLBankCardScanController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLBankCardScanController.m; sourceTree = "<group>"; };
 		5B8095FD221870BC000F72F3 /* CLBankCardSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBankCardSearch.h; sourceTree = "<group>"; };
@@ -544,6 +547,7 @@
 		5B8A4D4223B118CC00360631 /* CLChatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLChatController.swift; sourceTree = "<group>"; };
 		5B8B7D2F24319701005C8530 /* CLPopupDataPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLPopupDataPickerController.swift; sourceTree = "<group>"; };
 		5B8B7D31243197D6005C8530 /* CLYearMonthDayDataPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLYearMonthDayDataPickerView.swift; sourceTree = "<group>"; };
+		5B8EAFEC2444A29700317DC1 /* food.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = food.json; sourceTree = "<group>"; };
 		5B919B69243CD03A000D5EDA /* CLDataPickerTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLDataPickerTitleView.swift; sourceTree = "<group>"; };
 		5BAFEE37243ECFFB00E1E51E /* CLPopupOneInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLPopupOneInputController.swift; sourceTree = "<group>"; };
 		5BB077492444552C00EF9D3E /* CLPopupFoodPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLPopupFoodPickerController.swift; sourceTree = "<group>"; };
@@ -1797,7 +1801,9 @@
 		5BB07748244454FC00EF9D3E /* CLPopupFoodPickerController */ = {
 			isa = PBXGroup;
 			children = (
+				5B8EAFEC2444A29700317DC1 /* food.json */,
 				5BB077492444552C00EF9D3E /* CLPopupFoodPickerController.swift */,
+				5B7C86ED2444B3E50086DC9C /* CLPopupFoodPickerModel.swift */,
 				5BB0774B2444570E00EF9D3E /* CLPopupFoodPickerView.swift */,
 				5BB328AD244491F60049ADE8 /* CLPopupFoodPickerContentView.swift */,
 			);
@@ -2051,6 +2057,7 @@
 				0C7DE94E22DECC0D00FA9040 /* localImage5.jpeg in Resources */,
 				0C7DE94822DECC0D00FA9040 /* localGifImage1.gif in Resources */,
 				5B3327E823DF3E0A00CA315C /* recoredWave_dk.json in Resources */,
+				5B8EAFED2444A29800317DC1 /* food.json in Resources */,
 				0C52EF70219298B00079A0E7 /* Localizable.strings in Resources */,
 				0C7DE94722DECC0D00FA9040 /* localImage8.jpeg in Resources */,
 				0C2AE871223F48C0007D5DC5 /* CLBubbleView.bundle in Resources */,
@@ -2091,6 +2098,7 @@
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImageWebPCoder/SDWebImageWebPCoder.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/Then/Then.framework",
 				"${BUILT_PRODUCTS_DIR}/libwebp/libwebp.framework",
 				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
@@ -2104,6 +2112,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImageWebPCoder.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Then.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/libwebp.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
@@ -2259,6 +2268,7 @@
 				5B80DA4C1DDD993F00A20E34 /* UIImage+CLScaleToSize.m in Sources */,
 				0CF79AF7219678D100DD0BF1 /* CLSearchViewController.m in Sources */,
 				B51EE6EF23DF138200146862 /* CLChatRecordView.swift in Sources */,
+				5B7C86EE2444B3E50086DC9C /* CLPopupFoodPickerModel.swift in Sources */,
 				5B3327EA23DF41E800CA315C /* CLChatRecordTimeView.swift in Sources */,
 				B51EE6CC23DF104800146862 /* CLGradientLayerView.swift in Sources */,
 				0C777A4B2217A8B900BC8AFB /* CLInputToolbarController.m in Sources */,
