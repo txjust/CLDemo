@@ -29,7 +29,13 @@
 - (void)initUI
 {
     CLLog(@"沙盒路径----->>>%@",Tools.pathDocuments);
-    [self setValue:[[CLCustomTabbar alloc] init] forKeyPath:@"tabBar"];
+    CLCustomTabbar *tabbar = [[CLCustomTabbar alloc] init];
+    __weak __typeof(self) weakSelf = self;
+    [tabbar setBulgeCallBack:^{
+        __typeof(&*weakSelf) strongSelf = weakSelf;
+        strongSelf.selectedIndex = 2;
+    }];
+    [self setValue:tabbar forKeyPath:@"tabBar"];
     
     CLHomepageController *mc = [[CLHomepageController alloc] init];
     CLBaseNavigationController *nc1 = [[CLBaseNavigationController alloc] initWithRootViewController:mc];
@@ -39,14 +45,20 @@
     CLBaseNavigationController *nc2 = [[CLBaseNavigationController alloc] initWithRootViewController:nc];
     [Tools setControllerTabBarItem:nc2 Title:NSLocalizedString(@"课程", nil) andFoneSize:13 withFoneName:nil selectedImage:@"tabBar_new_click_icon" withTitleColor:[UIColor blackColor] unselectedImage:@"tabBar_new_icon" withTitleColor:[UIColor lightGrayColor]];
     
-    CLCollectionController *fc = [[CLCollectionController alloc] init];
-    CLBaseNavigationController *nc3 = [[CLBaseNavigationController alloc] initWithRootViewController:fc];
-    [Tools setControllerTabBarItem:nc3 Title:NSLocalizedString(@"收藏", nil) andFoneSize:13 withFoneName:nil selectedImage:@"tabBar_me_click_icon" withTitleColor:[UIColor blackColor] unselectedImage:@"tabBar_me_icon" withTitleColor:[UIColor lightGrayColor]];
     
+    CLBaseViewController *aaaa = [[CLBaseViewController alloc] init];
+    aaaa.title = @"凸起";
+    CLBaseNavigationController *nc3 = [[CLBaseNavigationController alloc] initWithRootViewController:aaaa];
+    
+    
+    CLCollectionController *fc = [[CLCollectionController alloc] init];
+    CLBaseNavigationController *nc4 = [[CLBaseNavigationController alloc] initWithRootViewController:fc];
+    [Tools setControllerTabBarItem:nc4 Title:NSLocalizedString(@"收藏", nil) andFoneSize:13 withFoneName:nil selectedImage:@"tabBar_me_click_icon" withTitleColor:[UIColor blackColor] unselectedImage:@"tabBar_me_icon" withTitleColor:[UIColor lightGrayColor]];
+
     CLMyController *ec = [[CLMyController alloc] init];
-    CLBaseNavigationController *nc4 = [[CLBaseNavigationController alloc] initWithRootViewController:ec];
-    [Tools setControllerTabBarItem:nc4 Title:NSLocalizedString(@"我的", nil) andFoneSize:13 withFoneName:nil selectedImage:@"tabBar_essence_click_icon" withTitleColor:[UIColor blackColor] unselectedImage:@"tabBar_essence_icon" withTitleColor:[UIColor lightGrayColor]];
-    self.viewControllers = @[nc1,nc2,nc3,nc4];
+    CLBaseNavigationController *nc5 = [[CLBaseNavigationController alloc] initWithRootViewController:ec];
+    [Tools setControllerTabBarItem:nc5 Title:NSLocalizedString(@"我的", nil) andFoneSize:13 withFoneName:nil selectedImage:@"tabBar_essence_click_icon" withTitleColor:[UIColor blackColor] unselectedImage:@"tabBar_essence_icon" withTitleColor:[UIColor lightGrayColor]];
+    self.viewControllers = @[nc1,nc2,nc3,nc4,nc5];
 }
 -(void)dealloc {
     CLLog(@"Tabbar页面销毁了");
