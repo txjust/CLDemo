@@ -10,6 +10,7 @@ import UIKit
 import SwiftyJSON
 
 class CLPopupFoodPickerView: UIView {
+    var selectedCallback: ((String, String, String)->())?
     var foodModel: CLPopupFoodPickerModel?
     private var selectedCount: Int = 0
     private var buttonArray = [UIButton]()
@@ -135,7 +136,6 @@ extension CLPopupFoodPickerView {
                 view.selectedCallback = {[weak self](data) in
                     self?.refreshTableView(name: data.title, index: index + 1)
                 }
-                view.backgroundColor = .randomColor
                 view.frame = CGRect(x: CGFloat(index) * contentView.frame.width, y: 0, width: contentView.frame.width, height: contentView.frame.height);
                 contentView.addSubview(view)
                 button.isSelected = true
@@ -153,7 +153,10 @@ extension CLPopupFoodPickerView {
             let button = buttonArray[index]
             seleceButton(button)
         }else {
-            
+            guard let frist = buttonArray[0].titleLabel?.text, let second = buttonArray[1].titleLabel?.text, let third = buttonArray[2].titleLabel?.text else {
+                return
+            }
+            selectedCallback?(frist, second, third)
         }
         if index == 0 {
             guard let group = foodModel?.baseGroup else {

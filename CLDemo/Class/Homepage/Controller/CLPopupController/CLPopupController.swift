@@ -227,6 +227,8 @@ extension CLPopupController {
         }
     }
     func showFoodPicker() {
-        CLPopupManager.showFoodPicker()
+        CLPopupManager.showFoodPicker { (value1, value2, value3) in
+            print("-----\(String(describing: value1))----------\(String(describing: value2))-------\(value3)")
+        }
     }
 }

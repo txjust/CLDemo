@@ -275,12 +275,13 @@ extension CLPopupManager {
         showCustom(with: controller, displacement: displacement, passedDown: passedDown)
     }
     ///显示食物选择器
-    class func showFoodPicker(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, displacement: Bool = false, passedDown: Bool = false) {
+    class func showFoodPicker(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, displacement: Bool = false, passedDown: Bool = false, selectedCallback: ((String, String, String)->())?) {
         let controller = CLPopupFoodPickerController()
         controller.statusBarStyle = statusBarStyle
         controller.statusBarHidden = statusBarHidden
         controller.autorotate = false
         controller.interfaceOrientationMask = .portrait
+        controller.selectedCallback = selectedCallback
         showCustom(with: controller, displacement: displacement, passedDown: passedDown)
     }
 }

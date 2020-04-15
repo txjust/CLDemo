@@ -1378,7 +1378,6 @@
 			children = (
 				5B190E6823B66811005A2474 /* CLPopupManager.swift */,
 				5BB07748244454FC00EF9D3E /* CLPopupFoodPickerController */,
-				5BBA5760243F6E660003AE00 /* CLPopupTwoInputController */,
 				5BAFEE36243ECFE800E1E51E /* CLPopupOneInputController */,
 				5B8B7D2E243196C5005C8530 /* CLPopupDataPickerController */,
 				5B0978FC240E345700EFE510 /* CLPopupHudController */,
@@ -1805,9 +1804,10 @@
 			children = (
 				5B8EAFEC2444A29700317DC1 /* food.json */,
 				5BB077492444552C00EF9D3E /* CLPopupFoodPickerController.swift */,
-				5B7C86ED2444B3E50086DC9C /* CLPopupFoodPickerModel.swift */,
 				5BB0774B2444570E00EF9D3E /* CLPopupFoodPickerView.swift */,
+				5B7C86ED2444B3E50086DC9C /* CLPopupFoodPickerModel.swift */,
 				5BB328AD244491F60049ADE8 /* CLPopupFoodPickerContentView.swift */,
+				5BBA5760243F6E660003AE00 /* CLPopupTwoInputController */,
 				5B876CAE2445937200DC4424 /* CLPopupFoodPickerContentCell.swift */,
 			);
 			path = CLPopupFoodPickerController;

@@ -9,6 +9,7 @@
 import UIKit
 
 class CLPopupFoodPickerController: CLPopupManagerBaseController {
+    var selectedCallback: ((String, String, String)->())?
     lazy var topToolBar: UIButton = {
         let topToolBar = UIButton()
         topToolBar.backgroundColor = hexColor("#F8F6F9")
@@ -36,6 +37,10 @@ class CLPopupFoodPickerController: CLPopupManagerBaseController {
     lazy var foodPicker: CLPopupFoodPickerView = {
         let view = CLPopupFoodPickerView(frame: CGRect(x: 0, y: 50, width: cl_screenWidth(), height: 302.5))
         view.backgroundColor = .white
+        view.selectedCallback = {[weak self] (value1, value2, value3)in
+            self?.selectedCallback?(value1, value2, value3)
+            self?.dismissAnimation()
+        }
         return view
     }()
     override func viewDidLoad() {
