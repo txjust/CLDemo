@@ -66,9 +66,6 @@ extension CLPopupFoodPickerView {
             let url = URL(fileURLWithPath: path!)
             if let data = try? Data(contentsOf: url), let json = try? JSON(data: data) {
                 self.foodModel = CLPopupFoodPickerModel(json: json)
-                
-                let jsonString = try? JSONSerialization.data(withJSONObject: self.foodModel, options: .prettyPrinted)
-                print("=========\(jsonString)")
                 DispatchQueue.main.async {
                     self.refreshTableView(index: 0)
                 }
