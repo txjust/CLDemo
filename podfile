@@ -14,5 +14,6 @@ pod 'SDWebImageWebPCoder'
 pod 'lottie-ios'
 pod 'DateToolsSwift'
 pod 'SwiftyJSON'
+pod 'HandyJSON', '~> 5.0.1'
 
 end

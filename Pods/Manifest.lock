@@ -1,6 +1,7 @@
 PODS:
   - DateTools (2.0.0)
   - DateToolsSwift (5.0.0)
+  - HandyJSON (5.0.1)
   - libwebp (1.1.0):
     - libwebp/demux (= 1.1.0)
     - libwebp/mux (= 1.1.0)
@@ -26,6 +27,7 @@ PODS:
 DEPENDENCIES:
   - DateTools
   - DateToolsSwift
+  - HandyJSON (~> 5.0.1)
   - lottie-ios
   - Masonry
   - MJExtension
@@ -39,6 +41,7 @@ SPEC REPOS:
   trunk:
     - DateTools
     - DateToolsSwift
+    - HandyJSON
     - libwebp
     - lottie-ios
     - Masonry
@@ -52,6 +55,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   DateTools: 933ac9c490f21f92127cf690ccd8c397e0126caf
   DateToolsSwift: 4207ada6ad615d8dc076323d27037c94916dbfa6
+  HandyJSON: d45b8415c501e3affc59ca9762c1197ff0feb646
   libwebp: 946cb3063cea9236285f7e9a8505d806d30e07f3
   lottie-ios: 85ce835dd8c53e02509f20729fc7d6a4e6645a0a
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
@@ -62,6 +66,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   Then: 90cd104fd951cec1980a03f57704ad8f784d4d79
 
-PODFILE CHECKSUM: 0543611d63434ebe1757099dfe7b9dfc4c318b40
+PODFILE CHECKSUM: 6f2ac02fcafd1e87f265c7217c1093f83b8e04c4
 
 COCOAPODS: 1.9.1

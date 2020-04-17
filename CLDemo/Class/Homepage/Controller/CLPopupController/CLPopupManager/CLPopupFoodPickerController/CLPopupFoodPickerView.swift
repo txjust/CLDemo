@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SwiftyJSON
 
 class CLPopupFoodPickerView: UIView {
     var selectedCallback: ((String, String, String)->())?
@@ -64,8 +63,8 @@ extension CLPopupFoodPickerView {
         DispatchQueue.global().async {
             let path = Bundle.main.path(forResource: "food", ofType: "json")
             let url = URL(fileURLWithPath: path!)
-            if let data = try? Data(contentsOf: url), let json = try? JSON(data: data) {
-                self.foodModel = CLPopupFoodPickerModel(json: json)
+            if let data = try? Data(contentsOf: url), let jsonString = String(data: data, encoding: .utf8) {
+                self.foodModel = CLPopupFoodPickerModel.deserialize(from: jsonString)
                 DispatchQueue.main.async {
                     self.refreshTableView(index: 0)
                 }
