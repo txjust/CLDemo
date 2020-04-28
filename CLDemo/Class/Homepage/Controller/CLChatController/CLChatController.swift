@@ -13,6 +13,9 @@ class CLChatController: CLBaseViewController {
     ///渐变色
     private lazy var gradientLayerView: CLGradientLayerView = {
         let gradientLayerView = CLGradientLayerView()
+        gradientLayerView.colors = [hexColor("0x373747").cgColor, hexColor("0x22222D").cgColor]
+        gradientLayerView.startPoint = CGPoint(x: 0, y: 0)
+        gradientLayerView.endPoint = CGPoint(x: 0, y: 1)
         return gradientLayerView
     }()
     private lazy var tableView: CLIntrinsicTableView = {

@@ -186,18 +186,18 @@ enum Encoding: Int {
             self.textView.snp.remakeConstraints { (make) in
                 make.top.equalTo(self.configure.edgeInsets.top)
                 make.left.equalTo(self.configure.edgeInsets.left)
-                make.right.equalTo(self.configure.edgeInsets.right).priority(.low)
+                make.right.equalTo(self.configure.edgeInsets.right)
                 make.height.equalTo(self.textViewHeight())
                 if self.configure.showLengthLabel {
-                    make.bottom.equalTo(self.lengthLabel.snp.top).offset(self.configure.edgeInsets.bottom).priority(.low)
+                    make.bottom.equalTo(self.lengthLabel.snp.top).offset(self.configure.edgeInsets.bottom)
                 }else {
-                    make.bottom.equalTo(self.snp.bottom).offset(self.configure.edgeInsets.bottom).priority(.low)
+                    make.bottom.equalTo(self.snp.bottom).offset(self.configure.edgeInsets.bottom)
                 }
             }
             self.placeholderLabel.snp.remakeConstraints { (make) in
                 make.top.equalTo(self.textView)
                 make.left.equalTo(self.textView).offset(4)
-                make.right.lessThanOrEqualTo(self.textView.snp.right).priority(.low)
+                make.right.lessThanOrEqualTo(self.textView.snp.right)
                 make.bottom.lessThanOrEqualTo(self.textView.snp.bottom)
             }
             self.textView.scrollRangeToVisible(NSRange(location: self.textView.selectedRange.location, length: 1))

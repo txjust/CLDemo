@@ -8,7 +8,6 @@
 
 #import "CLCustomTabbar.h"
 #import "UIImage+CLScaleToSize.h"
-#import <objc/runtime.h>
 
 @interface CLCustomTabbar ()
 

@@ -1379,7 +1379,6 @@
 				5B190E6823B66811005A2474 /* CLPopupManager.swift */,
 				5BB07748244454FC00EF9D3E /* CLPopupFoodPickerController */,
 				5BBA5760243F6E660003AE00 /* CLPopupTwoInputController */,
-				5BAFEE36243ECFE800E1E51E /* CLPopupOneInputController */,
 				5B8B7D2E243196C5005C8530 /* CLPopupDataPickerController */,
 				5B0978FC240E345700EFE510 /* CLPopupHudController */,
 				5BD661DC240CCD31009508CD /* CLPopupTipsController */,
@@ -1560,6 +1559,7 @@
 		5B80DA1C1DDD993F00A20E34 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				5BAFEE36243ECFE800E1E51E /* CLPopupOneInputController */,
 				5B80DA501DDD9BBE00A20E34 /* CLBaseViewController.h */,
 				5B80DA511DDD9BBE00A20E34 /* CLBaseViewController.m */,
 				5B80DA531DDD9BD500A20E34 /* CLBaseNavigationController.h */,

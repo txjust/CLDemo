@@ -9,16 +9,23 @@
 import UIKit
 
 class CLGradientLayerView: UIView {
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        guard let gradientLayer = self.layer as? CAGradientLayer else { return }
-        gradientLayer.colors = [hexColor("0x373747").cgColor, hexColor("0x22222D").cgColor]
-        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-        gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+    var colors: [CGColor] = [CGColor]() {
+        didSet {
+            guard let gradientLayer = self.layer as? CAGradientLayer else { return }
+            gradientLayer.colors = colors
+        }
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    var startPoint: CGPoint? {
+        didSet {
+            guard let gradientLayer = self.layer as? CAGradientLayer else { return }
+            gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+        }
+    }
+    var endPoint: CGPoint? {
+        didSet {
+            guard let gradientLayer = self.layer as? CAGradientLayer else { return }
+            gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+        }
     }
     override class var layerClass: AnyClass {
         return CAGradientLayer.classForCoder()
