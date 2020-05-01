@@ -11,8 +11,10 @@ import UIKit
 class CLVernierCaliperController: CLBaseViewController {
     lazy var vernierCaliperView: CLVernierCaliperView = {
         let view = CLVernierCaliperView(frame: CGRect(x: 5, y: 199, width: self.view.bounds.width - 10, height: 66)){(configure) in
-            configure.minimumUnit = 0.01
-            configure.maxValue = 3
+            configure.minimumUnit = 1
+            configure.minValue = 0
+            configure.maxValue = 100
+            configure.unit = "ml"
         }
         view.indexValueCallback = {(value) in
             print("====== \(value) ======")

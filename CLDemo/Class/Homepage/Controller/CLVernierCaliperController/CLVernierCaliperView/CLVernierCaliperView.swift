@@ -20,11 +20,11 @@ class CLVernierCaliperConfigure {
     ///指示器宽度
     var indexWidth: CGFloat = 12.0
     ///单位
-    var unit:String = ""
+    var unit: String = ""
     ///最小值
-    var minValue:CGFloat = 0.0
+    var minValue: CGFloat = 0.0
     ///最大值
-    var maxValue:CGFloat = 100.0
+    var maxValue: CGFloat = 100.0
     ///最小单位
     var minimumUnit: CGFloat = 1
     ///单位间隔

@@ -38,14 +38,18 @@ extension NSDecimalNumber {
         var string = decimal.stringValue
         var currentNumber = string.components(separatedBy: ".").last?.count ?? 0
         let exampleNumber = example.stringValue.components(separatedBy: ".").last?.count ?? 0
-        if !string.contains(".") {
-            currentNumber = 0
-            string += "."
+        if !example.stringValue.contains(".") {
+            return string
+        }else {
+            if !string.contains(".") {
+                currentNumber = 0
+                string += "."
+            }
+            for _ in 0..<exampleNumber - currentNumber {
+                string += "0"
+            }
+            return string
         }
-        for _ in 0..<exampleNumber - currentNumber {
-            string += "0"
-        }
-        return string
     }
     /// 根据小数位格式化
     func stringFormatter(withDecimalsNumber decimalsNumber: Int16) -> String {
