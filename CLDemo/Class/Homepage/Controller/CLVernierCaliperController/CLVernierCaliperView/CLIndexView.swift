@@ -24,7 +24,7 @@ extension CLIndexView {
          context?.addLine(to: CGPoint.init(x: bounds.width * 0.5, y: bounds.width * 0.5))
          context?.addLine(to: CGPoint.init(x: 0, y: 0))
          context?.move(to: CGPoint.init(x: bounds.width * 0.5, y: bounds.width * 0.5))
-         context?.addLine(to: CGPoint.init(x: bounds.width * 0.5, y: lineHeight))
+        context?.addLine(to: CGPoint.init(x: bounds.width * 0.5, y: lineHeight + bounds.width * 0.5))
          context?.closePath()
          triangleColor?.setFill()
          triangleColor?.setStroke()

@@ -9,10 +9,11 @@
 import UIKit
 
 class CLVernierCaliperHeaderCell: UICollectionViewCell {
-    var headerMinValue: CGFloat = 0.0
-    var headerUnit: String = ""
+    var minValue: CGFloat = 0.0
+    var unit: String = ""
     var long : CGFloat = 0.0
     var textFont: UIFont = UIFont.systemFont(ofSize: 14)
+    var limitDecimal: NSDecimalNumber = NSDecimalNumber(0)
 }
 extension CLVernierCaliperHeaderCell {
     override func draw(_ rect: CGRect) {
@@ -21,11 +22,12 @@ extension CLVernierCaliperHeaderCell {
         context?.setLineWidth(1.0)
         context?.setLineCap(CGLineCap.butt)
         context?.move(to: CGPoint.init(x: rect.size.width, y: 0))
-        let numStr:NSString = NSString(format: "%.2f%@", headerMinValue,headerUnit)
-        let attribute:Dictionary = [NSAttributedString.Key.font:textFont,NSAttributedString.Key.foregroundColor:UIColor.hexColor(with: "#999999")]
-        let width = numStr.boundingRect(with: CGSize.init(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude), options: NSStringDrawingOptions(rawValue: 0), attributes: attribute, context: nil).size.width
-        numStr.draw(in: CGRect.init(x: rect.size.width-width/2, y: rect.size.height - CGFloat(long) + 10, width: width, height: textFont.lineHeight), withAttributes: attribute)
-        context?.addLine(to: CGPoint.init(x: rect.size.width, y: CGFloat(long)))
+        let minString = NSDecimalNumber(value: Double(minValue)).stringFormatter(withExample: limitDecimal)
+        let numberString: String = String(format: "%@%@", minString, unit)
+        let attribute: Dictionary = [.font: textFont, NSAttributedString.Key.foregroundColor: UIColor.hexColor(with: "#999999")]
+        let width = numberString.boundingRect(with: CGSize.init(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude), options: NSStringDrawingOptions(rawValue: 0), attributes: attribute, context: nil).size.width
+        numberString.draw(in: CGRect.init(x: rect.width - width * 0.5, y: rect.height - CGFloat(long) + 10, width: width, height: textFont.lineHeight), withAttributes: attribute)
+        context?.addLine(to: CGPoint.init(x: rect.width, y: CGFloat(long)))
         context?.strokePath()
     }
 }

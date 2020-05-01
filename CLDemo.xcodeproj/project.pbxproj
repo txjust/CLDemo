@@ -205,6 +205,7 @@
 		5BCCEC66245BFC720049AC70 /* CLVernierCaliperHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCCEC65245BFC720049AC70 /* CLVernierCaliperHeaderCell.swift */; };
 		5BCCEC68245BFC890049AC70 /* CLVernierCaliperMiddleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCCEC67245BFC890049AC70 /* CLVernierCaliperMiddleCell.swift */; };
 		5BCCEC6A245BFCA00049AC70 /* CLVernierCaliperFooterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCCEC69245BFCA00049AC70 /* CLVernierCaliperFooterCell.swift */; };
+		5BCCEC6F245C292E0049AC70 /* NSDecimalNumber+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCCEC6E245C292E0049AC70 /* NSDecimalNumber+Extension.swift */; };
 		5BD661D9240CCA30009508CD /* CLPopupMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD661D7240CCA30009508CD /* CLPopupMessageController.swift */; };
 		5BD661DA240CCA30009508CD /* CLPopupTipsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD661D8240CCA30009508CD /* CLPopupTipsController.swift */; };
 		5BE0FA3C1E03C2C400914DFF /* NSString+CLCalculateSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BE0FA3B1E03C2C400914DFF /* NSString+CLCalculateSize.m */; };
@@ -576,6 +577,7 @@
 		5BCCEC65245BFC720049AC70 /* CLVernierCaliperHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLVernierCaliperHeaderCell.swift; sourceTree = "<group>"; };
 		5BCCEC67245BFC890049AC70 /* CLVernierCaliperMiddleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLVernierCaliperMiddleCell.swift; sourceTree = "<group>"; };
 		5BCCEC69245BFCA00049AC70 /* CLVernierCaliperFooterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLVernierCaliperFooterCell.swift; sourceTree = "<group>"; };
+		5BCCEC6E245C292E0049AC70 /* NSDecimalNumber+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSDecimalNumber+Extension.swift"; sourceTree = "<group>"; };
 		5BD661D7240CCA30009508CD /* CLPopupMessageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLPopupMessageController.swift; sourceTree = "<group>"; };
 		5BD661D8240CCA30009508CD /* CLPopupTipsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLPopupTipsController.swift; sourceTree = "<group>"; };
 		5BE0FA3A1E03C2C400914DFF /* NSString+CLCalculateSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CLCalculateSize.h"; sourceTree = "<group>"; };
@@ -1771,6 +1773,7 @@
 				5B3327E423DF384800CA315C /* NSString+Extension.swift */,
 				5BEA5A0D243DC96D0076BA9F /* UITextField+CLExtension.swift */,
 				5BB328AF244498230049ADE8 /* UIView+CLExtension.swift */,
+				5BCCEC6E245C292E0049AC70 /* NSDecimalNumber+Extension.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -2249,6 +2252,7 @@
 				B51EE6E523DF138200146862 /* CLChatEmojiItem.swift in Sources */,
 				5B32C81C1E7A4AF8000C1749 /* CLChartNameToolBar.m in Sources */,
 				B5498C7823DE93910082D4E5 /* CLPhoneNumberModel.m in Sources */,
+				5BCCEC6F245C292E0049AC70 /* NSDecimalNumber+Extension.swift in Sources */,
 				0C6D47E9226C37EC00699FBD /* CLPopArrowView.m in Sources */,
 				B5498C8123DED4F60082D4E5 /* CLChatLayoutTextItem.swift in Sources */,
 				0C31C38521994CCF001860C2 /* UIFont+CLFont.m in Sources */,
