@@ -103,6 +103,7 @@
         [_arrayDS addObject:NSLocalizedString(@"水平布局", nil)];
         [_arrayDS addObject:NSLocalizedString(@"标签动态排布", nil)];
         [_arrayDS addObject:NSLocalizedString(@"自定义弹窗", nil)];
+        [_arrayDS addObject:NSLocalizedString(@"游标卡尺", nil)];
         [_arrayDS addObject:NSLocalizedString(@"翻转动画", nil)];
         [_arrayDS addObject:NSLocalizedString(@"聊天框架", nil)];
         [_arrayDS addObject:NSLocalizedString(@"广播轮播", nil)];
@@ -143,6 +144,7 @@
         [_controllerArray addObject:[CLLayoutController class]];
         [_controllerArray addObject:[CLTagsController class]];
         [_controllerArray addObject:[CLPopupController class]];
+        [_controllerArray addObject:[CLVernierCaliperController class]];
         [_controllerArray addObject:[CLFlipController class]];
         [_controllerArray addObject:[CLChatController class]];
         [_controllerArray addObject:[CLBroadcastViewController class]];

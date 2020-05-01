@@ -199,6 +199,8 @@
 		5BBA5762243F6E7A0003AE00 /* CLPopupTwoInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBA5761243F6E7A0003AE00 /* CLPopupTwoInputController.swift */; };
 		5BBB62921E7444A100B28FC3 /* CLChartToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BBB62911E7444A100B28FC3 /* CLChartToolBar.m */; };
 		5BC3FB8921CE96A400B7FF82 /* CLRotatingPictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC3FB8821CE96A400B7FF82 /* CLRotatingPictureViewController.swift */; };
+		5BCCEC57245BCDE70049AC70 /* CLVernierCaliperController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCCEC56245BCDE70049AC70 /* CLVernierCaliperController.swift */; };
+		5BCCEC5A245BCE2C0049AC70 /* CLVernierCaliperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCCEC59245BCE2C0049AC70 /* CLVernierCaliperView.swift */; };
 		5BD661D9240CCA30009508CD /* CLPopupMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD661D7240CCA30009508CD /* CLPopupMessageController.swift */; };
 		5BD661DA240CCA30009508CD /* CLPopupTipsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD661D8240CCA30009508CD /* CLPopupTipsController.swift */; };
 		5BE0FA3C1E03C2C400914DFF /* NSString+CLCalculateSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BE0FA3B1E03C2C400914DFF /* NSString+CLCalculateSize.m */; };
@@ -564,6 +566,8 @@
 		5BBB62911E7444A100B28FC3 /* CLChartToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLChartToolBar.m; sourceTree = "<group>"; };
 		5BC3FB8521CE966A00B7FF82 /* CLDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CLDemo-Bridging-Header.h"; sourceTree = "<group>"; };
 		5BC3FB8821CE96A400B7FF82 /* CLRotatingPictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLRotatingPictureViewController.swift; sourceTree = "<group>"; };
+		5BCCEC56245BCDE70049AC70 /* CLVernierCaliperController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLVernierCaliperController.swift; sourceTree = "<group>"; };
+		5BCCEC59245BCE2C0049AC70 /* CLVernierCaliperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLVernierCaliperView.swift; sourceTree = "<group>"; };
 		5BD661D7240CCA30009508CD /* CLPopupMessageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLPopupMessageController.swift; sourceTree = "<group>"; };
 		5BD661D8240CCA30009508CD /* CLPopupTipsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLPopupTipsController.swift; sourceTree = "<group>"; };
 		5BE0FA3A1E03C2C400914DFF /* NSString+CLCalculateSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CLCalculateSize.h"; sourceTree = "<group>"; };
@@ -1647,6 +1651,7 @@
 			children = (
 				5B80DA2F1DDD993F00A20E34 /* CLHomepageController.h */,
 				5B80DA301DDD993F00A20E34 /* CLHomepageController.m */,
+				5BCCEC52245BCD8F0049AC70 /* CLVernierCaliperController */,
 				5B190E5A23B667DD005A2474 /* CLPopupController */,
 				5B44D1282435C6000059476D /* CLTagsController */,
 				5B49566223B4FE3D00212772 /* CLFlipController */,
@@ -1819,6 +1824,23 @@
 				5BBA5761243F6E7A0003AE00 /* CLPopupTwoInputController.swift */,
 			);
 			path = CLPopupTwoInputController;
+			sourceTree = "<group>";
+		};
+		5BCCEC52245BCD8F0049AC70 /* CLVernierCaliperController */ = {
+			isa = PBXGroup;
+			children = (
+				5BCCEC56245BCDE70049AC70 /* CLVernierCaliperController.swift */,
+				5BCCEC58245BCE1B0049AC70 /* CLVernierCaliperView */,
+			);
+			path = CLVernierCaliperController;
+			sourceTree = "<group>";
+		};
+		5BCCEC58245BCE1B0049AC70 /* CLVernierCaliperView */ = {
+			isa = PBXGroup;
+			children = (
+				5BCCEC59245BCE2C0049AC70 /* CLVernierCaliperView.swift */,
+			);
+			path = CLVernierCaliperView;
 			sourceTree = "<group>";
 		};
 		5BD661DB240CCD26009508CD /* CLPopupMessageController */ = {
@@ -2298,10 +2320,12 @@
 				0CC7796622D9D7E10027B310 /* CLPhotoBrowserViewController.m in Sources */,
 				5B2411AC243C7FB600B2E0DC /* CLYearMonthDayHourMinuteDataPickerView.swift in Sources */,
 				5BEA5A0C243DC5540076BA9F /* CLPopupBMIInputController.swift in Sources */,
+				5BCCEC57245BCDE70049AC70 /* CLVernierCaliperController.swift in Sources */,
 				5B44D12A2435C61E0059476D /* CLTagsController.swift in Sources */,
 				0CB60B14237EC51100D10317 /* CLHorizontalCell.m in Sources */,
 				0CC171422248B4D2005B0F0A /* CLGCDTimerManager.m in Sources */,
 				B51EE6E323DF138200146862 /* CLChatTextView.swift in Sources */,
+				5BCCEC5A245BCE2C0049AC70 /* CLVernierCaliperView.swift in Sources */,
 				B5498C7D23DED4220082D4E5 /* CLChatLayoutTextCell.swift in Sources */,
 				0CCDA31C219922680057BA14 /* CLChangeFontSizeSlider.m in Sources */,
 				0CF4EF912330834400D8B95E /* CLInputPasswordViewController.m in Sources */,
