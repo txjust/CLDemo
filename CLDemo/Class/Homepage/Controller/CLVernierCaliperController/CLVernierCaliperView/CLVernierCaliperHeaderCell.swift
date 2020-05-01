@@ -11,7 +11,7 @@ import UIKit
 class CLVernierCaliperHeaderCell: UICollectionViewCell {
     var headerMinValue: CGFloat = 0.0
     var headerUnit: String = ""
-    var long : CGFloat = 30.0
+    var long : CGFloat = 0.0
     var textFont: UIFont = UIFont.systemFont(ofSize: 14)
 }
 extension CLVernierCaliperHeaderCell {

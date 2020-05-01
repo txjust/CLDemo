@@ -11,12 +11,12 @@ import UIKit
 class CLVernierCaliperMiddleCell: UICollectionViewCell {
     var minValue: CGFloat = 0.0
     var maxValue: CGFloat = 0.0
-    var unit:String = ""
+    var unit :String = ""
     var step: CGFloat = 0.0
-    var betweenNumber = 0
-    var gap: CGFloat = 12
-    var long: CGFloat = 30.0
-    var short: CGFloat = 15.0
+    var betweenNumber: Int = 0
+    var gap: CGFloat = 0.0
+    var long: CGFloat = 0.0
+    var short: CGFloat = 0.0
     var textFont: UIFont = UIFont.systemFont(ofSize: 14)
 }
 extension CLVernierCaliperMiddleCell {

@@ -10,7 +10,10 @@ import UIKit
 
 class CLVernierCaliperController: CLBaseViewController {
     lazy var vernierCaliperView: CLVernierCaliperView = {
-        let view = CLVernierCaliperView(frame: CGRect(x: 5, y: 199, width: self.view.bounds.width - 10, height: 66), tminValue: 0.0, tmaxValue: 23.0, tstep: 0.1, tNum: 10)
+        let view = CLVernierCaliperView(frame: CGRect(x: 5, y: 199, width: self.view.bounds.width - 10, height: 66), minValue: 0.0, maxValue: 23.0, minimumUnit: 0.1, unitInterval: 10)
+        view.indexValueCallback = {(value) in
+            print("====== \(value) ======")
+        }
         return view
     }()
 }

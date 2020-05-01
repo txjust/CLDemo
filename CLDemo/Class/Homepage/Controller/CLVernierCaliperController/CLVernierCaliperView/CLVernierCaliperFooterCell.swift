@@ -11,9 +11,8 @@ import UIKit
 class CLVernierCaliperFooterCell: UICollectionViewCell {
     var footerMaxValue: CGFloat = 0.0
     var footerUnit: String = ""
-    var RulerLong : CGFloat       = 30.0
-    var RulerShort : CGFloat      = 15.0
-    var textFont : UIFont   = UIFont.systemFont(ofSize: 14)
+    var long : CGFloat = 0.0
+    var textFont : UIFont = UIFont.systemFont(ofSize: 14)
 }
 extension CLVernierCaliperFooterCell {
     override func draw(_ rect: CGRect) {
@@ -25,8 +24,8 @@ extension CLVernierCaliperFooterCell {
         let numStr:NSString = NSString(format: "%.2f%@", footerMaxValue,footerUnit)
         let attribute:Dictionary = [NSAttributedString.Key.font:textFont,NSAttributedString.Key.foregroundColor:UIColor.hexColor(with: "#999999")]
         let width = numStr.boundingRect(with: CGSize.init(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude), options: NSStringDrawingOptions(rawValue: 0), attributes: attribute, context: nil).size.width
-        numStr.draw(in: CGRect.init(x: 0-width/2, y: CGFloat(rect.size.height - CGFloat(RulerLong) + 10), width: width, height:textFont.lineHeight), withAttributes: attribute)
-        context?.addLine(to: CGPoint.init(x: 0, y: CGFloat(RulerLong)))
+        numStr.draw(in: CGRect.init(x: 0-width/2, y: CGFloat(rect.size.height - CGFloat(long) + 10), width: width, height:textFont.lineHeight), withAttributes: attribute)
+        context?.addLine(to: CGPoint.init(x: 0, y: CGFloat(long)))
         context?.strokePath()
     }
 }
