@@ -43,7 +43,7 @@ class CLVernierCaliperView: UIView {
     lazy var indexView: CLIndexView = {
         let view = CLIndexView()
         view.frame = CGRect(x: (bounds.width - triangleWidth) * 0.5, y: 0, width: triangleWidth, height: bounds.height)
-        view.lineHeight = long
+        view.lineHeight = long + 6
         view.backgroundColor = UIColor.clear
         view.triangleColor = UIColor.hexColor(with: "#2DD178")
         return view
@@ -63,19 +63,19 @@ class CLVernierCaliperView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    func setRealValueAndAnimated(realValue:CGFloat,animated:Bool){
-        collectionView.setContentOffset(CGPoint.init(x: Int(realValue) * Int(gap), y: 0), animated: animated)
+}
+extension CLVernierCaliperView {
+    private func setRealValue(realValue:CGFloat, animated:Bool) {
+        collectionView.setContentOffset(CGPoint.init(x: Int(realValue) * Int(gap), y: 0), animated:  animated)
     }
-    func setDefaultValueAndAnimated(defaultValue:CGFloat,animated:Bool){
-        collectionView.setContentOffset(CGPoint.init(x: Int(defaultValue - minValue / minimumUnit) * Int(gap), y: 0), animated: animated)
+    func setValue(value:CGFloat, animated:Bool){
+        collectionView.setContentOffset(CGPoint.init(x: Int((value - minValue) / minimumUnit) * Int(gap), y: 0), animated: animated)
     }
 }
-
-extension CLVernierCaliperView:UICollectionViewDataSource{
+extension CLVernierCaliperView:UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 2 + self.section
     }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.item == 0 {
             let cell:UICollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CLVernierCaliperHeaderCell", for: indexPath)
@@ -116,7 +116,7 @@ extension CLVernierCaliperView:UICollectionViewDataSource{
         }
     }
 }
-extension CLVernierCaliperView:UICollectionViewDelegate{
+extension CLVernierCaliperView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
     }
@@ -127,14 +127,14 @@ extension CLVernierCaliperView:UICollectionViewDelegate{
     }
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if !decelerate {
-            self.setRealValueAndAnimated(realValue: (scrollView.contentOffset.x) / (gap), animated: true)
+            self.setRealValue(realValue: (scrollView.contentOffset.x) / (gap),  animated: true)
         }
     }
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        self.setRealValueAndAnimated(realValue: (scrollView.contentOffset.x) / (gap), animated: true)
+        self.setRealValue(realValue: (scrollView.contentOffset.x) / (gap),  animated: true)
     }
 }
-extension CLVernierCaliperView:UICollectionViewDelegateFlowLayout{
+extension CLVernierCaliperView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.item == 0 || indexPath.item == section + 1 {
             return CGSize(width: self.frame.width * 0.5, height: collectionView.frame.height)
