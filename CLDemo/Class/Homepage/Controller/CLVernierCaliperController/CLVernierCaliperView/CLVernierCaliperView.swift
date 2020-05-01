@@ -42,11 +42,11 @@ class CLVernierCaliperView: UIView {
         }
     }
     var indexValueCallback: ((String) -> ())?
-    lazy var collectionView: UICollectionView = {[unowned self]in
+    private lazy var collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
         flowLayout.sectionInset = .zero
-        let collectionView: UICollectionView = UICollectionView(frame: CGRect(x: 0, y: configure.indexWidth * 0.5, width: bounds.width, height: bounds.height - configure.indexWidth * 0.5), collectionViewLayout: flowLayout)
+        let collectionView = UICollectionView(frame: CGRect(x: 0, y: configure.indexWidth * 0.5, width: bounds.width, height: bounds.height - configure.indexWidth * 0.5), collectionViewLayout: flowLayout)
         collectionView.backgroundColor    = UIColor.hexColor(with: "#F7F7F7")
         collectionView.bounces            = true
         collectionView.showsHorizontalScrollIndicator = false
@@ -58,7 +58,7 @@ class CLVernierCaliperView: UIView {
         collectionView.register(CLVernierCaliperMiddleCell.self, forCellWithReuseIdentifier: "CLVernierCaliperMiddleCell")
         return collectionView
     }()
-    lazy var indexView: CLIndexView = {
+    private lazy var indexView: CLIndexView = {
         let view = CLIndexView(frame: CGRect(x: (bounds.width - configure.indexWidth) * 0.5, y: 0, width: configure.indexWidth, height: bounds.height))
         view.backgroundColor = UIColor.clear
         view.triangleColor = UIColor.hexColor(with: "#2DD178")

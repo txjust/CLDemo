@@ -10,7 +10,7 @@ import UIKit
 
 class CLVernierCaliperController: CLBaseViewController {
     lazy var vernierCaliperView: CLVernierCaliperView = {
-        let view = CLVernierCaliperView(frame: CGRect(x: 5, y: 199, width: self.view.bounds.width - 10, height: 66)){(configure) in
+        let view = CLVernierCaliperView(frame: CGRect(x: 5, y: 199, width: self.view.bounds.width - 10, height: 60 + 7)){(configure) in
             configure.minimumUnit = 0.1
             configure.unitInterval = 5
             configure.minValue = 0
