@@ -8,11 +8,11 @@
 
 #import "CLTabbarController.h"
 #import "CLBaseNavigationController.h"
-#import "CLMyController.h"
 #import "CLCollectionController.h"
 #import "CLCurriculumController.h"
 #import "CLHomepageController.h"
 #import "CLCustomTabbar.h"
+#import "CLDemo-Swift.h"
 
 @interface CLTabbarController ()
 

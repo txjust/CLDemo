@@ -24,7 +24,7 @@
     self.window.rootViewController = tbc;
     [self.window makeKeyAndVisible];
     [self registerLocalNotification];
-    [FPSDisplay shareFPSDisplay];
+//    [FPSDisplay shareFPSDisplay];
     return YES;
 }
 - (void)registerLocalNotification{

@@ -235,9 +235,4 @@
     return _titlesView;
 }
 
-
-
-
-
-
 @end
