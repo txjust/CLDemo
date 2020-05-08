@@ -15,6 +15,10 @@ protocol CLTitleControllerViewDataSource {
     func titleControllerView(controllerClassAt index: Int) -> (class: UIViewController.Type, fatherController: UIViewController)
 }
 
+class CLTitleControllerButton: UIButton {
+    var isCreated: Bool = false
+}
+
 class CLTitleControllerView: UIView {
     private var dataSource: CLTitleControllerViewDataSource!
     private var gap: CGFloat = 0.0
