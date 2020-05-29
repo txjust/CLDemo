@@ -51,27 +51,14 @@
             [imageView sd_setImageWithURL:photoBrowser.currentImageUrl placeholderImage:photoBrowser.currentPlaceholderImage];
         }
         [containerView addSubview:imageView];
-        if (CGRectIsEmpty(fromFrame)) {
-            CGRect toFrame = [CLPhotoBrowserImageScaleHelper calculateScaleFrameWithImageSize:imageView.image.size maxSize:[UIScreen mainScreen].bounds.size offset:NO];
+        CGRect toFrame = [CLPhotoBrowserImageScaleHelper calculateScaleFrameWithImageSize:imageView.image.size maxSize:[UIScreen mainScreen].bounds.size offset:NO];
+        [UIView animateWithDuration:self.animatedDuration delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
             imageView.frame = toFrame;
-            imageView.alpha = 0.0;
-            [UIView animateWithDuration:self.animatedDuration delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-                imageView.alpha = 1.0;
-            } completion:^(BOOL finished) {
-                photoBrowser.view.hidden = NO;
-                [imageView removeFromSuperview];
-                [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
-            }];
-        }else {
-            CGRect toFrame = [CLPhotoBrowserImageScaleHelper calculateScaleFrameWithImageSize:imageView.image.size maxSize:[UIScreen mainScreen].bounds.size offset:NO];
-            [UIView animateWithDuration:self.animatedDuration delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-                imageView.frame = toFrame;
-            } completion:^(BOOL finished) {
-                photoBrowser.view.hidden = NO;
-                [imageView removeFromSuperview];
-                [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
-            }];
-        }
+        } completion:^(BOOL finished) {
+            photoBrowser.view.hidden = NO;
+            [imageView removeFromSuperview];
+            [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
+        }];
     }else {
         CLPhotoBrowser *photoBrowser = (CLPhotoBrowser *)fromVc;
         photoBrowser.view.hidden = YES;
@@ -89,22 +76,12 @@
         }
         [containerView addSubview:imageView];
         CGRect toFrame = photoBrowser.smallImageFrame;
-        if (CGRectIsEmpty(toFrame)) {
-            imageView.alpha = 1.0;
-            [UIView animateWithDuration:self.animatedDuration delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-                imageView.alpha = 0.0;
-            } completion:^(BOOL finished) {
-                [imageView removeFromSuperview];
-                [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
-            }];
-        }else {
-            [UIView animateWithDuration:self.animatedDuration delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-                imageView.frame = toFrame;
-            } completion:^(BOOL finished) {
-                [imageView removeFromSuperview];
-                [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
-            }];
-        }
+        [UIView animateWithDuration:self.animatedDuration delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            imageView.frame = toFrame;
+        } completion:^(BOOL finished) {
+            [imageView removeFromSuperview];
+            [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
+        }];
     }
 }
 

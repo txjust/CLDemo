@@ -32,7 +32,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param index 当前选中位置
  @param zoomView 动画View
  */
-- (void)showPhotoBrowserWithImageUrls:(nonnull NSArray<NSURL *> *)imageUrls placeholder:(nonnull UIImage *)placeholder index:(NSInteger)index zoomView:(nullable UIView *(^)(NSInteger index))zoomView;
+- (void)showPhotoBrowserWithImageUrls:(nonnull NSArray<NSURL *> *)imageUrls placeholder:(nonnull UIImage *)placeholder index:(NSInteger)index zoomView:(nonnull UIView *(^)(NSInteger index))zoomView;
 
 
 /**
@@ -43,7 +43,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param index 当前选中位置
  @param zoomView 动画View
  */
-- (void)showPhotoBrowserWithImageUrls:(nonnull NSArray<NSURL *> *)imageUrls placeholderImages:(nonnull NSArray<UIImage *> *)placeholderImages index:(NSInteger)index zoomView:(nullable UIView *(^)(NSInteger index))zoomView;
+- (void)showPhotoBrowserWithImageUrls:(nonnull NSArray<NSURL *> *)imageUrls placeholderImages:(nonnull NSArray<UIImage *> *)placeholderImages index:(NSInteger)index zoomView:(nonnull UIView *(^)(NSInteger index))zoomView;
 
 
 /**
@@ -53,7 +53,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param index 当前选中位置
  @param zoomView 动画View
  */
-- (void)showPhotoBrowserWithImages:(nonnull NSArray<UIImage *> *)images index:(NSInteger)index zoomView:(nullable UIView *(^)(NSInteger index))zoomView;
+- (void)showPhotoBrowserWithImages:(nonnull NSArray<UIImage *> *)images index:(NSInteger)index zoomView:(nonnull UIView *(^)(NSInteger index))zoomView;
 
 
 @end

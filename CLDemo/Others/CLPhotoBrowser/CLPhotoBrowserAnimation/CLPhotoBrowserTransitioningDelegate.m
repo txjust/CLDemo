@@ -25,13 +25,13 @@
 
 //控制器创建执行的动画（返回一个实现UIViewControllerAnimatedTransitioning协议的类）
 - (nullable id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *__unused)presented presentingController:(UIViewController *__unused)presenting sourceController:(UIViewController *__unused)source {
-    CLPhotoBrowserAnimatedTransitioning *animated = [[CLPhotoBrowserAnimatedTransitioning alloc] initWithAnimatedType:present animatedDuration:0.45];
+    CLPhotoBrowserAnimatedTransitioning *animated = [[CLPhotoBrowserAnimatedTransitioning alloc] initWithAnimatedType:present animatedDuration:0.25];
     return animated;
 }
 
 //控制器销毁执行的动画（返回一个实现UIViewControllerAnimatedTransitioning协议的类）
 - (nullable id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *__unused)dismissed {
-    CLPhotoBrowserAnimatedTransitioning *animated = [[CLPhotoBrowserAnimatedTransitioning alloc] initWithAnimatedType:dismiss animatedDuration:0.45];
+    CLPhotoBrowserAnimatedTransitioning *animated = [[CLPhotoBrowserAnimatedTransitioning alloc] initWithAnimatedType:dismiss animatedDuration:0.25];
     return animated;
 }
 - (void)setAlpha:(CGFloat)alpha {
