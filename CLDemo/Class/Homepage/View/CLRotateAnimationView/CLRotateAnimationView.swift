@@ -9,7 +9,6 @@
 import UIKit
 
 class CLRotateAnimationViewConfigure: NSObject {
-   
     ///开始起点
     var startAngle: CGFloat = -(.pi * 0.5)
     ///开始结束点
@@ -36,6 +35,8 @@ class CLRotateAnimationView: UIView {
     private let configure: CLRotateAnimationViewConfigure = CLRotateAnimationViewConfigure.defaultConfigure()
     ///layer数组
     private var layerArray: Array<CALayer> = Array()
+    ///是否开始动画
+    var isStart: Bool = false
     ///是否暂停
     private var isPause: Bool = false
 
@@ -81,14 +82,21 @@ class CLRotateAnimationView: UIView {
         configureBlock?(configure)
         let intervalDuration: CGFloat = CGFloat(CGFloat(configure.duration) / 2.0 / CGFloat(configure.number));
         configure.intervalDuration = min(configure.intervalDuration, TimeInterval(intervalDuration));
+        if self.isStart {
+            stopAnimation()
+            startAnimation()
+        }
     }
 }
 extension CLRotateAnimationView {
     ///开始动画
     func startAnimation() -> Void {
-        animation()
-        for item in layerArray {
-            layer.addSublayer(item)
+        if self.layerArray.isEmpty {
+            animation()
+            for item in layerArray {
+                layer.addSublayer(item)
+            }
+            isStart = true
         }
     }
     ///停止动画
@@ -97,6 +105,7 @@ extension CLRotateAnimationView {
             item.removeFromSuperlayer()
         }
         layerArray.removeAll()
+        isStart = false
     }
     ///暂停动画
     func pauseAnimation() {
