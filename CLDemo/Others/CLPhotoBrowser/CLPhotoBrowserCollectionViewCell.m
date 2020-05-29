@@ -8,9 +8,13 @@
 #import "CLPhotoBrowserCollectionViewCell.h"
 #import "CLPhotoBrowserImageScaleHelper.h"
 #import <SDWebImage/SDWebImage.h>
+#import <Photos/Photos.h>
+#import "CKD-Swift.h"
 
 @interface CLPhotoBrowserCollectionViewCell ()<UIScrollViewDelegate, UIGestureRecognizerDelegate>
 
+///保存按钮
+@property (nonatomic, strong) UIButton *saveButton;
 ///滑动视图
 @property (nonatomic, strong) UIScrollView *scrollView;
 ///imageView
@@ -36,7 +40,19 @@
 - (void)initUI {
     self.backgroundColor = [UIColor clearColor];
     [self.contentView addSubview:self.scrollView];
+    [self.contentView addSubview:self.saveButton];
     [self.scrollView addSubview:self.imageView];
+    
+    [self.saveButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        if (@available(iOS 11.0, *)) {
+            make.bottom.mas_equalTo(self.mas_safeAreaLayoutGuideBottom).mas_offset(-10);
+            make.right.mas_equalTo(self.mas_safeAreaLayoutGuideRight).mas_offset(-10);
+        } else {
+            make.top.mas_equalTo(-10);
+            make.right.mas_equalTo(10);
+        }
+        make.size.mas_equalTo(CGSizeMake(70, 30));
+    }];
 }
 - (void)addGestureRecognizer {
     UITapGestureRecognizer *singleTapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(singleTapAction)];
@@ -216,6 +232,35 @@
         return YES;
     }
 }
+- (void)savePhoto {
+    UIImage *image = self.imageView.image;
+    [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
+        [PHAssetChangeRequest creationRequestForAssetFromImage:image];
+    } completionHandler:^(BOOL success, NSError * _Nullable error) {
+        if (!error) {
+            [CLPopupManager showTipsWithConfigureCallback:^(CLPopupManagerConfigure * configure) {
+                configure.statusBarStyle = UIStatusBarStyleLightContent;
+            } text:@"保存成功" dismissInterval:1.0 dissmissCallBack:^{
+                
+            }];
+        }
+    }];
+}
+- (UIButton *)saveButton {
+    if (_saveButton == nil) {
+        _saveButton = [UIButton new];
+        [_saveButton setTitle:@"保存" forState:UIControlStateNormal];
+        [_saveButton setTitle:@"保存" forState:UIControlStateSelected];
+        [_saveButton setTitle:@"保存" forState:UIControlStateHighlighted];
+        _saveButton.layer.cornerRadius = 5;
+        _saveButton.layer.borderWidth = 1;
+        _saveButton.layer.borderColor = [[UIColor hexColorWith:@"2DD178" alpha:1.0] CGColor];
+        _saveButton.clipsToBounds = YES;
+        _saveButton.titleLabel.font = [UIFont systemFontOfSize:14];
+        [_saveButton addTarget:self action:@selector(savePhoto) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _saveButton;
+}
 - (UIScrollView *) scrollView {
     if (_scrollView == nil) {
         _scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
@@ -242,5 +287,4 @@
     }
     return _imageView;
 }
-
 @end

@@ -11,7 +11,7 @@
 #import "CLPhotoBrowserCollectionViewCell.h"
 #import "CLPhotoBrowserImageScaleHelper.h"
 #import <Masonry/Masonry.h>
-#import <SDWebImageWebPCoder/SDWebImageWebPCoder.h>
+//#import <SDWebImageWebPCoder/SDWebImageWebPCoder.h>
 #import <SDWebImage/SDWebImage.h>
 
 @interface CLPhotoBrowser ()<UICollectionViewDelegate, UICollectionViewDataSource>
@@ -41,19 +41,19 @@
 
 @implementation CLPhotoBrowser
 
-- (void)showPhotoBrowserWithImageUrls:(nonnull NSArray<NSURL *> *)imageUrls placeholder:(nonnull UIImage *)placeholder index:(NSInteger)index zoomView:(nonnull UIView *(^)(NSInteger index))zoomView {
+- (void)showPhotoBrowserWithImageUrls:(nonnull NSArray<NSURL *> *)imageUrls placeholder:(nonnull UIImage *)placeholder index:(NSInteger)index zoomView:(nullable UIView *(^)(NSInteger index))zoomView {
     [self showPhotoBrowserWithImages:nil imageUrls:imageUrls placeholderImages:nil placeholder:placeholder index:index zoomView:zoomView];
 }
 
-- (void)showPhotoBrowserWithImageUrls:(nonnull NSArray<NSURL *> *)imageUrls placeholderImages:(nonnull NSArray<UIImage *> *)placeholderImages index:(NSInteger)index zoomView:(nonnull UIView *(^)(NSInteger index))zoomView {
+- (void)showPhotoBrowserWithImageUrls:(nonnull NSArray<NSURL *> *)imageUrls placeholderImages:(nonnull NSArray<UIImage *> *)placeholderImages index:(NSInteger)index zoomView:(nullable UIView *(^)(NSInteger index))zoomView {
     [self showPhotoBrowserWithImages:nil imageUrls:imageUrls placeholderImages:placeholderImages placeholder:nil index:index zoomView:zoomView];
 }
 
-- (void)showPhotoBrowserWithImages:(nonnull NSArray<UIImage *> *)images index:(NSInteger)index zoomView:(nonnull UIView *(^)(NSInteger index))zoomView {
+- (void)showPhotoBrowserWithImages:(nonnull NSArray<UIImage *> *)images index:(NSInteger)index zoomView:(nullable UIView *(^)(NSInteger index))zoomView {
     [self showPhotoBrowserWithImages:images imageUrls:nil placeholderImages:nil placeholder:nil index:index zoomView:zoomView];
 }
 
-- (void)showPhotoBrowserWithImages:(nullable NSArray<UIImage *> *)images imageUrls:(nullable NSArray<NSURL *> *)imageUrls placeholderImages:(nullable NSArray<UIImage *> *)placeholderImages placeholder:(nullable UIImage *)placeholder index:(NSInteger)index zoomView:(nonnull UIView *(^)(NSInteger index))zoomView {
+- (void)showPhotoBrowserWithImages:(nullable NSArray<UIImage *> *)images imageUrls:(nullable NSArray<NSURL *> *)imageUrls placeholderImages:(nullable NSArray<UIImage *> *)placeholderImages placeholder:(nullable UIImage *)placeholder index:(NSInteger)index zoomView:(nullable UIView *(^)(NSInteger index))zoomView {
     self.images = images;
     self.imageUrls = imageUrls;
     self.placeholderImages = placeholderImages;
@@ -76,7 +76,7 @@
         self.modalPresentationStyle = UIModalPresentationCustom;
         self.modalPresentationCapturesStatusBarAppearance = YES;
         self.transitioningDelegate = self.transitioning;
-        [[SDImageCodersManager sharedManager] addCoder:[SDImageWebPCoder sharedCoder]];
+//        [[SDImageCodersManager sharedManager] addCoder:[SDImageWebPCoder sharedCoder]];
     }
     return self;
 }
