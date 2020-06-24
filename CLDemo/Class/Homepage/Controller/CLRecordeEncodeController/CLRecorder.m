@@ -9,6 +9,7 @@
 #import "CLRecorder.h"
 #import <AVFoundation/AVFoundation.h>
 #import "CLMp3Encoder.h"
+#import "CLDataWriter.h"
 
 #define INPUT_BUS 1
 
@@ -18,8 +19,9 @@
 
 @property (nonatomic, strong) CLMp3Encoder *mp3Encoder;
 
-@end
+@property (nonatomic, strong) CLDataWriter *dataWriter;
 
+@end
 
 @implementation CLRecorder
 
@@ -143,8 +145,18 @@ static OSStatus RecordCallback(void *inRefCon,
         _mp3Encoder.outputChannelsPerFrame = 1;
         _mp3Encoder.bitRate = 16;
         _mp3Encoder.quality = 9;
+        __weak __typeof(self) weakSelf = self;
+        _mp3Encoder.processingEncodedData = ^(NSData * _Nonnull mp3Data) {
+            __typeof(&*weakSelf) strongSelf = weakSelf;
+            [strongSelf.dataWriter writeData:mp3Data toPath:strongSelf.mp3Path];
+        };
     }
     return _mp3Encoder;
 }
-
+- (CLDataWriter *)dataWriter {
+    if (!_dataWriter) {
+        _dataWriter = [[CLDataWriter alloc] init];
+    }
+    return _dataWriter;
+}
 @end

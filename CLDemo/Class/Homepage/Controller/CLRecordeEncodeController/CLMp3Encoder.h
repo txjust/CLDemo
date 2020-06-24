@@ -13,22 +13,19 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CLMp3Encoder : NSObject
 
-@property (nonatomic, assign, readonly) BOOL   running;
-@property (nonatomic, assign) double inputSampleRate; //输入buffer帧率
-@property (nonatomic, assign) double outputSampleRate; //编码输出帧率
-@property (nonatomic, assign) int  outputChannelsPerFrame; //输出频道数 单声道还是双声道
-@property (nonatomic, assign) int  bitRate; //输出频道数 单声道还是双声道
-@property (nonatomic, assign) int  quality; // 0 - 9 (high - low)
- 
+@property (nonatomic, assign, readonly) BOOL isRunning;
+@property (nonatomic, assign) double inputSampleRate;
+@property (nonatomic, assign) double outputSampleRate;
+@property (nonatomic, assign) int  outputChannelsPerFrame;
+@property (nonatomic, assign) int  bitRate;
+@property (nonatomic, assign) int  quality;
 @property (nonatomic, copy) void(^processingEncodedData)(NSData *mp3Data);
-
 
 - (void)run;
  
 - (void)stop;
  
 - (void)processAudioBufferList:(AudioBufferList)audioBufferList;
-
 
 @end
 
