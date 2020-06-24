@@ -153,6 +153,9 @@
 		5B3327E523DF384800CA315C /* NSString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3327E423DF384800CA315C /* NSString+Extension.swift */; };
 		5B3327E823DF3E0A00CA315C /* recoredWave_dk.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B3327E723DF3E0A00CA315C /* recoredWave_dk.json */; };
 		5B3327EA23DF41E800CA315C /* CLChatRecordTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3327E923DF41E800CA315C /* CLChatRecordTimeView.swift */; };
+		5B42F09024A3918D006861BF /* CLRecordeEncodeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B42F08F24A3918D006861BF /* CLRecordeEncodeController.m */; };
+		5B42F09324A393D6006861BF /* CLRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B42F09224A393D6006861BF /* CLRecorder.m */; };
+		5B42F09624A39421006861BF /* CLMp3Encoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B42F09524A39421006861BF /* CLMp3Encoder.m */; };
 		5B44D0DA243398EF0059476D /* CLHourMinuteDataPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B44D0D9243398EF0059476D /* CLHourMinuteDataPickerView.swift */; };
 		5B44D12A2435C61E0059476D /* CLTagsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B44D1292435C61E0059476D /* CLTagsController.swift */; };
 		5B44D12C2435C6F10059476D /* CLTagsFrameHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B44D12B2435C6F10059476D /* CLTagsFrameHelper.swift */; };
@@ -189,7 +192,7 @@
 		5B8B7D32243197D6005C8530 /* CLYearMonthDayDataPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B7D31243197D6005C8530 /* CLYearMonthDayDataPickerView.swift */; };
 		5B8EAFED2444A29800317DC1 /* food.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B8EAFEC2444A29700317DC1 /* food.json */; };
 		5B919B6A243CD03A000D5EDA /* CLDataPickerTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B919B69243CD03A000D5EDA /* CLDataPickerTitleView.swift */; };
-		5BAB9F3024A3017900BAC6B5 /* CLRecordeEncodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAB9F2F24A3017900BAC6B5 /* CLRecordeEncodeController.swift */; };
+		5BAB9F3824A319E700BAC6B5 /* libmp3lame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BAB9F3724A319E700BAC6B5 /* libmp3lame.a */; };
 		5BAFEE38243ECFFB00E1E51E /* CLPopupOneInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAFEE37243ECFFB00E1E51E /* CLPopupOneInputController.swift */; };
 		5BB0774A2444552C00EF9D3E /* CLPopupFoodPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB077492444552C00EF9D3E /* CLPopupFoodPickerController.swift */; };
 		5BB0774C2444570E00EF9D3E /* CLPopupFoodPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB0774B2444570E00EF9D3E /* CLPopupFoodPickerView.swift */; };
@@ -493,6 +496,12 @@
 		5B3327E423DF384800CA315C /* NSString+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSString+Extension.swift"; sourceTree = "<group>"; };
 		5B3327E723DF3E0A00CA315C /* recoredWave_dk.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = recoredWave_dk.json; sourceTree = "<group>"; };
 		5B3327E923DF41E800CA315C /* CLChatRecordTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLChatRecordTimeView.swift; sourceTree = "<group>"; };
+		5B42F08E24A3918D006861BF /* CLRecordeEncodeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLRecordeEncodeController.h; sourceTree = "<group>"; };
+		5B42F08F24A3918D006861BF /* CLRecordeEncodeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLRecordeEncodeController.m; sourceTree = "<group>"; };
+		5B42F09124A393D6006861BF /* CLRecorder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLRecorder.h; sourceTree = "<group>"; };
+		5B42F09224A393D6006861BF /* CLRecorder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLRecorder.m; sourceTree = "<group>"; };
+		5B42F09424A39421006861BF /* CLMp3Encoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLMp3Encoder.h; sourceTree = "<group>"; };
+		5B42F09524A39421006861BF /* CLMp3Encoder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLMp3Encoder.m; sourceTree = "<group>"; };
 		5B44D0D9243398EF0059476D /* CLHourMinuteDataPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLHourMinuteDataPickerView.swift; sourceTree = "<group>"; };
 		5B44D1292435C61E0059476D /* CLTagsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLTagsController.swift; sourceTree = "<group>"; };
 		5B44D12B2435C6F10059476D /* CLTagsFrameHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLTagsFrameHelper.swift; sourceTree = "<group>"; };
@@ -557,7 +566,8 @@
 		5B8B7D31243197D6005C8530 /* CLYearMonthDayDataPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLYearMonthDayDataPickerView.swift; sourceTree = "<group>"; };
 		5B8EAFEC2444A29700317DC1 /* food.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = food.json; sourceTree = "<group>"; };
 		5B919B69243CD03A000D5EDA /* CLDataPickerTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLDataPickerTitleView.swift; sourceTree = "<group>"; };
-		5BAB9F2F24A3017900BAC6B5 /* CLRecordeEncodeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLRecordeEncodeController.swift; sourceTree = "<group>"; };
+		5BAB9F3624A319E100BAC6B5 /* lame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lame.h; sourceTree = "<group>"; };
+		5BAB9F3724A319E700BAC6B5 /* libmp3lame.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libmp3lame.a; sourceTree = "<group>"; };
 		5BAFEE37243ECFFB00E1E51E /* CLPopupOneInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLPopupOneInputController.swift; sourceTree = "<group>"; };
 		5BB077492444552C00EF9D3E /* CLPopupFoodPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLPopupFoodPickerController.swift; sourceTree = "<group>"; };
 		5BB0774B2444570E00EF9D3E /* CLPopupFoodPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLPopupFoodPickerView.swift; sourceTree = "<group>"; };
@@ -631,6 +641,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				21EDC4EF98A85BE0B0BAD366 /* Pods_CLDemo.framework in Frameworks */,
+				5BAB9F3824A319E700BAC6B5 /* libmp3lame.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1813,9 +1824,24 @@
 		5BAB9F2B24A3011900BAC6B5 /* CLRecordeEncodeController */ = {
 			isa = PBXGroup;
 			children = (
-				5BAB9F2F24A3017900BAC6B5 /* CLRecordeEncodeController.swift */,
+				5BAB9F3524A319CF00BAC6B5 /* LAME */,
+				5B42F08E24A3918D006861BF /* CLRecordeEncodeController.h */,
+				5B42F08F24A3918D006861BF /* CLRecordeEncodeController.m */,
+				5B42F09124A393D6006861BF /* CLRecorder.h */,
+				5B42F09224A393D6006861BF /* CLRecorder.m */,
+				5B42F09424A39421006861BF /* CLMp3Encoder.h */,
+				5B42F09524A39421006861BF /* CLMp3Encoder.m */,
 			);
 			path = CLRecordeEncodeController;
+			sourceTree = "<group>";
+		};
+		5BAB9F3524A319CF00BAC6B5 /* LAME */ = {
+			isa = PBXGroup;
+			children = (
+				5BAB9F3624A319E100BAC6B5 /* lame.h */,
+				5BAB9F3724A319E700BAC6B5 /* libmp3lame.a */,
+			);
+			path = LAME;
 			sourceTree = "<group>";
 		};
 		5BAFEE36243ECFE800E1E51E /* CLPopupOneInputController */ = {
@@ -2208,7 +2234,6 @@
 				5B12FC751E7157BF0091A0E2 /* CLChartMaskView.m in Sources */,
 				B5A705B223F29E5E007745BC /* CLChatPhotoAlbumContentView.swift in Sources */,
 				B5A705B423F2AE1C007745BC /* CLChatPhotoAlbumCell.swift in Sources */,
-				5BAB9F3024A3017900BAC6B5 /* CLRecordeEncodeController.swift in Sources */,
 				0CE7333F2191CB9D00270851 /* Tools.m in Sources */,
 				5BB328AE244491F60049ADE8 /* CLPopupFoodPickerContentView.swift in Sources */,
 				B51EE6C923DF093E00146862 /* CLChatLayoutItem.swift in Sources */,
@@ -2233,6 +2258,7 @@
 				0C558A9521ED956700C2C096 /* CLPasswordInputView.m in Sources */,
 				5B809616221870BD000F72F3 /* CLScanBankCardManager.m in Sources */,
 				0C52EF6D2192949A0079A0E7 /* NSBundle+CLLanguage.m in Sources */,
+				5B42F09324A393D6006861BF /* CLRecorder.m in Sources */,
 				0C558AE421EDA2E800C2C096 /* UIColor+CLHex.m in Sources */,
 				0C61577822BE1241009AABAC /* CLSectorAnimationView.swift in Sources */,
 				5B80DA4E1DDD993F00A20E34 /* CLCustomTabbar.m in Sources */,
@@ -2335,8 +2361,10 @@
 				5B876CAF2445937200DC4424 /* CLPopupFoodPickerContentCell.swift in Sources */,
 				0CCDA40222D9D1C5007B41C4 /* CLPhotoBrowserAnimatedTransitioning.m in Sources */,
 				B51EE6E423DF138200146862 /* CLChatEmojiItemProtocol.swift in Sources */,
+				5B42F09624A39421006861BF /* CLMp3Encoder.m in Sources */,
 				5B44D12C2435C6F10059476D /* CLTagsFrameHelper.swift in Sources */,
 				0CF79B092196798400DD0BF1 /* BankDataModel.m in Sources */,
+				5B42F09024A3918D006861BF /* CLRecordeEncodeController.m in Sources */,
 				5B919B6A243CD03A000D5EDA /* CLDataPickerTitleView.swift in Sources */,
 				5BCCEC68245BFC890049AC70 /* CLVernierCaliperMiddleCell.swift in Sources */,
 				5BF1ACE6245C850A0083BE70 /* CLTitleControllerView.m in Sources */,
@@ -2562,6 +2590,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/CLDemo/Others/CLBankScan/bank_card/exbankcardcore",
+					"$(PROJECT_DIR)/CLDemo/Class/Homepage/Controller/CLRecordeEncodeController/LAME",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Demo.ccc.;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2587,6 +2616,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/CLDemo/Others/CLBankScan/bank_card/exbankcardcore",
+					"$(PROJECT_DIR)/CLDemo/Class/Homepage/Controller/CLRecordeEncodeController/LAME",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Demo.ccc.;
 				PRODUCT_NAME = "$(TARGET_NAME)";

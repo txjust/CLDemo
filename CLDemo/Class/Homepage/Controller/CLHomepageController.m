@@ -33,6 +33,7 @@
 #import "CLInputPasswordViewController.h"
 #import "CLDrawImageController.h"
 #import "CLPhoneNumberVerificationController.h"
+#import "CLRecordeEncodeController.h"
 
 @interface CLHomepageController ()<UITableViewDelegate,UITableViewDataSource>
 
