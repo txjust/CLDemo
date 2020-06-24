@@ -65,7 +65,7 @@ static OSStatus RecordCallback(void *inRefCon,
     AVAudioSession *audioSession = [AVAudioSession sharedInstance];
     
     [audioSession setCategory:AVAudioSessionCategoryPlayAndRecord error:&error];
-    [audioSession setPreferredSampleRate:96000 error:&error];
+    [audioSession setPreferredSampleRate:8000 error:&error];
     [audioSession setPreferredInputNumberOfChannels:1 error:&error];
     [audioSession setPreferredIOBufferDuration:0.05 error:&error];
 }
@@ -91,7 +91,7 @@ static OSStatus RecordCallback(void *inRefCon,
 }
 - (void)initFormat {
     AudioStreamBasicDescription audioFormat;
-    audioFormat.mSampleRate = 96000;
+    audioFormat.mSampleRate = 8000;
     audioFormat.mFormatID = kAudioFormatLinearPCM;
     audioFormat.mFormatFlags = kAudioFormatFlagIsSignedInteger | kAudioFormatFlagIsPacked;
     audioFormat.mFramesPerPacket = 1;
@@ -140,8 +140,8 @@ static OSStatus RecordCallback(void *inRefCon,
 - (CLMp3Encoder *)mp3Encoder {
     if (!_mp3Encoder) {
         _mp3Encoder = [[CLMp3Encoder alloc] init];
-        _mp3Encoder.inputSampleRate = 96000;
-        _mp3Encoder.outputSampleRate = 96000;
+        _mp3Encoder.inputSampleRate = 8000;
+        _mp3Encoder.outputSampleRate = 8000;
         _mp3Encoder.outputChannelsPerFrame = 1;
         _mp3Encoder.bitRate = 16;
         _mp3Encoder.quality = 9;

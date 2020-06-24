@@ -32,17 +32,24 @@
     }];
 }
 - (void)startAction {
-    [self.recorder startRecorder];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.recorder startRecorder];
+        self.startButton.selected = YES;
+        self.stopButton.selected = NO;
+    });
 }
 - (void)endAction {
-    [self.recorder stopRecorder];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.recorder stopRecorder];
+        self.stopButton.selected = YES;
+        self.startButton.selected = NO;
+    });
 }
 - (UIButton *)startButton {
     if (!_startButton) {
         _startButton = [[UIButton alloc] init];
         [_startButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-        [_startButton setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
-        [_startButton setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
+        [_startButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateSelected];
         [_startButton setTitle:@"开始" forState:UIControlStateNormal];
         [_startButton setTitle:@"开始" forState:UIControlStateSelected];
         [_startButton setTitle:@"开始" forState:UIControlStateHighlighted];
@@ -54,8 +61,7 @@
     if (!_stopButton) {
         _stopButton = [[UIButton alloc] init];
         [_stopButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-        [_stopButton setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
-        [_stopButton setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
+        [_stopButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateSelected];
         [_stopButton setTitle:@"结束" forState:UIControlStateNormal];
         [_stopButton setTitle:@"结束" forState:UIControlStateSelected];
         [_stopButton setTitle:@"结束" forState:UIControlStateHighlighted];
