@@ -12,15 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CLRecorder : NSObject
 
-
-@property (nonatomic, copy) void(^processingEncodedData)(NSData *mp3Data);
-
-
 - (void)startRecorder;
 
 
 - (void)stopRecorder;
-
 
 @end
 
