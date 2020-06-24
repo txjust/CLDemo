@@ -156,6 +156,7 @@
 		5B42F09024A3918D006861BF /* CLRecordeEncodeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B42F08F24A3918D006861BF /* CLRecordeEncodeController.m */; };
 		5B42F09324A393D6006861BF /* CLRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B42F09224A393D6006861BF /* CLRecorder.m */; };
 		5B42F09624A39421006861BF /* CLMp3Encoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B42F09524A39421006861BF /* CLMp3Encoder.m */; };
+		5B42F09924A39547006861BF /* CLDataWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B42F09824A39547006861BF /* CLDataWriter.m */; };
 		5B44D0DA243398EF0059476D /* CLHourMinuteDataPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B44D0D9243398EF0059476D /* CLHourMinuteDataPickerView.swift */; };
 		5B44D12A2435C61E0059476D /* CLTagsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B44D1292435C61E0059476D /* CLTagsController.swift */; };
 		5B44D12C2435C6F10059476D /* CLTagsFrameHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B44D12B2435C6F10059476D /* CLTagsFrameHelper.swift */; };
@@ -502,6 +503,8 @@
 		5B42F09224A393D6006861BF /* CLRecorder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLRecorder.m; sourceTree = "<group>"; };
 		5B42F09424A39421006861BF /* CLMp3Encoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLMp3Encoder.h; sourceTree = "<group>"; };
 		5B42F09524A39421006861BF /* CLMp3Encoder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLMp3Encoder.m; sourceTree = "<group>"; };
+		5B42F09724A39547006861BF /* CLDataWriter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLDataWriter.h; sourceTree = "<group>"; };
+		5B42F09824A39547006861BF /* CLDataWriter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLDataWriter.m; sourceTree = "<group>"; };
 		5B44D0D9243398EF0059476D /* CLHourMinuteDataPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLHourMinuteDataPickerView.swift; sourceTree = "<group>"; };
 		5B44D1292435C61E0059476D /* CLTagsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLTagsController.swift; sourceTree = "<group>"; };
 		5B44D12B2435C6F10059476D /* CLTagsFrameHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLTagsFrameHelper.swift; sourceTree = "<group>"; };
@@ -1831,6 +1834,8 @@
 				5B42F09224A393D6006861BF /* CLRecorder.m */,
 				5B42F09424A39421006861BF /* CLMp3Encoder.h */,
 				5B42F09524A39421006861BF /* CLMp3Encoder.m */,
+				5B42F09724A39547006861BF /* CLDataWriter.h */,
+				5B42F09824A39547006861BF /* CLDataWriter.m */,
 			);
 			path = CLRecordeEncodeController;
 			sourceTree = "<group>";
@@ -2407,6 +2412,7 @@
 				0C7316AA222814AB005ACFE7 /* CLJumpManager.m in Sources */,
 				5BCCEC66245BFC720049AC70 /* CLVernierCaliperHeaderCell.swift in Sources */,
 				0C3CAA5821AF8A3B00A352F0 /* CLRotateAnimationView.m in Sources */,
+				5B42F09924A39547006861BF /* CLDataWriter.m in Sources */,
 				0CF6B84B2386619C00F10986 /* CLVerticalCell.m in Sources */,
 				0C0F374522D1E72C005E496D /* SimplePing.m in Sources */,
 				0C2AE876223F878D007D5DC5 /* CLWaveView.swift in Sources */,
