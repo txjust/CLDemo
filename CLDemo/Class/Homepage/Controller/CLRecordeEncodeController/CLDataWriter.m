@@ -7,7 +7,6 @@
 //
 
 #import "CLDataWriter.h"
-#import "CLScaledSamples.h"
 
 @interface CLDataWriter ()
 
@@ -31,9 +30,6 @@
     NSFileHandle * handle = [NSFileHandle fileHandleForWritingAtPath:savePath];
     [handle seekToEndOfFile];
     [handle writeData:data];
-    
-    NSData *waveData = [CLScaledSamples scaledWaveformSamples: data];
-    
     [self.lock unlock];
 }
 
