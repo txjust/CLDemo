@@ -153,6 +153,7 @@
 		5B3327E523DF384800CA315C /* NSString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3327E423DF384800CA315C /* NSString+Extension.swift */; };
 		5B3327E823DF3E0A00CA315C /* recoredWave_dk.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B3327E723DF3E0A00CA315C /* recoredWave_dk.json */; };
 		5B3327EA23DF41E800CA315C /* CLChatRecordTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3327E923DF41E800CA315C /* CLChatRecordTimeView.swift */; };
+		5B3AB5D724A63CDC00305ABE /* CLScaledSamples.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B3AB5D624A63CDC00305ABE /* CLScaledSamples.m */; };
 		5B42F09024A3918D006861BF /* CLRecordeEncodeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B42F08F24A3918D006861BF /* CLRecordeEncodeController.m */; };
 		5B42F09324A393D6006861BF /* CLRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B42F09224A393D6006861BF /* CLRecorder.m */; };
 		5B42F09624A39421006861BF /* CLMp3Encoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B42F09524A39421006861BF /* CLMp3Encoder.m */; };
@@ -239,7 +240,7 @@
 		B5498C7923DE93910082D4E5 /* CLPhoneNumberHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B5498C7323DE93910082D4E5 /* CLPhoneNumberHelper.m */; };
 		B5498C7A23DE93910082D4E5 /* CLPhoneNumberInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B5498C7423DE93910082D4E5 /* CLPhoneNumberInfoModel.m */; };
 		B5498C7B23DE93910082D4E5 /* iso3166.json in Resources */ = {isa = PBXBuildFile; fileRef = B5498C7523DE93910082D4E5 /* iso3166.json */; };
-		B5498C7D23DED4220082D4E5 /* CLChatLayoutTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5498C7C23DED4220082D4E5 /* CLChatLayoutTextCell.swift */; };
+		B5498C7D23DED4220082D4E5 /* CLChatTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5498C7C23DED4220082D4E5 /* CLChatTextCell.swift */; };
 		B5498C7F23DED4BA0082D4E5 /* CLChatLayoutItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5498C7E23DED4BA0082D4E5 /* CLChatLayoutItemProtocol.swift */; };
 		B5498C8123DED4F60082D4E5 /* CLChatLayoutTextItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5498C8023DED4F60082D4E5 /* CLChatLayoutTextItem.swift */; };
 		B5498C8323DED6760082D4E5 /* CLChatLayoutCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5498C8223DED6760082D4E5 /* CLChatLayoutCellProtocol.swift */; };
@@ -497,6 +498,8 @@
 		5B3327E423DF384800CA315C /* NSString+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSString+Extension.swift"; sourceTree = "<group>"; };
 		5B3327E723DF3E0A00CA315C /* recoredWave_dk.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = recoredWave_dk.json; sourceTree = "<group>"; };
 		5B3327E923DF41E800CA315C /* CLChatRecordTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLChatRecordTimeView.swift; sourceTree = "<group>"; };
+		5B3AB5D524A63CDC00305ABE /* CLScaledSamples.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLScaledSamples.h; sourceTree = "<group>"; };
+		5B3AB5D624A63CDC00305ABE /* CLScaledSamples.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLScaledSamples.m; sourceTree = "<group>"; };
 		5B42F08E24A3918D006861BF /* CLRecordeEncodeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLRecordeEncodeController.h; sourceTree = "<group>"; };
 		5B42F08F24A3918D006861BF /* CLRecordeEncodeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLRecordeEncodeController.m; sourceTree = "<group>"; };
 		5B42F09124A393D6006861BF /* CLRecorder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLRecorder.h; sourceTree = "<group>"; };
@@ -627,7 +630,7 @@
 		B5498C7523DE93910082D4E5 /* iso3166.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = iso3166.json; sourceTree = "<group>"; };
 		B5498C7623DE93910082D4E5 /* CLPhoneNumberModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLPhoneNumberModel.h; sourceTree = "<group>"; };
 		B5498C7723DE93910082D4E5 /* CLPhoneNumberHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLPhoneNumberHelper.h; sourceTree = "<group>"; };
-		B5498C7C23DED4220082D4E5 /* CLChatLayoutTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLChatLayoutTextCell.swift; sourceTree = "<group>"; };
+		B5498C7C23DED4220082D4E5 /* CLChatTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLChatTextCell.swift; sourceTree = "<group>"; };
 		B5498C7E23DED4BA0082D4E5 /* CLChatLayoutItemProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLChatLayoutItemProtocol.swift; sourceTree = "<group>"; };
 		B5498C8023DED4F60082D4E5 /* CLChatLayoutTextItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLChatLayoutTextItem.swift; sourceTree = "<group>"; };
 		B5498C8223DED6760082D4E5 /* CLChatLayoutCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLChatLayoutCellProtocol.swift; sourceTree = "<group>"; };
@@ -1445,6 +1448,14 @@
 			path = json;
 			sourceTree = "<group>";
 		};
+		5B3AB5D824A63F1000305ABE /* CLChatTextCell */ = {
+			isa = PBXGroup;
+			children = (
+				B5498C7C23DED4220082D4E5 /* CLChatTextCell.swift */,
+			);
+			path = CLChatTextCell;
+			sourceTree = "<group>";
+		};
 		5B44D1282435C6000059476D /* CLTagsController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1832,6 +1843,8 @@
 				5B42F08F24A3918D006861BF /* CLRecordeEncodeController.m */,
 				5B42F09124A393D6006861BF /* CLRecorder.h */,
 				5B42F09224A393D6006861BF /* CLRecorder.m */,
+				5B3AB5D524A63CDC00305ABE /* CLScaledSamples.h */,
+				5B3AB5D624A63CDC00305ABE /* CLScaledSamples.m */,
 				5B42F09424A39421006861BF /* CLMp3Encoder.h */,
 				5B42F09524A39421006861BF /* CLMp3Encoder.m */,
 				5B42F09724A39547006861BF /* CLDataWriter.h */,
@@ -2026,7 +2039,7 @@
 			children = (
 				B5498C8223DED6760082D4E5 /* CLChatLayoutCellProtocol.swift */,
 				B51EE6C623DF092400146862 /* CLChatLayoutCell.swift */,
-				B5498C7C23DED4220082D4E5 /* CLChatLayoutTextCell.swift */,
+				5B3AB5D824A63F1000305ABE /* CLChatTextCell */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -2296,6 +2309,7 @@
 				0C6D47E9226C37EC00699FBD /* CLPopArrowView.m in Sources */,
 				5B305328245D1D87002C53DB /* CLMyDetailsController.swift in Sources */,
 				B5498C8123DED4F60082D4E5 /* CLChatLayoutTextItem.swift in Sources */,
+				5B3AB5D724A63CDC00305ABE /* CLScaledSamples.m in Sources */,
 				0C31C38521994CCF001860C2 /* UIFont+CLFont.m in Sources */,
 				5B809618221870BD000F72F3 /* CLBankCardSearch.m in Sources */,
 				0CCDA40422D9D1C5007B41C4 /* CLPhotoBrowserCollectionViewFlowLayout.m in Sources */,
@@ -2390,7 +2404,7 @@
 				0CC171422248B4D2005B0F0A /* CLGCDTimerManager.m in Sources */,
 				B51EE6E323DF138200146862 /* CLChatTextView.swift in Sources */,
 				5BCCEC5A245BCE2C0049AC70 /* CLVernierCaliperView.swift in Sources */,
-				B5498C7D23DED4220082D4E5 /* CLChatLayoutTextCell.swift in Sources */,
+				B5498C7D23DED4220082D4E5 /* CLChatTextCell.swift in Sources */,
 				0CCDA31C219922680057BA14 /* CLChangeFontSizeSlider.m in Sources */,
 				0CF4EF912330834400D8B95E /* CLInputPasswordViewController.m in Sources */,
 				0CA1236F22255A6F007DDE6D /* CLCardView.m in Sources */,

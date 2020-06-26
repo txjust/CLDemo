@@ -30,6 +30,10 @@
         make.centerX.mas_equalTo(self.view);
         make.bottom.mas_equalTo(-200);
     }];
+    
+//    NSDate *waveData = 
+    
+    
 }
 - (void)startAction {
     dispatch_async(dispatch_get_main_queue(), ^{

@@ -1,5 +1,5 @@
 //
-//  PTKnockMessagePopupController.swift
+//  CLMessagePopupController.swift
 //  Potato
 //
 //  Created by Emma on 2020/1/9.

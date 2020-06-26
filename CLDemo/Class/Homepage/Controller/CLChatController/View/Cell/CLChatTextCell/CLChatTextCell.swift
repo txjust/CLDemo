@@ -1,5 +1,5 @@
 //
-//  CLChatLayoutTextCell.swift
+//  CLChatTextCell.swift
 //  CLDemo
 //
 //  Created by Emma on 2020/1/27.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CLChatLayoutTextCell: CLChatLayoutCell {
+class CLChatTextCell: CLChatLayoutCell {
     ///背景气泡
     var bubbleImageView = UIImageView()
     ///文字
@@ -40,13 +40,13 @@ class CLChatLayoutTextCell: CLChatLayoutCell {
     }
 }
 
-extension CLChatLayoutTextCell {
+extension CLChatTextCell {
     func initUI() {
         contentView.addSubview(bubbleImageView)
         contentView.addSubview(titleLabel)
     }
 }
-extension CLChatLayoutTextCell {
+extension CLChatTextCell {
     private func remakeConstraints(isFromMyself: Bool) {
         bubbleImageView.snp.remakeConstraints { (make) in
             make.top.equalTo(contentView.snp.top).offset(10)
@@ -65,7 +65,7 @@ extension CLChatLayoutTextCell {
         }
     }
 }
-extension CLChatLayoutTextCell: CLChatLayoutCellProtocol {
+extension CLChatTextCell: CLChatLayoutCellProtocol {
     func setItem(_ item: CLChatLayoutItemProtocol) {
         guard let textItem = item as? CLChatLayoutTextItem else {
             return

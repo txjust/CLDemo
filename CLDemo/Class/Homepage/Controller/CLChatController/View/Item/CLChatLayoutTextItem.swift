@@ -14,6 +14,6 @@ class CLChatLayoutTextItem: CLChatLayoutItem {
 }
 extension CLChatLayoutTextItem: CLChatLayoutItemProtocol {
     func tableviewCellClass() -> UITableViewCell.Type {
-        return CLChatLayoutTextCell.self
+        return CLChatTextCell.self
     }
 }
