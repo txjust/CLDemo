@@ -42,6 +42,8 @@ static void set_bits(uint8_t *bytes, int32_t bitOffset, int32_t numBits, int32_t
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.recorder = [[CLRecorder alloc] init];
+    self.recorder.mp3Path = [[Tools pathDocuments] stringByAppendingFormat:@"/testMP3.mp3"];
     [self.view addSubview:self.startButton];
     [self.view addSubview:self.stopButton];
     [self.view addSubview:self.waveView];
@@ -76,9 +78,9 @@ static void set_bits(uint8_t *bytes, int32_t bitOffset, int32_t numBits, int32_t
         [self.recorder stopRecorder];
         self.stopButton.selected = YES;
         self.startButton.selected = NO;
+        NSData *waveSamples = [self audioWaveform:[NSURL fileURLWithPath:self.recorder.mp3Path]];
+        self.waveView.waveData = waveSamples;
     });
-    NSData *waveSamples = [self audioWaveform:[NSURL fileURLWithPath:self.recorder.mp3Path]];
-    self.waveView.waveData = waveSamples;
 }
 - (NSData *)audioWaveform:(NSURL *)url {
     NSTimeInterval start = [[NSDate date] timeIntervalSince1970];
@@ -241,13 +243,6 @@ static void set_bits(uint8_t *bytes, int32_t bitOffset, int32_t numBits, int32_t
         [_stopButton addTarget:self action:@selector(endAction) forControlEvents:UIControlEventTouchUpInside];
     }
     return _stopButton;
-}
-- (CLRecorder *)recorder {
-    if (!_recorder) {
-        _recorder = [[CLRecorder alloc] init];
-        _recorder.mp3Path = [[Tools pathDocuments] stringByAppendingFormat:@"/testMP3.mp3"];
-    }
-    return _recorder;
 }
 - (CLChatVoiceWave *)waveView {
     if (!_waveView) {
