@@ -22,13 +22,18 @@ import UIKit
     ///颜色
     var color: UIColor = .orange {
         didSet {
-            setNeedsDisplay()
+            if oldValue != color {
+                setNeedsDisplay()
+            }
         }
     }
     ///数据
     var waveData: Data? {
         didSet {
-            setNeedsDisplay()
+            if oldValue != waveData {
+                setNeedsDisplay()
+                print("============")
+            }
         }
     }
 }
