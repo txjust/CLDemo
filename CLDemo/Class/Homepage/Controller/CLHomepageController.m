@@ -16,7 +16,6 @@
 #import "CLPasswordViewController.h"
 #import "CLLogViewController.h"
 #import "CLInputToolbarController.h"
-#import "CLBankCardScanController.h"
 #import "CLCardController.h"
 #import "CLWaveViewController.h"
 #import "CLBubbleViewViewController.h"
@@ -123,7 +122,6 @@
         [_arrayDS addObject:NSLocalizedString(@"键盘密码工具条", nil)];
         [_arrayDS addObject:NSLocalizedString(@"自定义输入工具条", nil)];
         [_arrayDS addObject:NSLocalizedString(@"自定义输入框-限制字数", nil)];
-        [_arrayDS addObject:NSLocalizedString(@"银行卡识别", nil)];
         [_arrayDS addObject:NSLocalizedString(@"卡片视图", nil)];
         [_arrayDS addObject:[NSLocalizedString(@"波浪视图", nil) stringByAppendingString:@"-OC"]];
         [_arrayDS addObject:[NSLocalizedString(@"波浪视图", nil) stringByAppendingString:@"-Swift"]];
@@ -165,7 +163,6 @@
         [_controllerArray addObject:[CLInputPasswordViewController class]];
         [_controllerArray addObject:[CLInputToolbarController class]];
         [_controllerArray addObject:[CLTextViewViewController class]];
-        [_controllerArray addObject:[CLBankCardScanController class]];
         [_controllerArray addObject:[CLCardController class]];
         [_controllerArray addObject:[CLWaveViewController class]];
         [_controllerArray addObject:[CLWaveSwiftViewController class]];

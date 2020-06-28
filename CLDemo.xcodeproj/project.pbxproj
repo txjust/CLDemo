@@ -166,15 +166,6 @@
 		5B49566823B50ED700212772 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B49566723B50ED700212772 /* UIColor+Extension.swift */; };
 		5B49566D23B5DD0100212772 /* CLTwoSidedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B49566C23B5DD0100212772 /* CLTwoSidedView.swift */; };
 		5B7C86EE2444B3E50086DC9C /* CLPopupFoodPickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7C86ED2444B3E50086DC9C /* CLPopupFoodPickerModel.swift */; };
-		5B8095F62218700E000F72F3 /* CLBankCardScanController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8095F52218700E000F72F3 /* CLBankCardScanController.m */; };
-		5B809615221870BD000F72F3 /* CLBankCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8095FE221870BC000F72F3 /* CLBankCardView.m */; };
-		5B809616221870BD000F72F3 /* CLScanBankCardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B809601221870BC000F72F3 /* CLScanBankCardManager.m */; };
-		5B809617221870BD000F72F3 /* CLScanBankCardBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B809603221870BC000F72F3 /* CLScanBankCardBase.m */; };
-		5B809618221870BD000F72F3 /* CLBankCardSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B809605221870BC000F72F3 /* CLBankCardSearch.m */; };
-		5B809619221870BD000F72F3 /* UIImage+Extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B809606221870BC000F72F3 /* UIImage+Extend.m */; };
-		5B80961A221870BD000F72F3 /* CLDesign.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B809607221870BC000F72F3 /* CLDesign.m */; };
-		5B80961B221870BD000F72F3 /* CLBankCardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B809609221870BC000F72F3 /* CLBankCardModel.m */; };
-		5B80962122187115000F72F3 /* CLBankCardDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B80962022187115000F72F3 /* CLBankCardDetailController.m */; };
 		5B80D9E91DDD976A00A20E34 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B80D9E81DDD976A00A20E34 /* main.m */; };
 		5B80D9EC1DDD976A00A20E34 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B80D9EB1DDD976A00A20E34 /* AppDelegate.m */; };
 		5B80D9F41DDD976A00A20E34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B80D9F31DDD976A00A20E34 /* Assets.xcassets */; };
@@ -189,9 +180,6 @@
 		5B80DA581DDD9C3A00A20E34 /* CLTabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B80DA571DDD9C3A00A20E34 /* CLTabbarController.m */; };
 		5B876CAF2445937200DC4424 /* CLPopupFoodPickerContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B876CAE2445937200DC4424 /* CLPopupFoodPickerContentCell.swift */; };
 		5B8A4D4323B118CC00360631 /* CLChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8A4D4223B118CC00360631 /* CLChatController.swift */; };
-		5B8AFC3B24A82AAD00FAF996 /* libexbankcardios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B8AFC3724A82AAD00FAF996 /* libexbankcardios.a */; };
-		5B8AFC3C24A82AAD00FAF996 /* libbexbankcard.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B8AFC3824A82AAD00FAF996 /* libbexbankcard.a */; };
-		5B8AFC3D24A82AAD00FAF996 /* zocr0.lib in Resources */ = {isa = PBXBuildFile; fileRef = 5B8AFC3924A82AAD00FAF996 /* zocr0.lib */; };
 		5B8B7D3024319701005C8530 /* CLPopupDataPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B7D2F24319701005C8530 /* CLPopupDataPickerController.swift */; };
 		5B8B7D32243197D6005C8530 /* CLYearMonthDayDataPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B7D31243197D6005C8530 /* CLYearMonthDayDataPickerView.swift */; };
 		5B8EAFED2444A29800317DC1 /* food.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B8EAFEC2444A29700317DC1 /* food.json */; };
@@ -517,24 +505,6 @@
 		5B49566723B50ED700212772 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		5B49566C23B5DD0100212772 /* CLTwoSidedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLTwoSidedView.swift; sourceTree = "<group>"; };
 		5B7C86ED2444B3E50086DC9C /* CLPopupFoodPickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLPopupFoodPickerModel.swift; sourceTree = "<group>"; };
-		5B8095F42218700E000F72F3 /* CLBankCardScanController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLBankCardScanController.h; sourceTree = "<group>"; };
-		5B8095F52218700E000F72F3 /* CLBankCardScanController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLBankCardScanController.m; sourceTree = "<group>"; };
-		5B8095FD221870BC000F72F3 /* CLBankCardSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBankCardSearch.h; sourceTree = "<group>"; };
-		5B8095FE221870BC000F72F3 /* CLBankCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBankCardView.m; sourceTree = "<group>"; };
-		5B8095FF221870BC000F72F3 /* UIImage+Extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extend.h"; sourceTree = "<group>"; };
-		5B809600221870BC000F72F3 /* CLBankCardModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBankCardModel.h; sourceTree = "<group>"; };
-		5B809601221870BC000F72F3 /* CLScanBankCardManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLScanBankCardManager.m; sourceTree = "<group>"; };
-		5B809602221870BC000F72F3 /* CLDesign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLDesign.h; sourceTree = "<group>"; };
-		5B809603221870BC000F72F3 /* CLScanBankCardBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLScanBankCardBase.m; sourceTree = "<group>"; };
-		5B809604221870BC000F72F3 /* CLBankCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBankCardView.h; sourceTree = "<group>"; };
-		5B809605221870BC000F72F3 /* CLBankCardSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBankCardSearch.m; sourceTree = "<group>"; };
-		5B809606221870BC000F72F3 /* UIImage+Extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extend.m"; sourceTree = "<group>"; };
-		5B809607221870BC000F72F3 /* CLDesign.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLDesign.m; sourceTree = "<group>"; };
-		5B809608221870BC000F72F3 /* CLScanBankCardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLScanBankCardManager.h; sourceTree = "<group>"; };
-		5B809609221870BC000F72F3 /* CLBankCardModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBankCardModel.m; sourceTree = "<group>"; };
-		5B80960A221870BC000F72F3 /* CLScanBankCardBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLScanBankCardBase.h; sourceTree = "<group>"; };
-		5B80961F22187115000F72F3 /* CLBankCardDetailController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLBankCardDetailController.h; sourceTree = "<group>"; };
-		5B80962022187115000F72F3 /* CLBankCardDetailController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLBankCardDetailController.m; sourceTree = "<group>"; };
 		5B80D9E41DDD976A00A20E34 /* CLDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CLDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B80D9E81DDD976A00A20E34 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5B80D9EA1DDD976A00A20E34 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -561,14 +531,6 @@
 		5B80DA571DDD9C3A00A20E34 /* CLTabbarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLTabbarController.m; sourceTree = "<group>"; };
 		5B876CAE2445937200DC4424 /* CLPopupFoodPickerContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLPopupFoodPickerContentCell.swift; sourceTree = "<group>"; };
 		5B8A4D4223B118CC00360631 /* CLChatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLChatController.swift; sourceTree = "<group>"; };
-		5B8AFC3224A82AAD00FAF996 /* exbankcardcore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exbankcardcore.h; sourceTree = "<group>"; };
-		5B8AFC3324A82AAD00FAF996 /* commondef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = commondef.h; sourceTree = "<group>"; };
-		5B8AFC3424A82AAD00FAF996 /* exbankcard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exbankcard.h; sourceTree = "<group>"; };
-		5B8AFC3524A82AAD00FAF996 /* excards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = excards.h; sourceTree = "<group>"; };
-		5B8AFC3724A82AAD00FAF996 /* libexbankcardios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libexbankcardios.a; sourceTree = "<group>"; };
-		5B8AFC3824A82AAD00FAF996 /* libbexbankcard.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libbexbankcard.a; sourceTree = "<group>"; };
-		5B8AFC3924A82AAD00FAF996 /* zocr0.lib */ = {isa = PBXFileReference; lastKnownFileType = file; path = zocr0.lib; sourceTree = "<group>"; };
-		5B8AFC3A24A82AAD00FAF996 /* BankCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankCard.h; sourceTree = "<group>"; };
 		5B8B7D2F24319701005C8530 /* CLPopupDataPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLPopupDataPickerController.swift; sourceTree = "<group>"; };
 		5B8B7D31243197D6005C8530 /* CLYearMonthDayDataPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLYearMonthDayDataPickerView.swift; sourceTree = "<group>"; };
 		5B8EAFEC2444A29700317DC1 /* food.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = food.json; sourceTree = "<group>"; };
@@ -647,10 +609,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B8AFC3B24A82AAD00FAF996 /* libexbankcardios.a in Frameworks */,
 				21EDC4EF98A85BE0B0BAD366 /* Pods_CLDemo.framework in Frameworks */,
 				5BAB9F3824A319E700BAC6B5 /* libmp3lame.a in Frameworks */,
-				5B8AFC3C24A82AAD00FAF996 /* libbexbankcard.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -890,24 +850,6 @@
 				0CA1237422255B81007DDE6D /* CLCardController.m */,
 			);
 			path = CLCardController;
-			sourceTree = "<group>";
-		};
-		0C1CFA7F23744B53004B59CB /* CLBankCardDetailController */ = {
-			isa = PBXGroup;
-			children = (
-				5B80961F22187115000F72F3 /* CLBankCardDetailController.h */,
-				5B80962022187115000F72F3 /* CLBankCardDetailController.m */,
-			);
-			path = CLBankCardDetailController;
-			sourceTree = "<group>";
-		};
-		0C1CFA8023744B6D004B59CB /* CLBankCardScanController */ = {
-			isa = PBXGroup;
-			children = (
-				5B8095F42218700E000F72F3 /* CLBankCardScanController.h */,
-				5B8095F52218700E000F72F3 /* CLBankCardScanController.m */,
-			);
-			path = CLBankCardScanController;
 			sourceTree = "<group>";
 		};
 		0C29D593222FE7DB00635F25 /* CLGCDTimerManager */ = {
@@ -1488,36 +1430,6 @@
 			path = CLTwoSidedView;
 			sourceTree = "<group>";
 		};
-		5B8095F722187061000F72F3 /* CLBankScan */ = {
-			isa = PBXGroup;
-			children = (
-				5B8AFC3124A82AAD00FAF996 /* bank_card */,
-				5B8095FC221870BC000F72F3 /* CLBank */,
-			);
-			path = CLBankScan;
-			sourceTree = "<group>";
-		};
-		5B8095FC221870BC000F72F3 /* CLBank */ = {
-			isa = PBXGroup;
-			children = (
-				5B8095FD221870BC000F72F3 /* CLBankCardSearch.h */,
-				5B8095FE221870BC000F72F3 /* CLBankCardView.m */,
-				5B8095FF221870BC000F72F3 /* UIImage+Extend.h */,
-				5B809600221870BC000F72F3 /* CLBankCardModel.h */,
-				5B809601221870BC000F72F3 /* CLScanBankCardManager.m */,
-				5B809602221870BC000F72F3 /* CLDesign.h */,
-				5B809603221870BC000F72F3 /* CLScanBankCardBase.m */,
-				5B809604221870BC000F72F3 /* CLBankCardView.h */,
-				5B809605221870BC000F72F3 /* CLBankCardSearch.m */,
-				5B809606221870BC000F72F3 /* UIImage+Extend.m */,
-				5B809607221870BC000F72F3 /* CLDesign.m */,
-				5B809608221870BC000F72F3 /* CLScanBankCardManager.h */,
-				5B809609221870BC000F72F3 /* CLBankCardModel.m */,
-				5B80960A221870BC000F72F3 /* CLScanBankCardBase.h */,
-			);
-			path = CLBank;
-			sourceTree = "<group>";
-		};
 		5B80D9DB1DDD976A00A20E34 = {
 			isa = PBXGroup;
 			children = (
@@ -1683,8 +1595,6 @@
 				0C1CFA6E237449B4004B59CB /* CLRotateAnimationSwiftController */,
 				0C1CFA6D23744997004B59CB /* CLRotateAnimationController */,
 				0C1CFA6B2374497E004B59CB /* CLChangeLanguageController */,
-				0C1CFA8023744B6D004B59CB /* CLBankCardScanController */,
-				0C1CFA7F23744B53004B59CB /* CLBankCardDetailController */,
 				0C1CFA7E23744B45004B59CB /* CLCardController */,
 				0C1CFA7D23744B2F004B59CB /* CLWaveViewController */,
 				0C1CFA7C23744B24004B59CB /* CLWaveSwiftViewController */,
@@ -1734,7 +1644,6 @@
 				0C0F374222D1E70C005E496D /* CLTracerouteManager */,
 				0C29D593222FE7DB00635F25 /* CLGCDTimerManager */,
 				0C7316A7222814AB005ACFE7 /* CLJumpManager */,
-				5B8095F722187061000F72F3 /* CLBankScan */,
 				0CF79B0C219679AB00DD0BF1 /* DataJson */,
 				0C33BC6F219AEF5D00583B4C /* CLLog */,
 				0CCDA31D219922C50057BA14 /* CLChangeFontSizeManager */,
@@ -1801,29 +1710,6 @@
 				5B8A4D4223B118CC00360631 /* CLChatController.swift */,
 			);
 			path = CLChatController;
-			sourceTree = "<group>";
-		};
-		5B8AFC3124A82AAD00FAF996 /* bank_card */ = {
-			isa = PBXGroup;
-			children = (
-				5B8AFC3224A82AAD00FAF996 /* exbankcardcore.h */,
-				5B8AFC3324A82AAD00FAF996 /* commondef.h */,
-				5B8AFC3424A82AAD00FAF996 /* exbankcard.h */,
-				5B8AFC3524A82AAD00FAF996 /* excards.h */,
-				5B8AFC3624A82AAD00FAF996 /* exbankcardcore */,
-				5B8AFC3A24A82AAD00FAF996 /* BankCard.h */,
-			);
-			path = bank_card;
-			sourceTree = "<group>";
-		};
-		5B8AFC3624A82AAD00FAF996 /* exbankcardcore */ = {
-			isa = PBXGroup;
-			children = (
-				5B8AFC3724A82AAD00FAF996 /* libexbankcardios.a */,
-				5B8AFC3824A82AAD00FAF996 /* libbexbankcard.a */,
-				5B8AFC3924A82AAD00FAF996 /* zocr0.lib */,
-			);
-			path = exbankcardcore;
 			sourceTree = "<group>";
 		};
 		5B8B7D2E243196C5005C8530 /* CLPopupDataPickerController */ = {
@@ -2155,7 +2041,6 @@
 				5B8EAFED2444A29800317DC1 /* food.json in Resources */,
 				0C52EF70219298B00079A0E7 /* Localizable.strings in Resources */,
 				0C7DE94722DECC0D00FA9040 /* localImage8.jpeg in Resources */,
-				5B8AFC3D24A82AAD00FAF996 /* zocr0.lib in Resources */,
 				0C2AE871223F48C0007D5DC5 /* CLBubbleView.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2245,7 +2130,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B8095F62218700E000F72F3 /* CLBankCardScanController.m in Sources */,
 				0CACA4AB224CC1DC0084ECC8 /* CLTextView.swift in Sources */,
 				0CB60B17237EC51100D10317 /* CLHorizontalItem.m in Sources */,
 				0CF6B84523865AF600F10986 /* CLHorizontalLayout.m in Sources */,
@@ -2266,7 +2150,6 @@
 				0CF79AFD219678FB00DD0BF1 /* UITableView+IndexTip.m in Sources */,
 				0C0E36A12257836100478B69 /* CLCustomQRCodeViewController.m in Sources */,
 				0C47E22422D9C3E4003EDB4E /* CLTransitionViewController.swift in Sources */,
-				5B809617221870BD000F72F3 /* CLScanBankCardBase.m in Sources */,
 				5BE0FA3C1E03C2C400914DFF /* NSString+CLCalculateSize.m in Sources */,
 				0C7A1EA6231A7210002D75F2 /* CLCustomTransitionAnimatedTransitioning.m in Sources */,
 				5B80DA491DDD993F00A20E34 /* CLCollectionController.m in Sources */,
@@ -2276,7 +2159,6 @@
 				0C223C772243811200E319E2 /* CLRotateAnimationSwiftController.swift in Sources */,
 				0CCDA40022D9D1C5007B41C4 /* CLPhotoBrowserTransitioningDelegate.m in Sources */,
 				0C558A9521ED956700C2C096 /* CLPasswordInputView.m in Sources */,
-				5B809616221870BD000F72F3 /* CLScanBankCardManager.m in Sources */,
 				0C52EF6D2192949A0079A0E7 /* NSBundle+CLLanguage.m in Sources */,
 				5B42F09324A393D6006861BF /* CLRecorder.m in Sources */,
 				0C558AE421EDA2E800C2C096 /* UIColor+CLHex.m in Sources */,
@@ -2312,7 +2194,6 @@
 				5B305328245D1D87002C53DB /* CLMyDetailsController.swift in Sources */,
 				B5498C8123DED4F60082D4E5 /* CLChatLayoutTextItem.swift in Sources */,
 				0C31C38521994CCF001860C2 /* UIFont+CLFont.m in Sources */,
-				5B809618221870BD000F72F3 /* CLBankCardSearch.m in Sources */,
 				0CCDA40422D9D1C5007B41C4 /* CLPhotoBrowserCollectionViewFlowLayout.m in Sources */,
 				0CB2769922E1A85F00AFCB8C /* CLTransitionController.m in Sources */,
 				0CF64300222FECBD00227361 /* CLWaveViewController.m in Sources */,
@@ -2354,11 +2235,9 @@
 				5B190E6F23B66811005A2474 /* CLFlopPrizeView.swift in Sources */,
 				5BAFEE38243ECFFB00E1E51E /* CLPopupOneInputController.swift in Sources */,
 				5B8B7D32243197D6005C8530 /* CLYearMonthDayDataPickerView.swift in Sources */,
-				5B80961B221870BD000F72F3 /* CLBankCardModel.m in Sources */,
 				5B80DA4A1DDD993F00A20E34 /* CLHomepageController.m in Sources */,
 				5B3327E323DF366600CA315C /* UIImage+Extension.swift in Sources */,
 				0CF6B84E2386626800F10986 /* CLVerticalItem.m in Sources */,
-				5B809619221870BD000F72F3 /* UIImage+Extend.m in Sources */,
 				5B49566823B50ED700212772 /* UIColor+Extension.swift in Sources */,
 				5BF1ACE3245C82B70083BE70 /* CLMyController.swift in Sources */,
 				5B80DA4B1DDD993F00A20E34 /* CLCurriculumController.m in Sources */,
@@ -2373,7 +2252,6 @@
 				5B3327EA23DF41E800CA315C /* CLChatRecordTimeView.swift in Sources */,
 				B51EE6CC23DF104800146862 /* CLGradientLayerView.swift in Sources */,
 				0C777A4B2217A8B900BC8AFB /* CLInputToolbarController.m in Sources */,
-				5B80961A221870BD000F72F3 /* CLDesign.m in Sources */,
 				5BB0774A2444552C00EF9D3E /* CLPopupFoodPickerController.swift in Sources */,
 				5B80D9EC1DDD976A00A20E34 /* AppDelegate.m in Sources */,
 				5BCCEC6A245BFCA00049AC70 /* CLVernierCaliperFooterCell.swift in Sources */,
@@ -2410,11 +2288,9 @@
 				0CCDA31C219922680057BA14 /* CLChangeFontSizeSlider.m in Sources */,
 				0CF4EF912330834400D8B95E /* CLInputPasswordViewController.m in Sources */,
 				0CA1236F22255A6F007DDE6D /* CLCardView.m in Sources */,
-				5B80962122187115000F72F3 /* CLBankCardDetailController.m in Sources */,
 				0CF6B84623865AF600F10986 /* CLLayoutView.m in Sources */,
 				5B49566D23B5DD0100212772 /* CLTwoSidedView.swift in Sources */,
 				B550057423C5FFE600114312 /* CLFlopBottomView.swift in Sources */,
-				5B809615221870BD000F72F3 /* CLBankCardView.m in Sources */,
 				B51EE6E823DF138200146862 /* CLChatEmojiCellProtocol.swift in Sources */,
 				5BBB62921E7444A100B28FC3 /* CLChartToolBar.m in Sources */,
 				5B80D9E91DDD976A00A20E34 /* main.m in Sources */,
