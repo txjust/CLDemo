@@ -49,7 +49,6 @@ static OSStatus RecordCallback(void *inRefCon,
 - (instancetype)init {
     self = [super init];
     if (self) {
-        [self.mp3Encoder run];
         [self initRemoteIO];
     }
     return self;
@@ -138,10 +137,12 @@ static OSStatus RecordCallback(void *inRefCon,
         [[NSFileManager defaultManager] createFileAtPath: self.mp3Path contents:nil attributes:nil];
     }
     self.handle = [NSFileHandle fileHandleForWritingAtPath: self.mp3Path];
+    [self.mp3Encoder run];
     AudioOutputUnitStart(self.audioUnit);
 }
 - (void)stopRecorder {
     AudioOutputUnitStop(self.audioUnit);
+    [self.mp3Encoder stop];
 }
 - (void)writeData:(NSData *)data {
     [self.lock lock];
@@ -158,7 +159,6 @@ static OSStatus RecordCallback(void *inRefCon,
 }
 - (void)dealloc {
     AudioUnitUninitialize(self.audioUnit);
-    [self.mp3Encoder stop];
 }
 - (CLMp3Encoder *)mp3Encoder {
     if (!_mp3Encoder) {

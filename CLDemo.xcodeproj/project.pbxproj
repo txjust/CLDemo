@@ -179,6 +179,7 @@
 		5B80DA581DDD9C3A00A20E34 /* CLTabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B80DA571DDD9C3A00A20E34 /* CLTabbarController.m */; };
 		5B876CAF2445937200DC4424 /* CLPopupFoodPickerContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B876CAE2445937200DC4424 /* CLPopupFoodPickerContentCell.swift */; };
 		5B8A4D4323B118CC00360631 /* CLChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8A4D4223B118CC00360631 /* CLChatController.swift */; };
+		5B8AFC5D24A8829A00FAF996 /* CLVoicePlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8AFC5C24A8829A00FAF996 /* CLVoicePlayer.m */; };
 		5B8B7D3024319701005C8530 /* CLPopupDataPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B7D2F24319701005C8530 /* CLPopupDataPickerController.swift */; };
 		5B8B7D32243197D6005C8530 /* CLYearMonthDayDataPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B7D31243197D6005C8530 /* CLYearMonthDayDataPickerView.swift */; };
 		5B8EAFED2444A29800317DC1 /* food.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B8EAFEC2444A29700317DC1 /* food.json */; };
@@ -528,6 +529,8 @@
 		5B80DA571DDD9C3A00A20E34 /* CLTabbarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLTabbarController.m; sourceTree = "<group>"; };
 		5B876CAE2445937200DC4424 /* CLPopupFoodPickerContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLPopupFoodPickerContentCell.swift; sourceTree = "<group>"; };
 		5B8A4D4223B118CC00360631 /* CLChatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLChatController.swift; sourceTree = "<group>"; };
+		5B8AFC5B24A8829A00FAF996 /* CLVoicePlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLVoicePlayer.h; sourceTree = "<group>"; };
+		5B8AFC5C24A8829A00FAF996 /* CLVoicePlayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLVoicePlayer.m; sourceTree = "<group>"; };
 		5B8B7D2F24319701005C8530 /* CLPopupDataPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLPopupDataPickerController.swift; sourceTree = "<group>"; };
 		5B8B7D31243197D6005C8530 /* CLYearMonthDayDataPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLYearMonthDayDataPickerView.swift; sourceTree = "<group>"; };
 		5B8EAFEC2444A29700317DC1 /* food.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = food.json; sourceTree = "<group>"; };
@@ -1727,6 +1730,8 @@
 				5BAB9F3524A319CF00BAC6B5 /* LAME */,
 				5B42F08E24A3918D006861BF /* CLRecordeEncodeController.h */,
 				5B42F08F24A3918D006861BF /* CLRecordeEncodeController.m */,
+				5B8AFC5B24A8829A00FAF996 /* CLVoicePlayer.h */,
+				5B8AFC5C24A8829A00FAF996 /* CLVoicePlayer.m */,
 				5B3AB5E424A6400900305ABE /* CLChatVoiceWave.swift */,
 				5B42F09124A393D6006861BF /* CLRecorder.h */,
 				5B42F09224A393D6006861BF /* CLRecorder.m */,
@@ -2324,6 +2329,7 @@
 				0CCDA326219927370057BA14 /* CLChangeFontSizeManager.m in Sources */,
 				5B80DA581DDD9C3A00A20E34 /* CLTabbarController.m in Sources */,
 				5B28650E21EE428200334E6C /* CLCoreTextView.m in Sources */,
+				5B8AFC5D24A8829A00FAF996 /* CLVoicePlayer.m in Sources */,
 				0C1075F022E1ADF9005E5843 /* CLTransitioningDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

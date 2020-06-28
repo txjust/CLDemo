@@ -10,7 +10,7 @@
 #import "CLRecorder.h"
 #import "CLDemo-Swift.h"
 #import <AVFoundation/AVFoundation.h>
-
+#import "CLVoicePlayer.h"
 
 static void set_bits(uint8_t *bytes, int32_t bitOffset, int32_t numBits, int32_t value) {
     numBits = (unsigned int)pow(2, numBits) - 1; //this will only work up to 32 bits, of course
@@ -25,9 +25,10 @@ static void set_bits(uint8_t *bytes, int32_t bitOffset, int32_t numBits, int32_t
 @interface CLRecordeEncodeController ()
 
 @property (nonatomic, strong) UIButton *startButton;
-@property (nonatomic, strong) UIButton *stopButton;
+@property (nonatomic, strong) UIButton *playButton;
 @property (nonatomic, strong) CLRecorder *recorder;
 @property (nonatomic, strong) CLChatVoiceWave *waveView;
+@property (nonatomic, strong) CLVoicePlayer *player;
 
 @end
 
@@ -37,15 +38,15 @@ static void set_bits(uint8_t *bytes, int32_t bitOffset, int32_t numBits, int32_t
     [super viewDidLoad];
     self.recorder = [[CLRecorder alloc] init];
     [self.view addSubview:self.startButton];
-    [self.view addSubview:self.stopButton];
+    [self.view addSubview:self.playButton];
     [self.view addSubview:self.waveView];
     [self.startButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.mas_equalTo(self.view);
+        make.left.mas_equalTo(90);
         make.top.mas_equalTo(200);
     }];
-    [self.stopButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.mas_equalTo(self.view);
-        make.bottom.mas_equalTo(-200);
+    [self.playButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(200);
+        make.right.mas_equalTo(-90);
     }];
     [self.waveView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.mas_equalTo(self.view);
@@ -56,24 +57,30 @@ static void set_bits(uint8_t *bytes, int32_t bitOffset, int32_t numBits, int32_t
 }
 
 - (void)startAction {
-    dispatch_async(dispatch_get_main_queue(), ^{
+    if (!self.startButton.selected) {
         NSTimeInterval start = [[NSDate date] timeIntervalSince1970];
         [self.recorder startRecorder];
         NSTimeInterval end = [[NSDate date] timeIntervalSince1970];
         NSLog(@"%f",end - start);
-        self.startButton.selected = YES;
-        self.stopButton.selected = NO;
         NSLog(@"%@",self.recorder.mp3Path);
-    });
-}
-- (void)endAction {
-    dispatch_async(dispatch_get_main_queue(), ^{
+    }else {
         [self.recorder stopRecorder];
-        self.stopButton.selected = YES;
-        self.startButton.selected = NO;
-        NSData *waveSamples = [self audioWaveform:[NSURL fileURLWithPath:self.recorder.mp3Path]];
-        self.waveView.waveData = waveSamples;
-    });
+        if (self.recorder.mp3Path.length > 0) {
+            NSData *waveSamples = [self audioWaveform:[NSURL fileURLWithPath:self.recorder.mp3Path]];
+            self.waveView.waveData = waveSamples;
+        }
+    }
+    self.startButton.selected = !self.startButton.selected;
+}
+- (void)playAction {
+    if (self.recorder.mp3Path.length > 0) {
+        if (!self.playButton.isSelected) {
+            [self.player playWithUrl:[NSURL fileURLWithPath:self.recorder.mp3Path]];
+        }else {
+            [self.player stop];
+        }
+        self.playButton.selected = !self.playButton.selected;
+    }
 }
 - (NSData *)audioWaveform:(NSURL *)url {
 //    NSTimeInterval start = [[NSDate date] timeIntervalSince1970];
@@ -220,31 +227,36 @@ static void set_bits(uint8_t *bytes, int32_t bitOffset, int32_t numBits, int32_t
 - (UIButton *)startButton {
     if (!_startButton) {
         _startButton = [[UIButton alloc] init];
-        [_startButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-        [_startButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateSelected];
+        [_startButton setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+        [_startButton setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
         [_startButton setTitle:@"开始" forState:UIControlStateNormal];
-        [_startButton setTitle:@"开始" forState:UIControlStateSelected];
-        [_startButton setTitle:@"开始" forState:UIControlStateHighlighted];
+        [_startButton setTitle:@"结束" forState:UIControlStateSelected];
         [_startButton addTarget:self action:@selector(startAction) forControlEvents:UIControlEventTouchUpInside];
     }
     return _startButton;
 }
-- (UIButton *)stopButton {
-    if (!_stopButton) {
-        _stopButton = [[UIButton alloc] init];
-        [_stopButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-        [_stopButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateSelected];
-        [_stopButton setTitle:@"结束" forState:UIControlStateNormal];
-        [_stopButton setTitle:@"结束" forState:UIControlStateSelected];
-        [_stopButton setTitle:@"结束" forState:UIControlStateHighlighted];
-        [_stopButton addTarget:self action:@selector(endAction) forControlEvents:UIControlEventTouchUpInside];
+- (UIButton *)playButton {
+    if (!_playButton) {
+        _playButton = [[UIButton alloc] init];
+        [_playButton setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+        [_playButton setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
+        [_playButton setTitle:@"播放" forState:UIControlStateNormal];
+        [_playButton setTitle:@"停止" forState:UIControlStateSelected];
+        [_playButton addTarget:self action:@selector(playAction) forControlEvents:UIControlEventTouchUpInside];
     }
-    return _stopButton;
+    return _playButton;
 }
+
 - (CLChatVoiceWave *)waveView {
     if (!_waveView) {
         _waveView = [[CLChatVoiceWave alloc] init];
     }
     return _waveView;
+}
+- (CLVoicePlayer *)player {
+    if (!_player) {
+        _player = [[CLVoicePlayer alloc] init];
+    }
+    return _player;
 }
 @end
