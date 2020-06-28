@@ -133,12 +133,11 @@ static OSStatus RecordCallback(void *inRefCon,
                          sizeof(recordCallback));
 }
 - (void)startRecorder {
-    [[Tools pathDocuments] stringByAppendingFormat:@"/testMP3.mp3"];
-    self.mp3Path = [Tools pathDocuments];
-    self.handle = [NSFileHandle fileHandleForWritingAtPath: self.mp3Path];
+    self.mp3Path = [[Tools pathDocuments] stringByAppendingFormat:@"/%@.mp3", [self currentTime]];
     if (![[NSFileManager defaultManager] fileExistsAtPath: self.mp3Path]) {
         [[NSFileManager defaultManager] createFileAtPath: self.mp3Path contents:nil attributes:nil];
     }
+    self.handle = [NSFileHandle fileHandleForWritingAtPath: self.mp3Path];
     AudioOutputUnitStart(self.audioUnit);
 }
 - (void)stopRecorder {
@@ -150,13 +149,12 @@ static OSStatus RecordCallback(void *inRefCon,
     [self.handle writeData:data];
     [self.lock unlock];
 }
-// 系统时间
-- (NSString*)getCurrentTime:(NSString*)formatter {
-    NSDate *senddate=[NSDate date];
-    NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
-    [dateformatter setDateFormat:formatter];
-    NSString *locationString=[dateformatter stringFromDate:senddate];
-    return locationString;
+- (NSString *)currentTime {
+    NSTimeInterval time = [[NSDate date] timeIntervalSince1970];
+    //10位数的时间戳是以 秒 为单位；
+    //13位数的时间戳是以 毫秒 为单位；
+    //19位数的时间戳是以 纳秒 为单位；
+    return [NSString stringWithFormat:@"%ld",(NSInteger)((CGFloat)time * 1000000)];
 }
 - (void)dealloc {
     AudioUnitUninitialize(self.audioUnit);
