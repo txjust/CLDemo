@@ -7,6 +7,7 @@
 //
 
 #import "CLDataWriter.h"
+#import <AVFoundation/AVFoundation.h>
 
 @interface CLDataWriter ()
 

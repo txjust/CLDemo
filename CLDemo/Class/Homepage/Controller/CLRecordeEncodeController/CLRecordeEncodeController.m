@@ -9,14 +9,7 @@
 #import "CLRecordeEncodeController.h"
 #import "CLRecorder.h"
 #import "CLDemo-Swift.h"
-
-
-#import <AVFoundation/AVAsset.h>
-#import <AVFoundation/AVAssetImageGenerator.h>
-#import <AVFoundation/AVTime.h>
-#import <Photos/Photos.h>
-#import <AssetsLibrary/AssetsLibrary.h>
-#import <ImageIO/ImageIO.h>
+#import <AVFoundation/AVFoundation.h>
 
 
 static void set_bits(uint8_t *bytes, int32_t bitOffset, int32_t numBits, int32_t value) {
@@ -94,6 +87,10 @@ static void set_bits(uint8_t *bytes, int32_t bitOffset, int32_t numBits, int32_t
                                     [NSNumber numberWithBool:NO], AVLinearPCMIsBigEndianKey,
                                     nil];
     AVURLAsset *asset = [AVURLAsset URLAssetWithURL:url options:nil];
+    CMTime audioDuration = asset.duration;
+    float audioDurationSeconds = CMTimeGetSeconds(audioDuration);
+    NSLog(@"获取到时长为 %f", audioDurationSeconds);
+
     if (asset == nil) {
         NSLog(@"asset is not defined!");
         return nil;
