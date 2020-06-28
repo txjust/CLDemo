@@ -21,6 +21,10 @@
 
 @property (nonatomic, strong) CLDataWriter *dataWriter;
 
+@property (nonatomic, assign) NSTimeInterval startDuration;
+
+@property (nonatomic, assign) NSTimeInterval endDuration;
+
 @end
 
 @implementation CLRecorder
@@ -130,14 +134,17 @@ static OSStatus RecordCallback(void *inRefCon,
                          sizeof(flag));
 }
 - (void)startRecorder {
-    if ([[NSFileManager defaultManager] fileExistsAtPath:self.mp3Path])
-    {
-        [[NSFileManager defaultManager] removeItemAtPath:self.mp3Path error:nil];
-    }
+//    if ([[NSFileManager defaultManager] fileExistsAtPath:self.mp3Path])
+//    {
+//        [[NSFileManager defaultManager] removeItemAtPath:self.mp3Path error:nil];
+//    }
     AudioOutputUnitStart(self.audioUnit);
+    self.startDuration = [[NSDate date] timeIntervalSince1970];
 }
 - (void)stopRecorder {
     AudioOutputUnitStop(self.audioUnit);
+    self.endDuration = [[NSDate date] timeIntervalSince1970];
+    NSLog(@"当前录制时长   %f", self.endDuration - self.startDuration);
 }
 - (void)dealloc {
     AudioUnitUninitialize(self.audioUnit);

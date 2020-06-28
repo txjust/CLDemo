@@ -32,7 +32,6 @@ import UIKit
         didSet {
             if oldValue != waveData {
                 setNeedsDisplay()
-                print("============")
             }
         }
     }

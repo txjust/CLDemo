@@ -71,6 +71,7 @@ static void set_bits(uint8_t *bytes, int32_t bitOffset, int32_t numBits, int32_t
         NSLog(@"%f",end - start);
         self.startButton.selected = YES;
         self.stopButton.selected = NO;
+        NSLog(@"%@",self.recorder.mp3Path);
     });
 }
 - (void)endAction {
@@ -83,7 +84,7 @@ static void set_bits(uint8_t *bytes, int32_t bitOffset, int32_t numBits, int32_t
     });
 }
 - (NSData *)audioWaveform:(NSURL *)url {
-    NSTimeInterval start = [[NSDate date] timeIntervalSince1970];
+//    NSTimeInterval start = [[NSDate date] timeIntervalSince1970];
     NSDictionary *outputSettings = [NSDictionary dictionaryWithObjectsAndKeys:
                                     [NSNumber numberWithInt:kAudioFormatLinearPCM], AVFormatIDKey,
                                     [NSNumber numberWithFloat:44100.0], AVSampleRateKey,
@@ -119,8 +120,8 @@ static void set_bits(uint8_t *bytes, int32_t bitOffset, int32_t numBits, int32_t
         NSLog(@"Unable to start reading!");
         return nil;
     }
-    NSTimeInterval end = [[NSDate date] timeIntervalSince1970];
-    NSLog(@"%f",end - start);
+//    NSTimeInterval end = [[NSDate date] timeIntervalSince1970];
+//    NSLog(@"%f",end - start);
 
     NSMutableData *_waveformSamples = [[NSMutableData alloc] init];
     int16_t _waveformPeak = 0;
