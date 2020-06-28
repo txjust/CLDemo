@@ -9,7 +9,6 @@
 #import "CLRecorder.h"
 #import <AVFoundation/AVFoundation.h>
 #import "CLMp3Encoder.h"
-#import "CLDataWriter.h"
 
 #define INPUT_BUS 1
 
@@ -19,7 +18,11 @@
 
 @property (nonatomic, strong) CLMp3Encoder *mp3Encoder;
 
-@property (nonatomic, strong) CLDataWriter *dataWriter;
+@property (nonatomic, copy) NSString *mp3Path;
+
+@property (nonatomic, strong) NSLock *lock;
+
+@property (nonatomic, strong) NSFileHandle * handle;
 
 @end
 
@@ -39,7 +42,6 @@ static OSStatus RecordCallback(void *inRefCon,
     bufferList.mBuffers[0].mDataByteSize = 0;
     
     CLRecorder *recorder = (__bridge CLRecorder *)(inRefCon);
-        
     AudioUnitRender(recorder.audioUnit, ioActionFlags, inTimeStamp, inBusNumber, inNumberFrames, &bufferList);
     [recorder.mp3Encoder processAudioBufferList:bufferList];
     return noErr;
@@ -110,6 +112,15 @@ static OSStatus RecordCallback(void *inRefCon,
                          &audioFormat,
                          sizeof(audioFormat));
 }
+- (void)initAudioProperty {
+    UInt32 flag = 1;
+    AudioUnitSetProperty(self.audioUnit,
+                         kAudioOutputUnitProperty_EnableIO,
+                         kAudioUnitScope_Input,
+                         INPUT_BUS,
+                         &flag,
+                         sizeof(flag));
+}
 - (void)initRecordeCallback {
     AURenderCallbackStruct recordCallback;
     recordCallback.inputProc = RecordCallback;
@@ -121,24 +132,31 @@ static OSStatus RecordCallback(void *inRefCon,
                          &recordCallback,
                          sizeof(recordCallback));
 }
-- (void)initAudioProperty {
-    UInt32 flag = 1;
-    AudioUnitSetProperty(self.audioUnit,
-                         kAudioOutputUnitProperty_EnableIO,
-                         kAudioUnitScope_Input,
-                         INPUT_BUS,
-                         &flag,
-                         sizeof(flag));
-}
 - (void)startRecorder {
-    if ([[NSFileManager defaultManager] fileExistsAtPath:self.mp3Path])
-    {
-        [[NSFileManager defaultManager] removeItemAtPath:self.mp3Path error:nil];
+    [[Tools pathDocuments] stringByAppendingFormat:@"/testMP3.mp3"];
+    self.mp3Path = [Tools pathDocuments];
+    self.handle = [NSFileHandle fileHandleForWritingAtPath: self.mp3Path];
+    if (![[NSFileManager defaultManager] fileExistsAtPath: self.mp3Path]) {
+        [[NSFileManager defaultManager] createFileAtPath: self.mp3Path contents:nil attributes:nil];
     }
     AudioOutputUnitStart(self.audioUnit);
 }
 - (void)stopRecorder {
     AudioOutputUnitStop(self.audioUnit);
+}
+- (void)writeData:(NSData *)data {
+    [self.lock lock];
+    [self.handle seekToEndOfFile];
+    [self.handle writeData:data];
+    [self.lock unlock];
+}
+// 系统时间
+- (NSString*)getCurrentTime:(NSString*)formatter {
+    NSDate *senddate=[NSDate date];
+    NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
+    [dateformatter setDateFormat:formatter];
+    NSString *locationString=[dateformatter stringFromDate:senddate];
+    return locationString;
 }
 - (void)dealloc {
     AudioUnitUninitialize(self.audioUnit);
@@ -155,15 +173,15 @@ static OSStatus RecordCallback(void *inRefCon,
         __weak __typeof(self) weakSelf = self;
         _mp3Encoder.processingEncodedData = ^(NSData * _Nonnull mp3Data) {
             __typeof(&*weakSelf) strongSelf = weakSelf;
-            [strongSelf.dataWriter writeData:mp3Data toPath:strongSelf.mp3Path];
+            [strongSelf writeData:mp3Data];
         };
     }
     return _mp3Encoder;
 }
-- (CLDataWriter *)dataWriter {
-    if (!_dataWriter) {
-        _dataWriter = [[CLDataWriter alloc] init];
+- (NSLock *)lock {
+    if (_lock == nil) {
+        _lock = [[NSLock alloc] init];
     }
-    return _dataWriter;
+    return _lock;
 }
 @end

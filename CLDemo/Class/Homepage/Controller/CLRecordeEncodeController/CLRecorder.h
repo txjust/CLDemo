@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CLRecorder : NSObject
 
-@property (nonatomic, copy) NSString  *mp3Path;
+@property (nonatomic, copy, readonly) NSString *mp3Path;
 
 - (void)startRecorder;
 

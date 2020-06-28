@@ -36,7 +36,6 @@ static void set_bits(uint8_t *bytes, int32_t bitOffset, int32_t numBits, int32_t
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.recorder = [[CLRecorder alloc] init];
-    self.recorder.mp3Path = [[Tools pathDocuments] stringByAppendingFormat:@"/testMP3.mp3"];
     [self.view addSubview:self.startButton];
     [self.view addSubview:self.stopButton];
     [self.view addSubview:self.waveView];
