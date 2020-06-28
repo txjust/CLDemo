@@ -13,13 +13,6 @@
 #ifdef __OBJC__
 
 
-#ifdef DEBUG
-# define CLLog(fmt, ...) CLLogWithFile((@"[文件名:%s] " "[函数名:%s] " "[行号:%d] " fmt), __FILE__, __FUNCTION__, __LINE__, ##__VA_ARGS__);
-#else
-# define CLLog(...);
-#endif
-
-
 
 #import <Masonry/Masonry.h>
 #import "UIView+CLSetRect.h"
@@ -28,7 +21,6 @@
 #import "Tools.h"
 #import "Define.h"
 #import "DateTools.h"
-#import "CLLogManager.h"
 
 
 #endif

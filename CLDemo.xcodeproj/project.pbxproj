@@ -27,7 +27,6 @@
 		0C30ED49231E44BF00364327 /* CLCustomTransitionPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C30ED48231E44BF00364327 /* CLCustomTransitionPresentationController.m */; };
 		0C30ED4C231E48FC00364327 /* CLLineChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C30ED4B231E48FC00364327 /* CLLineChartViewController.m */; };
 		0C31C38521994CCF001860C2 /* UIFont+CLFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C31C38421994CCF001860C2 /* UIFont+CLFont.m */; };
-		0C33BC79219AF71000583B4C /* CLLogManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C33BC78219AF71000583B4C /* CLLogManager.m */; };
 		0C3CAA5521AF89BD00A352F0 /* CLRotateAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3CAA5421AF89BD00A352F0 /* CLRotateAnimationController.m */; };
 		0C3CAA5821AF8A3B00A352F0 /* CLRotateAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3CAA5721AF8A3B00A352F0 /* CLRotateAnimationView.m */; };
 		0C47E22422D9C3E4003EDB4E /* CLTransitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C47E22322D9C3E4003EDB4E /* CLTransitionViewController.swift */; };
@@ -164,6 +163,7 @@
 		5B49566623B507A700212772 /* CLFlipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B49566523B507A700212772 /* CLFlipView.swift */; };
 		5B49566823B50ED700212772 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B49566723B50ED700212772 /* UIColor+Extension.swift */; };
 		5B49566D23B5DD0100212772 /* CLTwoSidedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B49566C23B5DD0100212772 /* CLTwoSidedView.swift */; };
+		5B737E5524A8994400079523 /* CLBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B737E5424A8994400079523 /* CLBackView.swift */; };
 		5B7C86EE2444B3E50086DC9C /* CLPopupFoodPickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7C86ED2444B3E50086DC9C /* CLPopupFoodPickerModel.swift */; };
 		5B80D9E91DDD976A00A20E34 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B80D9E81DDD976A00A20E34 /* main.m */; };
 		5B80D9EC1DDD976A00A20E34 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B80D9EB1DDD976A00A20E34 /* AppDelegate.m */; };
@@ -180,6 +180,12 @@
 		5B876CAF2445937200DC4424 /* CLPopupFoodPickerContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B876CAE2445937200DC4424 /* CLPopupFoodPickerContentCell.swift */; };
 		5B8A4D4323B118CC00360631 /* CLChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8A4D4223B118CC00360631 /* CLChatController.swift */; };
 		5B8AFC5D24A8829A00FAF996 /* CLVoicePlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8AFC5C24A8829A00FAF996 /* CLVoicePlayer.m */; };
+		5B8AFC6724A8954C00FAF996 /* CKDDebugController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8AFC6124A8954B00FAF996 /* CKDDebugController.swift */; };
+		5B8AFC6824A8954C00FAF996 /* CKDDebugCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8AFC6324A8954C00FAF996 /* CKDDebugCell.swift */; };
+		5B8AFC6924A8954C00FAF996 /* CKDDebugItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8AFC6524A8954C00FAF996 /* CKDDebugItem.swift */; };
+		5B8AFC6A24A8954C00FAF996 /* CLLogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8AFC6624A8954C00FAF996 /* CLLogManager.swift */; };
+		5B8AFC7024A8974C00FAF996 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8AFC6F24A8974C00FAF996 /* Regex.swift */; };
+		5B8AFC7424A897D000FAF996 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8AFC7324A897D000FAF996 /* Date+Extension.swift */; };
 		5B8B7D3024319701005C8530 /* CLPopupDataPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B7D2F24319701005C8530 /* CLPopupDataPickerController.swift */; };
 		5B8B7D32243197D6005C8530 /* CLYearMonthDayDataPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B7D31243197D6005C8530 /* CLYearMonthDayDataPickerView.swift */; };
 		5B8EAFED2444A29800317DC1 /* food.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B8EAFEC2444A29700317DC1 /* food.json */; };
@@ -277,8 +283,6 @@
 		0C30ED4B231E48FC00364327 /* CLLineChartViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLLineChartViewController.m; sourceTree = "<group>"; };
 		0C31C38321994CCF001860C2 /* UIFont+CLFont.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIFont+CLFont.h"; sourceTree = "<group>"; };
 		0C31C38421994CCF001860C2 /* UIFont+CLFont.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIFont+CLFont.m"; sourceTree = "<group>"; };
-		0C33BC77219AF71000583B4C /* CLLogManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLLogManager.h; sourceTree = "<group>"; };
-		0C33BC78219AF71000583B4C /* CLLogManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLLogManager.m; sourceTree = "<group>"; };
 		0C3CAA5321AF89BD00A352F0 /* CLRotateAnimationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLRotateAnimationController.h; sourceTree = "<group>"; };
 		0C3CAA5421AF89BD00A352F0 /* CLRotateAnimationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLRotateAnimationController.m; sourceTree = "<group>"; };
 		0C3CAA5621AF8A3B00A352F0 /* CLRotateAnimationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLRotateAnimationView.h; sourceTree = "<group>"; };
@@ -502,6 +506,7 @@
 		5B49566523B507A700212772 /* CLFlipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLFlipView.swift; sourceTree = "<group>"; };
 		5B49566723B50ED700212772 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		5B49566C23B5DD0100212772 /* CLTwoSidedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLTwoSidedView.swift; sourceTree = "<group>"; };
+		5B737E5424A8994400079523 /* CLBackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLBackView.swift; sourceTree = "<group>"; };
 		5B7C86ED2444B3E50086DC9C /* CLPopupFoodPickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLPopupFoodPickerModel.swift; sourceTree = "<group>"; };
 		5B80D9E41DDD976A00A20E34 /* CLDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CLDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B80D9E81DDD976A00A20E34 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -531,6 +536,12 @@
 		5B8A4D4223B118CC00360631 /* CLChatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLChatController.swift; sourceTree = "<group>"; };
 		5B8AFC5B24A8829A00FAF996 /* CLVoicePlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLVoicePlayer.h; sourceTree = "<group>"; };
 		5B8AFC5C24A8829A00FAF996 /* CLVoicePlayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLVoicePlayer.m; sourceTree = "<group>"; };
+		5B8AFC6124A8954B00FAF996 /* CKDDebugController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CKDDebugController.swift; sourceTree = "<group>"; };
+		5B8AFC6324A8954C00FAF996 /* CKDDebugCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CKDDebugCell.swift; sourceTree = "<group>"; };
+		5B8AFC6524A8954C00FAF996 /* CKDDebugItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CKDDebugItem.swift; sourceTree = "<group>"; };
+		5B8AFC6624A8954C00FAF996 /* CLLogManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLLogManager.swift; sourceTree = "<group>"; };
+		5B8AFC6F24A8974C00FAF996 /* Regex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
+		5B8AFC7324A897D000FAF996 /* Date+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		5B8B7D2F24319701005C8530 /* CLPopupDataPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLPopupDataPickerController.swift; sourceTree = "<group>"; };
 		5B8B7D31243197D6005C8530 /* CLYearMonthDayDataPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLYearMonthDayDataPickerView.swift; sourceTree = "<group>"; };
 		5B8EAFEC2444A29700317DC1 /* food.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = food.json; sourceTree = "<group>"; };
@@ -883,15 +894,6 @@
 				0C4947A22382951100EAF6AF /* CLLineChartView.m */,
 			);
 			path = CLLineChartView;
-			sourceTree = "<group>";
-		};
-		0C33BC6F219AEF5D00583B4C /* CLLog */ = {
-			isa = PBXGroup;
-			children = (
-				0C33BC77219AF71000583B4C /* CLLogManager.h */,
-				0C33BC78219AF71000583B4C /* CLLogManager.m */,
-			);
-			path = CLLog;
 			sourceTree = "<group>";
 		};
 		0C52EF6421928C2A0079A0E7 /* CLLanguageManager */ = {
@@ -1638,6 +1640,7 @@
 			isa = PBXGroup;
 			children = (
 				5B3327DF23DF352100CA315C /* CLConst */,
+				5B8AFC5E24A8954B00FAF996 /* CLLogManager */,
 				B5498C7023DE93910082D4E5 /* CLPhoneNumberHelper */,
 				0CCDA3F222D9D178007B41C4 /* FPSDisplay */,
 				0CCDA3F122D9D161007B41C4 /* CLPhotoBrowser */,
@@ -1645,7 +1648,6 @@
 				0C29D593222FE7DB00635F25 /* CLGCDTimerManager */,
 				0C7316A7222814AB005ACFE7 /* CLJumpManager */,
 				0CF79B0C219679AB00DD0BF1 /* DataJson */,
-				0C33BC6F219AEF5D00583B4C /* CLLog */,
 				0CCDA31D219922C50057BA14 /* CLChangeFontSizeManager */,
 				0CF79AFE2196792000DD0BF1 /* Aspects */,
 				0C52EF6421928C2A0079A0E7 /* CLLanguageManager */,
@@ -1684,6 +1686,8 @@
 				0C0E36A32257838F00478B69 /* UIImage+CLQRCode.m */,
 				0CCBFB7022AB89FE0078547B /* NSDate+CLExtension.h */,
 				0CCBFB7122AB89FE0078547B /* NSDate+CLExtension.m */,
+				5B8AFC6F24A8974C00FAF996 /* Regex.swift */,
+				5B8AFC7324A897D000FAF996 /* Date+Extension.swift */,
 				5B49566723B50ED700212772 /* UIColor+Extension.swift */,
 				5B3327E223DF366600CA315C /* UIImage+Extension.swift */,
 				5B3327E423DF384800CA315C /* NSString+Extension.swift */,
@@ -1710,6 +1714,50 @@
 				5B8A4D4223B118CC00360631 /* CLChatController.swift */,
 			);
 			path = CLChatController;
+			sourceTree = "<group>";
+		};
+		5B8AFC5E24A8954B00FAF996 /* CLLogManager */ = {
+			isa = PBXGroup;
+			children = (
+				5B8AFC5F24A8954B00FAF996 /* CKDDebugController */,
+				5B8AFC6624A8954C00FAF996 /* CLLogManager.swift */,
+			);
+			path = CLLogManager;
+			sourceTree = "<group>";
+		};
+		5B8AFC5F24A8954B00FAF996 /* CKDDebugController */ = {
+			isa = PBXGroup;
+			children = (
+				5B737E5424A8994400079523 /* CLBackView.swift */,
+				5B8AFC6024A8954B00FAF996 /* Controller */,
+				5B8AFC6224A8954C00FAF996 /* Cell */,
+				5B8AFC6424A8954C00FAF996 /* Item */,
+			);
+			path = CKDDebugController;
+			sourceTree = "<group>";
+		};
+		5B8AFC6024A8954B00FAF996 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5B8AFC6124A8954B00FAF996 /* CKDDebugController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		5B8AFC6224A8954C00FAF996 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				5B8AFC6324A8954C00FAF996 /* CKDDebugCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		5B8AFC6424A8954C00FAF996 /* Item */ = {
+			isa = PBXGroup;
+			children = (
+				5B8AFC6524A8954C00FAF996 /* CKDDebugItem.swift */,
+			);
+			path = Item;
 			sourceTree = "<group>";
 		};
 		5B8B7D2E243196C5005C8530 /* CLPopupDataPickerController */ = {
@@ -2072,6 +2120,7 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-CLDemo/Pods-CLDemo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/DateTools/DateTools.framework",
 				"${BUILT_PRODUCTS_DIR}/DateToolsSwift/DateToolsSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework",
@@ -2087,6 +2136,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DateTools.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DateToolsSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HandyJSON.framework",
@@ -2131,6 +2181,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CACA4AB224CC1DC0084ECC8 /* CLTextView.swift in Sources */,
+				5B8AFC6924A8954C00FAF996 /* CKDDebugItem.swift in Sources */,
 				0CB60B17237EC51100D10317 /* CLHorizontalItem.m in Sources */,
 				0CF6B84523865AF600F10986 /* CLHorizontalLayout.m in Sources */,
 				5BBA5762243F6E7A0003AE00 /* CLPopupTwoInputController.swift in Sources */,
@@ -2156,6 +2207,7 @@
 				0CCDA40122D9D1C5007B41C4 /* CLPhotoBrowserCollectionViewCell.m in Sources */,
 				0C2AE878223F87AF007D5DC5 /* CLWaveSwiftViewController.swift in Sources */,
 				5B1C74261E78F120000AB534 /* CLChartXLabel.m in Sources */,
+				5B8AFC6824A8954C00FAF996 /* CKDDebugCell.swift in Sources */,
 				0C223C772243811200E319E2 /* CLRotateAnimationSwiftController.swift in Sources */,
 				0CCDA40022D9D1C5007B41C4 /* CLPhotoBrowserTransitioningDelegate.m in Sources */,
 				0C558A9521ED956700C2C096 /* CLPasswordInputView.m in Sources */,
@@ -2164,6 +2216,7 @@
 				0C558AE421EDA2E800C2C096 /* UIColor+CLHex.m in Sources */,
 				0C61577822BE1241009AABAC /* CLSectorAnimationView.swift in Sources */,
 				5B80DA4E1DDD993F00A20E34 /* CLCustomTabbar.m in Sources */,
+				5B737E5524A8994400079523 /* CLBackView.swift in Sources */,
 				0C30ED49231E44BF00364327 /* CLCustomTransitionPresentationController.m in Sources */,
 				5BF1ACE1245C7D620083BE70 /* CLTitleControllerView.swift in Sources */,
 				0C66AF8F22E1C75600C5C9E8 /* CLPresentTransitionNavigationController.m in Sources */,
@@ -2184,6 +2237,7 @@
 				0C03D7FB236D4F3800F15067 /* CLLayoutController.m in Sources */,
 				0C108EAA22A93289009EA457 /* CLCountdownCell.m in Sources */,
 				0CF4EF952330848B00D8B95E /* CLInputPasswordToolBar.m in Sources */,
+				5B8AFC6724A8954C00FAF996 /* CKDDebugController.swift in Sources */,
 				0CF79AFC219678FB00DD0BF1 /* NSString+PinYin.m in Sources */,
 				5B2411922438EF4F00B2E0DC /* CLTagsCell.swift in Sources */,
 				B51EE6E523DF138200146862 /* CLChatEmojiItem.swift in Sources */,
@@ -2198,6 +2252,7 @@
 				0CB2769922E1A85F00AFCB8C /* CLTransitionController.m in Sources */,
 				0CF64300222FECBD00227361 /* CLWaveViewController.m in Sources */,
 				5B3327E523DF384800CA315C /* NSString+Extension.swift in Sources */,
+				5B8AFC7024A8974C00FAF996 /* Regex.swift in Sources */,
 				5B190E7323B66811005A2474 /* CLPopupManager.swift in Sources */,
 				B5498C8323DED6760082D4E5 /* CLChatLayoutCellProtocol.swift in Sources */,
 				0C547345239E2C7000F48BFA /* CLPhoneNumberVerificationController.m in Sources */,
@@ -2255,6 +2310,7 @@
 				5BB0774A2444552C00EF9D3E /* CLPopupFoodPickerController.swift in Sources */,
 				5B80D9EC1DDD976A00A20E34 /* AppDelegate.m in Sources */,
 				5BCCEC6A245BFCA00049AC70 /* CLVernierCaliperFooterCell.swift in Sources */,
+				5B8AFC7424A897D000FAF996 /* Date+Extension.swift in Sources */,
 				0CCD1DCA231F60D200AFCE1F /* CLBroadcastView.m in Sources */,
 				5B876CAF2445937200DC4424 /* CLPopupFoodPickerContentCell.swift in Sources */,
 				0CCDA40222D9D1C5007B41C4 /* CLPhotoBrowserAnimatedTransitioning.m in Sources */,
@@ -2270,7 +2326,6 @@
 				0CCDA3FF22D9D1C5007B41C4 /* CLPhotoBrowserPresentationController.m in Sources */,
 				5B241196243B039200B2E0DC /* CLTagsItem.swift in Sources */,
 				0C77C4B92248C85C007D0FFC /* CLGCDTimerManager.swift in Sources */,
-				0C33BC79219AF71000583B4C /* CLLogManager.m in Sources */,
 				0C7A1EA0231A7129002D75F2 /* CLCustomTransitionDelegate.m in Sources */,
 				0CACA4AD224CC1F80084ECC8 /* CLTextViewViewController.swift in Sources */,
 				B51EE6E723DF138200146862 /* CLChatEmojTextItem.swift in Sources */,
@@ -2309,6 +2364,7 @@
 				0C2AE876223F878D007D5DC5 /* CLWaveView.swift in Sources */,
 				B5498C7923DE93910082D4E5 /* CLPhoneNumberHelper.m in Sources */,
 				0CF79B082196798400DD0BF1 /* BankModel.m in Sources */,
+				5B8AFC6A24A8954C00FAF996 /* CLLogManager.swift in Sources */,
 				0C94BA4A22D9DC04008CD7BA /* CLPhotoCollectionViewCell.m in Sources */,
 				0CCD1DD0231F649D00AFCE1F /* CLBroadcastViewController.m in Sources */,
 				0C223C792243818A00E319E2 /* CLRoundAnimationView.swift in Sources */,

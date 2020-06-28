@@ -69,9 +69,8 @@ static OSStatus RecordCallback(void *inRefCon,
     [audioSession setCategory:AVAudioSessionCategoryPlayAndRecord error:&error];
     [audioSession setPreferredSampleRate:44100 error:&error];
     [audioSession setPreferredInputNumberOfChannels:1 error:&error];
-    [audioSession setPreferredIOBufferDuration:0.05 error:&error];
+    [audioSession setPreferredIOBufferDuration:0.023 error:&error];
     [audioSession setActive:YES error:nil];
-    
 }
 - (void)initBuffer {
     UInt32 flag = 0;
@@ -136,9 +135,14 @@ static OSStatus RecordCallback(void *inRefCon,
     if (![[NSFileManager defaultManager] fileExistsAtPath: self.mp3Path]) {
         [[NSFileManager defaultManager] createFileAtPath: self.mp3Path contents:nil attributes:nil];
     }
-    self.handle = [NSFileHandle fileHandleForWritingAtPath: self.mp3Path];
-    [self.mp3Encoder run];
-    AudioOutputUnitStart(self.audioUnit);
+    NSError *error;
+    self.handle = [NSFileHandle fileHandleForWritingToURL:[NSURL fileURLWithPath: self.mp3Path] error:&error];
+    if (!error) {
+        [self.mp3Encoder run];
+        AudioOutputUnitStart(self.audioUnit);
+    }else {
+        NSLog(@"error: %@", error);
+    }
 }
 - (void)stopRecorder {
     AudioOutputUnitStop(self.audioUnit);
@@ -152,9 +156,6 @@ static OSStatus RecordCallback(void *inRefCon,
 }
 - (NSString *)currentTime {
     NSTimeInterval time = [[NSDate date] timeIntervalSince1970];
-    //10位数的时间戳是以 秒 为单位；
-    //13位数的时间戳是以 毫秒 为单位；
-    //19位数的时间戳是以 纳秒 为单位；
     return [NSString stringWithFormat:@"%ld",(NSInteger)((CGFloat)time * 1000000)];
 }
 - (void)dealloc {

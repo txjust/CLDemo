@@ -11,6 +11,7 @@
 #import "CLDemo-Swift.h"
 #import <AVFoundation/AVFoundation.h>
 #import "CLVoicePlayer.h"
+#import "CLDemo-Swift.h"
 
 static void set_bits(uint8_t *bytes, int32_t bitOffset, int32_t numBits, int32_t value) {
     numBits = (unsigned int)pow(2, numBits) - 1; //this will only work up to 32 bits, of course
@@ -105,6 +106,9 @@ static void set_bits(uint8_t *bytes, int32_t bitOffset, int32_t numBits, int32_t
     NSError *assetError = nil;
     AVAssetReader *iPodAssetReader = [AVAssetReader assetReaderWithAsset:asset error:&assetError];
     if (assetError) {
+        [CLPopupManager showOneAlertWithStatusBarStyle:UIStatusBarStyleDefault statusBarHidden:NO autorotate:NO interfaceOrientationMask:UIInterfaceOrientationMaskAll displacement:YES passedDown:YES title:[NSString stringWithFormat:@"error: %@", assetError] message:nil sure:@"确定" sureCallBack:^{
+            
+        }];
         NSLog (@"error: %@", assetError);
         return nil;
     }

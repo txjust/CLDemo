@@ -1,4 +1,5 @@
 PODS:
+  - CryptoSwift (1.3.1)
   - DateTools (2.0.0)
   - DateToolsSwift (5.0.0)
   - HandyJSON (5.0.1)
@@ -25,6 +26,7 @@ PODS:
   - Then (2.6.0)
 
 DEPENDENCIES:
+  - CryptoSwift (~> 1.0)
   - DateTools
   - DateToolsSwift
   - HandyJSON (~> 5.0.1)
@@ -38,7 +40,8 @@ DEPENDENCIES:
   - Then
 
 SPEC REPOS:
-  https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git:
+  https://gitee.com/mirrors/CocoaPods-Specs.git:
+    - CryptoSwift
     - DateTools
     - DateToolsSwift
     - HandyJSON
@@ -51,8 +54,11 @@ SPEC REPOS:
     - SnapKit
     - SwiftyJSON
     - Then
+  trunk:
+    - SDWebImage
 
 SPEC CHECKSUMS:
+  CryptoSwift: f12f037f6d0fcd6d48c96db0071b653de64e6c4d
   DateTools: 933ac9c490f21f92127cf690ccd8c397e0126caf
   DateToolsSwift: 4207ada6ad615d8dc076323d27037c94916dbfa6
   HandyJSON: d45b8415c501e3affc59ca9762c1197ff0feb646
@@ -66,6 +72,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   Then: 90cd104fd951cec1980a03f57704ad8f784d4d79
 
-PODFILE CHECKSUM: 7aff911d42f6e3efbe65c8d3b573651f054b257d
+PODFILE CHECKSUM: 0f7cef12effca7f8b85552fa74ad39bcd4dc602f
 
 COCOAPODS: 1.9.1
