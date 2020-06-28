@@ -174,7 +174,6 @@
 		5B809619221870BD000F72F3 /* UIImage+Extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B809606221870BC000F72F3 /* UIImage+Extend.m */; };
 		5B80961A221870BD000F72F3 /* CLDesign.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B809607221870BC000F72F3 /* CLDesign.m */; };
 		5B80961B221870BD000F72F3 /* CLBankCardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B809609221870BC000F72F3 /* CLBankCardModel.m */; };
-		5B80961E221870BD000F72F3 /* zocr0.lib in Resources */ = {isa = PBXBuildFile; fileRef = 5B809613221870BD000F72F3 /* zocr0.lib */; };
 		5B80962122187115000F72F3 /* CLBankCardDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B80962022187115000F72F3 /* CLBankCardDetailController.m */; };
 		5B80D9E91DDD976A00A20E34 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B80D9E81DDD976A00A20E34 /* main.m */; };
 		5B80D9EC1DDD976A00A20E34 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B80D9EB1DDD976A00A20E34 /* AppDelegate.m */; };
@@ -190,9 +189,11 @@
 		5B80DA581DDD9C3A00A20E34 /* CLTabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B80DA571DDD9C3A00A20E34 /* CLTabbarController.m */; };
 		5B876CAF2445937200DC4424 /* CLPopupFoodPickerContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B876CAE2445937200DC4424 /* CLPopupFoodPickerContentCell.swift */; };
 		5B8A4D4323B118CC00360631 /* CLChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8A4D4223B118CC00360631 /* CLChatController.swift */; };
+		5B8AFC3B24A82AAD00FAF996 /* libexbankcardios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B8AFC3724A82AAD00FAF996 /* libexbankcardios.a */; };
+		5B8AFC3C24A82AAD00FAF996 /* libbexbankcard.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B8AFC3824A82AAD00FAF996 /* libbexbankcard.a */; };
+		5B8AFC3D24A82AAD00FAF996 /* zocr0.lib in Resources */ = {isa = PBXBuildFile; fileRef = 5B8AFC3924A82AAD00FAF996 /* zocr0.lib */; };
 		5B8B7D3024319701005C8530 /* CLPopupDataPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B7D2F24319701005C8530 /* CLPopupDataPickerController.swift */; };
 		5B8B7D32243197D6005C8530 /* CLYearMonthDayDataPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B7D31243197D6005C8530 /* CLYearMonthDayDataPickerView.swift */; };
-		5B8E97E624A655040047D50C /* testMP3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5B8E97E524A655040047D50C /* testMP3.mp3 */; };
 		5B8EAFED2444A29800317DC1 /* food.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B8EAFEC2444A29700317DC1 /* food.json */; };
 		5B919B6A243CD03A000D5EDA /* CLDataPickerTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B919B69243CD03A000D5EDA /* CLDataPickerTitleView.swift */; };
 		5BAB9F3824A319E700BAC6B5 /* libmp3lame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BAB9F3724A319E700BAC6B5 /* libmp3lame.a */; };
@@ -532,14 +533,6 @@
 		5B809608221870BC000F72F3 /* CLScanBankCardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLScanBankCardManager.h; sourceTree = "<group>"; };
 		5B809609221870BC000F72F3 /* CLBankCardModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBankCardModel.m; sourceTree = "<group>"; };
 		5B80960A221870BC000F72F3 /* CLScanBankCardBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLScanBankCardBase.h; sourceTree = "<group>"; };
-		5B80960C221870BD000F72F3 /* exbankcardcore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exbankcardcore.h; sourceTree = "<group>"; };
-		5B80960D221870BD000F72F3 /* commondef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = commondef.h; sourceTree = "<group>"; };
-		5B80960E221870BD000F72F3 /* exbankcard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exbankcard.h; sourceTree = "<group>"; };
-		5B80960F221870BD000F72F3 /* excards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = excards.h; sourceTree = "<group>"; };
-		5B809611221870BD000F72F3 /* libexbankcardios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libexbankcardios.a; sourceTree = "<group>"; };
-		5B809612221870BD000F72F3 /* libbexbankcard.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libbexbankcard.a; sourceTree = "<group>"; };
-		5B809613221870BD000F72F3 /* zocr0.lib */ = {isa = PBXFileReference; lastKnownFileType = file; path = zocr0.lib; sourceTree = "<group>"; };
-		5B809614221870BD000F72F3 /* BankCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankCard.h; sourceTree = "<group>"; };
 		5B80961F22187115000F72F3 /* CLBankCardDetailController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLBankCardDetailController.h; sourceTree = "<group>"; };
 		5B80962022187115000F72F3 /* CLBankCardDetailController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLBankCardDetailController.m; sourceTree = "<group>"; };
 		5B80D9E41DDD976A00A20E34 /* CLDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CLDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -568,9 +561,16 @@
 		5B80DA571DDD9C3A00A20E34 /* CLTabbarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLTabbarController.m; sourceTree = "<group>"; };
 		5B876CAE2445937200DC4424 /* CLPopupFoodPickerContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLPopupFoodPickerContentCell.swift; sourceTree = "<group>"; };
 		5B8A4D4223B118CC00360631 /* CLChatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLChatController.swift; sourceTree = "<group>"; };
+		5B8AFC3224A82AAD00FAF996 /* exbankcardcore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exbankcardcore.h; sourceTree = "<group>"; };
+		5B8AFC3324A82AAD00FAF996 /* commondef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = commondef.h; sourceTree = "<group>"; };
+		5B8AFC3424A82AAD00FAF996 /* exbankcard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exbankcard.h; sourceTree = "<group>"; };
+		5B8AFC3524A82AAD00FAF996 /* excards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = excards.h; sourceTree = "<group>"; };
+		5B8AFC3724A82AAD00FAF996 /* libexbankcardios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libexbankcardios.a; sourceTree = "<group>"; };
+		5B8AFC3824A82AAD00FAF996 /* libbexbankcard.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libbexbankcard.a; sourceTree = "<group>"; };
+		5B8AFC3924A82AAD00FAF996 /* zocr0.lib */ = {isa = PBXFileReference; lastKnownFileType = file; path = zocr0.lib; sourceTree = "<group>"; };
+		5B8AFC3A24A82AAD00FAF996 /* BankCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankCard.h; sourceTree = "<group>"; };
 		5B8B7D2F24319701005C8530 /* CLPopupDataPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLPopupDataPickerController.swift; sourceTree = "<group>"; };
 		5B8B7D31243197D6005C8530 /* CLYearMonthDayDataPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLYearMonthDayDataPickerView.swift; sourceTree = "<group>"; };
-		5B8E97E524A655040047D50C /* testMP3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = testMP3.mp3; sourceTree = "<group>"; };
 		5B8EAFEC2444A29700317DC1 /* food.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = food.json; sourceTree = "<group>"; };
 		5B919B69243CD03A000D5EDA /* CLDataPickerTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLDataPickerTitleView.swift; sourceTree = "<group>"; };
 		5BAB9F3624A319E100BAC6B5 /* lame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lame.h; sourceTree = "<group>"; };
@@ -647,8 +647,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B8AFC3B24A82AAD00FAF996 /* libexbankcardios.a in Frameworks */,
 				21EDC4EF98A85BE0B0BAD366 /* Pods_CLDemo.framework in Frameworks */,
 				5BAB9F3824A319E700BAC6B5 /* libmp3lame.a in Frameworks */,
+				5B8AFC3C24A82AAD00FAF996 /* libbexbankcard.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1489,7 +1491,7 @@
 		5B8095F722187061000F72F3 /* CLBankScan */ = {
 			isa = PBXGroup;
 			children = (
-				5B80960B221870BD000F72F3 /* bank_card */,
+				5B8AFC3124A82AAD00FAF996 /* bank_card */,
 				5B8095FC221870BC000F72F3 /* CLBank */,
 			);
 			path = CLBankScan;
@@ -1514,29 +1516,6 @@
 				5B80960A221870BC000F72F3 /* CLScanBankCardBase.h */,
 			);
 			path = CLBank;
-			sourceTree = "<group>";
-		};
-		5B80960B221870BD000F72F3 /* bank_card */ = {
-			isa = PBXGroup;
-			children = (
-				5B80960C221870BD000F72F3 /* exbankcardcore.h */,
-				5B80960D221870BD000F72F3 /* commondef.h */,
-				5B80960E221870BD000F72F3 /* exbankcard.h */,
-				5B80960F221870BD000F72F3 /* excards.h */,
-				5B809610221870BD000F72F3 /* exbankcardcore */,
-				5B809614221870BD000F72F3 /* BankCard.h */,
-			);
-			path = bank_card;
-			sourceTree = "<group>";
-		};
-		5B809610221870BD000F72F3 /* exbankcardcore */ = {
-			isa = PBXGroup;
-			children = (
-				5B809611221870BD000F72F3 /* libexbankcardios.a */,
-				5B809612221870BD000F72F3 /* libbexbankcard.a */,
-				5B809613221870BD000F72F3 /* zocr0.lib */,
-			);
-			path = exbankcardcore;
 			sourceTree = "<group>";
 		};
 		5B80D9DB1DDD976A00A20E34 = {
@@ -1824,6 +1803,29 @@
 			path = CLChatController;
 			sourceTree = "<group>";
 		};
+		5B8AFC3124A82AAD00FAF996 /* bank_card */ = {
+			isa = PBXGroup;
+			children = (
+				5B8AFC3224A82AAD00FAF996 /* exbankcardcore.h */,
+				5B8AFC3324A82AAD00FAF996 /* commondef.h */,
+				5B8AFC3424A82AAD00FAF996 /* exbankcard.h */,
+				5B8AFC3524A82AAD00FAF996 /* excards.h */,
+				5B8AFC3624A82AAD00FAF996 /* exbankcardcore */,
+				5B8AFC3A24A82AAD00FAF996 /* BankCard.h */,
+			);
+			path = bank_card;
+			sourceTree = "<group>";
+		};
+		5B8AFC3624A82AAD00FAF996 /* exbankcardcore */ = {
+			isa = PBXGroup;
+			children = (
+				5B8AFC3724A82AAD00FAF996 /* libexbankcardios.a */,
+				5B8AFC3824A82AAD00FAF996 /* libbexbankcard.a */,
+				5B8AFC3924A82AAD00FAF996 /* zocr0.lib */,
+			);
+			path = exbankcardcore;
+			sourceTree = "<group>";
+		};
 		5B8B7D2E243196C5005C8530 /* CLPopupDataPickerController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1839,7 +1841,6 @@
 		5BAB9F2B24A3011900BAC6B5 /* CLRecordeEncodeController */ = {
 			isa = PBXGroup;
 			children = (
-				5B8E97E524A655040047D50C /* testMP3.mp3 */,
 				5BAB9F3524A319CF00BAC6B5 /* LAME */,
 				5B42F08E24A3918D006861BF /* CLRecordeEncodeController.h */,
 				5B42F08F24A3918D006861BF /* CLRecordeEncodeController.m */,
@@ -2097,7 +2098,7 @@
 				TargetAttributes = {
 					5B80D9E31DDD976A00A20E34 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = KZ83WEMA2D;
+						DevelopmentTeam = 533J5B8T42;
 						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
@@ -2130,7 +2131,6 @@
 				0CF79B1621967AE600DD0BF1 /* 一月.json in Resources */,
 				0C7DE94D22DECC0D00FA9040 /* localLongImage1.jpg in Resources */,
 				0C7DE95322DECC0D00FA9040 /* localGifImage0.gif in Resources */,
-				5B8E97E624A655040047D50C /* testMP3.mp3 in Resources */,
 				0C7DE95222DECC0D00FA9040 /* localImage2.jpeg in Resources */,
 				0CF79B0B2196799C00DD0BF1 /* bank.json in Resources */,
 				5B80D9F71DDD976A00A20E34 /* LaunchScreen.storyboard in Resources */,
@@ -2147,7 +2147,6 @@
 				0CF79B1221967AE600DD0BF1 /* 六月.json in Resources */,
 				0C7DE94C22DECC0D00FA9040 /* localImage4.jpeg in Resources */,
 				0C7DE94922DECC0D00FA9040 /* localImage0.jpeg in Resources */,
-				5B80961E221870BD000F72F3 /* zocr0.lib in Resources */,
 				0C7DE95422DECC0D00FA9040 /* localImage1.jpeg in Resources */,
 				B5498C7B23DE93910082D4E5 /* iso3166.json in Resources */,
 				0C7DE94E22DECC0D00FA9040 /* localImage5.jpeg in Resources */,
@@ -2156,6 +2155,7 @@
 				5B8EAFED2444A29800317DC1 /* food.json in Resources */,
 				0C52EF70219298B00079A0E7 /* Localizable.strings in Resources */,
 				0C7DE94722DECC0D00FA9040 /* localImage8.jpeg in Resources */,
+				5B8AFC3D24A82AAD00FAF996 /* zocr0.lib in Resources */,
 				0C2AE871223F48C0007D5DC5 /* CLBubbleView.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2602,7 +2602,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = KZ83WEMA2D;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 533J5B8T42;
 				ENABLE_BITCODE = NO;
 				ENABLE_TESTABILITY = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/CLDemo/PrefixHeader.pch";
@@ -2614,8 +2616,9 @@
 					"$(PROJECT_DIR)/CLDemo/Others/CLBankScan/bank_card/exbankcardcore",
 					"$(PROJECT_DIR)/CLDemo/Class/Homepage/Controller/CLRecordeEncodeController/LAME",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Demo.ccc.;
+				PRODUCT_BUNDLE_IDENTIFIER = Demo.ccc.vip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/CLDemo/CLDemo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -2629,7 +2632,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = KZ83WEMA2D;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 533J5B8T42;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/CLDemo/PrefixHeader.pch";
 				INFOPLIST_FILE = CLDemo/Info.plist;
@@ -2640,8 +2645,9 @@
 					"$(PROJECT_DIR)/CLDemo/Others/CLBankScan/bank_card/exbankcardcore",
 					"$(PROJECT_DIR)/CLDemo/Class/Homepage/Controller/CLRecordeEncodeController/LAME",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Demo.ccc.;
+				PRODUCT_BUNDLE_IDENTIFIER = Demo.ccc.vip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/CLDemo/CLDemo-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

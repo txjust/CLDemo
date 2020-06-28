@@ -58,14 +58,15 @@ static void set_bits(uint8_t *bytes, int32_t bitOffset, int32_t numBits, int32_t
         make.size.mas_equalTo(CGSizeMake(200, 50));
     }];
     
-    NSData *waveSamples = [self audioWaveform:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"testMP3" ofType:@"mp3"]]];
-    self.waveView.waveData = waveSamples;
     self.waveView.peakHeight = 50;
 }
 
 - (void)startAction {
     dispatch_async(dispatch_get_main_queue(), ^{
+        NSTimeInterval start = [[NSDate date] timeIntervalSince1970];
         [self.recorder startRecorder];
+        NSTimeInterval end = [[NSDate date] timeIntervalSince1970];
+        NSLog(@"%f",end - start);
         self.startButton.selected = YES;
         self.stopButton.selected = NO;
     });
@@ -76,8 +77,11 @@ static void set_bits(uint8_t *bytes, int32_t bitOffset, int32_t numBits, int32_t
         self.stopButton.selected = YES;
         self.startButton.selected = NO;
     });
+    NSData *waveSamples = [self audioWaveform:[NSURL fileURLWithPath:self.recorder.mp3Path]];
+    self.waveView.waveData = waveSamples;
 }
 - (NSData *)audioWaveform:(NSURL *)url {
+    NSTimeInterval start = [[NSDate date] timeIntervalSince1970];
     NSDictionary *outputSettings = [NSDictionary dictionaryWithObjectsAndKeys:
                                     [NSNumber numberWithInt:kAudioFormatLinearPCM], AVFormatIDKey,
                                     [NSNumber numberWithFloat:44100.0], AVSampleRateKey,
@@ -113,7 +117,9 @@ static void set_bits(uint8_t *bytes, int32_t bitOffset, int32_t numBits, int32_t
         NSLog(@"Unable to start reading!");
         return nil;
     }
-    
+    NSTimeInterval end = [[NSDate date] timeIntervalSince1970];
+    NSLog(@"%f",end - start);
+
     NSMutableData *_waveformSamples = [[NSMutableData alloc] init];
     int16_t _waveformPeak = 0;
     int _waveformPeakCount = 0;
@@ -196,7 +202,8 @@ static void set_bits(uint8_t *bytes, int32_t bitOffset, int32_t numBits, int32_t
     }
     
     int numSamples = 100;
-    int bitstreamLength = (numSamples * 5) / 8 + (((numSamples * 5) % 8) == 0 ? 0 : 1);
+    int number = 5;
+    int bitstreamLength = (numSamples * number) / 8 + (((numSamples * number) % 8) == 0 ? 0 : 1);
     NSMutableData *result = [[NSMutableData alloc] initWithLength:bitstreamLength];
     {
         int32_t maxSample = peak;
@@ -205,10 +212,9 @@ static void set_bits(uint8_t *bytes, int32_t bitOffset, int32_t numBits, int32_t
         
         for (int i = 0; i < numSamples; i++) {
             int32_t value = MIN(31, ABS((int32_t)samples[i]) * 31 / maxSample);
-            set_bits(bytes, i * 5, 5, value & 31);
+            set_bits(bytes, i * number, number, value & 31);
         }
     }
-    
     return result;
 }
 

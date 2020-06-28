@@ -65,9 +65,11 @@ static OSStatus RecordCallback(void *inRefCon,
     AVAudioSession *audioSession = [AVAudioSession sharedInstance];
     
     [audioSession setCategory:AVAudioSessionCategoryPlayAndRecord error:&error];
-    [audioSession setPreferredSampleRate:8000 error:&error];
+    [audioSession setPreferredSampleRate:44100 error:&error];
     [audioSession setPreferredInputNumberOfChannels:1 error:&error];
     [audioSession setPreferredIOBufferDuration:0.05 error:&error];
+    [audioSession setActive:YES error:nil];
+    
 }
 - (void)initBuffer {
     UInt32 flag = 0;
@@ -81,7 +83,7 @@ static OSStatus RecordCallback(void *inRefCon,
 - (void)initAudioComponent {
     AudioComponentDescription audioDesc;
     audioDesc.componentType = kAudioUnitType_Output;
-    audioDesc.componentSubType = kAudioUnitSubType_VoiceProcessingIO;
+    audioDesc.componentSubType = kAudioUnitSubType_RemoteIO;
     audioDesc.componentManufacturer = kAudioUnitManufacturer_Apple;
     audioDesc.componentFlags = 0;
     audioDesc.componentFlagsMask = 0;
@@ -91,9 +93,9 @@ static OSStatus RecordCallback(void *inRefCon,
 }
 - (void)initFormat {
     AudioStreamBasicDescription audioFormat;
-    audioFormat.mSampleRate = 8000;
+    audioFormat.mSampleRate = 44100;
     audioFormat.mFormatID = kAudioFormatLinearPCM;
-    audioFormat.mFormatFlags = kAudioFormatFlagIsSignedInteger | kAudioFormatFlagIsPacked;
+    audioFormat.mFormatFlags = kAudioFormatFlagIsSignedInteger | kAudioFormatFlagIsNonInterleaved | kAudioFormatFlagIsPacked;
     audioFormat.mFramesPerPacket = 1;
     audioFormat.mChannelsPerFrame = 1;
     audioFormat.mBitsPerChannel = 16;
@@ -128,6 +130,10 @@ static OSStatus RecordCallback(void *inRefCon,
                          sizeof(flag));
 }
 - (void)startRecorder {
+    if ([[NSFileManager defaultManager] fileExistsAtPath:self.mp3Path])
+    {
+        [[NSFileManager defaultManager] removeItemAtPath:self.mp3Path error:nil];
+    }
     AudioOutputUnitStart(self.audioUnit);
 }
 - (void)stopRecorder {
@@ -140,8 +146,8 @@ static OSStatus RecordCallback(void *inRefCon,
 - (CLMp3Encoder *)mp3Encoder {
     if (!_mp3Encoder) {
         _mp3Encoder = [[CLMp3Encoder alloc] init];
-        _mp3Encoder.inputSampleRate = 8000;
-        _mp3Encoder.outputSampleRate = 8000;
+        _mp3Encoder.inputSampleRate = 44100;
+        _mp3Encoder.outputSampleRate = 44100;
         _mp3Encoder.outputChannelsPerFrame = 1;
         _mp3Encoder.bitRate = 16;
         _mp3Encoder.quality = 9;
