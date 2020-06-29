@@ -14,7 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy, readonly) NSString *mp3Path;
 
-@property (nonatomic, strong, readonly) NSMutableData *waveformSamples;
+@property (nonatomic, assign, readonly) float audioDurationSeconds;
+
+@property (nonatomic, copy) void (^durationCallback)(NSUInteger seconds);
 
 - (void)startRecorder;
 

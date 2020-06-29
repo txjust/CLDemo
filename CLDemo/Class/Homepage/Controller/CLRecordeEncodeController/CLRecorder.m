@@ -26,7 +26,7 @@
 
 @property (nonatomic, assign) BOOL otherAudioPlaying;
 
-@property (nonatomic, strong) NSMutableData *waveformSamples;
+@property (nonatomic, assign) NSUInteger lastSecond;
 
 @end
 
@@ -48,6 +48,15 @@ static OSStatus RecordCallback(void *inRefCon,
     CLRecorder *recorder = (__bridge CLRecorder *)(inRefCon);
     AudioUnitRender(recorder.audioUnit, ioActionFlags, inTimeStamp, inBusNumber, inNumberFrames, &bufferList);
     [recorder.mp3Encoder processAudioBufferList:bufferList];
+    NSUInteger second = (NSUInteger)floor(recorder.audioDurationSeconds);
+    if (recorder.lastSecond != second) {
+        recorder.lastSecond = second;
+        if (recorder.durationCallback) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                recorder.durationCallback(second);
+            });
+        }
+    }
     return noErr;
 }
 - (instancetype)init {
@@ -125,7 +134,12 @@ static OSStatus RecordCallback(void *inRefCon,
                          sizeof(recordCallback));
 }
 - (void)startRecorder {
-    self.waveformSamples = [NSMutableData data];
+    self.lastSecond = 0;
+    if (self.durationCallback) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.durationCallback(0);
+        });
+    }
     self.mp3Path = [[Tools pathDocuments] stringByAppendingFormat:@"/%@.mp3", [self currentTime]];
     if (![[NSFileManager defaultManager] fileExistsAtPath: self.mp3Path]) {
         [[NSFileManager defaultManager] createFileAtPath: self.mp3Path contents:nil attributes:nil];
@@ -176,6 +190,11 @@ static OSStatus RecordCallback(void *inRefCon,
 - (NSString *)currentTime {
     NSTimeInterval time = [[NSDate date] timeIntervalSince1970];
     return [NSString stringWithFormat:@"%ld",(NSInteger)((CGFloat)time * 1000000)];
+}
+- (float)audioDurationSeconds {
+    AVURLAsset* audioAsset = [AVURLAsset URLAssetWithURL:[NSURL fileURLWithPath:self.mp3Path] options:nil];
+    CMTime audioDuration = audioAsset.duration;
+    return CMTimeGetSeconds(audioDuration);
 }
 - (void)dealloc {
     [self.mp3Encoder stop];
