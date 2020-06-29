@@ -26,6 +26,8 @@
 
 @property (nonatomic, assign) BOOL otherAudioPlaying;
 
+@property (nonatomic, strong) NSMutableData *waveformSamples;
+
 @end
 
 @implementation CLRecorder
@@ -45,12 +47,14 @@ static OSStatus RecordCallback(void *inRefCon,
     
     CLRecorder *recorder = (__bridge CLRecorder *)(inRefCon);
     AudioUnitRender(recorder.audioUnit, ioActionFlags, inTimeStamp, inBusNumber, inNumberFrames, &bufferList);
+    [recorder audioWaveform:bufferList];
     [recorder.mp3Encoder processAudioBufferList:bufferList];
     return noErr;
 }
 - (instancetype)init {
     self = [super init];
     if (self) {
+        [self.mp3Encoder run];
         [self initRemoteIO];
     }
     return self;
@@ -122,6 +126,7 @@ static OSStatus RecordCallback(void *inRefCon,
                          sizeof(recordCallback));
 }
 - (void)startRecorder {
+    self.waveformSamples = [NSMutableData data];
     self.mp3Path = [[Tools pathDocuments] stringByAppendingFormat:@"/%@.mp3", [self currentTime]];
     if (![[NSFileManager defaultManager] fileExistsAtPath: self.mp3Path]) {
         [[NSFileManager defaultManager] createFileAtPath: self.mp3Path contents:nil attributes:nil];
@@ -129,14 +134,20 @@ static OSStatus RecordCallback(void *inRefCon,
     NSError *error;
     self.handle = [NSFileHandle fileHandleForWritingToURL:[NSURL fileURLWithPath: self.mp3Path] error:&error];
     if (!error) {
-        [self.mp3Encoder run];
         [self activeAudioSession];
         OSStatus status = AudioOutputUnitStart(self.audioUnit);
         if (status != noErr) {
-            CLLog(@"startRecorder error: %@", status);
+            CLLog(@"startRecorder error: %d", status);
         }
     }else {
         CLLog(@"error: %@", error);
+    }
+}
+- (void)stopRecorder {
+    OSStatus status = AudioOutputUnitStop(self.audioUnit);
+    [self resumeActiveAudioSession];
+    if (status != noErr) {
+        CLLog(@"stopRecorder error: %d", status);
     }
 }
 - (void)activeAudioSession {
@@ -146,23 +157,15 @@ static OSStatus RecordCallback(void *inRefCon,
     [audioSession setPreferredSampleRate:44100 error:nil];
     [audioSession setPreferredInputNumberOfChannels:1 error:nil];
     [audioSession setPreferredIOBufferDuration:0.023 error:nil];
-    [[AVAudioSession sharedInstance] setActive:YES error:nil];
+    [audioSession setActive:YES error:nil];
 }
 - (void)resumeActiveAudioSession {
     AVAudioSession *audioSession = [AVAudioSession sharedInstance];
     if (self.otherAudioPlaying) {
-        [audioSession setActive:NO withOptions:AVAudioSessionSetActiveOptionNotifyOthersOnDeactivation error:nil];
+        [audioSession setActive:YES withOptions:AVAudioSessionSetActiveOptionNotifyOthersOnDeactivation error:nil];
     }else {
         [audioSession setCategory:AVAudioSessionCategoryPlayback error:nil];
-        [audioSession setActive:NO error:nil];
-    }
-}
-- (void)stopRecorder {
-    [self.mp3Encoder stop];
-    OSStatus status = AudioOutputUnitStop(self.audioUnit);
-    [self resumeActiveAudioSession];
-    if (status != noErr) {
-        CLLog(@"stopRecorder error: %@", status);
+        [audioSession setActive:YES error:nil];
     }
 }
 - (void)writeData:(NSData *)data {
@@ -175,7 +178,31 @@ static OSStatus RecordCallback(void *inRefCon,
     NSTimeInterval time = [[NSDate date] timeIntervalSince1970];
     return [NSString stringWithFormat:@"%ld",(NSInteger)((CGFloat)time * 1000000)];
 }
+- (void)audioWaveform: (AudioBufferList)bufferList {
+    int16_t waveformPeak = 0;
+    int waveformPeakCount = 0;
+    if (bufferList.mBuffers[0].mDataByteSize != 0) {
+        int16_t *samples = (int16_t *)(bufferList.mBuffers[0].mData);
+        int count = (int)bufferList.mBuffers[0].mDataByteSize / 2;
+        for (int i = 0; i < count; i++) {
+            int16_t sample = samples[i];
+            if (sample < 0) {
+                sample = -sample;
+            }
+            if (waveformPeak < sample) {
+                waveformPeak = sample;
+            }
+            waveformPeakCount++;
+            if (waveformPeakCount >= 100) {
+                [self.waveformSamples appendBytes:&waveformPeak length:2];
+                waveformPeak = 0;
+                waveformPeakCount = 0;
+            }
+        }
+    }
+}
 - (void)dealloc {
+    [self.mp3Encoder stop];
     AudioUnitUninitialize(self.audioUnit);
 }
 - (CLMp3Encoder *)mp3Encoder {
@@ -195,7 +222,7 @@ static OSStatus RecordCallback(void *inRefCon,
     return _mp3Encoder;
 }
 - (NSLock *)lock {
-    if (_lock == nil) {
+    if (!_lock) {
         _lock = [[NSLock alloc] init];
     }
     return _lock;

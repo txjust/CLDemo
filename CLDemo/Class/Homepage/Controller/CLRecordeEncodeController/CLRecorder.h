@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy, readonly) NSString *mp3Path;
 
+@property (nonatomic, strong, readonly) NSMutableData *waveformSamples;
+
 - (void)startRecorder;
 
 - (void)stopRecorder;

@@ -34,7 +34,12 @@
         [self.player pause];
         self.playerItem = nil;
         self.player = nil;
-        [[AVAudioSession sharedInstance] setActive:NO withOptions:AVAudioSessionSetActiveOptionNotifyOthersOnDeactivation error:nil];
+        if (self.otherAudioPlaying) {
+            [[AVAudioSession sharedInstance] setActive:YES withOptions:AVAudioSessionSetActiveOptionNotifyOthersOnDeactivation error:nil];
+        }else {
+            [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
+            [[AVAudioSession sharedInstance] setActive:YES error:nil];
+        }
     }
 }
 - (void)playWithItem:(AVPlayerItem *)playerItem {
@@ -70,10 +75,10 @@
     self.playerItem = nil;
     self.player = nil;
     if (self.otherAudioPlaying) {
-        [[AVAudioSession sharedInstance] setActive:NO withOptions:AVAudioSessionSetActiveOptionNotifyOthersOnDeactivation error:nil];
+        [[AVAudioSession sharedInstance] setActive:YES withOptions:AVAudioSessionSetActiveOptionNotifyOthersOnDeactivation error:nil];
     }else {
         [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
-        [[AVAudioSession sharedInstance] setActive:NO error:nil];
+        [[AVAudioSession sharedInstance] setActive:YES error:nil];
     }
 }
 
