@@ -11,7 +11,6 @@
 #import "CLDemo-Swift.h"
 #import <AVFoundation/AVFoundation.h>
 #import "CLVoicePlayer.h"
-#import "CLDemo-Swift.h"
 
 static void set_bits(uint8_t *bytes, int32_t bitOffset, int32_t numBits, int32_t value) {
     numBits = (unsigned int)pow(2, numBits) - 1; //this will only work up to 32 bits, of course
@@ -62,8 +61,8 @@ static void set_bits(uint8_t *bytes, int32_t bitOffset, int32_t numBits, int32_t
         NSTimeInterval start = [[NSDate date] timeIntervalSince1970];
         [self.recorder startRecorder];
         NSTimeInterval end = [[NSDate date] timeIntervalSince1970];
-        NSLog(@"%f",end - start);
-        NSLog(@"%@",self.recorder.mp3Path);
+        CLLog(@"%f",end - start);
+        CLLog(@"%@",self.recorder.mp3Path);
     }else {
         [self.recorder stopRecorder];
         if (self.recorder.mp3Path.length > 0) {
@@ -96,27 +95,24 @@ static void set_bits(uint8_t *bytes, int32_t bitOffset, int32_t numBits, int32_t
     AVURLAsset *asset = [AVURLAsset URLAssetWithURL:url options:nil];
     CMTime audioDuration = asset.duration;
     float audioDurationSeconds = CMTimeGetSeconds(audioDuration);
-    NSLog(@"获取到时长为 %f", audioDurationSeconds);
+    CLLog(@"获取到时长为 %f", audioDurationSeconds);
 
     if (asset == nil) {
-        NSLog(@"asset is not defined!");
+        CLLog(@"asset is not defined!");
         return nil;
     }
     
     NSError *assetError = nil;
     AVAssetReader *iPodAssetReader = [AVAssetReader assetReaderWithAsset:asset error:&assetError];
     if (assetError) {
-        [CLPopupManager showOneAlertWithStatusBarStyle:UIStatusBarStyleDefault statusBarHidden:NO autorotate:NO interfaceOrientationMask:UIInterfaceOrientationMaskAll displacement:YES passedDown:YES title:[NSString stringWithFormat:@"error: %@", assetError] message:nil sure:@"确定" sureCallBack:^{
-            
-        }];
-        NSLog (@"error: %@", assetError);
+        CLLog (@"error: %@", assetError);
         return nil;
     }
     
     AVAssetReaderOutput *readerOutput = [AVAssetReaderAudioMixOutput assetReaderAudioMixOutputWithAudioTracks:asset.tracks audioSettings:outputSettings];
     
     if (! [iPodAssetReader canAddOutput: readerOutput]) {
-        NSLog (@"can't add reader output... die!");
+        CLLog (@"can't add reader output... die!");
         return nil;
     }
     
@@ -124,7 +120,7 @@ static void set_bits(uint8_t *bytes, int32_t bitOffset, int32_t numBits, int32_t
     [iPodAssetReader addOutput: readerOutput];
     
     if (! [iPodAssetReader startReading]) {
-        NSLog(@"Unable to start reading!");
+        CLLog(@"Unable to start reading!");
         return nil;
     }
 //    NSTimeInterval end = [[NSDate date] timeIntervalSince1970];

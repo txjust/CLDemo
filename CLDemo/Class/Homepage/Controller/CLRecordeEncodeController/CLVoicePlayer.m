@@ -15,8 +15,8 @@
 @property (nonatomic, strong) AVPlayerItem *playerItem;
 ///player
 @property (nonatomic, strong) AVPlayer *player;
-///重新播放
-@property (nonatomic, assign) BOOL replay;
+///其他设备在播放
+@property (nonatomic, assign) BOOL otherAudioPlaying;
 
 @end
 
@@ -44,6 +44,7 @@
                                                       object:self.playerItem];
     }
     if (playerItem) {
+        self.otherAudioPlaying = [AVAudioSession sharedInstance].otherAudioPlaying;
         [[AVAudioSession sharedInstance] setActive:YES error:nil];
         [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
         self.playerItem = playerItem;
@@ -68,7 +69,12 @@
     [self.player pause];
     self.playerItem = nil;
     self.player = nil;
-    [[AVAudioSession sharedInstance] setActive:NO withOptions:AVAudioSessionSetActiveOptionNotifyOthersOnDeactivation error:nil];
+    if (self.otherAudioPlaying) {
+        [[AVAudioSession sharedInstance] setActive:NO withOptions:AVAudioSessionSetActiveOptionNotifyOthersOnDeactivation error:nil];
+    }else {
+        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
+        [[AVAudioSession sharedInstance] setActive:NO error:nil];
+    }
 }
 
 @end

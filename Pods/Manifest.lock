@@ -26,10 +26,10 @@ PODS:
   - Then (2.6.0)
 
 DEPENDENCIES:
-  - CryptoSwift (~> 1.0)
+  - CryptoSwift
   - DateTools
   - DateToolsSwift
-  - HandyJSON (~> 5.0.1)
+  - HandyJSON
   - lottie-ios
   - Masonry
   - MJExtension
@@ -49,7 +49,6 @@ SPEC REPOS:
     - lottie-ios
     - Masonry
     - MJExtension
-    - SDWebImage
     - SDWebImageWebPCoder
     - SnapKit
     - SwiftyJSON
@@ -72,6 +71,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   Then: 90cd104fd951cec1980a03f57704ad8f784d4d79
 
-PODFILE CHECKSUM: 0f7cef12effca7f8b85552fa74ad39bcd4dc602f
+PODFILE CHECKSUM: 40601fd0eb487be7df466bd83dac0c6dcd862d47
 
 COCOAPODS: 1.9.1

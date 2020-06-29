@@ -38,6 +38,7 @@ class CKDDebugController: CLBaseViewController {
     }()
     private lazy var textField: UITextField = {
         let view = UITextField()
+        view.keyboardType = .numberPad
         return view
     }()
     private lazy var tableView: UITableView = {
@@ -74,7 +75,7 @@ extension CKDDebugController {
 }
 extension CKDDebugController {
     @objc func textDidChange(notification: Notification) {
-        if let textField = notification.object as? UITextField, textField.text == "91ckd.com" {
+        if let textField = notification.object as? UITextField, textField.text == "123456789" {
             DispatchQueue.main.async {
                 self.contentView.isHidden = true
                 self.view.endEditing(true)

@@ -24,6 +24,8 @@
 
 @property (nonatomic, strong) NSFileHandle * handle;
 
+@property (nonatomic, assign) BOOL otherAudioPlaying;
+
 @end
 
 @implementation CLRecorder
@@ -55,22 +57,11 @@ static OSStatus RecordCallback(void *inRefCon,
 }
 - (void)initRemoteIO {
     AudioUnitInitialize(self.audioUnit);
-    [self initAudioSession];
     [self initBuffer];
     [self initAudioComponent];
     [self initFormat];
     [self initAudioProperty];
     [self initRecordeCallback];
-}
-- (void)initAudioSession {
-    NSError *error;
-    AVAudioSession *audioSession = [AVAudioSession sharedInstance];
-    
-    [audioSession setCategory:AVAudioSessionCategoryPlayAndRecord error:&error];
-    [audioSession setPreferredSampleRate:44100 error:&error];
-    [audioSession setPreferredInputNumberOfChannels:1 error:&error];
-    [audioSession setPreferredIOBufferDuration:0.023 error:&error];
-    [audioSession setActive:YES error:nil];
 }
 - (void)initBuffer {
     UInt32 flag = 0;
@@ -139,14 +130,40 @@ static OSStatus RecordCallback(void *inRefCon,
     self.handle = [NSFileHandle fileHandleForWritingToURL:[NSURL fileURLWithPath: self.mp3Path] error:&error];
     if (!error) {
         [self.mp3Encoder run];
-        AudioOutputUnitStart(self.audioUnit);
+        [self activeAudioSession];
+        OSStatus status = AudioOutputUnitStart(self.audioUnit);
+        if (status != noErr) {
+            CLLog(@"startRecorder error: %@", status);
+        }
     }else {
-        NSLog(@"error: %@", error);
+        CLLog(@"error: %@", error);
+    }
+}
+- (void)activeAudioSession {
+    self.otherAudioPlaying = [AVAudioSession sharedInstance].otherAudioPlaying;
+    AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+    [audioSession setCategory:AVAudioSessionCategoryRecord error:nil];
+    [audioSession setPreferredSampleRate:44100 error:nil];
+    [audioSession setPreferredInputNumberOfChannels:1 error:nil];
+    [audioSession setPreferredIOBufferDuration:0.023 error:nil];
+    [[AVAudioSession sharedInstance] setActive:YES error:nil];
+}
+- (void)resumeActiveAudioSession {
+    AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+    if (self.otherAudioPlaying) {
+        [audioSession setActive:NO withOptions:AVAudioSessionSetActiveOptionNotifyOthersOnDeactivation error:nil];
+    }else {
+        [audioSession setCategory:AVAudioSessionCategoryPlayback error:nil];
+        [audioSession setActive:NO error:nil];
     }
 }
 - (void)stopRecorder {
-    AudioOutputUnitStop(self.audioUnit);
     [self.mp3Encoder stop];
+    OSStatus status = AudioOutputUnitStop(self.audioUnit);
+    [self resumeActiveAudioSession];
+    if (status != noErr) {
+        CLLog(@"stopRecorder error: %@", status);
+    }
 }
 - (void)writeData:(NSData *)data {
     [self.lock lock];

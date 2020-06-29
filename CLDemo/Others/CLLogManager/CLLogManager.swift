@@ -50,6 +50,18 @@ import UIKit
     }
 }
 extension CLLogManager {
+    class func CLLogMessage(_ message: String) {
+        let time = Date().format(with: "yyyy-MM-dd HH:mm:ss.SSS")
+        let logMessage = "\(time)\n" + message + "\n\n"
+        print("\(logMessage)")
+        shared.logQueue.async {
+            guard let output = shared.logFileHandle else {return}
+            let text = logMessage
+            if let textData = text.data(using: .utf8) {
+                output.write(textData)
+            }
+        }
+    }
     class func CLLog(_ message: String, file:String = #file, function:String = #function,
     line:Int = #line) {
         let time = Date().format(with: "yyyy-MM-dd HH:mm:ss.SSS")
