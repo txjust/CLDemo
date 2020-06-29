@@ -56,7 +56,7 @@ static void set_bits(uint8_t *bytes, int32_t bitOffset, int32_t numBits, int32_t
     }];
     [self.waveView1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self.view);
-        make.top.mas_equalTo(self.waveView.mas_bottom);
+        make.top.mas_equalTo(self.waveView.mas_bottom).mas_offset(40);
         make.size.mas_equalTo(CGSizeMake(200, 50));
     }];
 
@@ -235,56 +235,57 @@ static void set_bits(uint8_t *bytes, int32_t bitOffset, int32_t numBits, int32_t
     return result;
 }
 - (NSData *)audioWaveform {
-    int16_t scaledSamples[100];
-    memset(scaledSamples, 0, 100 * 2);
+    int sampleCount = 100;
+    int16_t scaledSamples[sampleCount];
+    memset(scaledSamples, 0, sampleCount * 2);
     int16_t *samples = self.recorder.waveformSamples.mutableBytes;
     int count = (int)self.recorder.waveformSamples.length / 2;
     for (int i = 0; i < count; i++) {
         int16_t sample = samples[i];
-        int index = i * 100 / count;
+        int index = i * sampleCount / count;
         if (scaledSamples[index] < sample) {
             scaledSamples[index] = sample;
         }
     }
-    
-    int16_t peak = 0;
-    int64_t sumSamples = 0;
-    for (int i = 0; i < 100; i++) {
-        int16_t sample = scaledSamples[i];
-        if (peak < sample) {
-            peak = sample;
-        }
-        sumSamples += sample;
-    }
-    uint16_t calculatedPeak = 0;
-    calculatedPeak = (uint16_t)(sumSamples * 1.8f / 100);
-    
-    if (calculatedPeak < 2500) {
-        calculatedPeak = 2500;
-    }
-    
-    for (int i = 0; i < 100; i++) {
-        uint16_t sample = (uint16_t)((int64_t)samples[i]);
-        if (sample > calculatedPeak) {
-            scaledSamples[i] = calculatedPeak;
-        }
-    }
-    
-    int numSamples = 100;
-    int number = 5;
-    int bitstreamLength = (numSamples * number) / 8 + (((numSamples * number) % 8) == 0 ? 0 : 1);
-    NSMutableData *result = [[NSMutableData alloc] initWithLength:bitstreamLength];
-    {
-        int32_t maxSample = peak;
-        uint16_t const *samples = (uint16_t *)scaledSamples;
-        uint8_t *bytes = result.mutableBytes;
-        
-        for (int i = 0; i < numSamples; i++) {
-            int32_t value = MIN(31, ABS((int32_t)samples[i]) * 31 / maxSample);
-            set_bits(bytes, i * number, number, value & 31);
-        }
-    }
-    return result;
+    return [NSData dataWithBytes:scaledSamples length:sampleCount];
+//    int16_t peak = 0;
+//    int64_t sumSamples = 0;
+//    for (int i = 0; i < sampleCount; i++) {
+//        int16_t sample = scaledSamples[i];
+//        if (peak < sample) {
+//            peak = sample;
+//        }
+//        sumSamples += sample;
+//    }
+//    uint16_t calculatedPeak = 0;
+//    calculatedPeak = (uint16_t)(sumSamples * 1.8f / sampleCount);
+//
+//    if (calculatedPeak < 2500) {
+//        calculatedPeak = 2500;
+//    }
+//
+//    for (int i = 0; i < sampleCount; i++) {
+//        uint16_t sample = (uint16_t)((int64_t)samples[i]);
+//        if (sample > calculatedPeak) {
+//            scaledSamples[i] = calculatedPeak;
+//        }
+//    }
+//
+//    int numSamples = sampleCount;
+//    int number = 5;
+//    int bitstreamLength = (numSamples * number) / 8 + (((numSamples * number) % 8) == 0 ? 0 : 1);
+//    NSMutableData *result = [[NSMutableData alloc] initWithLength:bitstreamLength];
+//    {
+//        int32_t maxSample = peak;
+//        uint16_t const *samples = (uint16_t *)scaledSamples;
+//        uint8_t *bytes = result.mutableBytes;
+//
+//        for (int i = 0; i < numSamples; i++) {
+//            int32_t value = MIN(31, ABS((int32_t)samples[i]) * 31 / maxSample);
+//            set_bits(bytes, i * number, number, value & 31);
+//        }
+//    }
+//    return result;
 }
 
 

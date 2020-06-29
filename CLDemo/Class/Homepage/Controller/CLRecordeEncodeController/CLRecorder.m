@@ -193,7 +193,7 @@ static OSStatus RecordCallback(void *inRefCon,
                 waveformPeak = sample;
             }
             waveformPeakCount++;
-            if (waveformPeakCount >= 100) {
+            if (waveformPeakCount >= (count / 10)) {
                 [self.waveformSamples appendBytes:&waveformPeak length:2];
                 waveformPeak = 0;
                 waveformPeakCount = 0;

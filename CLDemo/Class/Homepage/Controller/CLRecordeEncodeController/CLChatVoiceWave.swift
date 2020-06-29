@@ -13,7 +13,7 @@ import UIKit
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .clear
+        backgroundColor = UIColor.red.withAlphaComponent(0.12)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -44,37 +44,26 @@ extension CLChatVoiceWave {
         let distance: CGFloat = 1.0
         
         let size = bounds.size
-        
         guard let context = UIGraphicsGetCurrentContext() else { return }
-        
         context.setFillColor(color.cgColor)
-        
         if let data = waveData {
             let samples = Array(data)
             let maxReadSamples = samples.count
             let scale: CGFloat = CGFloat(max(samples.max() ?? 0, 1))
-            
-            let numSamples: Int = Int(floorf(Float(frame.size.width / (sampleWidth + distance))))
+            let numSamples: Int = Int(floorf(Float(bounds.width / (sampleWidth + distance))))
             var adjustedSamples: [UInt8] = [UInt8].init(repeating: 0, count: numSamples * 2)
-            
             for i in 0..<maxReadSamples {
                 let index: Int = i * numSamples / maxReadSamples
                 let sample: UInt8 = samples[i]
-                
-                if (adjustedSamples[index] < sample) {
-                    adjustedSamples[index] = sample
-                }
+                adjustedSamples[index] = max(adjustedSamples[index], sample)
             }
-            
             for i in 0..<numSamples {
                 let offset = CGFloat(i) * (sampleWidth + distance)
                 let peakSample = adjustedSamples[i]
-                
                 var sampleHeight: CGFloat = CGFloat(peakSample) * peakHeight / scale
                 if (abs(sampleHeight) > peakHeight) {
                     sampleHeight = peakHeight
                 }
-                
                 let adjustedSampleHeight: CGFloat = sampleHeight - sampleWidth
                 if (adjustedSampleHeight <= sampleWidth + CGFloat.ulpOfOne) {
                     context.fillEllipse(in: .init(x: offset, y: size.height - sampleWidth, width: sampleWidth, height: sampleWidth))
@@ -85,12 +74,12 @@ extension CLChatVoiceWave {
                                                    width: sampleWidth,
                                                    height: adjustedSampleHeight)
                     context.fill(adjustedRect)
-                    context.fillEllipse(in: .init(x: adjustedRect.origin.x,
-                                                  y: adjustedRect.origin.y - halfSampleWidth,
+                    context.fillEllipse(in: .init(x: adjustedRect.minX,
+                                                  y: adjustedRect.minY - halfSampleWidth,
                                                   width: sampleWidth,
                                                   height: sampleWidth))
-                    context.fillEllipse(in: .init(x: adjustedRect.origin.x,
-                                                  y: adjustedRect.origin.y + adjustedRect.size.height - halfSampleWidth,
+                    context.fillEllipse(in: .init(x: adjustedRect.minX,
+                                                  y: adjustedRect.minY + adjustedRect.height - halfSampleWidth,
                                                   width: sampleWidth,
                                                   height: sampleWidth))
                 }
