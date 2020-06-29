@@ -51,19 +51,8 @@ extension CLChatVoiceWave {
         
         if let data = waveData {
             let samples = Array(data)
-            let maxReadSamples = data.count
-            
-            var maxSample: UInt8 = 0
-            for idx in 0..<maxReadSamples {
-                if maxSample < samples[idx] {
-                    maxSample = samples[idx]
-                }
-            }
-            
-            var scale: CGFloat = CGFloat(maxSample)
-            if scale < 1.0 {
-                scale = 1.0
-            }
+            let maxReadSamples = samples.count
+            let scale: CGFloat = CGFloat(max(samples.max() ?? 0, 1))
             
             let numSamples: Int = Int(floorf(Float(frame.size.width / (sampleWidth + distance))))
             var adjustedSamples: [UInt8] = [UInt8].init(repeating: 0, count: numSamples * 2)
