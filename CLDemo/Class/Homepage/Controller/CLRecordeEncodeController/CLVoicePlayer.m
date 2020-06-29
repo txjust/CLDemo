@@ -40,6 +40,9 @@
             [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
             [[AVAudioSession sharedInstance] setActive:YES error:nil];
         }
+        if (self.endCallback) {
+            self.endCallback();
+        }
     }
 }
 - (void)playWithItem:(AVPlayerItem *)playerItem {
@@ -79,6 +82,9 @@
     }else {
         [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
         [[AVAudioSession sharedInstance] setActive:YES error:nil];
+    }
+    if (self.endCallback) {
+        self.endCallback();
     }
 }
 

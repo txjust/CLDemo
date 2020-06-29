@@ -47,7 +47,6 @@ static OSStatus RecordCallback(void *inRefCon,
     
     CLRecorder *recorder = (__bridge CLRecorder *)(inRefCon);
     AudioUnitRender(recorder.audioUnit, ioActionFlags, inTimeStamp, inBusNumber, inNumberFrames, &bufferList);
-    [recorder audioWaveform:bufferList];
     [recorder.mp3Encoder processAudioBufferList:bufferList];
     return noErr;
 }
@@ -177,29 +176,6 @@ static OSStatus RecordCallback(void *inRefCon,
 - (NSString *)currentTime {
     NSTimeInterval time = [[NSDate date] timeIntervalSince1970];
     return [NSString stringWithFormat:@"%ld",(NSInteger)((CGFloat)time * 1000000)];
-}
-- (void)audioWaveform: (AudioBufferList)bufferList {
-    int16_t waveformPeak = 0;
-    int waveformPeakCount = 0;
-    if (bufferList.mBuffers[0].mDataByteSize != 0) {
-        int16_t *samples = (int16_t *)(bufferList.mBuffers[0].mData);
-        int count = (int)bufferList.mBuffers[0].mDataByteSize / 2;
-        for (int i = 0; i < count; i++) {
-            int16_t sample = samples[i];
-            if (sample < 0) {
-                sample = -sample;
-            }
-            if (waveformPeak < sample) {
-                waveformPeak = sample;
-            }
-            waveformPeakCount++;
-            if (waveformPeakCount >= (count / 10)) {
-                [self.waveformSamples appendBytes:&waveformPeak length:2];
-                waveformPeak = 0;
-                waveformPeakCount = 0;
-            }
-        }
-    }
 }
 - (void)dealloc {
     [self.mp3Encoder stop];

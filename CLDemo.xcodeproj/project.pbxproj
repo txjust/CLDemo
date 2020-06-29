@@ -152,7 +152,6 @@
 		5B3327E523DF384800CA315C /* NSString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3327E423DF384800CA315C /* NSString+Extension.swift */; };
 		5B3327E823DF3E0A00CA315C /* recoredWave_dk.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B3327E723DF3E0A00CA315C /* recoredWave_dk.json */; };
 		5B3327EA23DF41E800CA315C /* CLChatRecordTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3327E923DF41E800CA315C /* CLChatRecordTimeView.swift */; };
-		5B3AB5E824A6400900305ABE /* CLChatVoiceWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3AB5E424A6400900305ABE /* CLChatVoiceWave.swift */; };
 		5B42F09024A3918D006861BF /* CLRecordeEncodeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B42F08F24A3918D006861BF /* CLRecordeEncodeController.m */; };
 		5B42F09324A393D6006861BF /* CLRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B42F09224A393D6006861BF /* CLRecorder.m */; };
 		5B42F09624A39421006861BF /* CLMp3Encoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B42F09524A39421006861BF /* CLMp3Encoder.m */; };
@@ -493,7 +492,6 @@
 		5B3327E423DF384800CA315C /* NSString+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSString+Extension.swift"; sourceTree = "<group>"; };
 		5B3327E723DF3E0A00CA315C /* recoredWave_dk.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = recoredWave_dk.json; sourceTree = "<group>"; };
 		5B3327E923DF41E800CA315C /* CLChatRecordTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLChatRecordTimeView.swift; sourceTree = "<group>"; };
-		5B3AB5E424A6400900305ABE /* CLChatVoiceWave.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatVoiceWave.swift; sourceTree = "<group>"; };
 		5B42F08E24A3918D006861BF /* CLRecordeEncodeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLRecordeEncodeController.h; sourceTree = "<group>"; };
 		5B42F08F24A3918D006861BF /* CLRecordeEncodeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLRecordeEncodeController.m; sourceTree = "<group>"; };
 		5B42F09124A393D6006861BF /* CLRecorder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLRecorder.h; sourceTree = "<group>"; };
@@ -1785,7 +1783,6 @@
 				5B42F08F24A3918D006861BF /* CLRecordeEncodeController.m */,
 				5B8AFC5B24A8829A00FAF996 /* CLVoicePlayer.h */,
 				5B8AFC5C24A8829A00FAF996 /* CLVoicePlayer.m */,
-				5B3AB5E424A6400900305ABE /* CLChatVoiceWave.swift */,
 				5B42F09124A393D6006861BF /* CLRecorder.h */,
 				5B42F09224A393D6006861BF /* CLRecorder.m */,
 				5B42F09424A39421006861BF /* CLMp3Encoder.h */,
@@ -2322,7 +2319,6 @@
 				B51EE6E423DF138200146862 /* CLChatEmojiItemProtocol.swift in Sources */,
 				5B42F09624A39421006861BF /* CLMp3Encoder.m in Sources */,
 				5B44D12C2435C6F10059476D /* CLTagsFrameHelper.swift in Sources */,
-				5B3AB5E824A6400900305ABE /* CLChatVoiceWave.swift in Sources */,
 				0CF79B092196798400DD0BF1 /* BankDataModel.m in Sources */,
 				5B42F09024A3918D006861BF /* CLRecordeEncodeController.m in Sources */,
 				5B919B6A243CD03A000D5EDA /* CLDataPickerTitleView.swift in Sources */,

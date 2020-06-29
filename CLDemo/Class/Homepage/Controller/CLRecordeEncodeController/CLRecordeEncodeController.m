@@ -27,7 +27,6 @@ static void set_bits(uint8_t *bytes, int32_t bitOffset, int32_t numBits, int32_t
 @property (nonatomic, strong) UIButton *startButton;
 @property (nonatomic, strong) UIButton *playButton;
 @property (nonatomic, strong) CLRecorder *recorder;
-@property (nonatomic, strong) CLChatVoiceWave *waveView;
 @property (nonatomic, strong) CLVoicePlayer *player;
 
 @end
@@ -39,7 +38,6 @@ static void set_bits(uint8_t *bytes, int32_t bitOffset, int32_t numBits, int32_t
     self.recorder = [[CLRecorder alloc] init];
     [self.view addSubview:self.startButton];
     [self.view addSubview:self.playButton];
-    [self.view addSubview:self.waveView];
     [self.startButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(90);
         make.top.mas_equalTo(200);
@@ -48,11 +46,6 @@ static void set_bits(uint8_t *bytes, int32_t bitOffset, int32_t numBits, int32_t
         make.top.mas_equalTo(200);
         make.right.mas_equalTo(-90);
     }];
-    [self.waveView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.mas_equalTo(self.view);
-        make.size.mas_equalTo(CGSizeMake(200, 50));
-    }];
-    self.waveView.peakHeight = 50;
 }
 
 - (void)startAction {
@@ -64,10 +57,6 @@ static void set_bits(uint8_t *bytes, int32_t bitOffset, int32_t numBits, int32_t
         CLLog(@"%@",self.recorder.mp3Path);
     }else {
         [self.recorder stopRecorder];
-        if (self.recorder.mp3Path.length > 0) {
-            NSData *waveSamples = [self audioWaveform];
-            self.waveView.waveData = waveSamples;
-        }
     }
     self.startButton.selected = !self.startButton.selected;
 }
@@ -157,16 +146,14 @@ static void set_bits(uint8_t *bytes, int32_t bitOffset, int32_t numBits, int32_t
     }
     return _playButton;
 }
-
-- (CLChatVoiceWave *)waveView {
-    if (!_waveView) {
-        _waveView = [[CLChatVoiceWave alloc] init];
-    }
-    return _waveView;
-}
 - (CLVoicePlayer *)player {
     if (!_player) {
         _player = [[CLVoicePlayer alloc] init];
+        __weak __typeof(self) weakSelf = self;
+        _player.endCallback = ^{
+            __typeof(&*weakSelf) strongSelf = weakSelf;
+            strongSelf.playButton.selected = NO;
+        };
     }
     return _player;
 }

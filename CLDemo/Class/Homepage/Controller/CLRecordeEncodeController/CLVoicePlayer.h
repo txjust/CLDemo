@@ -13,6 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 @interface CLVoicePlayer : NSObject
 
 ///重新播放
+@property (nonatomic, copy) void (^endCallback) (void);
+
+///重新播放
 @property (nonatomic, assign) BOOL replay;
 
 ///根据url播放
