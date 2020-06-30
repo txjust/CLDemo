@@ -13,13 +13,15 @@ class CLChatPhotoAlbumBottomBar: UIView {
     ///是否可以发送
     var seletedNumber: Int = 0 {
         didSet {
-            seletedNumberLabel.text = "\(seletedNumber)"
-            if seletedNumber > 0 {
-                seletedNumberLabel.isHidden = false
-                sendButton.isHidden = false
-            }else {
-                seletedNumberLabel.isHidden = true
-                sendButton.isHidden = true
+            if oldValue != seletedNumber {
+                seletedNumberLabel.text = "\(seletedNumber)"
+                if seletedNumber > 0 {
+                    seletedNumberLabel.isHidden = false
+                    sendButton.isHidden = false
+                }else {
+                    seletedNumberLabel.isHidden = true
+                    sendButton.isHidden = true
+                }
             }
         }
     }

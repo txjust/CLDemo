@@ -114,6 +114,7 @@ extension CLChatPhotoAlbumContentView: UICollectionViewDelegate {
             indexPathArray = selectedArray
         }
         collectionView.reloadItems(at: indexPathArray)
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         bottomToolBar.seletedNumber = selectedArray.count
     }
 }
