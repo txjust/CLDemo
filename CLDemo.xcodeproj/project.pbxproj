@@ -225,7 +225,6 @@
 		5BF1ACE1245C7D620083BE70 /* CLTitleControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF1ACE0245C7D620083BE70 /* CLTitleControllerView.swift */; };
 		5BF1ACE3245C82B70083BE70 /* CLMyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF1ACE2245C82B70083BE70 /* CLMyController.swift */; };
 		5BF1ACE6245C850A0083BE70 /* CLTitleControllerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF1ACE5245C850A0083BE70 /* CLTitleControllerView.m */; };
-		5BF830A824AAE169008E7CE8 /* CLChatPhotoAlbumItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF830A724AAE169008E7CE8 /* CLChatPhotoAlbumItem.swift */; };
 		5BF830AE24AB0DA8008E7CE8 /* CLChatTipsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF830AD24AB0DA8008E7CE8 /* CLChatTipsCell.swift */; };
 		B51EE6C723DF092400146862 /* CLChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51EE6C623DF092400146862 /* CLChatCell.swift */; };
 		B51EE6C923DF093E00146862 /* CLChatItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51EE6C823DF093E00146862 /* CLChatItem.swift */; };
@@ -601,7 +600,6 @@
 		5BF1ACE2245C82B70083BE70 /* CLMyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLMyController.swift; sourceTree = "<group>"; };
 		5BF1ACE4245C850A0083BE70 /* CLTitleControllerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLTitleControllerView.h; sourceTree = "<group>"; };
 		5BF1ACE5245C850A0083BE70 /* CLTitleControllerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLTitleControllerView.m; sourceTree = "<group>"; };
-		5BF830A724AAE169008E7CE8 /* CLChatPhotoAlbumItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLChatPhotoAlbumItem.swift; sourceTree = "<group>"; };
 		5BF830AD24AB0DA8008E7CE8 /* CLChatTipsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatTipsCell.swift; sourceTree = "<group>"; };
 		7F29D2D63E4FCF727DAB90EE /* Pods-CLDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CLDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CLDemo/Pods-CLDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		AFF9BFDE81DC6F568D3C9863 /* Pods-CLDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CLDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-CLDemo/Pods-CLDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -1442,7 +1440,6 @@
 			children = (
 				B5A705B123F29E5E007745BC /* CLChatPhotoAlbumContentView.swift */,
 				B5A705B323F2AE1C007745BC /* CLChatPhotoAlbumCell.swift */,
-				5BF830A724AAE169008E7CE8 /* CLChatPhotoAlbumItem.swift */,
 				5B6CC97624AACC190002B5DA /* CLChatPhotoAlbumTopBar.swift */,
 				5B6CC97824AACC240002B5DA /* CLChatPhotoAlbumBottomBar.swift */,
 			);
@@ -1478,17 +1475,10 @@
 			path = CLTwoSidedView;
 			sourceTree = "<group>";
 		};
-		5B51EE1124AB160600F45628 /* CLNamespace */ = {
-			isa = PBXGroup;
-			children = (
-				5B51EE1224AB161700F45628 /* CLNamespace.swift */,
-			);
-			path = CLNamespace;
-			sourceTree = "<group>";
-		};
 		5B51EE1424AB163900F45628 /* Untils */ = {
 			isa = PBXGroup;
 			children = (
+				5B51EE1224AB161700F45628 /* CLNamespace.swift */,
 				5B51EE1924AB177000F45628 /* ImageIO.swift */,
 				5B51EE1524AB165000F45628 /* UIImageView+Chat.swift */,
 				5B51EE1724AB16D000F45628 /* CLChatImageCache.swift */,
@@ -1776,7 +1766,6 @@
 			children = (
 				5B8A4D4223B118CC00360631 /* CLChatController.swift */,
 				5B51EE1424AB163900F45628 /* Untils */,
-				5B51EE1124AB160600F45628 /* CLNamespace */,
 				B51EE6CA23DF102900146862 /* View */,
 			);
 			path = CLChatController;
@@ -2398,7 +2387,6 @@
 				0CCD1DCA231F60D200AFCE1F /* CLBroadcastView.m in Sources */,
 				5B51EE1824AB16D000F45628 /* CLChatImageCache.swift in Sources */,
 				5B51EE1324AB161700F45628 /* CLNamespace.swift in Sources */,
-				5BF830A824AAE169008E7CE8 /* CLChatPhotoAlbumItem.swift in Sources */,
 				5B876CAF2445937200DC4424 /* CLPopupFoodPickerContentCell.swift in Sources */,
 				5B6CC97924AACC240002B5DA /* CLChatPhotoAlbumBottomBar.swift in Sources */,
 				0CCDA40222D9D1C5007B41C4 /* CLPhotoBrowserAnimatedTransitioning.m in Sources */,

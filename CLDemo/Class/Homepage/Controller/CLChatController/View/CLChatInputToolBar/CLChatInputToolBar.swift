@@ -7,10 +7,13 @@
 
 import UIKit
 import SnapKit
+import Photos
 
 protocol CLChatInputToolBarDelegate: class {
     ///键盘发送文字
     func inputBarWillSendText(text: String)
+    ///键盘发送图片
+    func inputBarWillSendImage(image: UIImage, asset: PHAsset)
     ///键盘将要显示
     func inputBarWillShowKeyboard()
     ///键盘将要隐藏
@@ -31,6 +34,10 @@ protocol CLChatInputToolBarDelegate: class {
 extension CLChatInputToolBarDelegate {
     ///键盘发送文字
     func inputBarWillSendText(text: String) {
+        
+    }
+    ///键盘发送图片
+    func inputBarWillSendImage(image: UIImage, asset: PHAsset){
         
     }
     ///键盘将要显示
@@ -192,6 +199,9 @@ class CLChatInputToolBar: UIView {
         photoView.backgroundColor = hexColor("0x31313F")
         photoView.cameraButtonCallback = {[weak self] in
             self?.delegate?.inputBarClickCamera()
+        }
+        photoView.sendImageCallBack = {[weak self] (image, asset) in
+            self?.delegate?.inputBarWillSendImage(image: image, asset: asset)
         }
         return photoView
     }()

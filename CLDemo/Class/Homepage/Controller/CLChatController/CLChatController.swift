@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import Photos
 
 class CLChatController: CLBaseViewController {
+    ///图片上传路径
+    private let imageUploadPath: String = pathDocuments + "/CLChatImageUpload"
+
     private var dataSource = [CLChatItemProtocol]()
     ///渐变色
     private lazy var gradientLayerView: CLGradientLayerView = {
@@ -111,12 +115,30 @@ extension CLChatController {
         item.position = .right
         item.text = text
         dataSource.append(item)
-        
-        let item1 = CLChatTextItem()
-        item1.position = .left
-        item1.text = text
-        dataSource.append(item1)
         reloadData()
+    }
+    private func addImageMessage(_ previewImage: UIImage, asset: PHAsset) {
+        guard let previewImageData = previewImage.pngData() else {
+            return
+        }
+        let imageItem = CLChatImageItem.init()
+        imageItem.imagePath = saveUploadImage(imageData: previewImageData, messageId: (imageItem.messageId + "previewImage"))
+        imageItem.imageOriginalSize = CGSize(width: asset.pixelWidth, height: asset.pixelHeight)
+        imageItem.position = .right
+        dataSource.append(imageItem)
+        reloadData()
+    }
+}
+extension CLChatController {
+    func saveUploadImage(imageData: Data, messageId: String) -> String? {
+        let path = imageUploadPath + "/\(messageId)"
+        if !FileManager.default.fileExists(atPath: imageUploadPath) {
+            try? FileManager.default.createDirectory(atPath: imageUploadPath, withIntermediateDirectories: true, attributes: nil)
+        }
+        if (imageData as NSData).write(toFile: path, atomically: true) {
+            return path
+        }
+        return nil
     }
 }
 extension CLChatController {
@@ -140,6 +162,9 @@ extension CLChatController: UITableViewDataSource {
 extension CLChatController: CLChatInputToolBarDelegate {
     func inputBarWillSendText(text: String) {
         addTextMessage(text)
+    }
+    func inputBarWillSendImage(image: UIImage, asset: PHAsset) {
+        addImageMessage(image, asset: asset)
     }
 }
 extension CLChatController: UIGestureRecognizerDelegate {

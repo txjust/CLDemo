@@ -41,7 +41,7 @@ class CLChatItem: NSObject {
     ///消息接收状态
     var messageReceiveState: CLChatMessageReceiveState = .downloading
     ///本地消息ID
-    var messageId: String = String.init(format: "%ld", Int64((CGFloat(Date().timeIntervalSince1970)) * CGFloat(1000000000.0)))
+    var messageId: String = dateRandomString
     ///消息位置
     var position: CLChatMessagePosition = .right
     ///indexPath

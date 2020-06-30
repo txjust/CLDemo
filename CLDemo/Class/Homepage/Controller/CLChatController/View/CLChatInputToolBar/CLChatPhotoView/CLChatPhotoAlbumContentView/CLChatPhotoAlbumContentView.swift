@@ -9,12 +9,20 @@
 import UIKit
 import Photos
 
+struct CLChatPhotoAlbumSelectedItem {
+    let image: UIImage
+    let indexPath: IndexPath
+    let asset: PHAsset
+}
+
 class CLChatPhotoAlbumContentView: UIView {
+    ///发送图片回调
+    var sendImageCallBack: ((UIImage, PHAsset) -> ())?
     ///关闭回调
     var closeCallback: (() -> ())?
     ///数据源
     private var fetchResult: PHFetchResult<PHAsset>?
-    private var selectedArray: [IndexPath] = [IndexPath]()
+    private var selectedArray: [CLChatPhotoAlbumSelectedItem] = [CLChatPhotoAlbumSelectedItem]()
     /// 带缓存的图片管理对象
     private var imageManager: PHCachingImageManager = {
         let manager = PHCachingImageManager()
@@ -45,6 +53,9 @@ class CLChatPhotoAlbumContentView: UIView {
     ///底部工具条
     private lazy var bottomToolBar: CLChatPhotoAlbumBottomBar = {
         let view = CLChatPhotoAlbumBottomBar()
+        view.sendCallback = {[weak self] in
+            
+        }
         return view
     }()
     override init(frame: CGRect) {
@@ -110,13 +121,21 @@ extension CLChatPhotoAlbumContentView {
 extension CLChatPhotoAlbumContentView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         var indexPathArray = selectedArray
-        if let index = selectedArray.firstIndex(of: indexPath) {
+        if let index = selectedArray.firstIndex(where: {$0.indexPath == indexPath}) {
             selectedArray.remove(at: index)
         }else {
-            selectedArray.append(indexPath)
+            guard
+                let cell = collectionView.cellForItem(at: indexPath) as? CLChatPhotoAlbumCell,
+                let image = cell.image,
+                let asset = fetchResult?[indexPath.row]
+            else {
+                return
+            }
+            let item = CLChatPhotoAlbumSelectedItem(image: image, indexPath: indexPath, asset: asset)
+            selectedArray.append(item)
             indexPathArray = selectedArray
         }
-        collectionView.reloadItems(at: indexPathArray)
+        collectionView.reloadItems(at: indexPathArray.map({$0.indexPath}))
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         bottomToolBar.seletedNumber = selectedArray.count
     }
@@ -141,23 +160,22 @@ extension CLChatPhotoAlbumContentView: UICollectionViewDataSource {
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CLChatPhotoAlbumCell", for: indexPath)
-        if let photoAlbumCell = cell as? CLChatPhotoAlbumCell {
+        if let photoAlbumCell = cell as? CLChatPhotoAlbumCell, let asset = fetchResult?[indexPath.row] {
             photoAlbumCell.lockScollViewCallBack = {[weak self](lock) in
                 self?.collectionView.isScrollEnabled = lock
             }
             photoAlbumCell.sendImageCallBack = {[weak self] (image) in
-                print("发送图片 \(image)")
+                self?.sendImageCallBack?(image, asset)
+                self?.restoreInitialState()
             }
-            if let index = selectedArray.firstIndex(of: indexPath) {
+            if let index = selectedArray.firstIndex(where: {$0.indexPath == indexPath}) {
                 photoAlbumCell.seletedNumber = index + 1
             }else {
                 photoAlbumCell.seletedNumber = 0
             }
-            if let asset = fetchResult?[indexPath.row] {
-                let size = calculateSize(with: asset).applying(CGAffineTransform(scaleX: UIScreen.main.scale, y: UIScreen.main.scale))
-                imageManager.requestImage(for: asset, targetSize: size, contentMode: .aspectFill, options: nil) { (image, info) in
-                    photoAlbumCell.image = image
-                }
+            let size = calculateSize(with: asset).applying(CGAffineTransform(scaleX: UIScreen.main.scale, y: UIScreen.main.scale))
+            imageManager.requestImage(for: asset, targetSize: size, contentMode: .aspectFill, options: nil) { (image, info) in
+                photoAlbumCell.image = image
             }
         }
         return cell

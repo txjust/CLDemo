@@ -196,3 +196,9 @@ func deleteAllEmptyFolderWithPath(path: String) -> Bool {
 var pathDocuments: String {
     return NSHomeDirectory() + "/Documents"
 }
+///根据时间生成随机字符串
+var dateRandomString: String {
+    let date = Date()
+    let dateString: String = date.format(with: "yyyyMMddHHmmss") + date.nanosecondStampString
+    return (dateString + UUID().uuidString).md5ForUpper32Bate
+}
