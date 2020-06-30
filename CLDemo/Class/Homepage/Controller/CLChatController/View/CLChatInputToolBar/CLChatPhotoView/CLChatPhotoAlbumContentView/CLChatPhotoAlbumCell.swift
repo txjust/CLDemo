@@ -22,10 +22,10 @@ class CLChatPhotoAlbumCell: UICollectionViewCell {
         didSet {
             seletedNumberButton.setTitle("\(seletedNumber)", for: .normal)
             if seletedNumber > 0 {
-                unSeletedImageView.isHidden = true
+                seletedImageView.isHidden = true
                 seletedNumberButton.isHidden = false
             }else {
-                unSeletedImageView.isHidden = false
+                seletedImageView.isHidden = false
                 seletedNumberButton.isHidden = true
             }
         }
@@ -48,7 +48,7 @@ class CLChatPhotoAlbumCell: UICollectionViewCell {
     private var direction: CLChatPhotoMoveDirection = .none
     private var isOnWindow: Bool = false {
         didSet {
-            
+
         }
     }
     private var gestureMinimumTranslation: CGFloat = 10.0
@@ -68,7 +68,12 @@ class CLChatPhotoAlbumCell: UICollectionViewCell {
         view.text = "松手发送"
         return view
     }()
-    private lazy var unSeletedImageView: UIImageView = {
+    private lazy var seletedBackgroundView: UIView = {
+        let view = UIView()
+        view.isUserInteractionEnabled = false
+        return view
+    }()
+    private lazy var seletedImageView: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(named: "round")
         return view
@@ -107,8 +112,9 @@ class CLChatPhotoAlbumCell: UICollectionViewCell {
 extension CLChatPhotoAlbumCell {
     private func initUI() {
         contentView.addSubview(imageView)
-        contentView.addSubview(unSeletedImageView)
-        contentView.addSubview(seletedNumberButton)
+        contentView.addSubview(seletedBackgroundView)
+        seletedBackgroundView.addSubview(seletedImageView)
+        seletedBackgroundView.addSubview(seletedNumberButton)
         imageView.addSubview(tipsBackgroundView)
         tipsBackgroundView.addSubview(tipsLabel)
     }
@@ -116,13 +122,16 @@ extension CLChatPhotoAlbumCell {
         imageView.snp.makeConstraints { (make) in
             make.center.width.height.equalToSuperview()
         }
-        unSeletedImageView.snp.makeConstraints { (make) in
+        seletedBackgroundView.snp.makeConstraints { (make) in
             make.size.equalTo(20)
             make.top.equalTo(10)
             make.right.equalTo(-10)
         }
+        seletedImageView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
         seletedNumberButton.snp.makeConstraints { (make) in
-            make.edges.equalTo(unSeletedImageView)
+            make.edges.equalToSuperview()
         }
         tipsBackgroundView.snp.makeConstraints { (make) in
             make.top.equalTo(5)
@@ -230,19 +239,13 @@ extension CLChatPhotoAlbumCell {
         tipsBackgroundView.isHidden = true
         contentView.insertSubview(view, at: 0)
         view.snp.remakeConstraints { (make) in
-            make.width.height.equalTo(0)
+            make.width.height.equalToSuperview()
             make.center.equalToSuperview()
         }
-        setNeedsLayout()
-        layoutIfNeeded()
-        UIView.animate(withDuration: 0.3) {
-            view.snp.remakeConstraints { (make) in
-                make.width.height.equalToSuperview()
-                make.center.equalToSuperview()
-            }
-            self.setNeedsLayout()
-            self.layoutIfNeeded()
-        }
+        view.transform = CGAffineTransform(scaleX: 0.3, y: 0.3)
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.8, options: .curveEaseOut, animations: {
+            view.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        }, completion: nil)
         guard let image = image else {
             return
         }
@@ -254,7 +257,7 @@ extension CLChatPhotoAlbumCell {
         }
         let orginalCenter = contentView.convert(contentView.center, to: view.superview)
         tipsBackgroundView.isHidden = true
-        UIView.animate(withDuration: 0.25, animations: {
+        UIView.animate(withDuration: 0.5, animations: {
             view.snp.remakeConstraints { (make) in
                 make.width.height.equalTo(self.bounds.size)
                 make.center.equalTo(orginalCenter)
