@@ -11,7 +11,7 @@ import Photos
 
 class CLChatPhotoView: UIView {
     ///发送图片回调
-    var sendImageCallBack: ((UIImage, PHAsset) -> ())?
+    var sendImageCallBack: (([(UIImage, PHAsset)]) -> ())?
     ///间隙
     private var edgeInsets: UIEdgeInsets = UIEdgeInsets(top: 30, left: 20, bottom: -30, right: -20)
     ///行间隙
@@ -61,8 +61,8 @@ class CLChatPhotoView: UIView {
         view.closeCallback = {[weak self] in
             self?.hiddenAlbumContentView()
         }
-        view.sendImageCallBack = {[weak self] (image, asset) in
-            self?.sendImageCallBack?(image, asset)
+        view.sendImageCallBack = {[weak self] (images) in
+            self?.sendImageCallBack?(images)
         }
         return view
     }()

@@ -65,7 +65,7 @@ extension CLChatController {
         super.viewDidLoad()
         initUI()
         makeConstraints()
-        addTipsMessage("欢迎来到本Demo")
+        addTipsMessages(["欢迎来到本Demo"])
     }
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         inputToolBar.viewWillTransition(to: size, with: coordinator)
@@ -104,28 +104,34 @@ extension CLChatController {
     }
 }
 extension CLChatController {
-    private func addTipsMessage(_ text: String) {
-        let item = CLChatTipsItem()
-        item.text = text
-        dataSource.append(item)
-        reloadData()
-    }
-    private func addTextMessage(_ text: String) {
-        let item = CLChatTextItem()
-        item.position = .right
-        item.text = text
-        dataSource.append(item)
-        reloadData()
-    }
-    private func addImageMessage(_ previewImage: UIImage, asset: PHAsset) {
-        guard let previewImageData = previewImage.pngData() else {
-            return
+    private func addTipsMessages(_ messages: [String]) {
+        for text in messages {
+            let item = CLChatTipsItem()
+            item.text = text
+            dataSource.append(item)
         }
-        let imageItem = CLChatImageItem.init()
-        imageItem.imagePath = saveUploadImage(imageData: previewImageData, messageId: (imageItem.messageId + "previewImage"))
-        imageItem.imageOriginalSize = CGSize(width: asset.pixelWidth, height: asset.pixelHeight)
-        imageItem.position = .right
-        dataSource.append(imageItem)
+        reloadData()
+    }
+    private func addTextMessages(_ messages: [String]) {
+        for text in messages {
+            let item = CLChatTextItem()
+            item.position = .right
+            item.text = text
+            dataSource.append(item)
+        }
+        reloadData()
+    }
+    private func addImageMessages(_ messages: [(image: UIImage, asset: PHAsset)]) {
+        for imageInfo in messages {
+            guard let previewImageData = imageInfo.image.pngData() else {
+                return
+            }
+            let imageItem = CLChatImageItem.init()
+            imageItem.imagePath = saveUploadImage(imageData: previewImageData, messageId: (imageItem.messageId + "previewImage"))
+            imageItem.imageOriginalSize = CGSize(width: imageInfo.asset.pixelWidth, height: imageInfo.asset.pixelHeight)
+            imageItem.position = .right
+            dataSource.append(imageItem)
+        }
         reloadData()
     }
 }
@@ -157,10 +163,10 @@ extension CLChatController: UITableViewDataSource {
 }
 extension CLChatController: CLChatInputToolBarDelegate {
     func inputBarWillSendText(text: String) {
-        addTextMessage(text)
+        addTextMessages([text])
     }
-    func inputBarWillSendImage(image: UIImage, asset: PHAsset) {
-        addImageMessage(image, asset: asset)
+    func inputBarWillSendImage(images: [(image: UIImage, asset: PHAsset)]) {
+        addImageMessages(images)
     }
 }
 extension CLChatController: UIGestureRecognizerDelegate {

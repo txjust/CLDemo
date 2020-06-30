@@ -17,7 +17,7 @@ struct CLChatPhotoAlbumSelectedItem {
 
 class CLChatPhotoAlbumContentView: UIView {
     ///发送图片回调
-    var sendImageCallBack: ((UIImage, PHAsset) -> ())?
+    var sendImageCallBack: (([(UIImage, PHAsset)]) -> ())?
     ///关闭回调
     var closeCallback: (() -> ())?
     ///数据源
@@ -54,7 +54,7 @@ class CLChatPhotoAlbumContentView: UIView {
     private lazy var bottomToolBar: CLChatPhotoAlbumBottomBar = {
         let view = CLChatPhotoAlbumBottomBar()
         view.sendCallback = {[weak self] in
-            self?.restoreInitialState()
+//            self?.sendImageCallBack?()
         }
         return view
     }()
@@ -165,7 +165,7 @@ extension CLChatPhotoAlbumContentView: UICollectionViewDataSource {
                 self?.collectionView.isScrollEnabled = lock
             }
             photoAlbumCell.sendImageCallBack = {[weak self] (image) in
-                self?.sendImageCallBack?(image, asset)
+                self?.sendImageCallBack?([(image, asset)])
             }
             if let index = selectedArray.firstIndex(where: {$0.indexPath == indexPath}) {
                 photoAlbumCell.seletedNumber = index + 1
