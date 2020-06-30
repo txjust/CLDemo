@@ -170,7 +170,13 @@ extension CLChatEmojiView {
         }
     }
     private func initData() {
-        emojiDataSource = splitArray(array: emojiArray, withSubSize: (rowNumber * columnNumber - 1))
+        let subSize = self.rowNumber * self.columnNumber - 1
+        DispatchQueue.global().async {
+            self.emojiDataSource = self.splitArray(array: self.emojiArray, withSubSize: subSize)
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
     }
     private func splitArray( array: [String], withSubSize subSize: Int) -> [[CLChatEmojiItemProtocol]] {
         let itemArray = array.map { (emojiString) -> CLChatEmojTextItem in
