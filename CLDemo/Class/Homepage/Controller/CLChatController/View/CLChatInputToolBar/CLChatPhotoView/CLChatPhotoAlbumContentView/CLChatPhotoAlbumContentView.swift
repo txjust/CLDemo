@@ -54,7 +54,9 @@ class CLChatPhotoAlbumContentView: UIView {
     private lazy var bottomToolBar: CLChatPhotoAlbumBottomBar = {
         let view = CLChatPhotoAlbumBottomBar()
         view.sendCallback = {[weak self] in
-//            self?.sendImageCallBack?()
+            guard let `self` = self else { return }
+            self.sendImageCallBack?(self.selectedArray.map({($0.image, $0.asset)}))
+            self.restoreInitialState()
         }
         return view
     }()
