@@ -18,6 +18,18 @@ enum CLChatPhotoMoveDirection {
 class CLChatPhotoAlbumCell: UICollectionViewCell {
     var lockScollViewCallBack: ((Bool) -> ())?
     var sendImageCallBack: ((UIImage) -> ())?
+    var seletedNumber: Int = 0 {
+        didSet {
+            seletedNumberButton.setTitle("\(seletedNumber)", for: .normal)
+            if seletedNumber > 0 {
+                unSeletedImageView.isHidden = true
+                seletedNumberButton.isHidden = false
+            }else {
+                unSeletedImageView.isHidden = false
+                seletedNumberButton.isHidden = true
+            }
+        }
+    }
     var image: UIImage? {
         didSet {
             imageView.image = image
@@ -33,25 +45,42 @@ class CLChatPhotoAlbumCell: UICollectionViewCell {
     private var isOnWindow: Bool = false
     private var gestureMinimumTranslation: CGFloat = 10.0
     private lazy var tipsBackgroundView: UIView = {
-        let tipsBackgroundView = UIView()
-        tipsBackgroundView.backgroundColor = hexColor("0x323232", alpha: 0.85)
-        tipsBackgroundView.isHidden = true
-        tipsBackgroundView.clipsToBounds = true
-        return tipsBackgroundView
+        let view = UIView()
+        view.backgroundColor = hexColor("0x323232", alpha: 0.85)
+        view.isHidden = true
+        view.clipsToBounds = true
+        return view
     }()
     private lazy var tipsLabel: UILabel = {
-        let tipsLabel = UILabel()
-        tipsLabel.textAlignment = .center
-        tipsLabel.backgroundColor = UIColor.clear
-        tipsLabel.textColor = UIColor.white
-        tipsLabel.font = UIFont.systemFont(ofSize: 15)
-        tipsLabel.text = "松手发送"
-        return tipsLabel
+        let view = UILabel()
+        view.textAlignment = .center
+        view.backgroundColor = UIColor.clear
+        view.textColor = UIColor.white
+        view.font = UIFont.systemFont(ofSize: 15)
+        view.text = "松手发送"
+        return view
+    }()
+    private lazy var unSeletedImageView: UIImageView = {
+        let view = UIImageView()
+        view.image = UIImage(named: "round")
+        return view
+    }()
+    private lazy var seletedNumberButton: UIButton = {
+        let view = UIButton()
+        view.clipsToBounds = true
+        view.backgroundColor = .orange
+        view.layer.cornerRadius = 10
+        view.contentEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+        view.setTitleColor(.white, for: .normal)
+        view.setTitleColor(.white, for: .selected)
+        view.setTitleColor(.white, for: .highlighted)
+        view.titleLabel?.font = .systemFont(ofSize: 15)
+        return view
     }()
     private lazy var imageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.isUserInteractionEnabled = true
-        return imageView
+        let view = UIImageView()
+        view.isUserInteractionEnabled = true
+        return view
     }()
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -70,12 +99,22 @@ class CLChatPhotoAlbumCell: UICollectionViewCell {
 extension CLChatPhotoAlbumCell {
     private func initUI() {
         contentView.addSubview(imageView)
+        imageView.addSubview(unSeletedImageView)
+        imageView.addSubview(seletedNumberButton)
         imageView.addSubview(tipsBackgroundView)
         tipsBackgroundView.addSubview(tipsLabel)
     }
     private func makeConstraints() {
         imageView.snp.makeConstraints { (make) in
             make.center.width.height.equalToSuperview()
+        }
+        unSeletedImageView.snp.makeConstraints { (make) in
+            make.size.equalTo(20)
+            make.top.equalTo(10)
+            make.right.equalTo(-10)
+        }
+        seletedNumberButton.snp.makeConstraints { (make) in
+            make.edges.equalTo(unSeletedImageView)
         }
         tipsBackgroundView.snp.makeConstraints { (make) in
             make.top.equalTo(5)

@@ -14,6 +14,7 @@ class CLChatPhotoAlbumContentView: UIView {
     var closeCallback: (() -> ())?
     ///数据源
     private var fetchResult: PHFetchResult<PHAsset>?
+    private var selectedArray: [IndexPath] = [IndexPath]()
     /// 带缓存的图片管理对象
     private var imageManager: PHCachingImageManager = {
         let manager = PHCachingImageManager()
@@ -105,10 +106,13 @@ extension CLChatPhotoAlbumContentView {
 }
 extension CLChatPhotoAlbumContentView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let cell = collectionView.cellForItem(at: indexPath) {
-            cell.isSelected = !cell.isSelected
-            collectionView.reloadItems(at: [indexPath])
+        if let index = selectedArray.firstIndex(of: indexPath) {
+            selectedArray.remove(at: index)
+        }else {
+            selectedArray.append(indexPath)
         }
+        collectionView.reloadItems(at: [indexPath])
+        bottomToolBar.isCanSend = selectedArray.count > 0
     }
 }
 extension CLChatPhotoAlbumContentView: UICollectionViewDelegateFlowLayout {
@@ -137,6 +141,11 @@ extension CLChatPhotoAlbumContentView: UICollectionViewDataSource {
             }
             photoAlbumCell.sendImageCallBack = {[weak self] (image) in
                 print("发送图片 \(image)")
+            }
+            if let index = selectedArray.firstIndex(of: indexPath) {
+                photoAlbumCell.seletedNumber = index + 1
+            }else {
+                photoAlbumCell.seletedNumber = 0
             }
             if let asset = fetchResult?[indexPath.row] {
                 let size = calculateSize(with: asset).applying(CGAffineTransform(scaleX: UIScreen.main.scale, y: UIScreen.main.scale))

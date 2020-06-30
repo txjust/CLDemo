@@ -10,27 +10,20 @@ import UIKit
 
 class CLChatPhotoAlbumBottomBar: UIView {
     var sendCallback: (() -> ())?
-    ///是否隐藏发送按钮
-    private var isHiddenSend: Bool = true {
+    ///是否可以发送
+    var isCanSend: Bool = false {
         didSet {
-            if isHiddenSend != oldValue {
-                sendButton.isHidden = isHiddenSend
-                if !isHidden {
-                    sendButton.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
-                    UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.8, options: .curveEaseOut, animations: {
-                        self.sendButton.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-                    }, completion: nil)
-                }
+            if isCanSend != oldValue {
+                sendButton.isSelected = isCanSend
             }
         }
     }
     ///发送按钮
     private lazy var sendButton: UIButton = {
         let sendButton = UIButton()
-        sendButton.isHidden = true
         sendButton.adjustsImageWhenHighlighted = false
-        sendButton.setImage(UIImage.init(named: "btn_knocktalk_send"), for: .normal)
         sendButton.setImage(UIImage.init(named: "btn_knocktalk_send"), for: .selected)
+        sendButton.setImage(UIImage.init(named: "btn_knocktalk_send")?.tintedImage(.gray), for: .normal)
         sendButton.addTarget(self, action: #selector(sendButtonAction), for: .touchUpInside)
         return sendButton
     }()
@@ -58,6 +51,8 @@ extension CLChatPhotoAlbumBottomBar {
 }
 extension CLChatPhotoAlbumBottomBar {
     @objc private func sendButtonAction() {
-        sendCallback?()
+        if isCanSend {
+            sendCallback?()
+        }
     }
 }
