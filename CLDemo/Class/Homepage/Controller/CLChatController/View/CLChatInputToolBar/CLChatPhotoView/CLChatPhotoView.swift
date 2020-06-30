@@ -121,7 +121,7 @@ extension CLChatPhotoView {
             self.setNeedsLayout()
             self.layoutIfNeeded()
         }) { (_) in
-            self.albumContentView.scrollToLeft(animated: false)
+            self.albumContentView.restoreInitialState()
         }
     }
 }

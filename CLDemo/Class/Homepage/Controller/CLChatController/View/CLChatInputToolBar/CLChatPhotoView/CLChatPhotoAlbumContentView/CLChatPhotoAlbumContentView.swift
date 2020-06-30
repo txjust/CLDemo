@@ -99,9 +99,12 @@ extension CLChatPhotoAlbumContentView {
     }
 }
 extension CLChatPhotoAlbumContentView {
-    ///划到最左边
-    func scrollToLeft(animated: Bool = true) {
-        collectionView.setContentOffset(.zero, animated: animated)
+    ///恢复初始状态
+    func restoreInitialState() {
+        collectionView.setContentOffset(.zero, animated: false)
+        selectedArray.removeAll()
+        collectionView.reloadData()
+        bottomToolBar.seletedNumber = selectedArray.count
     }
 }
 extension CLChatPhotoAlbumContentView: UICollectionViewDelegate {
