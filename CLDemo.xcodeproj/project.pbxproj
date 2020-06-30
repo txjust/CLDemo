@@ -152,6 +152,10 @@
 		5B3327E523DF384800CA315C /* NSString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3327E423DF384800CA315C /* NSString+Extension.swift */; };
 		5B3327E823DF3E0A00CA315C /* recoredWave_dk.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B3327E723DF3E0A00CA315C /* recoredWave_dk.json */; };
 		5B3327EA23DF41E800CA315C /* CLChatRecordTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3327E923DF41E800CA315C /* CLChatRecordTimeView.swift */; };
+		5B399E2624AB0E7F00A14FE7 /* CLChatTipsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B399E2524AB0E7F00A14FE7 /* CLChatTipsItem.swift */; };
+		5B399E2824AB147E00A14FE7 /* CLChatImageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B399E2724AB147E00A14FE7 /* CLChatImageItem.swift */; };
+		5B399E4A24AB14F700A14FE7 /* CLChatImageProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B399E4824AB14F700A14FE7 /* CLChatImageProgressView.swift */; };
+		5B399E4B24AB14F700A14FE7 /* CLChatImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B399E4924AB14F700A14FE7 /* CLChatImageCell.swift */; };
 		5B42F09024A3918D006861BF /* CLRecordeEncodeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B42F08F24A3918D006861BF /* CLRecordeEncodeController.m */; };
 		5B42F09324A393D6006861BF /* CLRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B42F09224A393D6006861BF /* CLRecorder.m */; };
 		5B42F09624A39421006861BF /* CLMp3Encoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B42F09524A39421006861BF /* CLMp3Encoder.m */; };
@@ -162,6 +166,10 @@
 		5B49566623B507A700212772 /* CLFlipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B49566523B507A700212772 /* CLFlipView.swift */; };
 		5B49566823B50ED700212772 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B49566723B50ED700212772 /* UIColor+Extension.swift */; };
 		5B49566D23B5DD0100212772 /* CLTwoSidedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B49566C23B5DD0100212772 /* CLTwoSidedView.swift */; };
+		5B51EE1324AB161700F45628 /* CLNamespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51EE1224AB161700F45628 /* CLNamespace.swift */; };
+		5B51EE1624AB165000F45628 /* UIImageView+Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51EE1524AB165000F45628 /* UIImageView+Chat.swift */; };
+		5B51EE1824AB16D000F45628 /* CLChatImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51EE1724AB16D000F45628 /* CLChatImageCache.swift */; };
+		5B51EE1A24AB177000F45628 /* ImageIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51EE1924AB177000F45628 /* ImageIO.swift */; };
 		5B6CC97724AACC190002B5DA /* CLChatPhotoAlbumTopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6CC97624AACC190002B5DA /* CLChatPhotoAlbumTopBar.swift */; };
 		5B6CC97924AACC240002B5DA /* CLChatPhotoAlbumBottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6CC97824AACC240002B5DA /* CLChatPhotoAlbumBottomBar.swift */; };
 		5B737E5524A8994400079523 /* CLBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B737E5424A8994400079523 /* CLBackView.swift */; };
@@ -218,8 +226,9 @@
 		5BF1ACE3245C82B70083BE70 /* CLMyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF1ACE2245C82B70083BE70 /* CLMyController.swift */; };
 		5BF1ACE6245C850A0083BE70 /* CLTitleControllerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF1ACE5245C850A0083BE70 /* CLTitleControllerView.m */; };
 		5BF830A824AAE169008E7CE8 /* CLChatPhotoAlbumItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF830A724AAE169008E7CE8 /* CLChatPhotoAlbumItem.swift */; };
-		B51EE6C723DF092400146862 /* CLChatLayoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51EE6C623DF092400146862 /* CLChatLayoutCell.swift */; };
-		B51EE6C923DF093E00146862 /* CLChatLayoutItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51EE6C823DF093E00146862 /* CLChatLayoutItem.swift */; };
+		5BF830AE24AB0DA8008E7CE8 /* CLChatTipsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF830AD24AB0DA8008E7CE8 /* CLChatTipsCell.swift */; };
+		B51EE6C723DF092400146862 /* CLChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51EE6C623DF092400146862 /* CLChatCell.swift */; };
+		B51EE6C923DF093E00146862 /* CLChatItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51EE6C823DF093E00146862 /* CLChatItem.swift */; };
 		B51EE6CC23DF104800146862 /* CLGradientLayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51EE6CB23DF104800146862 /* CLGradientLayerView.swift */; };
 		B51EE6E223DF138200146862 /* CLChatInputToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51EE6CE23DF138100146862 /* CLChatInputToolBar.swift */; };
 		B51EE6E323DF138200146862 /* CLChatTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51EE6D023DF138100146862 /* CLChatTextView.swift */; };
@@ -240,9 +249,9 @@
 		B5498C7A23DE93910082D4E5 /* CLPhoneNumberInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B5498C7423DE93910082D4E5 /* CLPhoneNumberInfoModel.m */; };
 		B5498C7B23DE93910082D4E5 /* iso3166.json in Resources */ = {isa = PBXBuildFile; fileRef = B5498C7523DE93910082D4E5 /* iso3166.json */; };
 		B5498C7D23DED4220082D4E5 /* CLChatTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5498C7C23DED4220082D4E5 /* CLChatTextCell.swift */; };
-		B5498C7F23DED4BA0082D4E5 /* CLChatLayoutItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5498C7E23DED4BA0082D4E5 /* CLChatLayoutItemProtocol.swift */; };
-		B5498C8123DED4F60082D4E5 /* CLChatLayoutTextItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5498C8023DED4F60082D4E5 /* CLChatLayoutTextItem.swift */; };
-		B5498C8323DED6760082D4E5 /* CLChatLayoutCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5498C8223DED6760082D4E5 /* CLChatLayoutCellProtocol.swift */; };
+		B5498C7F23DED4BA0082D4E5 /* CLChatItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5498C7E23DED4BA0082D4E5 /* CLChatItemProtocol.swift */; };
+		B5498C8123DED4F60082D4E5 /* CLChatTextItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5498C8023DED4F60082D4E5 /* CLChatTextItem.swift */; };
+		B5498C8323DED6760082D4E5 /* CLChatCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5498C8223DED6760082D4E5 /* CLChatCellProtocol.swift */; };
 		B5498C8523DEE0C70082D4E5 /* CLIntrinsicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5498C8423DEE0C70082D4E5 /* CLIntrinsicTableView.swift */; };
 		B550057423C5FFE600114312 /* CLFlopBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B550057323C5FFE600114312 /* CLFlopBottomView.swift */; };
 		B5A705B223F29E5E007745BC /* CLChatPhotoAlbumContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A705B123F29E5E007745BC /* CLChatPhotoAlbumContentView.swift */; };
@@ -495,6 +504,10 @@
 		5B3327E423DF384800CA315C /* NSString+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSString+Extension.swift"; sourceTree = "<group>"; };
 		5B3327E723DF3E0A00CA315C /* recoredWave_dk.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = recoredWave_dk.json; sourceTree = "<group>"; };
 		5B3327E923DF41E800CA315C /* CLChatRecordTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLChatRecordTimeView.swift; sourceTree = "<group>"; };
+		5B399E2524AB0E7F00A14FE7 /* CLChatTipsItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatTipsItem.swift; sourceTree = "<group>"; };
+		5B399E2724AB147E00A14FE7 /* CLChatImageItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatImageItem.swift; sourceTree = "<group>"; };
+		5B399E4824AB14F700A14FE7 /* CLChatImageProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatImageProgressView.swift; sourceTree = "<group>"; };
+		5B399E4924AB14F700A14FE7 /* CLChatImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatImageCell.swift; sourceTree = "<group>"; };
 		5B42F08E24A3918D006861BF /* CLRecordeEncodeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLRecordeEncodeController.h; sourceTree = "<group>"; };
 		5B42F08F24A3918D006861BF /* CLRecordeEncodeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLRecordeEncodeController.m; sourceTree = "<group>"; };
 		5B42F09124A393D6006861BF /* CLRecorder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLRecorder.h; sourceTree = "<group>"; };
@@ -508,6 +521,10 @@
 		5B49566523B507A700212772 /* CLFlipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLFlipView.swift; sourceTree = "<group>"; };
 		5B49566723B50ED700212772 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		5B49566C23B5DD0100212772 /* CLTwoSidedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLTwoSidedView.swift; sourceTree = "<group>"; };
+		5B51EE1224AB161700F45628 /* CLNamespace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLNamespace.swift; sourceTree = "<group>"; };
+		5B51EE1524AB165000F45628 /* UIImageView+Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Chat.swift"; sourceTree = "<group>"; };
+		5B51EE1724AB16D000F45628 /* CLChatImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLChatImageCache.swift; sourceTree = "<group>"; };
+		5B51EE1924AB177000F45628 /* ImageIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageIO.swift; sourceTree = "<group>"; };
 		5B6CC97624AACC190002B5DA /* CLChatPhotoAlbumTopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLChatPhotoAlbumTopBar.swift; sourceTree = "<group>"; };
 		5B6CC97824AACC240002B5DA /* CLChatPhotoAlbumBottomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLChatPhotoAlbumBottomBar.swift; sourceTree = "<group>"; };
 		5B737E5424A8994400079523 /* CLBackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLBackView.swift; sourceTree = "<group>"; };
@@ -585,10 +602,11 @@
 		5BF1ACE4245C850A0083BE70 /* CLTitleControllerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLTitleControllerView.h; sourceTree = "<group>"; };
 		5BF1ACE5245C850A0083BE70 /* CLTitleControllerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLTitleControllerView.m; sourceTree = "<group>"; };
 		5BF830A724AAE169008E7CE8 /* CLChatPhotoAlbumItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLChatPhotoAlbumItem.swift; sourceTree = "<group>"; };
+		5BF830AD24AB0DA8008E7CE8 /* CLChatTipsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatTipsCell.swift; sourceTree = "<group>"; };
 		7F29D2D63E4FCF727DAB90EE /* Pods-CLDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CLDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CLDemo/Pods-CLDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		AFF9BFDE81DC6F568D3C9863 /* Pods-CLDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CLDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-CLDemo/Pods-CLDemo.release.xcconfig"; sourceTree = "<group>"; };
-		B51EE6C623DF092400146862 /* CLChatLayoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLChatLayoutCell.swift; sourceTree = "<group>"; };
-		B51EE6C823DF093E00146862 /* CLChatLayoutItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLChatLayoutItem.swift; sourceTree = "<group>"; };
+		B51EE6C623DF092400146862 /* CLChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLChatCell.swift; sourceTree = "<group>"; };
+		B51EE6C823DF093E00146862 /* CLChatItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLChatItem.swift; sourceTree = "<group>"; };
 		B51EE6CB23DF104800146862 /* CLGradientLayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLGradientLayerView.swift; sourceTree = "<group>"; };
 		B51EE6CE23DF138100146862 /* CLChatInputToolBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatInputToolBar.swift; sourceTree = "<group>"; };
 		B51EE6D023DF138100146862 /* CLChatTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatTextView.swift; sourceTree = "<group>"; };
@@ -612,9 +630,9 @@
 		B5498C7623DE93910082D4E5 /* CLPhoneNumberModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLPhoneNumberModel.h; sourceTree = "<group>"; };
 		B5498C7723DE93910082D4E5 /* CLPhoneNumberHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLPhoneNumberHelper.h; sourceTree = "<group>"; };
 		B5498C7C23DED4220082D4E5 /* CLChatTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLChatTextCell.swift; sourceTree = "<group>"; };
-		B5498C7E23DED4BA0082D4E5 /* CLChatLayoutItemProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLChatLayoutItemProtocol.swift; sourceTree = "<group>"; };
-		B5498C8023DED4F60082D4E5 /* CLChatLayoutTextItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLChatLayoutTextItem.swift; sourceTree = "<group>"; };
-		B5498C8223DED6760082D4E5 /* CLChatLayoutCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLChatLayoutCellProtocol.swift; sourceTree = "<group>"; };
+		B5498C7E23DED4BA0082D4E5 /* CLChatItemProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLChatItemProtocol.swift; sourceTree = "<group>"; };
+		B5498C8023DED4F60082D4E5 /* CLChatTextItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLChatTextItem.swift; sourceTree = "<group>"; };
+		B5498C8223DED6760082D4E5 /* CLChatCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLChatCellProtocol.swift; sourceTree = "<group>"; };
 		B5498C8423DEE0C70082D4E5 /* CLIntrinsicTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLIntrinsicTableView.swift; sourceTree = "<group>"; };
 		B550057323C5FFE600114312 /* CLFlopBottomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLFlopBottomView.swift; sourceTree = "<group>"; };
 		B5A705B123F29E5E007745BC /* CLChatPhotoAlbumContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLChatPhotoAlbumContentView.swift; sourceTree = "<group>"; };
@@ -1402,6 +1420,15 @@
 			path = json;
 			sourceTree = "<group>";
 		};
+		5B399E4724AB14F700A14FE7 /* CLChatImageCell */ = {
+			isa = PBXGroup;
+			children = (
+				5B399E4824AB14F700A14FE7 /* CLChatImageProgressView.swift */,
+				5B399E4924AB14F700A14FE7 /* CLChatImageCell.swift */,
+			);
+			path = CLChatImageCell;
+			sourceTree = "<group>";
+		};
 		5B3AB5D824A63F1000305ABE /* CLChatTextCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1449,6 +1476,24 @@
 				5B49566C23B5DD0100212772 /* CLTwoSidedView.swift */,
 			);
 			path = CLTwoSidedView;
+			sourceTree = "<group>";
+		};
+		5B51EE1124AB160600F45628 /* CLNamespace */ = {
+			isa = PBXGroup;
+			children = (
+				5B51EE1224AB161700F45628 /* CLNamespace.swift */,
+			);
+			path = CLNamespace;
+			sourceTree = "<group>";
+		};
+		5B51EE1424AB163900F45628 /* Untils */ = {
+			isa = PBXGroup;
+			children = (
+				5B51EE1924AB177000F45628 /* ImageIO.swift */,
+				5B51EE1524AB165000F45628 /* UIImageView+Chat.swift */,
+				5B51EE1724AB16D000F45628 /* CLChatImageCache.swift */,
+			);
+			path = Untils;
 			sourceTree = "<group>";
 		};
 		5B80D9DB1DDD976A00A20E34 = {
@@ -1729,8 +1774,10 @@
 		5B8A4D4123B1189C00360631 /* CLChatController */ = {
 			isa = PBXGroup;
 			children = (
-				B51EE6CA23DF102900146862 /* View */,
 				5B8A4D4223B118CC00360631 /* CLChatController.swift */,
+				5B51EE1424AB163900F45628 /* Untils */,
+				5B51EE1124AB160600F45628 /* CLNamespace */,
+				B51EE6CA23DF102900146862 /* View */,
 			);
 			path = CLChatController;
 			sourceTree = "<group>";
@@ -1892,6 +1939,14 @@
 			path = CLPopupBMIInputController;
 			sourceTree = "<group>";
 		};
+		5BF830AC24AB0CE0008E7CE8 /* CLChatTipsItem */ = {
+			isa = PBXGroup;
+			children = (
+				5BF830AD24AB0DA8008E7CE8 /* CLChatTipsCell.swift */,
+			);
+			path = CLChatTipsItem;
+			sourceTree = "<group>";
+		};
 		B51EE6CA23DF102900146862 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -1992,9 +2047,11 @@
 		B5498C8623DEE2820082D4E5 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				B5498C8223DED6760082D4E5 /* CLChatLayoutCellProtocol.swift */,
-				B51EE6C623DF092400146862 /* CLChatLayoutCell.swift */,
+				B5498C8223DED6760082D4E5 /* CLChatCellProtocol.swift */,
+				B51EE6C623DF092400146862 /* CLChatCell.swift */,
+				5BF830AC24AB0CE0008E7CE8 /* CLChatTipsItem */,
 				5B3AB5D824A63F1000305ABE /* CLChatTextCell */,
+				5B399E4724AB14F700A14FE7 /* CLChatImageCell */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -2002,9 +2059,11 @@
 		B5498C8723DEE2920082D4E5 /* Item */ = {
 			isa = PBXGroup;
 			children = (
-				B5498C7E23DED4BA0082D4E5 /* CLChatLayoutItemProtocol.swift */,
-				B51EE6C823DF093E00146862 /* CLChatLayoutItem.swift */,
-				B5498C8023DED4F60082D4E5 /* CLChatLayoutTextItem.swift */,
+				B5498C7E23DED4BA0082D4E5 /* CLChatItemProtocol.swift */,
+				B51EE6C823DF093E00146862 /* CLChatItem.swift */,
+				5B399E2524AB0E7F00A14FE7 /* CLChatTipsItem.swift */,
+				B5498C8023DED4F60082D4E5 /* CLChatTextItem.swift */,
+				5B399E2724AB147E00A14FE7 /* CLChatImageItem.swift */,
 			);
 			path = Item;
 			sourceTree = "<group>";
@@ -2210,13 +2269,14 @@
 				B5A705B423F2AE1C007745BC /* CLChatPhotoAlbumCell.swift in Sources */,
 				0CE7333F2191CB9D00270851 /* Tools.m in Sources */,
 				5BB328AE244491F60049ADE8 /* CLPopupFoodPickerContentView.swift in Sources */,
-				B51EE6C923DF093E00146862 /* CLChatLayoutItem.swift in Sources */,
+				B51EE6C923DF093E00146862 /* CLChatItem.swift in Sources */,
 				5B44D0DA243398EF0059476D /* CLHourMinuteDataPickerView.swift in Sources */,
 				0C9FF01622E0A2C100BA0B6E /* CLPhotoBrowserImageScaleHelper.m in Sources */,
 				0C4947A92382951200EAF6AF /* CLLineChartConfigure.m in Sources */,
 				B51EE6EC23DF138200146862 /* CLChatEmojiFlowLayout.swift in Sources */,
 				0C628C1C2230BC65005922A0 /* CLRoundAnimationView.m in Sources */,
 				0C6D47F6226C391F00699FBD /* CLPopArrowViewController.m in Sources */,
+				5B51EE1624AB165000F45628 /* UIImageView+Chat.swift in Sources */,
 				0CF79AFD219678FB00DD0BF1 /* UITableView+IndexTip.m in Sources */,
 				0C0E36A12257836100478B69 /* CLCustomQRCodeViewController.m in Sources */,
 				0C47E22422D9C3E4003EDB4E /* CLTransitionViewController.swift in Sources */,
@@ -2225,6 +2285,7 @@
 				5B80DA491DDD993F00A20E34 /* CLCollectionController.m in Sources */,
 				0CCDA40122D9D1C5007B41C4 /* CLPhotoBrowserCollectionViewCell.m in Sources */,
 				0C2AE878223F87AF007D5DC5 /* CLWaveSwiftViewController.swift in Sources */,
+				5B51EE1A24AB177000F45628 /* ImageIO.swift in Sources */,
 				5B1C74261E78F120000AB534 /* CLChartXLabel.m in Sources */,
 				5B8AFC6824A8954C00FAF996 /* CKDDebugCell.swift in Sources */,
 				0C223C772243811200E319E2 /* CLRotateAnimationSwiftController.swift in Sources */,
@@ -2265,7 +2326,7 @@
 				5BCCEC6F245C292E0049AC70 /* NSDecimalNumber+Extension.swift in Sources */,
 				0C6D47E9226C37EC00699FBD /* CLPopArrowView.m in Sources */,
 				5B305328245D1D87002C53DB /* CLMyDetailsController.swift in Sources */,
-				B5498C8123DED4F60082D4E5 /* CLChatLayoutTextItem.swift in Sources */,
+				B5498C8123DED4F60082D4E5 /* CLChatTextItem.swift in Sources */,
 				0C31C38521994CCF001860C2 /* UIFont+CLFont.m in Sources */,
 				0CCDA40422D9D1C5007B41C4 /* CLPhotoBrowserCollectionViewFlowLayout.m in Sources */,
 				0CB2769922E1A85F00AFCB8C /* CLTransitionController.m in Sources */,
@@ -2273,7 +2334,7 @@
 				5B3327E523DF384800CA315C /* NSString+Extension.swift in Sources */,
 				5B8AFC7024A8974C00FAF996 /* Regex.swift in Sources */,
 				5B190E7323B66811005A2474 /* CLPopupManager.swift in Sources */,
-				B5498C8323DED6760082D4E5 /* CLChatLayoutCellProtocol.swift in Sources */,
+				B5498C8323DED6760082D4E5 /* CLChatCellProtocol.swift in Sources */,
 				0C547345239E2C7000F48BFA /* CLPhoneNumberVerificationController.m in Sources */,
 				0CA1237522255B81007DDE6D /* CLCardController.m in Sources */,
 				0C3CAA5521AF89BD00A352F0 /* CLRotateAnimationController.m in Sources */,
@@ -2285,7 +2346,7 @@
 				B5498C7A23DE93910082D4E5 /* CLPhoneNumberInfoModel.m in Sources */,
 				B51EE6EA23DF138200146862 /* CLChatEmojiDelegateCell.swift in Sources */,
 				0C108EA122A92B3A009EA457 /* CLCountdownController.m in Sources */,
-				B5498C7F23DED4BA0082D4E5 /* CLChatLayoutItemProtocol.swift in Sources */,
+				B5498C7F23DED4BA0082D4E5 /* CLChatItemProtocol.swift in Sources */,
 				0CFA589A237FE935007B8231 /* CLDrawImageController.m in Sources */,
 				0C777A482217A71200BC8AFB /* CLInputToolbar.m in Sources */,
 				0C6B40E421ECFC7100360FAD /* UITextField+CLDelegate.m in Sources */,
@@ -2294,12 +2355,13 @@
 				0C4947A72382951200EAF6AF /* CLLineChartView.m in Sources */,
 				0C4947A82382951200EAF6AF /* CLLineChartPoint.m in Sources */,
 				0CEE94872204395B007FA31B /* CLPasswordInputView.swift in Sources */,
+				5BF830AE24AB0DA8008E7CE8 /* CLChatTipsCell.swift in Sources */,
 				B51EE6E623DF138200146862 /* CLChatEmojiDeleteItem.swift in Sources */,
 				B51EE6EB23DF138200146862 /* CLChatEmojiView.swift in Sources */,
 				5B0978FE240E34A000EFE510 /* CLPopupHudController.swift in Sources */,
 				0C5854E2235416920036DBC2 /* CLBroadcastMainCell.m in Sources */,
 				0CF642FD222FECA800227361 /* CLWaveView.m in Sources */,
-				B51EE6C723DF092400146862 /* CLChatLayoutCell.swift in Sources */,
+				B51EE6C723DF092400146862 /* CLChatCell.swift in Sources */,
 				0CF2B6EC231A6C2A0071AEC3 /* CLCustomTransitionViewController.m in Sources */,
 				5BB0774C2444570E00EF9D3E /* CLPopupFoodPickerView.swift in Sources */,
 				0CCDA316219855A20057BA14 /* CLChangeFontSizeCell.m in Sources */,
@@ -2311,6 +2373,9 @@
 				5B8B7D32243197D6005C8530 /* CLYearMonthDayDataPickerView.swift in Sources */,
 				5B80DA4A1DDD993F00A20E34 /* CLHomepageController.m in Sources */,
 				5B3327E323DF366600CA315C /* UIImage+Extension.swift in Sources */,
+				5B399E2624AB0E7F00A14FE7 /* CLChatTipsItem.swift in Sources */,
+				5B399E4A24AB14F700A14FE7 /* CLChatImageProgressView.swift in Sources */,
+				5B399E4B24AB14F700A14FE7 /* CLChatImageCell.swift in Sources */,
 				0CF6B84E2386626800F10986 /* CLVerticalItem.m in Sources */,
 				5B49566823B50ED700212772 /* UIColor+Extension.swift in Sources */,
 				5BF1ACE3245C82B70083BE70 /* CLMyController.swift in Sources */,
@@ -2331,6 +2396,8 @@
 				5BCCEC6A245BFCA00049AC70 /* CLVernierCaliperFooterCell.swift in Sources */,
 				5B8AFC7424A897D000FAF996 /* Date+Extension.swift in Sources */,
 				0CCD1DCA231F60D200AFCE1F /* CLBroadcastView.m in Sources */,
+				5B51EE1824AB16D000F45628 /* CLChatImageCache.swift in Sources */,
+				5B51EE1324AB161700F45628 /* CLNamespace.swift in Sources */,
 				5BF830A824AAE169008E7CE8 /* CLChatPhotoAlbumItem.swift in Sources */,
 				5B876CAF2445937200DC4424 /* CLPopupFoodPickerContentCell.swift in Sources */,
 				5B6CC97924AACC240002B5DA /* CLChatPhotoAlbumBottomBar.swift in Sources */,
@@ -2361,6 +2428,7 @@
 				B51EE6E323DF138200146862 /* CLChatTextView.swift in Sources */,
 				5BCCEC5A245BCE2C0049AC70 /* CLVernierCaliperView.swift in Sources */,
 				B5498C7D23DED4220082D4E5 /* CLChatTextCell.swift in Sources */,
+				5B399E2824AB147E00A14FE7 /* CLChatImageItem.swift in Sources */,
 				0CCDA31C219922680057BA14 /* CLChangeFontSizeSlider.m in Sources */,
 				0CF4EF912330834400D8B95E /* CLInputPasswordViewController.m in Sources */,
 				0CA1236F22255A6F007DDE6D /* CLCardView.m in Sources */,

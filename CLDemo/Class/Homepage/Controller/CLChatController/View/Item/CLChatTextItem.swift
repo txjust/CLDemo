@@ -1,5 +1,5 @@
 //
-//  CLChatLayoutTextItem.swift
+//  CLChatTextItem.swift
 //  CLDemo
 //
 //  Created by Emma on 2020/1/27.
@@ -9,10 +9,10 @@
 import UIKit
 
 
-class CLChatLayoutTextItem: CLChatLayoutItem {
+class CLChatTextItem: CLChatItem {
     var text: String?
 }
-extension CLChatLayoutTextItem: CLChatLayoutItemProtocol {
+extension CLChatTextItem: CLChatItemProtocol {
     func tableviewCellClass() -> UITableViewCell.Type {
         return CLChatTextCell.self
     }

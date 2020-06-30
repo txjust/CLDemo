@@ -10,6 +10,7 @@ import UIKit
 
 class CLChatPhotoAlbumBottomBar: UIView {
     var sendCallback: (() -> ())?
+    var albumCallback: (() -> ())?
     ///是否可以发送
     var seletedNumber: Int = 0 {
         didSet {
@@ -43,6 +44,15 @@ class CLChatPhotoAlbumBottomBar: UIView {
         view.addTarget(self, action: #selector(sendButtonAction), for: .touchUpInside)
         return view
     }()
+    ///相册按钮
+    private lazy var albumButton: UIButton = {
+        let view = UIButton()
+        view.setImage(UIImage.init(named: "相册"), for: .normal)
+        view.setImage(UIImage.init(named: "相册"), for: .selected)
+        view.setImage(UIImage.init(named: "相册"), for: .highlighted)
+        view.addTarget(self, action: #selector(albumButtonAction), for: .touchUpInside)
+        return view
+    }()
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = UIColor.red.withAlphaComponent(0.2)
@@ -55,10 +65,16 @@ class CLChatPhotoAlbumBottomBar: UIView {
 }
 extension CLChatPhotoAlbumBottomBar {
     private func initUI() {
+        addSubview(albumButton)
         addSubview(sendButton)
         addSubview(seletedNumberLabel)
     }
     private func makeConstraints() {
+        albumButton.snp.makeConstraints { (make) in
+            make.centerY.equalToSuperview()
+            make.left.equalTo(12)
+            make.size.equalTo(26)
+        }
         sendButton.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
             make.right.equalTo(-12)
@@ -73,5 +89,8 @@ extension CLChatPhotoAlbumBottomBar {
 extension CLChatPhotoAlbumBottomBar {
     @objc private func sendButtonAction() {
        sendCallback?()
+    }
+    @objc private func albumButtonAction() {
+        albumCallback?()
     }
 }

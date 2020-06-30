@@ -9,7 +9,7 @@
 import UIKit
 
 class CLChatController: CLBaseViewController {
-    private var dataSource = [CLChatLayoutItemProtocol]()
+    private var dataSource = [CLChatItemProtocol]()
     ///渐变色
     private lazy var gradientLayerView: CLGradientLayerView = {
         let gradientLayerView = CLGradientLayerView()
@@ -61,6 +61,7 @@ extension CLChatController {
         super.viewDidLoad()
         initUI()
         makeConstraints()
+        addTipsMessage("欢迎来到本Demo")
     }
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         inputToolBar.viewWillTransition(to: size, with: coordinator)
@@ -99,17 +100,22 @@ extension CLChatController {
     }
 }
 extension CLChatController {
+    private func addTipsMessage(_ text: String) {
+        let item = CLChatTipsItem()
+        item.text = text
+        dataSource.append(item)
+        reloadData()
+    }
     private func addTextMessage(_ text: String) {
-        let item = CLChatLayoutTextItem()
+        let item = CLChatTextItem()
         item.position = .right
         item.text = text
         dataSource.append(item)
         
-        let item1 = CLChatLayoutTextItem()
+        let item1 = CLChatTextItem()
         item1.position = .left
         item1.text = text
         dataSource.append(item1)
-        
         reloadData()
     }
 }
@@ -125,7 +131,7 @@ extension CLChatController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = dataSource[indexPath.row]
         let cell = item.dequeueReusableCell(tableView: tableView)
-        if let tableViewCell = cell as? CLChatLayoutCellProtocol {
+        if let tableViewCell = cell as? CLChatCellProtocol {
             tableViewCell.setItem(item)
         }
         return cell

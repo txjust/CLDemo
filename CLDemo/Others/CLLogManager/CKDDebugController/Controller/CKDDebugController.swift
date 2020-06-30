@@ -27,8 +27,8 @@ class CKDDebugController: CLBaseViewController {
         view.addTarget(self, action: #selector(backItemAction), for: .touchUpInside)
        return view
     }()
-    private lazy var dataSource: [CLChatLayoutItemProtocol] = {
-        let dataSource = [CLChatLayoutItemProtocol]()
+    private lazy var dataSource: [CLChatItemProtocol] = {
+        let dataSource = [CLChatItemProtocol]()
         return dataSource
     }()
     private lazy var contentView: UIView = {

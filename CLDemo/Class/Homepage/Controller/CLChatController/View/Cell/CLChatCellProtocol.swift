@@ -1,5 +1,5 @@
 //
-//  CLChatLayoutCellProtocol.swift
+//  CLChatCellProtocol.swift
 //  CLDemo
 //
 //  Created by Emma on 2020/1/27.
@@ -8,8 +8,8 @@
 
 import Foundation
 
-protocol CLChatLayoutCellProtocol {
+protocol CLChatCellProtocol {
     ///设置item
-    func setItem(_ item: CLChatLayoutItemProtocol)
+    func setItem(_ item: CLChatItemProtocol)
 }
 

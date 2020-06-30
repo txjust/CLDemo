@@ -72,8 +72,8 @@ extension CKDDebugCell {
         contentBackgroundView.layer.cornerRadius = contentBackgroundView.bounds.height * 0.5
     }
 }
-extension CKDDebugCell: CLChatLayoutCellProtocol {
-    func setItem(_ item: CLChatLayoutItemProtocol) {
+extension CKDDebugCell: CLChatCellProtocol {
+    func setItem(_ item: CLChatItemProtocol) {
         guard let item = item as? CKDDebugItem else {
             return
         }

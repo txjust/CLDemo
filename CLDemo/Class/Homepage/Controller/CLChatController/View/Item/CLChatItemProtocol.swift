@@ -1,5 +1,5 @@
 //
-//  CLChatLayoutItemProtocol.swift
+//  CLChatItemProtocol.swift
 //  CLDemo
 //
 //  Created by Emma on 2020/1/27.
@@ -7,13 +7,13 @@
 //
 
 
-protocol CLChatLayoutItemProtocol {
+protocol CLChatItemProtocol {
     ///创建cell
       func dequeueReusableCell(tableView: UITableView) -> UITableViewCell
       ///cell类型
       func tableviewCellClass() -> UITableViewCell.Type
 }
-extension CLChatLayoutItemProtocol {
+extension CLChatItemProtocol {
     func dequeueReusableCell(tableView: UITableView) -> UITableViewCell {
         let cellClass = tableviewCellClass()
         let identifier = String.init(describing: cellClass)
@@ -23,8 +23,8 @@ extension CLChatLayoutItemProtocol {
         }else {
             tableViewCell = cellClass.init(style: .default, reuseIdentifier: identifier)
         }
-        if tableViewCell is CLChatLayoutCellProtocol {
-            (tableViewCell as! CLChatLayoutCellProtocol).setItem(self)
+        if tableViewCell is CLChatCellProtocol {
+            (tableViewCell as! CLChatCellProtocol).setItem(self)
         }
         return tableViewCell
     }

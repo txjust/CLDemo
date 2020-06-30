@@ -46,7 +46,6 @@ class CLChatPhotoCellButton: UIButton {
             make.top.equalTo(iconImageView.snp.bottom).offset(5)
         }
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

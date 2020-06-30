@@ -12,7 +12,7 @@ class CKDDebugItem: NSObject {
     var isSelected: Bool = false
     var path: String = ""
 }
-extension CKDDebugItem: CLChatLayoutItemProtocol {
+extension CKDDebugItem: CLChatItemProtocol {
     func tableviewCellClass() -> UITableViewCell.Type {
         return CKDDebugCell.self
     }

@@ -8,15 +8,24 @@
 
 import UIKit
 
-class CLChatTextCell: CLChatLayoutCell {
+//
+//  CLChatTextCell.swift
+//  Potato
+//
+//  Created by AUG on 2019/10/12.
+//
+
+import UIKit
+
+class CLChatTextCell: CLChatCell {
     ///背景气泡
     var bubbleImageView = UIImageView()
     ///文字
     var titleLabel = UILabel.init().then { (label) in
-        label.textColor = hexColor("0xffffff")
-        label.font = UIFont.systemFont(ofSize: 15)
+        label.textColor = .hexColor(with: "0xffffff")
+        label.font = .systemFont(ofSize: 15)
         label.numberOfLines = 0
-        label.preferredMaxLayoutWidth = 250
+        label.preferredMaxLayoutWidth = cl_scale_iphone6_width(275)
     }
     ///左侧气泡
     private lazy var leftBubbleImage: UIImage = {
@@ -30,18 +39,10 @@ class CLChatTextCell: CLChatLayoutCell {
         image = image.resizableImage(withCapInsets: UIEdgeInsets.init(top: image.size.height * 0.5, left: image.size.width * 0.5, bottom: image.size.height * 0.5, right: image.size.width * 0.5))
         return image
     }()
-
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        initUI()
-    }
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 }
-
 extension CLChatTextCell {
-    func initUI() {
+    override func initUI() {
+        super.initUI()
         contentView.addSubview(bubbleImageView)
         contentView.addSubview(titleLabel)
     }
@@ -63,13 +64,17 @@ extension CLChatTextCell {
             make.left.equalTo(bubbleImageView.snp.left).offset(isFromMyself ? 10 : 15)
             make.right.equalTo(bubbleImageView.snp.right).offset(isFromMyself ? -15 : -10)
         }
+        bottomContentView.snp.remakeConstraints { (make) in
+            make.edges.equalTo(bubbleImageView)
+        }
     }
 }
-extension CLChatTextCell: CLChatLayoutCellProtocol {
-    func setItem(_ item: CLChatLayoutItemProtocol) {
-        guard let textItem = item as? CLChatLayoutTextItem else {
+extension CLChatTextCell: CLChatCellProtocol {
+    func setItem(_ item: CLChatItemProtocol) {
+        guard let textItem = item as? CLChatTextItem else {
             return
         }
+        self.item = nil
         self.item = textItem
         titleLabel.text = textItem.text
         titleLabel.sizeToFit()
@@ -79,3 +84,4 @@ extension CLChatTextCell: CLChatLayoutCellProtocol {
         remakeConstraints(isFromMyself: isFromMyself)
     }
 }
+
