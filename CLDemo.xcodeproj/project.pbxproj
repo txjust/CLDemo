@@ -167,9 +167,6 @@
 		5B49566823B50ED700212772 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B49566723B50ED700212772 /* UIColor+Extension.swift */; };
 		5B49566D23B5DD0100212772 /* CLTwoSidedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B49566C23B5DD0100212772 /* CLTwoSidedView.swift */; };
 		5B51EE1324AB161700F45628 /* CLNamespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51EE1224AB161700F45628 /* CLNamespace.swift */; };
-		5B51EE1624AB165000F45628 /* UIImageView+Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51EE1524AB165000F45628 /* UIImageView+Chat.swift */; };
-		5B51EE1824AB16D000F45628 /* CLChatImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51EE1724AB16D000F45628 /* CLChatImageCache.swift */; };
-		5B51EE1A24AB177000F45628 /* ImageIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51EE1924AB177000F45628 /* ImageIO.swift */; };
 		5B6CC97724AACC190002B5DA /* CLChatPhotoAlbumTopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6CC97624AACC190002B5DA /* CLChatPhotoAlbumTopBar.swift */; };
 		5B6CC97924AACC240002B5DA /* CLChatPhotoAlbumBottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6CC97824AACC240002B5DA /* CLChatPhotoAlbumBottomBar.swift */; };
 		5B737E5524A8994400079523 /* CLBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B737E5424A8994400079523 /* CLBackView.swift */; };
@@ -521,9 +518,6 @@
 		5B49566723B50ED700212772 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		5B49566C23B5DD0100212772 /* CLTwoSidedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLTwoSidedView.swift; sourceTree = "<group>"; };
 		5B51EE1224AB161700F45628 /* CLNamespace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLNamespace.swift; sourceTree = "<group>"; };
-		5B51EE1524AB165000F45628 /* UIImageView+Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Chat.swift"; sourceTree = "<group>"; };
-		5B51EE1724AB16D000F45628 /* CLChatImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLChatImageCache.swift; sourceTree = "<group>"; };
-		5B51EE1924AB177000F45628 /* ImageIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageIO.swift; sourceTree = "<group>"; };
 		5B6CC97624AACC190002B5DA /* CLChatPhotoAlbumTopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLChatPhotoAlbumTopBar.swift; sourceTree = "<group>"; };
 		5B6CC97824AACC240002B5DA /* CLChatPhotoAlbumBottomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLChatPhotoAlbumBottomBar.swift; sourceTree = "<group>"; };
 		5B737E5424A8994400079523 /* CLBackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLBackView.swift; sourceTree = "<group>"; };
@@ -1479,9 +1473,6 @@
 			isa = PBXGroup;
 			children = (
 				5B51EE1224AB161700F45628 /* CLNamespace.swift */,
-				5B51EE1924AB177000F45628 /* ImageIO.swift */,
-				5B51EE1524AB165000F45628 /* UIImageView+Chat.swift */,
-				5B51EE1724AB16D000F45628 /* CLChatImageCache.swift */,
 			);
 			path = Untils;
 			sourceTree = "<group>";
@@ -2191,6 +2182,7 @@
 				"${BUILT_PRODUCTS_DIR}/DateTools/DateTools.framework",
 				"${BUILT_PRODUCTS_DIR}/DateToolsSwift/DateToolsSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
@@ -2207,6 +2199,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DateTools.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DateToolsSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HandyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJExtension.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
@@ -2265,7 +2258,6 @@
 				B51EE6EC23DF138200146862 /* CLChatEmojiFlowLayout.swift in Sources */,
 				0C628C1C2230BC65005922A0 /* CLRoundAnimationView.m in Sources */,
 				0C6D47F6226C391F00699FBD /* CLPopArrowViewController.m in Sources */,
-				5B51EE1624AB165000F45628 /* UIImageView+Chat.swift in Sources */,
 				0CF79AFD219678FB00DD0BF1 /* UITableView+IndexTip.m in Sources */,
 				0C0E36A12257836100478B69 /* CLCustomQRCodeViewController.m in Sources */,
 				0C47E22422D9C3E4003EDB4E /* CLTransitionViewController.swift in Sources */,
@@ -2274,7 +2266,6 @@
 				5B80DA491DDD993F00A20E34 /* CLCollectionController.m in Sources */,
 				0CCDA40122D9D1C5007B41C4 /* CLPhotoBrowserCollectionViewCell.m in Sources */,
 				0C2AE878223F87AF007D5DC5 /* CLWaveSwiftViewController.swift in Sources */,
-				5B51EE1A24AB177000F45628 /* ImageIO.swift in Sources */,
 				5B1C74261E78F120000AB534 /* CLChartXLabel.m in Sources */,
 				5B8AFC6824A8954C00FAF996 /* CKDDebugCell.swift in Sources */,
 				0C223C772243811200E319E2 /* CLRotateAnimationSwiftController.swift in Sources */,
@@ -2385,7 +2376,6 @@
 				5BCCEC6A245BFCA00049AC70 /* CLVernierCaliperFooterCell.swift in Sources */,
 				5B8AFC7424A897D000FAF996 /* Date+Extension.swift in Sources */,
 				0CCD1DCA231F60D200AFCE1F /* CLBroadcastView.m in Sources */,
-				5B51EE1824AB16D000F45628 /* CLChatImageCache.swift in Sources */,
 				5B51EE1324AB161700F45628 /* CLNamespace.swift in Sources */,
 				5B876CAF2445937200DC4424 /* CLPopupFoodPickerContentCell.swift in Sources */,
 				5B6CC97924AACC240002B5DA /* CLChatPhotoAlbumBottomBar.swift in Sources */,

@@ -54,7 +54,7 @@ class CLChatPhotoAlbumContentView: UIView {
     private lazy var bottomToolBar: CLChatPhotoAlbumBottomBar = {
         let view = CLChatPhotoAlbumBottomBar()
         view.sendCallback = {[weak self] in
-            
+            self?.restoreInitialState()
         }
         return view
     }()
@@ -112,9 +112,9 @@ extension CLChatPhotoAlbumContentView {
 extension CLChatPhotoAlbumContentView {
     ///恢复初始状态
     func restoreInitialState() {
-        collectionView.setContentOffset(.zero, animated: false)
         selectedArray.removeAll()
         collectionView.reloadData()
+        collectionView.setContentOffset(.zero, animated: false)
         bottomToolBar.seletedNumber = selectedArray.count
     }
 }
@@ -166,7 +166,6 @@ extension CLChatPhotoAlbumContentView: UICollectionViewDataSource {
             }
             photoAlbumCell.sendImageCallBack = {[weak self] (image) in
                 self?.sendImageCallBack?(image, asset)
-                self?.restoreInitialState()
             }
             if let index = selectedArray.firstIndex(where: {$0.indexPath == indexPath}) {
                 photoAlbumCell.seletedNumber = index + 1
@@ -175,7 +174,9 @@ extension CLChatPhotoAlbumContentView: UICollectionViewDataSource {
             }
             let size = calculateSize(with: asset).applying(CGAffineTransform(scaleX: UIScreen.main.scale, y: UIScreen.main.scale))
             imageManager.requestImage(for: asset, targetSize: size, contentMode: .aspectFill, options: nil) { (image, info) in
-                photoAlbumCell.image = image
+                DispatchQueue.main.async {
+                    photoAlbumCell.image = image
+                }
             }
         }
         return cell

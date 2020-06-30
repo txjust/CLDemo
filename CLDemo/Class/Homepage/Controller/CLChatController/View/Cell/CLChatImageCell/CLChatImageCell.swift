@@ -7,6 +7,7 @@
 
 import UIKit
 import SDWebImage
+import Kingfisher
 
 class CLChatImageCell: CLChatCell {
     ///photoView
@@ -61,7 +62,7 @@ extension CLChatImageCell {
         self.item = nil
         self.item = item
         if let path = item.imagePath {
-            photoView.cl.setImage(at: path, for: item.size)
+            photoView.kf.setImage(with: URL(fileURLWithPath: path))
         }else {
             photoView.image = nil
         }

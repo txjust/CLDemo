@@ -152,11 +152,7 @@ extension CLChatController: UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = dataSource[indexPath.row]
-        let cell = item.dequeueReusableCell(tableView: tableView)
-        if let tableViewCell = cell as? CLChatCellProtocol {
-            tableViewCell.setItem(item)
-        }
-        return cell
+        return item.dequeueReusableCell(tableView: tableView)
     }
 }
 extension CLChatController: CLChatInputToolBarDelegate {
