@@ -40,9 +40,17 @@ class CLChatPhotoAlbumCell: UICollectionViewCell {
             canSend = endPoint.y < -40
         }
     }
-    private var canSend: Bool = false
+    private var canSend: Bool = false {
+        didSet {
+            
+        }
+    }
     private var direction: CLChatPhotoMoveDirection = .none
-    private var isOnWindow: Bool = false
+    private var isOnWindow: Bool = false {
+        didSet {
+            
+        }
+    }
     private var gestureMinimumTranslation: CGFloat = 10.0
     private lazy var tipsBackgroundView: UIView = {
         let view = UIView()
@@ -99,8 +107,8 @@ class CLChatPhotoAlbumCell: UICollectionViewCell {
 extension CLChatPhotoAlbumCell {
     private func initUI() {
         contentView.addSubview(imageView)
-        imageView.addSubview(unSeletedImageView)
-        imageView.addSubview(seletedNumberButton)
+        contentView.addSubview(unSeletedImageView)
+        contentView.addSubview(seletedNumberButton)
         imageView.addSubview(tipsBackgroundView)
         tipsBackgroundView.addSubview(tipsLabel)
     }
@@ -220,7 +228,7 @@ extension CLChatPhotoAlbumCell {
             return
         }
         tipsBackgroundView.isHidden = true
-        contentView.addSubview(view)
+        contentView.insertSubview(view, at: 0)
         view.snp.remakeConstraints { (make) in
             make.width.height.equalTo(0)
             make.center.equalToSuperview()
@@ -254,7 +262,7 @@ extension CLChatPhotoAlbumCell {
             view.superview?.setNeedsLayout()
             view.superview?.layoutIfNeeded()
         }) { _ in
-            self.contentView.addSubview(view)
+            self.contentView.insertSubview(view, at: 0)
             view.snp.remakeConstraints { (make) in
                 make.width.height.equalToSuperview()
                 make.center.equalToSuperview()
