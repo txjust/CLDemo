@@ -112,6 +112,7 @@ extension CLChatPhotoView {
         }
     }
     func hiddenAlbumContentView() {
+        addSubview(albumContentView)
         UIView.animate(withDuration: 0.25, animations: {
             self.albumContentView.snp.remakeConstraints { (make) in
                 make.left.right.equalToSuperview()
