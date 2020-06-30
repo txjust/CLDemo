@@ -66,8 +66,6 @@ class CLChatPhotoView: UIView {
         }
         return view
     }()
-    ///点击相机
-    var cameraButtonCallback: (()->())?
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.frame = CGRect(x: 0, y: 0, width: width, height: height)
@@ -133,17 +131,20 @@ extension CLChatPhotoView {
 }
 extension CLChatPhotoView {
     @objc private func albumButtonAction() {
-        PHPhotoLibrary.requestAuthorization { (status) in
-            if status == .authorized {
-                DispatchQueue.main.async {
-                    self.showAlbumContentView()
-                }
-            }else {
-                print("=======================")
-            }
-        }
+        showAlbumContentView()
     }
     @objc private func cameraButtonButtonAction() {
-        cameraButtonCallback?()
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            let cameraPicker = UIImagePickerController()
+            cameraPicker.delegate = self
+            cameraPicker.allowsEditing = true
+            cameraPicker.sourceType = .camera
+            UIApplication.shared.keyWindow?.rootViewController?.present(cameraPicker, animated: true)
+        }
+    }
+}
+extension CLChatPhotoView: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
     }
 }

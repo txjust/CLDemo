@@ -118,6 +118,7 @@ extension CLChatPhotoAlbumContentView {
     func showImagePicker() {
         guard let imagePicker = TZImagePickerController(maxImagesCount: .max, delegate: nil) else { return }
         imagePicker.allowPickingVideo = false
+        imagePicker.allowTakeVideo = false
         imagePicker.allowPickingOriginalPhoto = false
         imagePicker.modalPresentationStyle = .fullScreen
         imagePicker.didFinishPickingPhotosHandle = {[weak self] (photos, assets, isSelectOriginalPhoto) in
