@@ -68,7 +68,7 @@ class CLChatPhotoAlbumCell: UICollectionViewCell {
         view.text = "松手发送"
         return view
     }()
-    private lazy var seletedBackgroundView: UIView = {
+    private lazy var seletedContentView: UIView = {
         let view = UIView()
         view.isUserInteractionEnabled = false
         return view
@@ -112,9 +112,9 @@ class CLChatPhotoAlbumCell: UICollectionViewCell {
 extension CLChatPhotoAlbumCell {
     private func initUI() {
         contentView.addSubview(imageView)
-        contentView.addSubview(seletedBackgroundView)
-        seletedBackgroundView.addSubview(seletedImageView)
-        seletedBackgroundView.addSubview(seletedNumberButton)
+        contentView.addSubview(seletedContentView)
+        seletedContentView.addSubview(seletedImageView)
+        seletedContentView.addSubview(seletedNumberButton)
         imageView.addSubview(tipsBackgroundView)
         tipsBackgroundView.addSubview(tipsLabel)
     }
@@ -122,7 +122,7 @@ extension CLChatPhotoAlbumCell {
         imageView.snp.makeConstraints { (make) in
             make.center.width.height.equalToSuperview()
         }
-        seletedBackgroundView.snp.makeConstraints { (make) in
+        seletedContentView.snp.makeConstraints { (make) in
             make.size.equalTo(20)
             make.top.equalTo(10)
             make.right.equalTo(-10)
@@ -214,6 +214,7 @@ extension CLChatPhotoAlbumCell {
         let translation = recognizer.translation(in: keyWindow)
         let centerInKeyWindow = superview.convert(view.center, to: keyWindow)
         if !isOnWindow {
+            seletedContentView.isHidden = true
             keyWindow.addSubview(view)
         }
         endPoint = contentView.convert(centerInKeyWindow, from: keyWindow)
@@ -245,7 +246,9 @@ extension CLChatPhotoAlbumCell {
         view.transform = CGAffineTransform(scaleX: 0.3, y: 0.3)
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.8, options: .curveEaseOut, animations: {
             view.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-        }, completion: nil)
+        }) { (_) in
+            self.seletedContentView.isHidden = false
+        }
         guard let image = image else {
             return
         }
@@ -265,6 +268,7 @@ extension CLChatPhotoAlbumCell {
             view.superview?.setNeedsLayout()
             view.superview?.layoutIfNeeded()
         }) { _ in
+            self.seletedContentView.isHidden = false
             self.contentView.insertSubview(view, at: 0)
             view.snp.remakeConstraints { (make) in
                 make.width.height.equalToSuperview()

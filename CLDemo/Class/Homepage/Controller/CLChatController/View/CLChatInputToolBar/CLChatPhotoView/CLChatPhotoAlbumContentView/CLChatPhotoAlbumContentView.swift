@@ -106,13 +106,15 @@ extension CLChatPhotoAlbumContentView {
 }
 extension CLChatPhotoAlbumContentView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        var indexPathArray = selectedArray
         if let index = selectedArray.firstIndex(of: indexPath) {
             selectedArray.remove(at: index)
         }else {
             selectedArray.append(indexPath)
+            indexPathArray = selectedArray
         }
-        collectionView.reloadItems(at: [indexPath])
-        bottomToolBar.isCanSend = selectedArray.count > 0
+        collectionView.reloadItems(at: indexPathArray)
+        bottomToolBar.seletedNumber = selectedArray.count
     }
 }
 extension CLChatPhotoAlbumContentView: UICollectionViewDelegateFlowLayout {
