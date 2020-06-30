@@ -1,5 +1,5 @@
 //
-//  CLChatPhotoCellBotton.swift
+//  CLChatPhotoCellButton.swift
 //  Potato
 //
 //  Created by AUG on 2019/12/26.
@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class CLChatPhotoCellBotton: UIButton {
+class CLChatPhotoCellButton: UIButton {
     var icon: UIImage? {
         didSet {
             guard let image = icon else {
@@ -22,7 +22,6 @@ class CLChatPhotoCellBotton: UIButton {
             textLabel.text = text
         }
     }
-    
     private var iconImageView: UIImageView = {
         let iconImageView = UIImageView()
         return iconImageView

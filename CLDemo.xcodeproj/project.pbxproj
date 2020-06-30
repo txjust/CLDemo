@@ -162,6 +162,8 @@
 		5B49566623B507A700212772 /* CLFlipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B49566523B507A700212772 /* CLFlipView.swift */; };
 		5B49566823B50ED700212772 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B49566723B50ED700212772 /* UIColor+Extension.swift */; };
 		5B49566D23B5DD0100212772 /* CLTwoSidedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B49566C23B5DD0100212772 /* CLTwoSidedView.swift */; };
+		5B6CC97724AACC190002B5DA /* CLChatPhotoAlbumTopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6CC97624AACC190002B5DA /* CLChatPhotoAlbumTopBar.swift */; };
+		5B6CC97924AACC240002B5DA /* CLChatPhotoAlbumBottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6CC97824AACC240002B5DA /* CLChatPhotoAlbumBottomBar.swift */; };
 		5B737E5524A8994400079523 /* CLBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B737E5424A8994400079523 /* CLBackView.swift */; };
 		5B737E5824A899D300079523 /* CLLogForOC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B737E5724A899D200079523 /* CLLogForOC.m */; };
 		5B7C86EE2444B3E50086DC9C /* CLPopupFoodPickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7C86ED2444B3E50086DC9C /* CLPopupFoodPickerModel.swift */; };
@@ -230,7 +232,7 @@
 		B51EE6EB23DF138200146862 /* CLChatEmojiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51EE6DB23DF138100146862 /* CLChatEmojiView.swift */; };
 		B51EE6EC23DF138200146862 /* CLChatEmojiFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51EE6DC23DF138100146862 /* CLChatEmojiFlowLayout.swift */; };
 		B51EE6ED23DF138200146862 /* CLChatPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51EE6DE23DF138100146862 /* CLChatPhotoView.swift */; };
-		B51EE6EE23DF138200146862 /* CLChatPhotoCellBotton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51EE6DF23DF138100146862 /* CLChatPhotoCellBotton.swift */; };
+		B51EE6EE23DF138200146862 /* CLChatPhotoCellButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51EE6DF23DF138100146862 /* CLChatPhotoCellButton.swift */; };
 		B51EE6EF23DF138200146862 /* CLChatRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51EE6E123DF138100146862 /* CLChatRecordView.swift */; };
 		B5498C7823DE93910082D4E5 /* CLPhoneNumberModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B5498C7123DE93910082D4E5 /* CLPhoneNumberModel.m */; };
 		B5498C7923DE93910082D4E5 /* CLPhoneNumberHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B5498C7323DE93910082D4E5 /* CLPhoneNumberHelper.m */; };
@@ -505,6 +507,8 @@
 		5B49566523B507A700212772 /* CLFlipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLFlipView.swift; sourceTree = "<group>"; };
 		5B49566723B50ED700212772 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		5B49566C23B5DD0100212772 /* CLTwoSidedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLTwoSidedView.swift; sourceTree = "<group>"; };
+		5B6CC97624AACC190002B5DA /* CLChatPhotoAlbumTopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLChatPhotoAlbumTopBar.swift; sourceTree = "<group>"; };
+		5B6CC97824AACC240002B5DA /* CLChatPhotoAlbumBottomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLChatPhotoAlbumBottomBar.swift; sourceTree = "<group>"; };
 		5B737E5424A8994400079523 /* CLBackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLBackView.swift; sourceTree = "<group>"; };
 		5B737E5624A899D200079523 /* CLLogForOC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLLogForOC.h; sourceTree = "<group>"; };
 		5B737E5724A899D200079523 /* CLLogForOC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLLogForOC.m; sourceTree = "<group>"; };
@@ -596,7 +600,7 @@
 		B51EE6DB23DF138100146862 /* CLChatEmojiView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatEmojiView.swift; sourceTree = "<group>"; };
 		B51EE6DC23DF138100146862 /* CLChatEmojiFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatEmojiFlowLayout.swift; sourceTree = "<group>"; };
 		B51EE6DE23DF138100146862 /* CLChatPhotoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatPhotoView.swift; sourceTree = "<group>"; };
-		B51EE6DF23DF138100146862 /* CLChatPhotoCellBotton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatPhotoCellBotton.swift; sourceTree = "<group>"; };
+		B51EE6DF23DF138100146862 /* CLChatPhotoCellButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatPhotoCellButton.swift; sourceTree = "<group>"; };
 		B51EE6E123DF138100146862 /* CLChatRecordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatRecordView.swift; sourceTree = "<group>"; };
 		B5498C7123DE93910082D4E5 /* CLPhoneNumberModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLPhoneNumberModel.m; sourceTree = "<group>"; };
 		B5498C7223DE93910082D4E5 /* CLPhoneNumberInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLPhoneNumberInfoModel.h; sourceTree = "<group>"; };
@@ -1404,6 +1408,17 @@
 			path = CLChatTextCell;
 			sourceTree = "<group>";
 		};
+		5B44089224AAC9E4003E020D /* CLChatPhotoAlbumContentView */ = {
+			isa = PBXGroup;
+			children = (
+				B5A705B123F29E5E007745BC /* CLChatPhotoAlbumContentView.swift */,
+				B5A705B323F2AE1C007745BC /* CLChatPhotoAlbumCell.swift */,
+				5B6CC97624AACC190002B5DA /* CLChatPhotoAlbumTopBar.swift */,
+				5B6CC97824AACC240002B5DA /* CLChatPhotoAlbumBottomBar.swift */,
+			);
+			path = CLChatPhotoAlbumContentView;
+			sourceTree = "<group>";
+		};
 		5B44D1282435C6000059476D /* CLTagsController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1942,9 +1957,8 @@
 			isa = PBXGroup;
 			children = (
 				B51EE6DE23DF138100146862 /* CLChatPhotoView.swift */,
-				B5A705B123F29E5E007745BC /* CLChatPhotoAlbumContentView.swift */,
-				B5A705B323F2AE1C007745BC /* CLChatPhotoAlbumCell.swift */,
-				B51EE6DF23DF138100146862 /* CLChatPhotoCellBotton.swift */,
+				B51EE6DF23DF138100146862 /* CLChatPhotoCellButton.swift */,
+				5B44089224AAC9E4003E020D /* CLChatPhotoAlbumContentView */,
 			);
 			path = CLChatPhotoView;
 			sourceTree = "<group>";
@@ -2234,7 +2248,7 @@
 				5BD661DA240CCA30009508CD /* CLPopupTipsController.swift in Sources */,
 				5BE0FA3F1E03E03900914DFF /* CLSearchBar.m in Sources */,
 				5B49566423B4FF4800212772 /* CLFlipController.swift in Sources */,
-				B51EE6EE23DF138200146862 /* CLChatPhotoCellBotton.swift in Sources */,
+				B51EE6EE23DF138200146862 /* CLChatPhotoCellButton.swift in Sources */,
 				0C2AE874223F48DE007D5DC5 /* CLBubbleViewViewController.m in Sources */,
 				0C03D7FB236D4F3800F15067 /* CLLayoutController.m in Sources */,
 				0C108EAA22A93289009EA457 /* CLCountdownCell.m in Sources */,
@@ -2315,6 +2329,7 @@
 				5B8AFC7424A897D000FAF996 /* Date+Extension.swift in Sources */,
 				0CCD1DCA231F60D200AFCE1F /* CLBroadcastView.m in Sources */,
 				5B876CAF2445937200DC4424 /* CLPopupFoodPickerContentCell.swift in Sources */,
+				5B6CC97924AACC240002B5DA /* CLChatPhotoAlbumBottomBar.swift in Sources */,
 				0CCDA40222D9D1C5007B41C4 /* CLPhotoBrowserAnimatedTransitioning.m in Sources */,
 				B51EE6E423DF138200146862 /* CLChatEmojiItemProtocol.swift in Sources */,
 				5B42F09624A39421006861BF /* CLMp3Encoder.m in Sources */,
@@ -2335,6 +2350,7 @@
 				5B2411AC243C7FB600B2E0DC /* CLYearMonthDayHourMinuteDataPickerView.swift in Sources */,
 				5BEA5A0C243DC5540076BA9F /* CLPopupBMIInputController.swift in Sources */,
 				5BCCEC57245BCDE70049AC70 /* CLVernierCaliperController.swift in Sources */,
+				5B6CC97724AACC190002B5DA /* CLChatPhotoAlbumTopBar.swift in Sources */,
 				5B44D12A2435C61E0059476D /* CLTagsController.swift in Sources */,
 				0CB60B14237EC51100D10317 /* CLHorizontalCell.m in Sources */,
 				0CC171422248B4D2005B0F0A /* CLGCDTimerManager.m in Sources */,

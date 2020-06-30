@@ -612,7 +612,7 @@ extension CLChatInputToolBar {
             self.superview?.setNeedsLayout()
             self.superview?.layoutIfNeeded()
         }) { (_) in
-            self.photoView.reset()
+            self.photoView.hiddenAlbumContentView()
         }
         textViewResignFirstResponder()
     }

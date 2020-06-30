@@ -10,36 +10,41 @@ import UIKit
 import Photos
 
 class CLChatPhotoAlbumContentView: UIView {
+    ///关闭回调
+    var closeCallback: (() -> ())?
     ///数据源
     private var fetchResult: PHFetchResult<PHAsset>?
     /// 带缓存的图片管理对象
     private var imageManager: PHCachingImageManager = {
-        let imageManager = PHCachingImageManager()
-        imageManager.stopCachingImagesForAllAssets()
-        return imageManager
+        let manager = PHCachingImageManager()
+        manager.stopCachingImagesForAllAssets()
+        return manager
     }()
     ///顶部工具条
-    private lazy var topToolBar: UIView = {
-        let topToolBar = UIView()
-        return topToolBar
+    private lazy var topToolBar: CLChatPhotoAlbumTopBar = {
+        let view = CLChatPhotoAlbumTopBar()
+        view.closeCallback = {[weak self] in
+            self?.closeCallback?()
+        }
+        return view
     }()
     ///collectionView
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = UIColor.clear
-        collectionView.register(CLChatPhotoAlbumCell.classForCoder(), forCellWithReuseIdentifier: "CLChatPhotoAlbumCell")
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.showsVerticalScrollIndicator = false
-        collectionView.showsHorizontalScrollIndicator = false
-        return collectionView
+        let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        view.backgroundColor = UIColor.clear
+        view.register(CLChatPhotoAlbumCell.classForCoder(), forCellWithReuseIdentifier: "CLChatPhotoAlbumCell")
+        view.delegate = self
+        view.dataSource = self
+        view.showsVerticalScrollIndicator = false
+        view.showsHorizontalScrollIndicator = false
+        return view
     }()
     ///底部工具条
-    private lazy var bottomToolBar: UIView = {
-        let bottomToolBar = UIView()
-        return bottomToolBar
+    private lazy var bottomToolBar: CLChatPhotoAlbumBottomBar = {
+        let view = CLChatPhotoAlbumBottomBar()
+        return view
     }()
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -99,6 +104,12 @@ extension CLChatPhotoAlbumContentView {
     }
 }
 extension CLChatPhotoAlbumContentView: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) {
+            cell.isSelected = !cell.isSelected
+            collectionView.reloadItems(at: [indexPath])
+        }
+    }
 }
 extension CLChatPhotoAlbumContentView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -123,6 +134,9 @@ extension CLChatPhotoAlbumContentView: UICollectionViewDataSource {
         if let photoAlbumCell = cell as? CLChatPhotoAlbumCell {
             photoAlbumCell.lockScollViewCallBack = {[weak self](lock) in
                 self?.collectionView.isScrollEnabled = lock
+            }
+            photoAlbumCell.sendImageCallBack = {[weak self] (image) in
+                print("发送图片 \(image)")
             }
             if let asset = fetchResult?[indexPath.row] {
                 let size = calculateSize(with: asset).applying(CGAffineTransform(scaleX: UIScreen.main.scale, y: UIScreen.main.scale))

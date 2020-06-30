@@ -17,6 +17,7 @@ enum CLChatPhotoMoveDirection {
 }
 class CLChatPhotoAlbumCell: UICollectionViewCell {
     var lockScollViewCallBack: ((Bool) -> ())?
+    var sendImageCallBack: ((UIImage) -> ())?
     var image: UIImage? {
         didSet {
             imageView.image = image
@@ -33,7 +34,7 @@ class CLChatPhotoAlbumCell: UICollectionViewCell {
     private var gestureMinimumTranslation: CGFloat = 10.0
     private lazy var tipsBackgroundView: UIView = {
         let tipsBackgroundView = UIView()
-        tipsBackgroundView.backgroundColor = hexColor("0x323232", alpha: 0.45)
+        tipsBackgroundView.backgroundColor = hexColor("0x323232", alpha: 0.85)
         tipsBackgroundView.isHidden = true
         tipsBackgroundView.clipsToBounds = true
         return tipsBackgroundView
@@ -81,12 +82,14 @@ extension CLChatPhotoAlbumCell {
             make.centerX.equalToSuperview()
         }
         tipsLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(8)
-            make.right.equalTo(-8)
-            make.top.equalTo(5)
-            make.bottom.equalTo(-5)
+            make.left.equalTo(12)
+            make.right.equalTo(-12)
+            make.top.equalTo(8)
+            make.bottom.equalTo(-8)
         }
     }
+}
+extension CLChatPhotoAlbumCell {
     private func addPanGestureRecognizer() {
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handGesture(recognizer:)))
         panGestureRecognizer.delegate = self
@@ -102,7 +105,7 @@ extension CLChatPhotoAlbumCell: UIGestureRecognizerDelegate {
     }
 }
 extension CLChatPhotoAlbumCell {
-    @objc func handGesture(recognizer: UIPanGestureRecognizer) {
+    @objc private func handGesture(recognizer: UIPanGestureRecognizer) {
         let translation = recognizer.translation(in: contentView)
         if recognizer.state == .began {
             direction = .none
@@ -127,7 +130,7 @@ extension CLChatPhotoAlbumCell {
     }
 }
 extension CLChatPhotoAlbumCell {
-    func determinePictureDirectionIfNeeded(_ translation: CGPoint) -> CLChatPhotoMoveDirection {
+    private func determinePictureDirectionIfNeeded(_ translation: CGPoint) -> CLChatPhotoMoveDirection {
         let absX = CGFloat(abs(Float(translation.x)))
         let absY = CGFloat(abs(Float(translation.y)))
         if max(absX, absY) < gestureMinimumTranslation {
@@ -148,7 +151,7 @@ extension CLChatPhotoAlbumCell {
         }
         return .none
     }
-    func verticalAction(with recognizer: UIPanGestureRecognizer) {
+    private func verticalAction(with recognizer: UIPanGestureRecognizer) {
         guard let keyWindow = UIApplication.shared.keyWindow, let view = recognizer.view, let superview = view.superview else {
             return
         }
@@ -173,7 +176,7 @@ extension CLChatPhotoAlbumCell {
         isOnWindow = true
         recognizer.setTranslation(CGPoint(x: 0, y: 0), in: keyWindow)
     }
-    func sendImageRecognizer(_ recognizer: UIPanGestureRecognizer) {
+    private func sendImageRecognizer(_ recognizer: UIPanGestureRecognizer) {
         guard let view = recognizer.view else {
             return
         }
@@ -193,8 +196,12 @@ extension CLChatPhotoAlbumCell {
             self.setNeedsLayout()
             self.layoutIfNeeded()
         }
+        guard let image = image else {
+            return
+        }
+        sendImageCallBack?(image)
     }
-    func backImageRecognizer(_ recognizer: UIPanGestureRecognizer) {
+    private func backImageRecognizer(_ recognizer: UIPanGestureRecognizer) {
         guard let view = recognizer.view else {
             return
         }

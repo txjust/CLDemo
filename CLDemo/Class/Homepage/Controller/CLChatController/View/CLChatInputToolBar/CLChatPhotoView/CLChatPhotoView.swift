@@ -38,23 +38,29 @@ class CLChatPhotoView: UIView {
         }
     }
     ///相册按钮
-    private lazy var albumButton: CLChatPhotoCellBotton = {
-        let albumButton = CLChatPhotoCellBotton()
+    private lazy var albumButton: CLChatPhotoCellButton = {
+        let albumButton = CLChatPhotoCellButton()
         albumButton.icon = UIImage.init(named: "btn_photo")
         albumButton.text = "相册"
         albumButton.addTarget(self, action: #selector(albumButtonAction), for: .touchUpInside)
         return albumButton
     }()
     ///相机按钮
-    private lazy var cameraButton: CLChatPhotoCellBotton = {
-        let cameraButton = CLChatPhotoCellBotton()
+    private lazy var cameraButton: CLChatPhotoCellButton = {
+        let cameraButton = CLChatPhotoCellButton()
         cameraButton.icon = UIImage.init(named: "btn_potaograph")
         cameraButton.text = "相机"
         cameraButton.addTarget(self, action: #selector(cameraButtonButtonAction), for: .touchUpInside)
         return cameraButton
     }()
     ///快速相册
-    private var albumContentView: CLChatPhotoAlbumContentView?
+    private lazy var albumContentView: CLChatPhotoAlbumContentView = {
+        let view = CLChatPhotoAlbumContentView()
+        view.closeCallback = {[weak self] in
+            self?.hiddenAlbumContentView()
+        }
+        return view
+    }()
     ///点击相机
     var cameraButtonCallback: (()->())?
     override init(frame: CGRect) {
@@ -86,14 +92,37 @@ extension CLChatPhotoView {
     }
 }
 extension CLChatPhotoView {
-    ///重置状态
-    func reset() {
-        albumContentView?.snp.remakeConstraints { (make) in
+    func showAlbumContentView() {
+        addSubview(albumContentView)
+        albumContentView.snp.remakeConstraints { (make) in
             make.left.right.equalToSuperview()
             make.height.equalTo(height)
             make.top.equalTo(height + cl_safeAreaInsets().bottom)
         }
-        albumContentView?.scrollToLeft()
+        setNeedsLayout()
+        layoutIfNeeded()
+        UIView.animate(withDuration: 0.25) {
+            self.albumContentView.snp.remakeConstraints { (make) in
+                make.left.right.equalToSuperview()
+                make.height.equalTo(self.height)
+                make.top.equalTo(0)
+            }
+            self.setNeedsLayout()
+            self.layoutIfNeeded()
+        }
+    }
+    func hiddenAlbumContentView() {
+        UIView.animate(withDuration: 0.25, animations: {
+            self.albumContentView.snp.remakeConstraints { (make) in
+                make.left.right.equalToSuperview()
+                make.height.equalTo(self.height)
+                make.top.equalTo(self.height + cl_safeAreaInsets().bottom)
+            }
+            self.setNeedsLayout()
+            self.layoutIfNeeded()
+        }) { (_) in
+            self.albumContentView.scrollToLeft(animated: false)
+        }
     }
 }
 extension CLChatPhotoView {
@@ -101,35 +130,10 @@ extension CLChatPhotoView {
         PHPhotoLibrary.requestAuthorization { (status) in
             if status == .authorized {
                 DispatchQueue.main.async {
-                    showPhotoView()
+                    self.showAlbumContentView()
                 }
             }else {
                 print("=======================")
-            }
-        }
-        func showPhotoView() {
-            if albumContentView == nil {
-                albumContentView = CLChatPhotoAlbumContentView()
-            }
-            guard let albumContentView = albumContentView else {
-                return
-            }
-            addSubview(albumContentView)
-            albumContentView.snp.remakeConstraints { (make) in
-                make.left.right.equalToSuperview()
-                make.height.equalTo(height)
-                make.top.equalTo(height + cl_safeAreaInsets().bottom)
-            }
-            setNeedsLayout()
-            layoutIfNeeded()
-            UIView.animate(withDuration: 0.25) {
-                albumContentView.snp.remakeConstraints { (make) in
-                    make.left.right.equalToSuperview()
-                    make.height.equalTo(self.height)
-                    make.top.equalTo(0)
-                }
-                self.setNeedsLayout()
-                self.layoutIfNeeded()
             }
         }
     }
