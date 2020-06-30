@@ -19,5 +19,6 @@ pod 'SwiftyJSON'
 pod 'HandyJSON'
 pod 'CryptoSwift'
 pod 'Kingfisher'
+pod 'TZImagePickerController'
 
 end

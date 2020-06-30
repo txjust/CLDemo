@@ -27,6 +27,7 @@ PODS:
   - SnapKit (5.0.1)
   - SwiftyJSON (5.0.0)
   - Then (2.6.0)
+  - TZImagePickerController (3.3.2)
 
 DEPENDENCIES:
   - CryptoSwift
@@ -42,6 +43,7 @@ DEPENDENCIES:
   - SnapKit
   - SwiftyJSON
   - Then
+  - TZImagePickerController
 
 SPEC REPOS:
   https://gitee.com/mirrors/CocoaPods-Specs.git:
@@ -58,6 +60,7 @@ SPEC REPOS:
     - SnapKit
     - SwiftyJSON
     - Then
+    - TZImagePickerController
   trunk:
     - SDWebImage
 
@@ -76,7 +79,8 @@ SPEC CHECKSUMS:
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   Then: 90cd104fd951cec1980a03f57704ad8f784d4d79
+  TZImagePickerController: 36ca728ec681228918aa82e993aaab1962281b72
 
-PODFILE CHECKSUM: f9d609c3f798bea7ac9f43db4440798e4550701a
+PODFILE CHECKSUM: f9be20ed9307384995cf9d5f517eb666647a3d63
 
 COCOAPODS: 1.9.1

@@ -58,6 +58,9 @@ class CLChatPhotoAlbumContentView: UIView {
             self.sendImageCallBack?(self.selectedArray.map({($0.image, $0.asset)}))
             self.restoreInitialState()
         }
+        view.albumCallback = {[weak self] in
+            self?.showImagePicker()
+        }
         return view
     }()
     override init(frame: CGRect) {
@@ -109,6 +112,26 @@ extension CLChatPhotoAlbumContentView {
         let scale = CGFloat(asset.pixelWidth) / CGFloat(asset.pixelHeight)
         let height = frame.height - 88
         return CGSize(width: height * scale, height: height)
+    }
+}
+extension CLChatPhotoAlbumContentView {
+    func showImagePicker() {
+        guard let imagePicker = TZImagePickerController(maxImagesCount: .max, delegate: nil) else { return }
+        imagePicker.allowPickingVideo = false
+        imagePicker.allowPickingOriginalPhoto = false
+        imagePicker.modalPresentationStyle = .fullScreen
+        imagePicker.didFinishPickingPhotosHandle = {[weak self] (photos, assets, isSelectOriginalPhoto) in
+            guard let photos = photos, let assets = assets as? [PHAsset] else {
+                return
+            }
+            self?.restoreInitialState()
+            var images = [(UIImage, PHAsset)]()
+            for (index, item) in photos.enumerated() {
+                images.append((item, assets[index]))
+            }
+            self?.sendImageCallBack?(images)
+        }
+        UIApplication.shared.keyWindow?.rootViewController?.present(imagePicker, animated: true)
     }
 }
 extension CLChatPhotoAlbumContentView {

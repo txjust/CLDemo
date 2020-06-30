@@ -4,3 +4,4 @@
 
 #import "CLBaseViewController.h"
 #import "lame.h"
+#import "TZImagePickerController.h"
