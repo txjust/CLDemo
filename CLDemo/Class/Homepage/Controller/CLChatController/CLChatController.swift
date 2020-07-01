@@ -146,6 +146,8 @@ extension CLChatController {
             }
         }
     }
+//    private func addVoiceMessages(_ messages: [String]) {
+//    }
 }
 extension CLChatController {
     func saveUploadImage(imageData: Data, messageId: String) -> String? {
@@ -179,6 +181,9 @@ extension CLChatController: CLChatInputToolBarDelegate {
     }
     func inputBarWillSendImage(images: [(image: UIImage, asset: PHAsset)]) {
         addImageMessages(images)
+    }
+    func inputBarFinishRecord(duration: CGFloat, path: String) {
+        print("duration = \(duration), path = \(path)")
     }
 }
 extension CLChatController: UIGestureRecognizerDelegate {

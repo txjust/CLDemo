@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy, readonly) NSString *mp3Path;
 
-@property (nonatomic, assign, readonly) float audioDurationSeconds;
+@property (nonatomic, assign, readonly) CGFloat audioDuration;
 
 @property (nonatomic, copy) void (^durationCallback)(NSUInteger seconds);
 

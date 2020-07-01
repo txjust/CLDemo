@@ -23,7 +23,7 @@ protocol CLChatInputToolBarDelegate: class {
     ///取消录音
     func inputBarCancelRecord()
     ///结束录音
-    func inputBarFinishRecord()
+    func inputBarFinishRecord(duration: CGFloat, path: String)
 }
 extension CLChatInputToolBarDelegate {
     ///键盘发送文字
@@ -51,7 +51,7 @@ extension CLChatInputToolBarDelegate {
         
     }
     ///结束录音
-    func inputBarFinishRecord() {
+    func inputBarFinishRecord(duration: CGFloat, path: String) {
         
     }
 }
@@ -194,8 +194,8 @@ class CLChatInputToolBar: UIView {
         recordView.cancelRecorderCallBack = {[weak self] in
             self?.delegate?.inputBarCancelRecord()
         }
-        recordView.finishRecorderCallBack = {[weak self] in
-            self?.delegate?.inputBarFinishRecord()
+        recordView.finishRecorderCallBack = {[weak self] (duration, path) in
+            self?.delegate?.inputBarFinishRecord(duration: duration, path: path)
         }
         return recordView
     }()

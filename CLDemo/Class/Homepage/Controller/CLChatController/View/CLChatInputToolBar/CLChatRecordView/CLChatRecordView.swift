@@ -15,7 +15,7 @@ class CLChatRecordView: UIView {
     ///取消录音
     var cancelRecorderCallBack: (() -> ())?
     ///结束录音
-    var finishRecorderCallBack: (() -> ())?
+    var finishRecorderCallBack: ((CGFloat, String) -> ())?
     ///高度
     private (set) var height: CGFloat = 250
     ///红圈
@@ -181,7 +181,6 @@ extension CLChatRecordView {
             playWave()
             zoomOut()
             timeView.show()
-            startRecorderCallBack?()
             startRecord()
         }else if longPress.state == .changed {
             redcircle.isHidden = !isOut
@@ -196,10 +195,8 @@ extension CLChatRecordView {
         timeView.dismiss()
         if isOut {
             cancelRecord()
-            cancelRecorderCallBack?()
         }else {
             endRecord()
-            finishRecorderCallBack?()
         }
     }
     private func transToHourMinSec(time: Int) -> String {
@@ -221,6 +218,7 @@ extension CLChatRecordView {
                 CLLog("当前设备不支持")
             }else if status.isAuthorized {
                 self?.recorder.start()
+                self?.startRecorderCallBack?()
             }else {
                 CLLog("没有麦克风权限 状态 \(status)")
             }
@@ -228,9 +226,10 @@ extension CLChatRecordView {
     }
     private func cancelRecord() {
         recorder.cancel()
+        cancelRecorderCallBack?()
     }
     private func endRecord() {
         recorder.stop()
-        print(" \(recorder.mp3Path)  \(recorder.audioDurationSeconds) ")
+        finishRecorderCallBack?(recorder.audioDuration, recorder.mp3Path)
     }
 }

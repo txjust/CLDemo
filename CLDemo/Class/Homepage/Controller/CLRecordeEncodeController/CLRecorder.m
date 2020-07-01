@@ -48,7 +48,7 @@ static OSStatus RecordCallback(void *inRefCon,
     CLRecorder *recorder = (__bridge CLRecorder *)(inRefCon);
     AudioUnitRender(recorder.audioUnit, ioActionFlags, inTimeStamp, inBusNumber, inNumberFrames, &bufferList);
     [recorder.mp3Encoder processAudioBufferList:bufferList];
-    NSUInteger second = (NSUInteger)floor(recorder.audioDurationSeconds);
+    NSUInteger second = (NSUInteger)floor(recorder.audioDuration);
     if (recorder.lastSecond != second) {
         recorder.lastSecond = second;
         if (recorder.durationCallback) {
@@ -207,7 +207,7 @@ static OSStatus RecordCallback(void *inRefCon,
     NSTimeInterval time = [[NSDate date] timeIntervalSince1970];
     return [NSString stringWithFormat:@"%ld",(long)((CGFloat)time * 1000000)];
 }
-- (float)audioDurationSeconds {
+- (CGFloat)audioDuration {
     NSURL *url = [NSURL fileURLWithPath:self.mp3Path];
     if (url) {
         AVURLAsset* audioAsset = [AVURLAsset URLAssetWithURL:url options:nil];

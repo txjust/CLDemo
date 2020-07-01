@@ -136,6 +136,10 @@
 		5B12FC761E7157BF0091A0E2 /* CLChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B12FC741E7157BF0091A0E2 /* CLChartView.m */; };
 		5B190E5C23B66803005A2474 /* CLPopupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B190E5B23B66803005A2474 /* CLPopupController.swift */; };
 		5B1C74261E78F120000AB534 /* CLChartXLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1C74251E78F120000AB534 /* CLChartXLabel.m */; };
+		5B1CC1C224AC8F6200C35523 /* send_timeout.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B1CC1C124AC8F6200C35523 /* send_timeout.json */; };
+		5B1CC1C424AC93F500C35523 /* CLChatVoiceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1CC1C324AC93F500C35523 /* CLChatVoiceItem.swift */; };
+		5B1CC1C724AC945C00C35523 /* CLChatVoiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1CC1C624AC945B00C35523 /* CLChatVoiceCell.swift */; };
+		5B1CC1C924AC95AE00C35523 /* TimeInterval+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1CC1C824AC95AE00C35523 /* TimeInterval+Extension.swift */; };
 		5B2411922438EF4F00B2E0DC /* CLTagsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2411912438EF4F00B2E0DC /* CLTagsCell.swift */; };
 		5B241196243B039200B2E0DC /* CLTagsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B241195243B039200B2E0DC /* CLTagsItem.swift */; };
 		5B24119A243B1BB100B2E0DC /* CLTagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B241199243B1BB100B2E0DC /* CLTagsView.swift */; };
@@ -489,6 +493,10 @@
 		5B190E5B23B66803005A2474 /* CLPopupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLPopupController.swift; sourceTree = "<group>"; };
 		5B1C74241E78F120000AB534 /* CLChartXLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLChartXLabel.h; sourceTree = "<group>"; };
 		5B1C74251E78F120000AB534 /* CLChartXLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLChartXLabel.m; sourceTree = "<group>"; };
+		5B1CC1C124AC8F6200C35523 /* send_timeout.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = send_timeout.json; sourceTree = "<group>"; };
+		5B1CC1C324AC93F500C35523 /* CLChatVoiceItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatVoiceItem.swift; sourceTree = "<group>"; };
+		5B1CC1C624AC945B00C35523 /* CLChatVoiceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatVoiceCell.swift; sourceTree = "<group>"; };
+		5B1CC1C824AC95AE00C35523 /* TimeInterval+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Extension.swift"; sourceTree = "<group>"; };
 		5B2411912438EF4F00B2E0DC /* CLTagsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLTagsCell.swift; sourceTree = "<group>"; };
 		5B241195243B039200B2E0DC /* CLTagsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLTagsItem.swift; sourceTree = "<group>"; };
 		5B241199243B1BB100B2E0DC /* CLTagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLTagsView.swift; sourceTree = "<group>"; };
@@ -1376,6 +1384,23 @@
 			path = CLPopupController;
 			sourceTree = "<group>";
 		};
+		5B1CC1C024AC8F5600C35523 /* AnimationJson */ = {
+			isa = PBXGroup;
+			children = (
+				5B3327E723DF3E0A00CA315C /* recoredWave_dk.json */,
+				5B1CC1C124AC8F6200C35523 /* send_timeout.json */,
+			);
+			path = AnimationJson;
+			sourceTree = "<group>";
+		};
+		5B1CC1C524AC944000C35523 /* CLChatVoiceCell */ = {
+			isa = PBXGroup;
+			children = (
+				5B1CC1C624AC945B00C35523 /* CLChatVoiceCell.swift */,
+			);
+			path = CLChatVoiceCell;
+			sourceTree = "<group>";
+		};
 		5B3327DF23DF352100CA315C /* CLConst */ = {
 			isa = PBXGroup;
 			children = (
@@ -1387,7 +1412,6 @@
 		5B3327E623DF3E0000CA315C /* json */ = {
 			isa = PBXGroup;
 			children = (
-				5B3327E723DF3E0A00CA315C /* recoredWave_dk.json */,
 			);
 			path = json;
 			sourceTree = "<group>";
@@ -1721,6 +1745,7 @@
 				0CCBFB7022AB89FE0078547B /* NSDate+CLExtension.h */,
 				0CCBFB7122AB89FE0078547B /* NSDate+CLExtension.m */,
 				5B8AFC6F24A8974C00FAF996 /* Regex.swift */,
+				5B1CC1C824AC95AE00C35523 /* TimeInterval+Extension.swift */,
 				5BA7BF9324AC40F20072B94C /* UILabel+Extension.swift */,
 				5B8AFC7324A897D000FAF996 /* Date+Extension.swift */,
 				5B49566723B50ED700212772 /* UIColor+Extension.swift */,
@@ -1746,6 +1771,7 @@
 			isa = PBXGroup;
 			children = (
 				5B8A4D4223B118CC00360631 /* CLChatController.swift */,
+				5B1CC1C024AC8F5600C35523 /* AnimationJson */,
 				5B51EE1424AB163900F45628 /* Untils */,
 				B51EE6CA23DF102900146862 /* View */,
 			);
@@ -2066,6 +2092,7 @@
 			children = (
 				B5498C8223DED6760082D4E5 /* CLChatCellProtocol.swift */,
 				B51EE6C623DF092400146862 /* CLChatCell.swift */,
+				5B1CC1C524AC944000C35523 /* CLChatVoiceCell */,
 				5BF830AC24AB0CE0008E7CE8 /* CLChatTipsItem */,
 				5B3AB5D824A63F1000305ABE /* CLChatTextCell */,
 				5B399E4724AB14F700A14FE7 /* CLChatImageCell */,
@@ -2081,6 +2108,7 @@
 				5B399E2524AB0E7F00A14FE7 /* CLChatTipsItem.swift */,
 				B5498C8023DED4F60082D4E5 /* CLChatTextItem.swift */,
 				5B399E2724AB147E00A14FE7 /* CLChatImageItem.swift */,
+				5B1CC1C324AC93F500C35523 /* CLChatVoiceItem.swift */,
 			);
 			path = Item;
 			sourceTree = "<group>";
@@ -2158,6 +2186,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CF79B1621967AE600DD0BF1 /* 一月.json in Resources */,
+				5B1CC1C224AC8F6200C35523 /* send_timeout.json in Resources */,
 				5BA7BF7524AC3D180072B94C /* food.json in Resources */,
 				0C7DE94D22DECC0D00FA9040 /* localLongImage1.jpg in Resources */,
 				0C7DE95322DECC0D00FA9040 /* localGifImage0.gif in Resources */,
@@ -2336,6 +2365,7 @@
 				0C108EAA22A93289009EA457 /* CLCountdownCell.m in Sources */,
 				5BA7BF8524AC3D180072B94C /* CLOnePickerView.swift in Sources */,
 				0CF4EF952330848B00D8B95E /* CLInputPasswordToolBar.m in Sources */,
+				5B1CC1C424AC93F500C35523 /* CLChatVoiceItem.swift in Sources */,
 				5B8AFC6724A8954C00FAF996 /* CKDDebugController.swift in Sources */,
 				0CF79AFC219678FB00DD0BF1 /* NSString+PinYin.m in Sources */,
 				5B2411922438EF4F00B2E0DC /* CLTagsCell.swift in Sources */,
@@ -2355,12 +2385,14 @@
 				5BA7BF8024AC3D180072B94C /* CLPopupDataPickerController.swift in Sources */,
 				5BA7BF8224AC3D180072B94C /* CLDurationDataPickerView.swift in Sources */,
 				5B8AFC7024A8974C00FAF996 /* Regex.swift in Sources */,
+				5B1CC1C724AC945C00C35523 /* CLChatVoiceCell.swift in Sources */,
 				B5498C8323DED6760082D4E5 /* CLChatCellProtocol.swift in Sources */,
 				5BA7BF9424AC40F20072B94C /* UILabel+Extension.swift in Sources */,
 				5BA7BF7C24AC3D180072B94C /* CLPopupTwoInputController.swift in Sources */,
 				0C547345239E2C7000F48BFA /* CLPhoneNumberVerificationController.m in Sources */,
 				0CA1237522255B81007DDE6D /* CLCardController.m in Sources */,
 				0C3CAA5521AF89BD00A352F0 /* CLRotateAnimationController.m in Sources */,
+				5B1CC1C924AC95AE00C35523 /* TimeInterval+Extension.swift in Sources */,
 				5BA7BF7324AC3D180072B94C /* CLPopupFoodPickerController.swift in Sources */,
 				0CF79AE72195B1C800DD0BF1 /* UIButton+CLBlockAction.m in Sources */,
 				5B24119A243B1BB100B2E0DC /* CLTagsView.swift in Sources */,

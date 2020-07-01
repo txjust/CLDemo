@@ -57,7 +57,7 @@
         CLLog(@"%@",self.recorder.mp3Path);
     }else {
         [self.recorder stopRecorder];
-        CLLog(@"%f", self.recorder.audioDurationSeconds);
+        CLLog(@"%f", self.recorder.audioDuration);
     }
     self.startButton.selected = !self.startButton.selected;
 }
