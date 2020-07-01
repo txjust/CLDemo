@@ -24,7 +24,7 @@ class CLChatPhotoView: UIView {
     private var columnNumber: Int = 4
     ///大小
     private var itemSize: CGSize {
-        return CGSize(width: 90, height: 90)
+        return CGSize(width: 95, height: 95)
     }
     ///控件宽度
     private var width: CGFloat {

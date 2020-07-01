@@ -3,5 +3,5 @@
 //
 
 #import "CLBaseViewController.h"
-#import "lame.h"
 #import "TZImagePickerController.h"
+#import "CLRecorder.h"

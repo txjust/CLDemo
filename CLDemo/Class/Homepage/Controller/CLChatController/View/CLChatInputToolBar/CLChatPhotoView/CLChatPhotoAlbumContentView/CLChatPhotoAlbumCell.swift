@@ -37,7 +37,7 @@ class CLChatPhotoAlbumCell: UICollectionViewCell {
     }
     private var endPoint: CGPoint = .zero {
         didSet {
-            canSend = endPoint.y < -40
+            canSend = endPoint.y < 20
         }
     }
     private var canSend: Bool = false {
@@ -92,6 +92,8 @@ class CLChatPhotoAlbumCell: UICollectionViewCell {
     }()
     private lazy var imageView: UIImageView = {
         let view = UIImageView()
+        view.contentMode = .scaleAspectFill
+        view.clipsToBounds = true
         view.isUserInteractionEnabled = true
         return view
     }()
@@ -244,7 +246,7 @@ extension CLChatPhotoAlbumCell {
             make.center.equalToSuperview()
         }
         view.transform = CGAffineTransform(scaleX: 0.3, y: 0.3)
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.8, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
             view.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
         }) { (_) in
             self.seletedContentView.isHidden = false

@@ -12,7 +12,7 @@ import Photos
 class CLChatController: CLBaseViewController {
     ///图片上传路径
     private let imageUploadPath: String = pathDocuments + "/CLChatImageUpload"
-
+    
     private var dataSource = [CLChatItemProtocol]()
     ///渐变色
     private lazy var gradientLayerView: CLGradientLayerView = {
@@ -98,41 +98,53 @@ extension CLChatController {
             self.tableView.reloadData()
             if self.dataSource.count >= 1 {
                 let item = max(self.dataSource.count - 1, 0)
-                self.tableView.scrollToRow(at: IndexPath(item: item, section: 0), at: .bottom, animated: false)
+                self.tableView.scrollToRow(at: IndexPath(item: item, section: 0), at: .bottom, animated: true)
             }
         }
     }
 }
 extension CLChatController {
     private func addTipsMessages(_ messages: [String]) {
-        for text in messages {
-            let item = CLChatTipsItem()
-            item.text = text
-            dataSource.append(item)
+        DispatchQueue.global().async {
+            for text in messages {
+                let item = CLChatTipsItem()
+                item.text = text
+                self.dataSource.append(item)
+            }
+            DispatchQueue.main.async {
+                self.reloadData()
+            }
         }
-        reloadData()
     }
     private func addTextMessages(_ messages: [String]) {
-        for text in messages {
-            let item = CLChatTextItem()
-            item.position = .right
-            item.text = text
-            dataSource.append(item)
+        DispatchQueue.global().async {
+            for text in messages {
+                let item = CLChatTextItem()
+                item.position = .right
+                item.text = text
+                self.dataSource.append(item)
+            }
+            DispatchQueue.main.async {
+                self.reloadData()
+            }
         }
-        reloadData()
     }
     private func addImageMessages(_ messages: [(image: UIImage, asset: PHAsset)]) {
-        for imageInfo in messages {
-            guard let previewImageData = imageInfo.image.pngData() else {
-                return
+        DispatchQueue.global().async {
+            for imageInfo in messages {
+                guard let previewImageData = imageInfo.image.pngData() else {
+                    return
+                }
+                let imageItem = CLChatImageItem.init()
+                imageItem.imagePath = self.saveUploadImage(imageData: previewImageData, messageId: (imageItem.messageId + "previewImage"))
+                imageItem.imageOriginalSize = CGSize(width: imageInfo.asset.pixelWidth, height: imageInfo.asset.pixelHeight)
+                imageItem.position = .right
+                self.dataSource.append(imageItem)
             }
-            let imageItem = CLChatImageItem.init()
-            imageItem.imagePath = saveUploadImage(imageData: previewImageData, messageId: (imageItem.messageId + "previewImage"))
-            imageItem.imageOriginalSize = CGSize(width: imageInfo.asset.pixelWidth, height: imageInfo.asset.pixelHeight)
-            imageItem.position = .right
-            dataSource.append(imageItem)
+            DispatchQueue.main.async {
+                self.reloadData()
+            }
         }
-        reloadData()
     }
 }
 extension CLChatController {

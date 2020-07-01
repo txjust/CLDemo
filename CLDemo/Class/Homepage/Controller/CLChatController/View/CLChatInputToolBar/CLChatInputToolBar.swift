@@ -285,7 +285,7 @@ class CLChatInputToolBar: UIView {
         }
     }
     ///文字大小
-    var textFont: UIFont = UIFont.systemFont(ofSize: 13) {
+    var textFont: UIFont = UIFont.systemFont(ofSize: 15) {
         didSet {
             textView.font = textFont
         }

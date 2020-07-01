@@ -10,8 +10,6 @@ import SnapKit
 import Lottie
 
 class CLChatRecordView: UIView {
-    ///定时器
-    private var timer: CLGCDTimer?
     ///高度
     private (set) var height: CGFloat = 250
     ///红圈
@@ -58,6 +56,15 @@ class CLChatRecordView: UIView {
     private lazy var timeView: CLChatRecordTimeView = {
         let timeView = CLChatRecordTimeView()
         return timeView
+    }()
+    ///录音器
+    private lazy var recorder: CLRecorder = {
+        let recorder = CLRecorder()
+        recorder.durationCallback = {[weak self] (second) in
+            guard let `self` = self else { return }
+            self.timeView.time = self.transToHourMinSec(time: Int(second))
+        }
+        return recorder
     }()
     ///长按手势
     private lazy var longPress: UILongPressGestureRecognizer = {
@@ -178,15 +185,7 @@ extension CLChatRecordView {
             zoomOut()
             timeView.show()
             startRecorderCallBack?()
-            timer = CLGCDTimer.init(interval: 1, delaySecs: 1, queue: DispatchQueue.main, action: {[weak self] (action) in
-                guard let strongSelf = self else {return}
-                let second = Int(action)
-                strongSelf.timeView.time = strongSelf.transToHourMinSec(time: second)
-                if second >= 60 {
-                    strongSelf.endLongPress()
-                }
-            })
-            timer?.start()
+            startRecord()
         }else if longPress.state == .changed {
             redcircle.isHidden = !isOut
         }else if longPress.state == .ended || longPress.state == .cancelled || longPress.state == .failed {
@@ -199,7 +198,7 @@ extension CLChatRecordView {
         redcircle.isHidden = true
         timeView.dismiss()
         isOut ? cancelRecorderCallBack?() : finishRecorderCallBack?()
-        timer?.cancel()
+        endRecord()
     }
     private func transToHourMinSec(time: Int) -> String {
         var minutes = 0
@@ -211,5 +210,22 @@ extension CLChatRecordView {
         seconds = time % 3600 % 60
         secondsText = seconds > 9 ? "\(seconds)" : "0\(seconds)"
         return "\(minutesText):\(secondsText)"
+    }
+}
+extension CLChatRecordView {
+    private func startRecord() {
+        CLPermissions.request(.microphone) {[weak self] (status) in
+            if status.isNoSupport {
+                CLLog("当前设备不支持")
+            }else if status.isAuthorized {
+                self?.recorder.start()
+            }else {
+                CLLog("没有麦克风权限 状态 \(status)")
+            }
+        }
+    }
+    private func endRecord() {
+        recorder.stop()
+        print(" \(recorder.mp3Path)  \(recorder.audioDurationSeconds) ")
     }
 }
