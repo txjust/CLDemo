@@ -62,10 +62,19 @@ static OSStatus RecordCallback(void *inRefCon,
 - (instancetype)init {
     self = [super init];
     if (self) {
+        [self initFold];
         [self.mp3Encoder run];
         [self initRemoteIO];
     }
     return self;
+}
+- (void)initFold {
+    NSString * recorderFoldPath = [[Tools pathDocuments] stringByAppendingString:@"/CLChatRecorder"];//将需要创建的串拼接到后面
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    BOOL isDir = NO;
+    if (![fileManager fileExistsAtPath:recorderFoldPath isDirectory:&isDir] ) {//如果文件夹不存在
+        [fileManager createDirectoryAtPath:recorderFoldPath withIntermediateDirectories:YES attributes:nil error:nil];
+    }
 }
 - (void)initRemoteIO {
     AudioUnitInitialize(self.audioUnit);
@@ -140,7 +149,7 @@ static OSStatus RecordCallback(void *inRefCon,
             self.durationCallback(0);
         });
     }
-    self.mp3Path = [[Tools pathDocuments] stringByAppendingFormat:@"/%@.mp3", [self currentTime]];
+    self.mp3Path = [[Tools pathDocuments] stringByAppendingFormat:@"/CLChatRecorder/%@.mp3", [self currentTime]];
     if (![[NSFileManager defaultManager] fileExistsAtPath: self.mp3Path]) {
         [[NSFileManager defaultManager] createFileAtPath: self.mp3Path contents:nil attributes:nil];
     }
@@ -154,6 +163,13 @@ static OSStatus RecordCallback(void *inRefCon,
         }
     }else {
         CLLog(@"error: %@", error);
+    }
+}
+- (void)cancelRecorder {
+    [self stopRecorder];
+    if ([[NSFileManager defaultManager] fileExistsAtPath: self.mp3Path]) {
+        [[NSFileManager defaultManager] removeItemAtPath:self.mp3Path error:nil];
+        self.mp3Path = nil;
     }
 }
 - (void)stopRecorder {

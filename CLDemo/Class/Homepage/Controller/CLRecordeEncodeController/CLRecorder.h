@@ -20,6 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)startRecorder;
 
+- (void)cancelRecorder;
+
 - (void)stopRecorder;
 
 @end

@@ -18,12 +18,8 @@ protocol CLChatInputToolBarDelegate: class {
     func inputBarWillShowKeyboard()
     ///键盘将要隐藏
     func inputBarWillHiddenKeyboard()
-    ///点击录音按钮
-    func inputBarClickRecord()
     ///开始录音
     func inputBarStartRecord()
-    ///录音定时器调用
-    func inputBarRecordTime() -> TimeInterval?
     ///取消录音
     func inputBarCancelRecord()
     ///结束录音
@@ -46,17 +42,9 @@ extension CLChatInputToolBarDelegate {
     func inputBarWillHiddenKeyboard() {
         
     }
-    ///点击录音按钮
-    func inputBarClickRecord() {
-        
-    }
     ///开始录音
     func inputBarStartRecord() {
         
-    }
-    ///录音定时器调用
-    func inputBarRecordTime() -> TimeInterval? {
-        return nil
     }
     ///取消录音
     func inputBarCancelRecord() {
@@ -202,9 +190,6 @@ class CLChatInputToolBar: UIView {
         recordView.backgroundColor = .hexColor(with: "0x31313F")
         recordView.startRecorderCallBack = {[weak self] in
             self?.delegate?.inputBarStartRecord()
-        }
-        recordView.recorderTimeCallBack = {[weak self] in
-            return self?.delegate?.inputBarRecordTime()
         }
         recordView.cancelRecorderCallBack = {[weak self] in
             self?.delegate?.inputBarCancelRecord()
@@ -475,7 +460,6 @@ extension CLChatInputToolBar {
         isShowPhotoKeyboard = false
         contentView.addSubview(recordView)
         if isShowVoiceKeyboard == false {
-            delegate?.inputBarClickRecord()
             isShowVoiceKeyboard = true
             textViewResignFirstResponder()
             textView.inputView = nil

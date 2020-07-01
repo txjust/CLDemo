@@ -10,6 +10,12 @@ import SnapKit
 import Lottie
 
 class CLChatRecordView: UIView {
+    ///开始录音
+    var startRecorderCallBack: (() -> ())?
+    ///取消录音
+    var cancelRecorderCallBack: (() -> ())?
+    ///结束录音
+    var finishRecorderCallBack: (() -> ())?
     ///高度
     private (set) var height: CGFloat = 250
     ///红圈
@@ -87,15 +93,6 @@ class CLChatRecordView: UIView {
             }
         }
     }
-    ///开始录音
-    var startRecorderCallBack: (() -> ())?
-    ///录音计时
-    var recorderTimeCallBack: (() -> (TimeInterval?))?
-    ///取消录音
-    var cancelRecorderCallBack: (() -> ())?
-    ///结束录音
-    var finishRecorderCallBack: (() -> ())?
-
     override init(frame: CGRect) {
         super.init(frame: frame)
         initUI()
@@ -197,8 +194,13 @@ extension CLChatRecordView {
         zoomIn()
         redcircle.isHidden = true
         timeView.dismiss()
-        isOut ? cancelRecorderCallBack?() : finishRecorderCallBack?()
-        endRecord()
+        if isOut {
+            cancelRecord()
+            cancelRecorderCallBack?()
+        }else {
+            endRecord()
+            finishRecorderCallBack?()
+        }
     }
     private func transToHourMinSec(time: Int) -> String {
         var minutes = 0
@@ -223,6 +225,9 @@ extension CLChatRecordView {
                 CLLog("没有麦克风权限 状态 \(status)")
             }
         }
+    }
+    private func cancelRecord() {
+        recorder.cancel()
     }
     private func endRecord() {
         recorder.stop()
