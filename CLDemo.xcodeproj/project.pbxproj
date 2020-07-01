@@ -152,10 +152,12 @@
 		5B3327E523DF384800CA315C /* NSString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3327E423DF384800CA315C /* NSString+Extension.swift */; };
 		5B3327E823DF3E0A00CA315C /* recoredWave_dk.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B3327E723DF3E0A00CA315C /* recoredWave_dk.json */; };
 		5B3327EA23DF41E800CA315C /* CLChatRecordTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3327E923DF41E800CA315C /* CLChatRecordTimeView.swift */; };
+		5B3725CC24AC2389006DD7E4 /* CLPermissionInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3725CB24AC2389006DD7E4 /* CLPermissionInterface.swift */; };
 		5B399E2624AB0E7F00A14FE7 /* CLChatTipsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B399E2524AB0E7F00A14FE7 /* CLChatTipsItem.swift */; };
 		5B399E2824AB147E00A14FE7 /* CLChatImageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B399E2724AB147E00A14FE7 /* CLChatImageItem.swift */; };
 		5B399E4A24AB14F700A14FE7 /* CLChatImageProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B399E4824AB14F700A14FE7 /* CLChatImageProgressView.swift */; };
 		5B399E4B24AB14F700A14FE7 /* CLChatImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B399E4924AB14F700A14FE7 /* CLChatImageCell.swift */; };
+		5B3C5C4C24AB3FF100A1561F /* CLPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3C5C4B24AB3FF100A1561F /* CLPermissions.swift */; };
 		5B42F09024A3918D006861BF /* CLRecordeEncodeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B42F08F24A3918D006861BF /* CLRecordeEncodeController.m */; };
 		5B42F09324A393D6006861BF /* CLRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B42F09224A393D6006861BF /* CLRecorder.m */; };
 		5B42F09624A39421006861BF /* CLMp3Encoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B42F09524A39421006861BF /* CLMp3Encoder.m */; };
@@ -500,10 +502,12 @@
 		5B3327E423DF384800CA315C /* NSString+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSString+Extension.swift"; sourceTree = "<group>"; };
 		5B3327E723DF3E0A00CA315C /* recoredWave_dk.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = recoredWave_dk.json; sourceTree = "<group>"; };
 		5B3327E923DF41E800CA315C /* CLChatRecordTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLChatRecordTimeView.swift; sourceTree = "<group>"; };
+		5B3725CB24AC2389006DD7E4 /* CLPermissionInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLPermissionInterface.swift; sourceTree = "<group>"; };
 		5B399E2524AB0E7F00A14FE7 /* CLChatTipsItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatTipsItem.swift; sourceTree = "<group>"; };
 		5B399E2724AB147E00A14FE7 /* CLChatImageItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatImageItem.swift; sourceTree = "<group>"; };
 		5B399E4824AB14F700A14FE7 /* CLChatImageProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatImageProgressView.swift; sourceTree = "<group>"; };
 		5B399E4924AB14F700A14FE7 /* CLChatImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatImageCell.swift; sourceTree = "<group>"; };
+		5B3C5C4B24AB3FF100A1561F /* CLPermissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLPermissions.swift; sourceTree = "<group>"; };
 		5B42F08E24A3918D006861BF /* CLRecordeEncodeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLRecordeEncodeController.h; sourceTree = "<group>"; };
 		5B42F08F24A3918D006861BF /* CLRecordeEncodeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLRecordeEncodeController.m; sourceTree = "<group>"; };
 		5B42F09124A393D6006861BF /* CLRecorder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLRecorder.h; sourceTree = "<group>"; };
@@ -1429,6 +1433,15 @@
 			path = CLChatTextCell;
 			sourceTree = "<group>";
 		};
+		5B3C5C4D24AB400500A1561F /* CLPermissions */ = {
+			isa = PBXGroup;
+			children = (
+				5B3C5C4B24AB3FF100A1561F /* CLPermissions.swift */,
+				5B3725CB24AC2389006DD7E4 /* CLPermissionInterface.swift */,
+			);
+			path = CLPermissions;
+			sourceTree = "<group>";
+		};
 		5B44089224AAC9E4003E020D /* CLChatPhotoAlbumContentView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1684,6 +1697,7 @@
 		5B80DA391DDD993F00A20E34 /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				5B3C5C4D24AB400500A1561F /* CLPermissions */,
 				5B3327DF23DF352100CA315C /* CLConst */,
 				5B8AFC5E24A8954B00FAF996 /* CLLogManager */,
 				B5498C7023DE93910082D4E5 /* CLPhoneNumberHelper */,
@@ -2363,6 +2377,7 @@
 				5BF1ACE3245C82B70083BE70 /* CLMyController.swift in Sources */,
 				5B80DA4B1DDD993F00A20E34 /* CLCurriculumController.m in Sources */,
 				5B190E7223B66811005A2474 /* CLPopupFlopController.swift in Sources */,
+				5B3C5C4C24AB3FF100A1561F /* CLPermissions.swift in Sources */,
 				0C108EA622A93108009EA457 /* CLCountdownModel.m in Sources */,
 				0C52EF61219287280079A0E7 /* CLChangeLanguageController.m in Sources */,
 				5BCCEC64245BFBF20049AC70 /* CLIndexView.swift in Sources */,
@@ -2447,6 +2462,7 @@
 				5BB328B0244498230049ADE8 /* UIView+CLExtension.swift in Sources */,
 				0CCDA40322D9D1C5007B41C4 /* CLPhotoBrowser.m in Sources */,
 				5B8B7D3024319701005C8530 /* CLPopupDataPickerController.swift in Sources */,
+				5B3725CC24AC2389006DD7E4 /* CLPermissionInterface.swift in Sources */,
 				0C52EF6721928C5C0079A0E7 /* CLLanguageManager.m in Sources */,
 				0CF5680D2215049600926A4C /* UIView+CLEvents.m in Sources */,
 				0C2AE86D223F488D007D5DC5 /* CLBubbleView.m in Sources */,

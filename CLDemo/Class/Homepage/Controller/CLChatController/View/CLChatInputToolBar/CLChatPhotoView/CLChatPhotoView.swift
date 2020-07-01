@@ -131,10 +131,27 @@ extension CLChatPhotoView {
 }
 extension CLChatPhotoView {
     @objc private func albumButtonAction() {
-        showAlbumContentView()
+        CLPermissions.request(.photoLibrary) {[weak self] (status) in
+            if status.isNoSupport {
+                CLLog("当前设备不支持")
+            }else if status.isAuthorized {
+                self?.showAlbumContentView()
+            }else {
+                CLLog("没有相册权限 状态 \(status)")
+            }
+        }
     }
     @objc private func cameraButtonButtonAction() {
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+        CLPermissions.request(.camera) {(status) in
+            if status.isNoSupport {
+                CLLog("当前设备不支持")
+            }else if status.isAuthorized {
+                showCameraPicker()
+            }else {
+                CLLog("没有相机权限 状态 \(status)")
+            }
+        }
+        func showCameraPicker() {
             let cameraPicker = UIImagePickerController()
             cameraPicker.delegate = self
             cameraPicker.allowsEditing = true
@@ -142,6 +159,9 @@ extension CLChatPhotoView {
             UIApplication.shared.keyWindow?.rootViewController?.present(cameraPicker, animated: true)
         }
     }
+}
+extension CLChatPhotoView {
+    
 }
 extension CLChatPhotoView: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
