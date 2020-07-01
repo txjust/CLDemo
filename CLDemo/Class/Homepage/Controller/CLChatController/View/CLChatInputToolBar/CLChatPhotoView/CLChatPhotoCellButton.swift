@@ -14,7 +14,7 @@ class CLChatPhotoCellButton: UIButton {
             guard let image = icon else {
                 return
             }
-            iconImageView.image = image.tintedImage(hexColor("#BABAE2"))
+            iconImageView.image = image.tintedImage(color: .hexColor(with: "#BABAE2"))
         }
     }
     var text: String? {
@@ -29,7 +29,7 @@ class CLChatPhotoCellButton: UIButton {
     private var textLabel: UILabel = {
        let textLabel = UILabel()
         textLabel.font = UIFont.systemFont(ofSize: 13)
-        textLabel.textColor = hexColor("#BABAE2")
+        textLabel.textColor = .hexColor(with: "#BABAE2")
         return textLabel
     }()
     override init(frame: CGRect) {

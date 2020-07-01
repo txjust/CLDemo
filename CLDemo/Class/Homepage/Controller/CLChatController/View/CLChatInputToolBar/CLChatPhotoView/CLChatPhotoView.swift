@@ -145,6 +145,7 @@ extension CLChatPhotoView {
         CLPermissions.request(.camera) {(status) in
             if status.isNoSupport {
                 CLLog("当前设备不支持")
+                
             }else if status.isAuthorized {
                 showCameraPicker()
             }else {

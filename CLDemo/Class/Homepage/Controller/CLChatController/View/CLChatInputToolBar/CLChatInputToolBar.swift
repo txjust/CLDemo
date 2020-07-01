@@ -77,25 +77,25 @@ class CLChatInputToolBar: UIView {
     ///顶部线条
     private lazy var topLineView: UIView = {
         let topLineView = UIView()
-        topLineView.backgroundColor = hexColor("0x22222D")
+        topLineView.backgroundColor = .hexColor(with: "0x22222D")
         return topLineView
     }()
     ///顶部工具条
     private lazy var topToolBar: UIView = {
         let topToolBar = UIView()
-        topToolBar.backgroundColor = hexColor("0x31313F")
+        topToolBar.backgroundColor = .hexColor(with: "0x31313F")
         return topToolBar
     }()
     ///中间内容视图
     private lazy var middleSpaceView: UIView = {
         let middleSpaceView = UIView()
-        middleSpaceView.backgroundColor = hexColor("0x31313F")
+        middleSpaceView.backgroundColor = .hexColor(with: "0x31313F")
         return middleSpaceView
     }()
     ///底部安全区域
     private lazy var bottomSafeView: UIView = {
         let bottomSafeView = UIView()
-        bottomSafeView.backgroundColor = hexColor("0x31313F")
+        bottomSafeView.backgroundColor = .hexColor(with: "0x31313F")
         return bottomSafeView
     }()
     ///图片按钮
@@ -146,7 +146,7 @@ class CLChatInputToolBar: UIView {
         textView.delegate = self
         textView.returnKeyType = .send
         textView.autocorrectionType = .no
-        textView.textColor = hexColor("0xBABAE2")
+        textView.textColor = .hexColor(with: "0xBABAE2")
         textView.keyboardAppearance = .dark
         textView.textContainerInset = UIEdgeInsets.zero
         textView.textContainer.lineFragmentPadding = 0
@@ -161,14 +161,14 @@ class CLChatInputToolBar: UIView {
     ///线条
     private lazy var lineView: UIView = {
         let lineView = UIView()
-        lineView.backgroundColor = hexColor("0x4A4A6A")
+        lineView.backgroundColor = .hexColor(with: "0x4A4A6A")
         return lineView
     }()
     ///表情view
     private lazy var emojiView: CLChatEmojiView = {
         let emojiView = CLChatEmojiView()
         emojiView.autoresizesSubviews = false
-        emojiView.backgroundColor = hexColor("0x31313F")
+        emojiView.backgroundColor = .hexColor(with: "0x31313F")
         emojiView.didSelectEmojiCallBack = {[weak self] (emoji) in
             guard let strongSelf = self else {
                 return
@@ -190,7 +190,7 @@ class CLChatInputToolBar: UIView {
     ///图片view
     private lazy var photoView: CLChatPhotoView = {
         let photoView = CLChatPhotoView()
-        photoView.backgroundColor = hexColor("0x31313F")
+        photoView.backgroundColor = .hexColor(with: "0x31313F")
         photoView.sendImageCallBack = {[weak self] (images) in
             self?.delegate?.inputBarWillSendImage(images: images)
         }
@@ -199,7 +199,7 @@ class CLChatInputToolBar: UIView {
     ///录音
     private lazy var recordView: CLChatRecordView = {
         let recordView = CLChatRecordView()
-        recordView.backgroundColor = hexColor("0x31313F")
+        recordView.backgroundColor = .hexColor(with: "0x31313F")
         recordView.startRecorderCallBack = {[weak self] in
             self?.delegate?.inputBarStartRecord()
         }
@@ -303,7 +303,7 @@ class CLChatInputToolBar: UIView {
         }
     }
     ///占位文字颜色
-    var placeholderColor: UIColor = hexColor("0x5C5C71") {
+    var placeholderColor: UIColor = .hexColor(with: "0x5C5C71") {
         didSet {
             textView.textColor = placeholderColor
         }
@@ -327,7 +327,7 @@ class CLChatInputToolBar: UIView {
 //MARK: - JmoVxia---初始化
 extension CLChatInputToolBar {
     private func initUI() {
-        backgroundColor = hexColor("0x31313F")
+        backgroundColor = .hexColor(with: "0x31313F")
         addSubview(contentView)
         addSubview(topLineView)
         contentView.addSubview(topToolBar)

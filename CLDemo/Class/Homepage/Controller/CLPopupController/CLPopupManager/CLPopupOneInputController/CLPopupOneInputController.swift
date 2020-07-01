@@ -27,19 +27,19 @@ class CLPopupOneInputController: CLPopupManagerBaseController {
             case .respiratoryFrequency:
                 titleLabel.text = "呼吸频次"
                 textField.keyboardType = .numberPad
-                textField.setPlaceholder("请输入每分钟呼吸次数", color: hexColor("#999999"), font: UIFont.systemFont(ofSize: 16))
+                textField.setPlaceholder("请输入每分钟呼吸次数", color: .hexColor(with: "#999999"), font: UIFont.systemFont(ofSize: 16))
             case .UrineVolume:
                 titleLabel.text = "尿量"
                 textField.keyboardType = .decimalPad
-                textField.setPlaceholder("请输入最近24小时尿量(ml)", color: hexColor("#999999"), font: UIFont.systemFont(ofSize: 16))
+                textField.setPlaceholder("请输入最近24小时尿量(ml)", color: .hexColor(with: "#999999"), font: UIFont.systemFont(ofSize: 16))
             case .heartRate:
                 titleLabel.text = "心率"
                 textField.keyboardType = .numberPad
-                textField.setPlaceholder("请输入每分钟心跳次数", color: hexColor("#999999"), font: UIFont.systemFont(ofSize: 16))
+                textField.setPlaceholder("请输入每分钟心跳次数", color: .hexColor(with: "#999999"), font: UIFont.systemFont(ofSize: 16))
             case .pulse:
                 titleLabel.text = "脉搏"
                 textField.keyboardType = .numberPad
-                textField.setPlaceholder("请输入每分钟脉搏次数", color: hexColor("#999999"), font: UIFont.systemFont(ofSize: 16))
+                textField.setPlaceholder("请输入每分钟脉搏次数", color: .hexColor(with: "#999999"), font: UIFont.systemFont(ofSize: 16))
             }
         }
     }
@@ -56,7 +56,7 @@ class CLPopupOneInputController: CLPopupManagerBaseController {
         let titleLabel = UILabel()
         titleLabel.textAlignment = .center
         titleLabel.font = UIFont.boldSystemFont(ofSize: 18)
-        titleLabel.textColor = hexColor("#40B5AA")
+        titleLabel.textColor = .themeColor
         titleLabel.numberOfLines = 0
         return titleLabel
     }()
@@ -68,7 +68,7 @@ class CLPopupOneInputController: CLPopupManagerBaseController {
     }()
     private lazy var fristLineView: UIView = {
         let fristLineView = UIView()
-        fristLineView.backgroundColor = hexColor("#F0F0F0")
+        fristLineView.backgroundColor = .hexColor(with: "#F0F0F0")
         return fristLineView
     }()
     private lazy var fristTapView: UIControl = {
@@ -85,7 +85,7 @@ class CLPopupOneInputController: CLPopupManagerBaseController {
         sureButton.setTitleColor(.white, for: .selected)
         sureButton.setTitleColor(.white, for: .highlighted)
         sureButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        sureButton.backgroundColor = hexColor("#40B5AA")
+        sureButton.backgroundColor = .themeColor
         sureButton.layer.cornerRadius = 20
         sureButton.clipsToBounds = true
         sureButton.addTarget(self, action: #selector(sureAction), for: .touchUpInside)
@@ -101,7 +101,6 @@ class CLPopupOneInputController: CLPopupManagerBaseController {
     }()
     deinit {
         NotificationCenter.default.removeObserver(self)
-        print("============CLPopupOneInputController deinit============")
     }
 }
 extension CLPopupOneInputController {
@@ -250,7 +249,8 @@ extension CLPopupOneInputController {
             self.view.endEditing(true)
         }
         dismissAnimation { (_) in
-            CLPopupManager.dismissAll(false)
+            
+            CLPopupManager.dismiss(self.configure.identifier)
         }
     }
 }

@@ -19,7 +19,7 @@ class CLBackView: UIControl {
     }
     var themeColor: UIColor = .black {
         didSet {
-            backimageView.image = UIImage(named: "navigationBack")?.tintedImage(themeColor)
+            backimageView.image = UIImage(named: "navigationBack")?.tintedImage(color: themeColor)
             textLabel.textColor = themeColor;
         }
     }
