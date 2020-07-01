@@ -155,17 +155,28 @@ extension CLChatPhotoView {
         func showCameraPicker() {
             let cameraPicker = UIImagePickerController()
             cameraPicker.delegate = self
-            cameraPicker.allowsEditing = true
+            cameraPicker.allowsEditing = false
             cameraPicker.sourceType = .camera
             UIApplication.shared.keyWindow?.rootViewController?.present(cameraPicker, animated: true)
         }
     }
 }
-extension CLChatPhotoView {
-    
-}
 extension CLChatPhotoView: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
+        if let image = (info[.originalImage] as? UIImage)?.fixOrientation() {
+            let options = PHFetchOptions()
+            options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+            var localIdentifier: String = ""
+            PHPhotoLibrary.shared().performChanges({
+                guard let assetId = PHAssetChangeRequest.creationRequestForAsset(from: image).placeholderForCreatedAsset?.localIdentifier else { return }
+                localIdentifier = assetId
+            }) {[weak self] (success, error) in
+                let assets = PHAsset.fetchAssets(withLocalIdentifiers: [localIdentifier], options: options)
+                if let asset = assets.firstObject {
+                    self?.sendImageCallBack?([(image, asset)])
+                }
+            }
+        }
+        picker.dismiss(animated: true)
     }
 }

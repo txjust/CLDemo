@@ -189,12 +189,17 @@ static OSStatus RecordCallback(void *inRefCon,
 }
 - (NSString *)currentTime {
     NSTimeInterval time = [[NSDate date] timeIntervalSince1970];
-    return [NSString stringWithFormat:@"%ld",(NSInteger)((CGFloat)time * 1000000)];
+    return [NSString stringWithFormat:@"%ld",(long)((CGFloat)time * 1000000)];
 }
 - (float)audioDurationSeconds {
-    AVURLAsset* audioAsset = [AVURLAsset URLAssetWithURL:[NSURL fileURLWithPath:self.mp3Path] options:nil];
-    CMTime audioDuration = audioAsset.duration;
-    return CMTimeGetSeconds(audioDuration);
+    NSURL *url = [NSURL fileURLWithPath:self.mp3Path];
+    if (url) {
+        AVURLAsset* audioAsset = [AVURLAsset URLAssetWithURL:url options:nil];
+        CMTime audioDuration = audioAsset.duration;
+        return CMTimeGetSeconds(audioDuration);
+    }else {
+        return 0.0;
+    }
 }
 - (void)dealloc {
     [self.mp3Encoder stop];
