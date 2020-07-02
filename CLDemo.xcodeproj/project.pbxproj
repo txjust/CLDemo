@@ -1409,13 +1409,6 @@
 			path = CLConst;
 			sourceTree = "<group>";
 		};
-		5B3327E623DF3E0000CA315C /* json */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = json;
-			sourceTree = "<group>";
-		};
 		5B399E4724AB14F700A14FE7 /* CLChatImageCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1523,7 +1516,6 @@
 		5B80D9E71DDD976A00A20E34 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				5B3327E623DF3E0000CA315C /* json */,
 				0C6392C222DAC3AB00AFD7EB /* LocalFiles */,
 				5BC3FB8521CE966A00B7FF82 /* CLDemo-Bridging-Header.h */,
 				5B80D9F31DDD976A00A20E34 /* Assets.xcassets */,
@@ -1770,8 +1762,8 @@
 		5B8A4D4123B1189C00360631 /* CLChatController */ = {
 			isa = PBXGroup;
 			children = (
-				5B8A4D4223B118CC00360631 /* CLChatController.swift */,
 				5B1CC1C024AC8F5600C35523 /* AnimationJson */,
+				5B8A4D4223B118CC00360631 /* CLChatController.swift */,
 				5B51EE1424AB163900F45628 /* Untils */,
 				B51EE6CA23DF102900146862 /* View */,
 			);
