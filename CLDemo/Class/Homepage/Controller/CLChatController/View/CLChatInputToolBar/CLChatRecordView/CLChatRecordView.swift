@@ -31,10 +31,11 @@ class CLChatRecordView: UIView {
     }()
     ///波纹动画
     private lazy var waveView: AnimationView = {
-        let waveView = AnimationView.init(name: "recoredWave_dk")
-        waveView.loopMode = .loop
-        waveView.isHidden = true
-        return waveView
+        let view = AnimationView.init(name: "recoredWave_dk")
+        view.loopMode = .loop
+        view.isHidden = true
+        view.backgroundBehavior = .pauseAndRestore
+        return view
     }()
     ///圆圈
     private lazy var circleView: UIView = {

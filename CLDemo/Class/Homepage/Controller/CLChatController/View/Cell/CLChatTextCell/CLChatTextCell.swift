@@ -46,6 +46,10 @@ extension CLChatTextCell {
         contentView.addSubview(bubbleImageView)
         contentView.addSubview(titleLabel)
     }
+    override func makeConstraints() {
+        super.makeConstraints()
+        
+    }
 }
 extension CLChatTextCell {
     private func remakeConstraints(isFromMyself: Bool) {

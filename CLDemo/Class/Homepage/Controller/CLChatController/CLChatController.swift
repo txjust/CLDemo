@@ -142,10 +142,19 @@ extension CLChatController {
     }
     private func addVoiceMessages(duration: TimeInterval, path: String) {
         DispatchQueue.global().async {
-            let item = CLChatVoiceItem()
-            item.duration = duration
-            item.path = path
-            self.dataSource.append(item)
+            do {
+                let item = CLChatVoiceItem()
+                item.duration = duration
+                item.path = path
+                self.dataSource.append(item)
+            }
+            do {
+                let item = CLChatVoiceItem()
+                item.position = .left
+                item.duration = duration
+                item.path = path
+                self.dataSource.append(item)
+            }
             self.reloadData()
         }
     }

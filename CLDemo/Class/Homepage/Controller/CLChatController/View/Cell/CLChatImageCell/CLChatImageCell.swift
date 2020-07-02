@@ -47,6 +47,17 @@ extension CLChatImageCell {
         contentView.addSubview(progressView)
         contentView.addSubview(downloadFailButton)
     }
+    override func makeConstraints() {
+        super.makeConstraints()
+        progressView.snp.makeConstraints { (make) in
+            make.center.equalTo(photoView)
+            make.size.equalTo(45)
+        }
+        downloadFailButton.snp.makeConstraints { (make) in
+            make.center.equalTo(photoView)
+            make.size.equalTo(45)
+        }
+    }
 }
 extension CLChatImageCell: CLChatCellProtocol {
     func setItem(_ item: CLChatItemProtocol) {
@@ -55,6 +66,23 @@ extension CLChatImageCell: CLChatCellProtocol {
         }
         updateUI(item: imageItem)
         remakeConstraints(isFromMyself: imageItem.position == .right, imageSize: imageItem.size)
+    }
+}
+extension CLChatImageCell {
+    private func remakeConstraints(isFromMyself: Bool, imageSize: CGSize) {
+        photoView.snp.remakeConstraints { (make) in
+            make.top.equalTo(contentView.snp.top).offset(10)
+            make.bottom.equalTo(contentView.snp.bottom).offset(-10).priority(.high)
+            if isFromMyself {
+                make.right.equalTo(-10)
+            }else {
+                make.left.equalTo(10)
+            }
+            make.size.equalTo(imageSize)
+        }
+        bottomContentView.snp.remakeConstraints { (make) in
+            make.edges.equalTo(photoView)
+        }
     }
 }
 extension CLChatImageCell {
@@ -77,29 +105,6 @@ extension CLChatImageCell {
             if !isFromMyself {
                 progressView.updateProgress(value: item.progress)
             }
-        }
-    }
-    private func remakeConstraints(isFromMyself: Bool, imageSize: CGSize) {
-        photoView.snp.remakeConstraints { (make) in
-            make.top.equalTo(contentView.snp.top).offset(10)
-            make.bottom.equalTo(contentView.snp.bottom).offset(-10).priority(.high)
-            if isFromMyself {
-                make.right.equalTo(-10)
-            }else {
-                make.left.equalTo(10)
-            }
-            make.size.equalTo(imageSize)
-        }
-        bottomContentView.snp.remakeConstraints { (make) in
-            make.edges.equalTo(photoView)
-        }
-        progressView.snp.remakeConstraints { (make) in
-            make.center.equalTo(photoView)
-            make.size.equalTo(45)
-        }
-        downloadFailButton.snp.remakeConstraints { (make) in
-            make.center.equalTo(photoView)
-            make.size.equalTo(45)
         }
     }
 }

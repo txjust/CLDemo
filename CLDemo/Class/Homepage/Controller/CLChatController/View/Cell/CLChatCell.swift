@@ -28,10 +28,11 @@ class CLChatCell: UITableViewCell {
     }()
     ///发送中动画view
     lazy var sendingAnimation: AnimationView = {
-        let sendingAnimation = AnimationView.init(animation: Animation.named("send_timeout"))
-        sendingAnimation.loopMode = .loop
-        sendingAnimation.isHidden = true
-        return sendingAnimation
+        let view = AnimationView.init(animation: Animation.named("send_timeout"))
+        view.loopMode = .loop
+        view.isHidden = true
+        view.backgroundBehavior = .pauseAndRestore
+        return view
     }()
     ///发送失败
     lazy var sendFailButton: UIButton = {
