@@ -15,7 +15,7 @@ class CLChatRecordView: UIView {
     ///取消录音
     var cancelRecorderCallBack: (() -> ())?
     ///结束录音
-    var finishRecorderCallBack: ((CGFloat, String) -> ())?
+    var finishRecorderCallBack: ((TimeInterval, String) -> ())?
     ///高度
     private (set) var height: CGFloat = 250
     ///红圈
@@ -69,6 +69,9 @@ class CLChatRecordView: UIView {
         recorder.durationCallback = {[weak self] (second) in
             guard let `self` = self else { return }
             self.timeView.time = self.transToHourMinSec(time: Int(second))
+        }
+        recorder.finishCallBack = {[weak self] (duration, path) in
+            self?.finishRecorderCallBack?(TimeInterval(duration), path)
         }
         return recorder
     }()
@@ -230,6 +233,5 @@ extension CLChatRecordView {
     }
     private func endRecord() {
         recorder.stop()
-        finishRecorderCallBack?(recorder.audioDuration, recorder.mp3Path)
     }
 }

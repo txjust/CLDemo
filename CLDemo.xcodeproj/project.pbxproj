@@ -2084,10 +2084,10 @@
 			children = (
 				B5498C8223DED6760082D4E5 /* CLChatCellProtocol.swift */,
 				B51EE6C623DF092400146862 /* CLChatCell.swift */,
-				5B1CC1C524AC944000C35523 /* CLChatVoiceCell */,
 				5BF830AC24AB0CE0008E7CE8 /* CLChatTipsItem */,
 				5B3AB5D824A63F1000305ABE /* CLChatTextCell */,
 				5B399E4724AB14F700A14FE7 /* CLChatImageCell */,
+				5B1CC1C524AC944000C35523 /* CLChatVoiceCell */,
 			);
 			path = Cell;
 			sourceTree = "<group>";

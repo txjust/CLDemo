@@ -111,9 +111,7 @@ extension CLChatController {
                 item.text = text
                 self.dataSource.append(item)
             }
-            DispatchQueue.main.async {
-                self.reloadData()
-            }
+            self.reloadData()
         }
     }
     private func addTextMessages(_ messages: [String]) {
@@ -124,9 +122,7 @@ extension CLChatController {
                 item.text = text
                 self.dataSource.append(item)
             }
-            DispatchQueue.main.async {
-                self.reloadData()
-            }
+            self.reloadData()
         }
     }
     private func addImageMessages(_ messages: [(image: UIImage, asset: PHAsset)]) {
@@ -141,13 +137,18 @@ extension CLChatController {
                 imageItem.position = .right
                 self.dataSource.append(imageItem)
             }
-            DispatchQueue.main.async {
-                self.reloadData()
-            }
+            self.reloadData()
         }
     }
-//    private func addVoiceMessages(_ messages: [String]) {
-//    }
+    private func addVoiceMessages(duration: TimeInterval, path: String) {
+        DispatchQueue.global().async {
+            let item = CLChatVoiceItem()
+            item.duration = duration
+            item.path = path
+            self.dataSource.append(item)
+            self.reloadData()
+        }
+    }
 }
 extension CLChatController {
     func saveUploadImage(imageData: Data, messageId: String) -> String? {
@@ -182,8 +183,9 @@ extension CLChatController: CLChatInputToolBarDelegate {
     func inputBarWillSendImage(images: [(image: UIImage, asset: PHAsset)]) {
         addImageMessages(images)
     }
-    func inputBarFinishRecord(duration: CGFloat, path: String) {
+    func inputBarFinishRecord(duration: TimeInterval, path: String) {
         print("duration = \(duration), path = \(path)")
+        addVoiceMessages(duration: duration, path: path)
     }
 }
 extension CLChatController: UIGestureRecognizerDelegate {

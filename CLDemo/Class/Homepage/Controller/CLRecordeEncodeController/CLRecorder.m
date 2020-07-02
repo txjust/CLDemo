@@ -48,7 +48,11 @@ static OSStatus RecordCallback(void *inRefCon,
     CLRecorder *recorder = (__bridge CLRecorder *)(inRefCon);
     AudioUnitRender(recorder.audioUnit, ioActionFlags, inTimeStamp, inBusNumber, inNumberFrames, &bufferList);
     [recorder.mp3Encoder processAudioBufferList:bufferList];
-    NSUInteger second = (NSUInteger)floor(recorder.audioDuration);
+    CGFloat audioDuration = recorder.audioDuration;
+    if (recorder.maxRecordDuration != 0 && audioDuration >= recorder.maxRecordDuration) {
+        [recorder stopRecorder];
+    }
+    NSUInteger second = (NSUInteger)floor(audioDuration);
     if (recorder.lastSecond != second) {
         recorder.lastSecond = second;
         if (recorder.durationCallback) {
@@ -78,6 +82,7 @@ static OSStatus RecordCallback(void *inRefCon,
 }
 - (void)initRemoteIO {
     AudioUnitInitialize(self.audioUnit);
+    self.maxRecordDuration = 5;
     [self initBuffer];
     [self initAudioComponent];
     [self initFormat];
@@ -177,6 +182,10 @@ static OSStatus RecordCallback(void *inRefCon,
     [self resumeActiveAudioSession];
     if (status != noErr) {
         CLLog(@"stopRecorder error: %d", status);
+    }else {
+        if (self.finishCallBack) {
+            self.finishCallBack(self.audioDuration, self.mp3Path);
+        }
     }
 }
 - (void)activeAudioSession {
