@@ -18,6 +18,8 @@ class CLChatRecordView: UIView {
     var finishRecorderCallBack: ((TimeInterval, String) -> ())?
     ///高度
     private (set) var height: CGFloat = 250
+    ///是否正在录制
+    private (set) var isRecording: Bool = false
     ///红圈
     private lazy var redcircle: UIView = {
         let redcircle = UIView()
@@ -69,6 +71,9 @@ class CLChatRecordView: UIView {
         let recorder = CLRecorder()
         recorder.durationCallback = {[weak self] (second) in
             guard let `self` = self else { return }
+            if second >= 3 {
+                self.endLongPress()
+            }
             self.timeView.time = self.transToHourMinSec(time: Int(second))
         }
         recorder.finishCallBack = {[weak self] (duration, path) in
@@ -182,25 +187,34 @@ extension CLChatRecordView {
         }
         isOut = !redcircle.frame.contains(point)
         if longPress.state == .began {
-            playWave()
-            zoomOut()
-            timeView.show()
-            startRecord()
+            beganLongPress()
         }else if longPress.state == .changed {
             redcircle.isHidden = !isOut
         }else if longPress.state == .ended || longPress.state == .cancelled || longPress.state == .failed {
             endLongPress()
         }
     }
+    private func beganLongPress() {
+        if isRecording == false {
+            isRecording = true
+            playWave()
+            zoomOut()
+            timeView.show()
+            startRecord()
+        }
+    }
     private func endLongPress() {
-        stopWave()
-        zoomIn()
-        redcircle.isHidden = true
-        timeView.dismiss()
-        if isOut {
-            cancelRecord()
-        }else {
-            endRecord()
+        if isRecording {
+            isRecording = false
+            stopWave()
+            zoomIn()
+            redcircle.isHidden = true
+            timeView.dismiss()
+            if isOut {
+                cancelRecord()
+            }else {
+                endRecord()
+            }
         }
     }
     private func transToHourMinSec(time: Int) -> String {

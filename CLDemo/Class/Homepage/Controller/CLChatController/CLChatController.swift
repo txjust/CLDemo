@@ -88,9 +88,13 @@ extension CLChatController {
             make.left.right.bottom.equalToSuperview()
         }
         tableView.snp.makeConstraints { (make) in
-            make.height.equalToSuperview().offset(-(navigationController?.navigationBar.frame.height ?? 0.0) - cl_statusBarHeight() - inputToolBar.toolBarDefaultHeight)
             make.left.right.equalTo(view)
             make.bottom.equalTo(inputToolBar.snp.top)
+            if #available(iOS 11.0, *) {
+                make.top.equalTo(view.safeAreaLayoutGuide)
+            } else {
+                make.top.equalToSuperview()
+            }
         }
     }
     private func reloadData() {

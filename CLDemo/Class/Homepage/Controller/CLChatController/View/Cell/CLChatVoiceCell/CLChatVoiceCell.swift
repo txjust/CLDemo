@@ -83,9 +83,9 @@ extension CLChatVoiceCell {
         durationLabel.snp.remakeConstraints { (make) in
             make.centerY.equalToSuperview()
             if isFromMyself {
-                make.right.equalTo(contentView.snp.right).offset(-40)
+                make.right.equalTo(contentView.snp.right).offset(-50)
             }else {
-                make.left.equalTo(contentView.snp.left).offset(40)
+                make.left.equalTo(contentView.snp.left).offset(50)
             }
         }
         bottomContentView.snp.remakeConstraints { (make) in
@@ -106,7 +106,7 @@ extension CLChatVoiceCell: CLChatCellProtocol {
         bubbleImageView.image = isFromMyself ? rightBubbleImage : leftBubbleImage
         remakeConstraints(isFromMyself: isFromMyself)
         let duration = CGFloat(floor(Double(item.duration)))
-        durationLabel.text = "\(duration)"
+        durationLabel.text = "\(Int(duration))"
         var width: CGFloat = 5
         width = duration * width + 55
         width = max(min(width, cl_screenWidth() * 0.45), 60)

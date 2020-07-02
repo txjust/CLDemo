@@ -16,8 +16,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign, readonly) CGFloat audioDuration;
 
-@property (nonatomic, assign) CGFloat maxRecordDuration;
-
 @property (nonatomic, copy) void (^durationCallback)(NSUInteger seconds);
 
 @property (nonatomic, copy) void (^finishCallBack)(CGFloat audioDuration, NSString *mp3Path);
