@@ -12,16 +12,7 @@ import Photos
 class CLChatController: CLBaseViewController {
     ///图片上传路径
     private let imageUploadPath: String = pathDocuments + "/CLChatImageUpload"
-    
     private var dataSource = [CLChatItemProtocol]()
-    ///渐变色
-    private lazy var gradientLayerView: CLGradientLayerView = {
-        let gradientLayerView = CLGradientLayerView()
-        gradientLayerView.colors = [UIColor.hexColor(with: "0x373747").cgColor, UIColor.hexColor(with: "0x22222D").cgColor]
-        gradientLayerView.startPoint = CGPoint(x: 0, y: 0)
-        gradientLayerView.endPoint = CGPoint(x: 0, y: 1)
-        return gradientLayerView
-    }()
     private lazy var tableView: CLIntrinsicTableView = {
         let tableView = CLIntrinsicTableView()
         tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: "UITableViewCell")
@@ -48,13 +39,9 @@ class CLChatController: CLBaseViewController {
 extension CLChatController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.tintColor = UIColor.white
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        navigationController?.navigationBar.tintColor = UIColor.black
     }
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
@@ -76,14 +63,11 @@ extension CLChatController {
 }
 extension CLChatController {
     private func initUI() {
-        view.addSubview(gradientLayerView)
+        view.backgroundColor = .hexColor(with: "#EEEEED")
         view.addSubview(tableView)
         view.addSubview(inputToolBar)
     }
     private func makeConstraints() {
-        gradientLayerView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
-        }
         inputToolBar.snp.makeConstraints { (make) in
             make.left.right.bottom.equalToSuperview()
         }

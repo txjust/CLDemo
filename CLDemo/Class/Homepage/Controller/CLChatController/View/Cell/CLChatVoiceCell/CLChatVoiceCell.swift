@@ -108,8 +108,8 @@ extension CLChatVoiceCell: CLChatCellProtocol {
         let duration = CGFloat(floor(Double(item.duration)))
         durationLabel.text = "\(Int(duration))"
         var width: CGFloat = 5
-        width = duration * width + 55
-        width = max(min(width, cl_screenWidth() * 0.45), 60)
+        width = duration * width + 65
+        width = max(min(width, cl_screenWidth() * 0.45), 70)
         bubbleImageView.snp.updateConstraints { (make) in
             make.width.equalTo(width)
         }

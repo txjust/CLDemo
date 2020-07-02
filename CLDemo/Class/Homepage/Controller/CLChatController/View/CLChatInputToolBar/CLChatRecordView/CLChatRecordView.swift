@@ -71,7 +71,7 @@ class CLChatRecordView: UIView {
         let recorder = CLRecorder()
         recorder.durationCallback = {[weak self] (second) in
             guard let `self` = self else { return }
-            if second >= 3 {
+            if second >= 60 {
                 self.endLongPress()
             }
             self.timeView.time = self.transToHourMinSec(time: Int(second))

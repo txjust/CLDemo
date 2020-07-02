@@ -65,25 +65,25 @@ class CLChatInputToolBar: UIView {
     ///顶部线条
     private lazy var topLineView: UIView = {
         let topLineView = UIView()
-        topLineView.backgroundColor = .hexColor(with: "0x22222D")
+        topLineView.backgroundColor = .hexColor(with: "#DADADA")
         return topLineView
     }()
     ///顶部工具条
     private lazy var topToolBar: UIView = {
         let topToolBar = UIView()
-        topToolBar.backgroundColor = .hexColor(with: "0x31313F")
+        topToolBar.backgroundColor = .hexColor(with: "#F6F6F6")
         return topToolBar
     }()
     ///中间内容视图
     private lazy var middleSpaceView: UIView = {
         let middleSpaceView = UIView()
-        middleSpaceView.backgroundColor = .hexColor(with: "0x31313F")
+        middleSpaceView.backgroundColor = .hexColor(with: "#F6F6F6")
         return middleSpaceView
     }()
     ///底部安全区域
     private lazy var bottomSafeView: UIView = {
         let bottomSafeView = UIView()
-        bottomSafeView.backgroundColor = .hexColor(with: "0x31313F")
+        bottomSafeView.backgroundColor = .hexColor(with: "#F6F6F6")
         return bottomSafeView
     }()
     ///图片按钮
@@ -126,7 +126,7 @@ class CLChatInputToolBar: UIView {
     ///输入框
     private lazy var textView: CLChatTextView = {
         let textView = CLChatTextView()
-        textView.backgroundColor = UIColor.clear
+        textView.backgroundColor = .white
         textView.autocapitalizationType = .none
         textView.enablesReturnKeyAutomatically = true
         textView.layoutManager.allowsNonContiguousLayout = false
@@ -136,7 +136,7 @@ class CLChatInputToolBar: UIView {
         textView.autocorrectionType = .no
         textView.textColor = .hexColor(with: "0xBABAE2")
         textView.keyboardAppearance = .dark
-        textView.textContainerInset = UIEdgeInsets.zero
+        textView.textContainerInset = UIEdgeInsets(top: 5, left: 0, bottom:5, right: 0)
         textView.textContainer.lineFragmentPadding = 0
         textView.textViewHeightChangeCallBack = {[weak self] (height) in
             self?.textViewHeightChange(height: height)
@@ -146,17 +146,11 @@ class CLChatInputToolBar: UIView {
         }
         return textView
     }()
-    ///线条
-    private lazy var lineView: UIView = {
-        let lineView = UIView()
-        lineView.backgroundColor = .hexColor(with: "0x4A4A6A")
-        return lineView
-    }()
     ///表情view
     private lazy var emojiView: CLChatEmojiView = {
         let emojiView = CLChatEmojiView()
         emojiView.autoresizesSubviews = false
-        emojiView.backgroundColor = .hexColor(with: "0x31313F")
+        emojiView.backgroundColor = .hexColor(with: "#F6F6F6")
         emojiView.didSelectEmojiCallBack = {[weak self] (emoji) in
             guard let strongSelf = self else {
                 return
@@ -178,7 +172,7 @@ class CLChatInputToolBar: UIView {
     ///图片view
     private lazy var photoView: CLChatPhotoView = {
         let photoView = CLChatPhotoView()
-        photoView.backgroundColor = .hexColor(with: "0x31313F")
+        photoView.backgroundColor = .hexColor(with: "#F6F6F6")
         photoView.sendImageCallBack = {[weak self] (images) in
             self?.delegate?.inputBarWillSendImage(images: images)
         }
@@ -187,7 +181,7 @@ class CLChatInputToolBar: UIView {
     ///录音
     private lazy var recordView: CLChatRecordView = {
         let recordView = CLChatRecordView()
-        recordView.backgroundColor = .hexColor(with: "0x31313F")
+        recordView.backgroundColor = .hexColor(with: "#F6F6F6")
         recordView.startRecorderCallBack = {[weak self] in
             self?.delegate?.inputBarStartRecord()
         }
@@ -312,7 +306,7 @@ class CLChatInputToolBar: UIView {
 //MARK: - JmoVxia---初始化
 extension CLChatInputToolBar {
     private func initUI() {
-        backgroundColor = .hexColor(with: "0x31313F")
+        backgroundColor = .hexColor(with: "##F6F6F6")
         addSubview(contentView)
         addSubview(topLineView)
         contentView.addSubview(topToolBar)
@@ -324,7 +318,6 @@ extension CLChatInputToolBar {
         topToolBar.addSubview(recordButton)
         topToolBar.addSubview(sendButton)
         topToolBar.addSubview(textView)
-        topToolBar.addSubview(lineView)
     }
     private func makeConstraints() {
         contentView.snp.makeConstraints { (make) in
@@ -357,17 +350,17 @@ extension CLChatInputToolBar {
         photoButton.snp.makeConstraints { (make) in
             make.left.equalTo(12)
             make.width.height.equalTo(textViewHeight + 10)
-            make.bottom.equalTo(lineView.snp.bottom)
+            make.bottom.equalTo(textView.snp.bottom)
         }
         emojiButton.snp.makeConstraints { (make) in
             make.left.equalTo(photoButton.snp.right).offset(12)
             make.width.height.equalTo(textViewHeight + 10)
-            make.bottom.equalTo(lineView.snp.bottom)
+            make.bottom.equalTo(textView.snp.bottom)
         }
         recordButton.snp.makeConstraints { (make) in
             make.right.equalTo(-12)
             make.width.height.equalTo(textViewHeight + 10)
-            make.bottom.equalTo(lineView.snp.bottom)
+            make.bottom.equalTo(textView.snp.bottom)
         }
         sendButton.snp.makeConstraints { (make) in
             make.edges.equalTo(recordButton)
@@ -378,11 +371,6 @@ extension CLChatInputToolBar {
             make.height.equalTo(textViewHeight)
             make.top.equalTo(15)
             make.bottom.equalTo(topToolBar.snp.bottom).offset(-15)
-        }
-        lineView.snp.makeConstraints { (make) in
-            make.left.right.equalTo(textView)
-            make.height.equalTo(0.5)
-            make.top.equalTo(textView.snp.bottom).offset(5)
         }
     }
     private func addNotification() {

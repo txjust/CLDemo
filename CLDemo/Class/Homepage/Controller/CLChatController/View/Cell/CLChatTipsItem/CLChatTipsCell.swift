@@ -11,13 +11,13 @@ import SnapKit
 class CLChatTipsCell: CLChatCell {
     ///背景
     var textBackgroundView = UIView().then { (view) in
-        view.backgroundColor = .hexColor(with: "0x5C5C71")
+        view.backgroundColor = .hexColor(with: "#D9D9D9")
         view.clipsToBounds = true
     }
     ///文字label
     var titleLabel = UILabel().then { (label) in
-        label.textColor = .hexColor(with: "0xBABAE2")
-        label.font = .systemFont(ofSize: 11)
+        label.textColor = .white
+        label.font = PingFangSCMedium(14)
         label.numberOfLines = 0
         label.preferredMaxLayoutWidth = cl_screenWidth() - 80
     }
@@ -49,10 +49,10 @@ extension CLChatTipsCell {
             make.centerX.equalTo(contentView)
         }
         titleLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(textBackgroundView.snp.left).offset(10)
-            make.right.equalTo(textBackgroundView.snp.right).offset(-10)
-            make.top.equalTo(textBackgroundView.snp.top).offset(5)
-            make.bottom.equalTo(textBackgroundView.snp.bottom).offset(-5)
+            make.left.equalTo(textBackgroundView.snp.left).offset(12)
+            make.right.equalTo(textBackgroundView.snp.right).offset(-12)
+            make.top.equalTo(textBackgroundView.snp.top).offset(6.5)
+            make.bottom.equalTo(textBackgroundView.snp.bottom).offset(-6.5)
         }
         bottomContentView.snp.makeConstraints { (make) in
             make.edges.equalTo(textBackgroundView)
