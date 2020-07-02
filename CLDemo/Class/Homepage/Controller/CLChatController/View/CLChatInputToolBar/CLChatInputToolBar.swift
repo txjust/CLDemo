@@ -87,64 +87,64 @@ class CLChatInputToolBar: UIView {
         return bottomSafeView
     }()
     ///图片按钮
-    private lazy var photoButton: UIButton = {
-        let photoButton = UIButton()
-        photoButton.adjustsImageWhenHighlighted = false
-        photoButton.setImage(UIImage.init(named: "btn_knocktalk_photo"), for: .normal)
-        photoButton.setImage(UIImage.init(named: "btn_knocktalk_photo"), for: .selected)
-        photoButton.addTarget(self, action: #selector(photoButtonAction), for: .touchUpInside)
-        return photoButton
+    private lazy var moreButton: UIButton = {
+        let view = UIButton()
+        view.adjustsImageWhenHighlighted = false
+        view.setImage(UIImage.init(named: "addIcon"), for: .normal)
+        view.setImage(UIImage.init(named: "addIcon"), for: .selected)
+        view.addTarget(self, action: #selector(photoButtonAction), for: .touchUpInside)
+        return view
     }()
     ///表情按钮
     private lazy var emojiButton: UIButton = {
-        let emojiButton = UIButton()
-        emojiButton.adjustsImageWhenHighlighted = false
-        emojiButton.setImage(UIImage.init(named: "btn_knocktalk_expression"), for: .normal)
-        emojiButton.setImage(UIImage.init(named: "btn_knocktalk_expression"), for: .selected)
-        emojiButton.addTarget(self, action: #selector(emojiButtonAction), for: .touchUpInside)
-        return emojiButton
+        let view = UIButton()
+        view.adjustsImageWhenHighlighted = false
+        view.setImage(UIImage.init(named: "facialIcon"), for: .normal)
+        view.setImage(UIImage.init(named: "facialIcon"), for: .selected)
+        view.addTarget(self, action: #selector(emojiButtonAction), for: .touchUpInside)
+        return view
     }()
     ///录音按钮
     private lazy var recordButton: UIButton = {
-        let recordButton = UIButton()
-        recordButton.adjustsImageWhenHighlighted = false
-        recordButton.setImage(UIImage.init(named: "btn_knocktalk_voice"), for: .normal)
-        recordButton.setImage(UIImage.init(named: "btn_knocktalk_voice"), for: .selected)
-        recordButton.addTarget(self, action: #selector(recordButtonAction), for: .touchUpInside)
-        return recordButton
+        let view = UIButton()
+        view.adjustsImageWhenHighlighted = false
+        view.setImage(UIImage.init(named: "voiceIcon"), for: .normal)
+        view.setImage(UIImage.init(named: "voiceIcon"), for: .selected)
+        view.addTarget(self, action: #selector(recordButtonAction), for: .touchUpInside)
+        return view
     }()
     ///发送按钮
     private lazy var sendButton: UIButton = {
-        let sendButton = UIButton()
-        sendButton.isHidden = true
-        sendButton.adjustsImageWhenHighlighted = false
-        sendButton.setImage(UIImage.init(named: "btn_knocktalk_send"), for: .normal)
-        sendButton.setImage(UIImage.init(named: "btn_knocktalk_send"), for: .selected)
-        sendButton.addTarget(self, action: #selector(sendButtonAction), for: .touchUpInside)
-        return sendButton
+        let view = UIButton()
+        view.isHidden = true
+        view.adjustsImageWhenHighlighted = false
+        view.setImage(UIImage.init(named: "btn_knocktalk_send"), for: .normal)
+        view.setImage(UIImage.init(named: "btn_knocktalk_send"), for: .selected)
+        view.addTarget(self, action: #selector(sendButtonAction), for: .touchUpInside)
+        return view
     }()
     ///输入框
     private lazy var textView: CLChatTextView = {
-        let textView = CLChatTextView()
-        textView.backgroundColor = .white
-        textView.autocapitalizationType = .none
-        textView.enablesReturnKeyAutomatically = true
-        textView.layoutManager.allowsNonContiguousLayout = false
-        textView.scrollsToTop = false
-        textView.delegate = self
-        textView.returnKeyType = .send
-        textView.autocorrectionType = .no
-        textView.textColor = .hexColor(with: "0xBABAE2")
-        textView.keyboardAppearance = .dark
-        textView.textContainerInset = UIEdgeInsets(top: 5, left: 0, bottom:5, right: 0)
-        textView.textContainer.lineFragmentPadding = 0
-        textView.textViewHeightChangeCallBack = {[weak self] (height) in
+        let view = CLChatTextView()
+        view.backgroundColor = .white
+        view.autocapitalizationType = .none
+        view.enablesReturnKeyAutomatically = true
+        view.layoutManager.allowsNonContiguousLayout = false
+        view.scrollsToTop = false
+        view.delegate = self
+        view.returnKeyType = .send
+        view.autocorrectionType = .no
+        view.textColor = .hexColor(with: "0xBABAE2")
+        view.keyboardAppearance = .dark
+        view.textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom:8, right: 8)
+        view.textContainer.lineFragmentPadding = 0
+        view.textViewHeightChangeCallBack = {[weak self] (height) in
             self?.textViewHeightChange(height: height)
         }
-        textView.textDidChangeCallBack = {[weak self](text) in
+        view.textDidChangeCallBack = {[weak self](text) in
             self?.isHiddenSend = text.isEmpty || (text).isValidAllEmpty()
         }
-        return textView
+        return view
     }()
     ///表情view
     private lazy var emojiView: CLChatEmojiView = {
@@ -313,7 +313,7 @@ extension CLChatInputToolBar {
         contentView.addSubview(middleSpaceView)
         contentView.addSubview(bottomSafeView)
         
-        topToolBar.addSubview(photoButton)
+        topToolBar.addSubview(moreButton)
         topToolBar.addSubview(emojiButton)
         topToolBar.addSubview(recordButton)
         topToolBar.addSubview(sendButton)
@@ -347,20 +347,20 @@ extension CLChatInputToolBar {
             make.left.right.bottom.equalTo(contentView)
             make.height.equalTo(cl_safeAreaInsets().bottom)
         }
-        photoButton.snp.makeConstraints { (make) in
+        moreButton.snp.makeConstraints { (make) in
             make.left.equalTo(12)
-            make.width.height.equalTo(textViewHeight + 10)
-            make.bottom.equalTo(textView.snp.bottom)
+            make.width.height.equalTo(textViewHeight - 8)
+            make.bottom.equalTo(textView.snp.bottom).offset(-4)
         }
         emojiButton.snp.makeConstraints { (make) in
-            make.left.equalTo(photoButton.snp.right).offset(12)
-            make.width.height.equalTo(textViewHeight + 10)
-            make.bottom.equalTo(textView.snp.bottom)
+            make.left.equalTo(moreButton.snp.right).offset(12)
+            make.width.height.equalTo(textViewHeight - 8)
+            make.bottom.equalTo(textView.snp.bottom).offset(-4)
         }
         recordButton.snp.makeConstraints { (make) in
             make.right.equalTo(-12)
-            make.width.height.equalTo(textViewHeight + 10)
-            make.bottom.equalTo(textView.snp.bottom)
+            make.width.height.equalTo(textViewHeight - 8)
+            make.bottom.equalTo(textView.snp.bottom).offset(-4)
         }
         sendButton.snp.makeConstraints { (make) in
             make.edges.equalTo(recordButton)
