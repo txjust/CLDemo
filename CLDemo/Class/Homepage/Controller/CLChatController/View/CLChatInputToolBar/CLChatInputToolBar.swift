@@ -149,10 +149,10 @@ class CLChatInputToolBar: UIView {
     }()
     ///表情view
     private lazy var emojiView: CLChatEmojiView = {
-        let emojiView = CLChatEmojiView()
-        emojiView.autoresizesSubviews = false
-        emojiView.backgroundColor = .hexColor(with: "#F6F6F6")
-        emojiView.didSelectEmojiCallBack = {[weak self] (emoji) in
+        let view = CLChatEmojiView()
+        view.backgroundColor = .hexColor(with: "EEEEED")
+        view.autoresizesSubviews = false
+        view.didSelectEmojiCallBack = {[weak self] (emoji) in
             guard let strongSelf = self else {
                 return
             }
@@ -160,7 +160,7 @@ class CLChatInputToolBar: UIView {
                 strongSelf.textView .replace(selectedTextRange, withText: emoji)
             }
         }
-        emojiView.didSelectDeleteCallBack = {[weak self] in
+        view.didSelectDeleteCallBack = {[weak self] in
             guard let strongSelf = self else {
                 return
             }
@@ -168,31 +168,31 @@ class CLChatInputToolBar: UIView {
                 strongSelf.textView.deleteBackward()
             }
         }
-        return emojiView
+        return view
     }()
     ///图片view
     private lazy var photoView: CLChatPhotoView = {
-        let photoView = CLChatPhotoView()
-        photoView.backgroundColor = .hexColor(with: "#F6F6F6")
-        photoView.sendImageCallBack = {[weak self] (images) in
+        let view = CLChatPhotoView()
+        view.backgroundColor = .hexColor(with: "EEEEED")
+        view.sendImageCallBack = {[weak self] (images) in
             self?.delegate?.inputBarWillSendImage(images: images)
         }
-        return photoView
+        return view
     }()
     ///录音
     private lazy var recordView: CLChatRecordView = {
-        let recordView = CLChatRecordView()
-        recordView.backgroundColor = .hexColor(with: "#F6F6F6")
-        recordView.startRecorderCallBack = {[weak self] in
+        let view = CLChatRecordView()
+        view.backgroundColor = .hexColor(with: "#EEEEED")
+        view.startRecorderCallBack = {[weak self] in
             self?.delegate?.inputBarStartRecord()
         }
-        recordView.cancelRecorderCallBack = {[weak self] in
+        view.cancelRecorderCallBack = {[weak self] in
             self?.delegate?.inputBarCancelRecord()
         }
-        recordView.finishRecorderCallBack = {[weak self] (duration, path) in
+        view.finishRecorderCallBack = {[weak self] (duration, path) in
             self?.delegate?.inputBarFinishRecord(duration: duration, path: path)
         }
-        return recordView
+        return view
     }()
     ///是否弹出键盘
     private var isShowKeyboard: Bool = false {
@@ -388,10 +388,10 @@ extension CLChatInputToolBar {
             keyboardHeight = emojiView.height - cl_safeAreaInsets().bottom
         }
         if isShowPhotoKeyboard {
-            keyboardHeight = photoView.height
+            keyboardHeight = photoView.height - cl_safeAreaInsets().bottom
         }
         if isShowVoiceKeyboard {
-            keyboardHeight = recordView.height
+            keyboardHeight = recordView.height  - cl_safeAreaInsets().bottom
         }
         middleSpaceView.snp.updateConstraints { (make) in
             make.height.equalTo(keyboardHeight)
@@ -501,10 +501,10 @@ extension CLChatInputToolBar {
                 self.photoView.snp.remakeConstraints { (make) in
                     make.left.right.equalTo(self.contentView)
                     make.height.equalTo(self.photoView.height)
-                    make.top.equalTo(self.contentView.snp.bottom).offset(-self.photoView.height - cl_safeAreaInsets().bottom)
+                    make.top.equalTo(self.contentView.snp.bottom).offset(-self.photoView.height)
                 }
                 self.middleSpaceView.snp.updateConstraints { (make) in
-                    make.height.equalTo(self.photoView.height)
+                    make.height.equalTo(self.photoView.height - cl_safeAreaInsets().bottom)
                 }
                 self.superview?.setNeedsLayout()
                 self.superview?.layoutIfNeeded()
@@ -533,10 +533,10 @@ extension CLChatInputToolBar {
                 self.recordView.snp.remakeConstraints { (make) in
                     make.left.right.equalTo(self.contentView)
                     make.height.equalTo(self.recordView.height)
-                    make.top.equalTo(self.contentView.snp.bottom).offset(-self.recordView.height - cl_safeAreaInsets().bottom)
+                    make.top.equalTo(self.contentView.snp.bottom).offset(-self.recordView.height)
                 }
                 self.middleSpaceView.snp.updateConstraints { (make) in
-                    make.height.equalTo(self.recordView.height)
+                    make.height.equalTo(self.recordView.height - cl_safeAreaInsets().bottom)
                 }
                 self.superview?.setNeedsLayout()
                 self.superview?.layoutIfNeeded()

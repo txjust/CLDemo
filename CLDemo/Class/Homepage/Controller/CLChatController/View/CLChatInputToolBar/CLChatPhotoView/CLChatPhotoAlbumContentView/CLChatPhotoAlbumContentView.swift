@@ -79,14 +79,14 @@ extension CLChatPhotoAlbumContentView {
         addSubview(bottomSafeView)
     }
     private func makeConstraints() {
-        bottomToolBar.snp.makeConstraints { (make) in
-            make.left.right.bottom.equalToSuperview()
-            make.height.equalTo(44)
-        }
         bottomSafeView.snp.makeConstraints { (make) in
-            make.top.equalTo(bottomToolBar.snp.bottom)
-            make.left.right.equalToSuperview()
+            make.left.right.bottom.equalToSuperview()
             make.height.equalTo(cl_safeAreaInsets().bottom)
+        }
+        bottomToolBar.snp.makeConstraints { (make) in
+            make.left.right.equalToSuperview()
+            make.height.equalTo(44)
+            make.bottom.equalTo(bottomSafeView.snp.top)
         }
         collectionView.snp.makeConstraints { (make) in
             make.top.left.right.equalToSuperview()
@@ -108,7 +108,7 @@ extension CLChatPhotoAlbumContentView {
             return .zero
         }
         let scale = CGFloat(asset.pixelWidth) / CGFloat(asset.pixelHeight)
-        let height = frame.height - 44 - 20
+        let height = frame.height - 44 - 20 - cl_safeAreaInsets().bottom
         return CGSize(width: height * scale, height: height)
     }
 }

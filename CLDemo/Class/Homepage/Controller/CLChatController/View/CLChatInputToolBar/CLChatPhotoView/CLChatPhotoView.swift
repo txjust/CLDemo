@@ -36,7 +36,7 @@ class CLChatPhotoView: UIView {
             
         }
         get {
-            return edgeInsets.top - edgeInsets.bottom + CGFloat(rowNumber - 1) * rowMargin + itemSize.height * CGFloat(rowNumber)
+            return edgeInsets.top - edgeInsets.bottom + CGFloat(rowNumber - 1) * rowMargin + itemSize.height * CGFloat(rowNumber) + cl_safeAreaInsets().bottom
         }
     }
     ///相册按钮
@@ -100,7 +100,7 @@ extension CLChatPhotoView {
         albumContentView.snp.remakeConstraints { (make) in
             make.left.right.equalToSuperview()
             make.height.equalTo(height)
-            make.top.equalTo(height + cl_safeAreaInsets().bottom)
+            make.top.equalTo(height)
         }
         setNeedsLayout()
         layoutIfNeeded()
@@ -120,7 +120,7 @@ extension CLChatPhotoView {
             self.albumContentView.snp.remakeConstraints { (make) in
                 make.left.right.equalToSuperview()
                 make.height.equalTo(self.height)
-                make.top.equalTo(self.height + cl_safeAreaInsets().bottom)
+                make.top.equalTo(self.height)
             }
             self.setNeedsLayout()
             self.layoutIfNeeded()
