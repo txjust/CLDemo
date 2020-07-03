@@ -116,6 +116,8 @@ class CLChatEmojiView: UIView {
     ///page
     private lazy var pageControl: UIPageControl = {
         let pageControl = UIPageControl()
+        pageControl.pageIndicatorTintColor = .hexColor(with: "#DADADA")
+        pageControl.currentPageIndicatorTintColor = .hexColor(with: "#2DD178")
         pageControl.isUserInteractionEnabled = false
         pageControl.numberOfPages = emojiDataSource.count
         pageControl.currentPage = 0;
