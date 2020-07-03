@@ -73,7 +73,6 @@ class CLChatPhotoAlbumContentView: UIView {
 }
 extension CLChatPhotoAlbumContentView {
     private func initUI() {
-        backgroundColor = .hexColor(with: "0x31313F")
         addSubview(collectionView)
         addSubview(bottomToolBar)
         addSubview(bottomSafeView)

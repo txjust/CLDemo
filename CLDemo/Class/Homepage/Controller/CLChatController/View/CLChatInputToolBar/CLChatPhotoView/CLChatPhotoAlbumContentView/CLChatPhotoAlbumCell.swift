@@ -118,7 +118,7 @@ extension CLChatPhotoAlbumCell {
             make.width.equalTo(seletedNumberButton.snp.height)
         }
         tipsBackgroundView.snp.makeConstraints { (make) in
-            make.top.equalTo(5)
+            make.top.equalTo(12)
             make.centerX.equalToSuperview()
         }
         tipsLabel.snp.makeConstraints { (make) in

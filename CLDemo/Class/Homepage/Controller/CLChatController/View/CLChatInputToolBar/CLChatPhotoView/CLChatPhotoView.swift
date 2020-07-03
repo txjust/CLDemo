@@ -12,20 +12,6 @@ import Photos
 class CLChatPhotoView: UIView {
     ///发送图片回调
     var sendImageCallBack: (([(UIImage, PHAsset)]) -> ())?
-    ///间隙
-    private var edgeInsets: UIEdgeInsets = UIEdgeInsets(top: 30, left: 20, bottom: -30, right: -20)
-    ///行间隙
-    private var rowMargin: CGFloat = 30
-    ///列间隙
-    private var columnMargin: CGFloat = 30
-    ///多少行
-    private var rowNumber: Int = 2
-    ///多少列
-    private var columnNumber: Int = 4
-    ///大小
-    private var itemSize: CGSize {
-        return CGSize(width: 95, height: 95)
-    }
     ///控件宽度
     private var width: CGFloat {
         return cl_screenWidth()
@@ -36,22 +22,22 @@ class CLChatPhotoView: UIView {
             
         }
         get {
-            return edgeInsets.top - edgeInsets.bottom + CGFloat(rowNumber - 1) * rowMargin + itemSize.height * CGFloat(rowNumber) + cl_safeAreaInsets().bottom
+            return 250 + cl_safeAreaInsets().bottom
         }
     }
     ///相册按钮
     private lazy var albumButton: CLChatPhotoCellButton = {
         let albumButton = CLChatPhotoCellButton()
-        albumButton.icon = UIImage.init(named: "btn_photo")
-        albumButton.text = "相册"
+        albumButton.icon = UIImage.init(named: "picIcon")
+        albumButton.text = "照片"
         albumButton.addTarget(self, action: #selector(albumButtonAction), for: .touchUpInside)
         return albumButton
     }()
     ///相机按钮
     private lazy var cameraButton: CLChatPhotoCellButton = {
         let cameraButton = CLChatPhotoCellButton()
-        cameraButton.icon = UIImage.init(named: "btn_potaograph")
-        cameraButton.text = "相机"
+        cameraButton.icon = UIImage.init(named: "takingPicIcon")
+        cameraButton.text = "拍照"
         cameraButton.addTarget(self, action: #selector(cameraButtonButtonAction), for: .touchUpInside)
         return cameraButton
     }()
@@ -83,14 +69,12 @@ extension CLChatPhotoView {
     }
     private func makeConstraints() {
         albumButton.snp.makeConstraints { (make) in
-            make.left.equalTo(edgeInsets.left)
-            make.top.equalTo(edgeInsets.top)
-            make.size.equalTo(itemSize)
+            make.left.equalTo(20)
+            make.top.equalTo(20)
         }
         cameraButton.snp.makeConstraints { (make) in
-            make.left.equalTo(albumButton.snp.right).offset(rowMargin)
-            make.top.equalTo(edgeInsets.top)
-            make.size.equalTo(itemSize)
+            make.left.equalTo(albumButton.snp.right).offset(20)
+            make.top.equalTo(20)
         }
     }
 }

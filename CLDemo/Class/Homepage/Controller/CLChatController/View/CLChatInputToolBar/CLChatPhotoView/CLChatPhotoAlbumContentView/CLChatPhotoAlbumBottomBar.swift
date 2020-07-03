@@ -15,14 +15,22 @@ class CLChatPhotoAlbumBottomBar: UIView {
     var seletedNumber: Int = 0 {
         didSet {
             if oldValue != seletedNumber {
-                let text = "发送 (\(seletedNumber))"
+                let text = seletedNumber == 0 ? "  发送  " : "发送 (\(seletedNumber))"
                 sendButton.setTitle(text, for: .normal)
                 sendButton.setTitle(text, for: .selected)
                 sendButton.setTitle(text, for: .highlighted)
                 if seletedNumber > 0 {
-                    sendButton.isHidden = false
+                    sendButton.isUserInteractionEnabled = true
+                    sendButton.setTitleColor(.white, for: .normal)
+                    sendButton.setTitleColor(.white, for: .selected)
+                    sendButton.setTitleColor(.white, for: .highlighted)
+                    sendButton.backgroundColor = .hexColor(with: "#2DD178")
                 }else {
-                    sendButton.isHidden = true
+                    sendButton.isUserInteractionEnabled = false
+                    sendButton.setTitleColor(.hexColor(with: "#666666"), for: .normal)
+                    sendButton.setTitleColor(.hexColor(with: "#666666"), for: .selected)
+                    sendButton.setTitleColor(.hexColor(with: "#666666"), for: .highlighted)
+                    sendButton.backgroundColor = .hexColor(with: "#EEEEED")
                 }
             }
         }
@@ -30,12 +38,7 @@ class CLChatPhotoAlbumBottomBar: UIView {
     ///发送按钮
     private lazy var sendButton: UIButton = {
         let view = UIButton()
-        view.isHidden = true
         view.titleLabel?.font = PingFangSCMedium(14)
-        view.setTitleColor(.white, for: .normal)
-        view.setTitleColor(.white, for: .selected)
-        view.setTitleColor(.white, for: .highlighted)
-        view.backgroundColor = .hexColor(with: "#2DD178")
         view.clipsToBounds = true
         view.layer.cornerRadius = 15
         view.contentEdgeInsets = UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 12)
@@ -67,6 +70,7 @@ class CLChatPhotoAlbumBottomBar: UIView {
 }
 extension CLChatPhotoAlbumBottomBar {
     private func initUI() {
+        seletedNumber = 0
         addSubview(closeButton)
         addSubview(sendButton)
     }

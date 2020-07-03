@@ -8,13 +8,13 @@
 import UIKit
 import SnapKit
 
-class CLChatPhotoCellButton: UIButton {
+class CLChatPhotoCellButton: UIControl {
     var icon: UIImage? {
         didSet {
             guard let image = icon else {
                 return
             }
-            iconImageView.image = image.tintedImage(color: .hexColor(with: "#BABAE2"))
+            iconImageView.image = image
         }
     }
     var text: String? {
@@ -28,8 +28,8 @@ class CLChatPhotoCellButton: UIButton {
     }()
     private var textLabel: UILabel = {
        let textLabel = UILabel()
-        textLabel.font = UIFont.systemFont(ofSize: 13)
-        textLabel.textColor = .hexColor(with: "#BABAE2")
+        textLabel.font = PingFangSCMedium(14)
+        textLabel.textColor = .hexColor(with: "#666666")
         return textLabel
     }()
     override init(frame: CGRect) {
@@ -37,13 +37,13 @@ class CLChatPhotoCellButton: UIButton {
         addSubview(iconImageView)
         addSubview(textLabel)
         iconImageView.snp.makeConstraints { (make) in
-            make.width.height.equalTo(27)
-            make.top.equalTo(7)
-            make.centerX.equalToSuperview()
+            make.size.equalTo(57.5)
+            make.top.left.right.equalToSuperview()
         }
         textLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(iconImageView.snp.bottom).offset(8)
             make.centerX.equalToSuperview()
-            make.top.equalTo(iconImageView.snp.bottom).offset(5)
+            make.bottom.equalToSuperview()
         }
     }
     required init?(coder: NSCoder) {
