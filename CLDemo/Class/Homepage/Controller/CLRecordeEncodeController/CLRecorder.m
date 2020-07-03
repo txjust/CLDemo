@@ -215,8 +215,8 @@ static OSStatus RecordCallback(void *inRefCon,
     return [NSString stringWithFormat:@"%ld",(long)((CGFloat)time * 1000000)];
 }
 - (CGFloat)audioDuration {
-    NSURL *url = [NSURL fileURLWithPath:self.mp3Path];
-    if (url) {
+    if (self.mp3Path.length > 0) {
+        NSURL *url = [NSURL fileURLWithPath:self.mp3Path];
         AVURLAsset* audioAsset = [AVURLAsset URLAssetWithURL:url options:nil];
         CMTime audioDuration = audioAsset.duration;
         return CMTimeGetSeconds(audioDuration);

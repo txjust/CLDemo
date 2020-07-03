@@ -42,7 +42,7 @@ class CLChatRecordView: UIView {
     ///圆圈
     private lazy var circleView: UIView = {
         let circleView = UIView()
-        circleView.backgroundColor = .hexColor(with: "0x707094")
+        circleView.backgroundColor = .hexColor(with: "#2DD178")
         circleView.isUserInteractionEnabled = true
         circleView.layer.cornerRadius = 55
         circleView.layer.masksToBounds = true
@@ -163,17 +163,17 @@ extension CLChatRecordView {
     }
     private func zoomOut() {
         let animation = CAKeyframeAnimation(keyPath: "transform.scale")
-        animation.values = [1.0,0.9,0.85]
-        animation.duration = 0.35
+        animation.values = [1.0,0.9]
+        animation.duration = 0.5
         animation.isRemovedOnCompletion = false
         animation.fillMode = .forwards
         circleView.layer.add(animation, forKey: "zoomOut")
     }
     private func zoomIn() {
         let animation = CAKeyframeAnimation(keyPath: "transform.scale")
-        animation.values = [0.85,0.9,1.0]
+        animation.values = [0.9,1.0]
         animation.timingFunction = CAMediaTimingFunction(name: .easeOut)
-        animation.duration = 0.35
+        animation.duration = 0.5
         animation.isRemovedOnCompletion = false
         animation.fillMode = .forwards
         circleView.layer.add(animation, forKey: "zoomIn")

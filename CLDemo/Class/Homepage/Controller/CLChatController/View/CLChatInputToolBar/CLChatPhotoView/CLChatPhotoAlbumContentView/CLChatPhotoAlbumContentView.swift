@@ -55,6 +55,12 @@ class CLChatPhotoAlbumContentView: UIView {
         }
         return view
     }()
+    ///底部安全区域
+    private lazy var bottomSafeView: UIView = {
+        let bottomSafeView = UIView()
+        bottomSafeView.backgroundColor = .white
+        return bottomSafeView
+    }()
     override init(frame: CGRect) {
         super.init(frame: frame)
         initUI()
@@ -70,11 +76,17 @@ extension CLChatPhotoAlbumContentView {
         backgroundColor = .hexColor(with: "0x31313F")
         addSubview(collectionView)
         addSubview(bottomToolBar)
+        addSubview(bottomSafeView)
     }
     private func makeConstraints() {
         bottomToolBar.snp.makeConstraints { (make) in
             make.left.right.bottom.equalToSuperview()
             make.height.equalTo(44)
+        }
+        bottomSafeView.snp.makeConstraints { (make) in
+            make.top.equalTo(bottomToolBar.snp.bottom)
+            make.left.right.equalToSuperview()
+            make.height.equalTo(cl_safeAreaInsets().bottom)
         }
         collectionView.snp.makeConstraints { (make) in
             make.top.left.right.equalToSuperview()
