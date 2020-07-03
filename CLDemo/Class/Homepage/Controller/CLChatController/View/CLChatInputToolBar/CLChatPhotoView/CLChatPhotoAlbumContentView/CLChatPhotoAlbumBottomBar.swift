@@ -10,52 +10,54 @@ import UIKit
 
 class CLChatPhotoAlbumBottomBar: UIView {
     var sendCallback: (() -> ())?
-    var albumCallback: (() -> ())?
+    var closeCallback: (() -> ())?
     ///是否可以发送
     var seletedNumber: Int = 0 {
         didSet {
             if oldValue != seletedNumber {
-                seletedNumberLabel.text = "\(seletedNumber)"
+                let text = "发送 (\(seletedNumber))"
+                sendButton.setTitle(text, for: .normal)
+                sendButton.setTitle(text, for: .selected)
+                sendButton.setTitle(text, for: .highlighted)
                 if seletedNumber > 0 {
-                    seletedNumberLabel.isHidden = false
                     sendButton.isHidden = false
                 }else {
-                    seletedNumberLabel.isHidden = true
                     sendButton.isHidden = true
                 }
             }
         }
     }
-    ///选中张数
-    private lazy var seletedNumberLabel: UILabel = {
-        let view = UILabel()
-        view.isHidden = true
-        view.backgroundColor = .clear
-        view.textColor = .white
-        return view
-    }()
     ///发送按钮
     private lazy var sendButton: UIButton = {
         let view = UIButton()
         view.isHidden = true
-        view.setImage(UIImage.init(named: "btn_knocktalk_send"), for: .normal)
-        view.setImage(UIImage.init(named: "btn_knocktalk_send"), for: .selected)
-        view.setImage(UIImage.init(named: "btn_knocktalk_send"), for: .highlighted)
+        view.titleLabel?.font = PingFangSCMedium(14)
+        view.setTitleColor(.white, for: .normal)
+        view.setTitleColor(.white, for: .selected)
+        view.setTitleColor(.white, for: .highlighted)
+        view.backgroundColor = .hexColor(with: "#2DD178")
+        view.clipsToBounds = true
+        view.layer.cornerRadius = 15
+        view.contentEdgeInsets = UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 12)
         view.addTarget(self, action: #selector(sendButtonAction), for: .touchUpInside)
         return view
     }()
     ///相册按钮
-    private lazy var albumButton: UIButton = {
+    private lazy var closeButton: UIButton = {
         let view = UIButton()
-        view.setImage(UIImage.init(named: "相册"), for: .normal)
-        view.setImage(UIImage.init(named: "相册"), for: .selected)
-        view.setImage(UIImage.init(named: "相册"), for: .highlighted)
-        view.addTarget(self, action: #selector(albumButtonAction), for: .touchUpInside)
+        view.titleLabel?.font = PingFangSCMedium(14)
+        view.setTitleColor(.hexColor(with: "#333333"), for: .normal)
+        view.setTitleColor(.hexColor(with: "#333333"), for: .selected)
+        view.setTitleColor(.hexColor(with: "#333333"), for: .highlighted)
+        view.setTitle("关闭", for: .normal)
+        view.setTitle("关闭", for: .selected)
+        view.setTitle("关闭", for: .highlighted)
+        view.addTarget(self, action: #selector(closeButtonAction), for: .touchUpInside)
         return view
     }()
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor.red.withAlphaComponent(0.2)
+        backgroundColor = .white
         initUI()
         makeConstraints()
     }
@@ -65,24 +67,18 @@ class CLChatPhotoAlbumBottomBar: UIView {
 }
 extension CLChatPhotoAlbumBottomBar {
     private func initUI() {
-        addSubview(albumButton)
+        addSubview(closeButton)
         addSubview(sendButton)
-        addSubview(seletedNumberLabel)
     }
     private func makeConstraints() {
-        albumButton.snp.makeConstraints { (make) in
+        closeButton.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
             make.left.equalTo(12)
-            make.size.equalTo(26)
         }
         sendButton.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
             make.right.equalTo(-12)
-            make.size.equalTo(26)
-        }
-        seletedNumberLabel.snp.makeConstraints { (make) in
-            make.right.equalTo(sendButton.snp.left).offset(-12)
-            make.centerY.equalToSuperview()
+            make.height.equalTo(30)
         }
     }
 }
@@ -90,7 +86,7 @@ extension CLChatPhotoAlbumBottomBar {
     @objc private func sendButtonAction() {
        sendCallback?()
     }
-    @objc private func albumButtonAction() {
-        albumCallback?()
+    @objc private func closeButtonAction() {
+        closeCallback?()
     }
 }

@@ -20,13 +20,14 @@ class CLChatPhotoAlbumCell: UICollectionViewCell {
     var sendImageCallBack: ((UIImage) -> ())?
     var seletedNumber: Int = 0 {
         didSet {
-            seletedNumberButton.setTitle("\(seletedNumber)", for: .normal)
+            let title = seletedNumber == 0 ? " " : "\(seletedNumber)"
+            seletedNumberButton.setTitle(title, for: .normal)
+            seletedNumberButton.setTitle(title, for: .selected)
+            seletedNumberButton.setTitle(title, for: .highlighted)
             if seletedNumber > 0 {
-                seletedImageView.isHidden = true
-                seletedNumberButton.isHidden = false
+                seletedNumberButton.isSelected = true
             }else {
-                seletedImageView.isHidden = false
-                seletedNumberButton.isHidden = true
+                seletedNumberButton.isSelected = false
             }
         }
     }
@@ -68,26 +69,15 @@ class CLChatPhotoAlbumCell: UICollectionViewCell {
         view.text = "松手发送"
         return view
     }()
-    private lazy var seletedContentView: UIView = {
-        let view = UIView()
-        view.isUserInteractionEnabled = false
-        return view
-    }()
-    private lazy var seletedImageView: UIImageView = {
-        let view = UIImageView()
-        view.image = UIImage(named: "round")
-        return view
-    }()
     private lazy var seletedNumberButton: UIButton = {
         let view = UIButton()
-        view.clipsToBounds = true
-        view.backgroundColor = .orange
-        view.layer.cornerRadius = 10
-        view.contentEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+        view.setBackgroundImage(UIImage(named: "advNsel"), for: .normal)
+        view.setBackgroundImage(UIImage(named: "advSel"), for: .selected)
         view.setTitleColor(.white, for: .normal)
         view.setTitleColor(.white, for: .selected)
         view.setTitleColor(.white, for: .highlighted)
         view.titleLabel?.font = .systemFont(ofSize: 15)
+        view.contentEdgeInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
         return view
     }()
     private lazy var imageView: UIImageView = {
@@ -114,9 +104,7 @@ class CLChatPhotoAlbumCell: UICollectionViewCell {
 extension CLChatPhotoAlbumCell {
     private func initUI() {
         contentView.addSubview(imageView)
-        contentView.addSubview(seletedContentView)
-        seletedContentView.addSubview(seletedImageView)
-        seletedContentView.addSubview(seletedNumberButton)
+        contentView.addSubview(seletedNumberButton)
         imageView.addSubview(tipsBackgroundView)
         tipsBackgroundView.addSubview(tipsLabel)
     }
@@ -124,16 +112,10 @@ extension CLChatPhotoAlbumCell {
         imageView.snp.makeConstraints { (make) in
             make.center.width.height.equalToSuperview()
         }
-        seletedContentView.snp.makeConstraints { (make) in
-            make.size.equalTo(20)
-            make.top.equalTo(10)
-            make.right.equalTo(-10)
-        }
-        seletedImageView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
-        }
         seletedNumberButton.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
+            make.top.equalTo(5)
+            make.right.equalTo(-5)
+            make.width.equalTo(seletedNumberButton.snp.height)
         }
         tipsBackgroundView.snp.makeConstraints { (make) in
             make.top.equalTo(5)
@@ -216,7 +198,7 @@ extension CLChatPhotoAlbumCell {
         let translation = recognizer.translation(in: keyWindow)
         let centerInKeyWindow = superview.convert(view.center, to: keyWindow)
         if !isOnWindow {
-            seletedContentView.isHidden = true
+            seletedNumberButton.isHidden = true
             keyWindow.addSubview(view)
         }
         endPoint = contentView.convert(centerInKeyWindow, from: keyWindow)
@@ -249,7 +231,7 @@ extension CLChatPhotoAlbumCell {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
             view.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
         }) { (_) in
-            self.seletedContentView.isHidden = false
+            self.seletedNumberButton.isHidden = false
         }
         guard let image = image else {
             return
@@ -270,7 +252,7 @@ extension CLChatPhotoAlbumCell {
             view.superview?.setNeedsLayout()
             view.superview?.layoutIfNeeded()
         }) { _ in
-            self.seletedContentView.isHidden = false
+            self.seletedNumberButton.isHidden = false
             self.contentView.insertSubview(view, at: 0)
             view.snp.remakeConstraints { (make) in
                 make.width.height.equalToSuperview()

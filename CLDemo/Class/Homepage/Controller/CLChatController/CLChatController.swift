@@ -58,7 +58,7 @@ extension CLChatController {
         inputToolBar.viewWillTransition(to: size, with: coordinator)
     }
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+        return .default
     }
 }
 extension CLChatController {

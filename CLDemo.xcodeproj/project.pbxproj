@@ -169,7 +169,6 @@
 		5B51EE1324AB161700F45628 /* CLNamespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51EE1224AB161700F45628 /* CLNamespace.swift */; };
 		5B63581924ADC50D00D768A4 /* data-right.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B63581724ADC50D00D768A4 /* data-right.json */; };
 		5B63581A24ADC50D00D768A4 /* data-left.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B63581824ADC50D00D768A4 /* data-left.json */; };
-		5B6CC97724AACC190002B5DA /* CLChatPhotoAlbumTopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6CC97624AACC190002B5DA /* CLChatPhotoAlbumTopBar.swift */; };
 		5B6CC97924AACC240002B5DA /* CLChatPhotoAlbumBottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6CC97824AACC240002B5DA /* CLChatPhotoAlbumBottomBar.swift */; };
 		5B737E5524A8994400079523 /* CLBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B737E5424A8994400079523 /* CLBackView.swift */; };
 		5B737E5824A899D300079523 /* CLLogForOC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B737E5724A899D200079523 /* CLLogForOC.m */; };
@@ -533,7 +532,6 @@
 		5B51EE1224AB161700F45628 /* CLNamespace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLNamespace.swift; sourceTree = "<group>"; };
 		5B63581724ADC50D00D768A4 /* data-right.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "data-right.json"; sourceTree = "<group>"; };
 		5B63581824ADC50D00D768A4 /* data-left.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "data-left.json"; sourceTree = "<group>"; };
-		5B6CC97624AACC190002B5DA /* CLChatPhotoAlbumTopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLChatPhotoAlbumTopBar.swift; sourceTree = "<group>"; };
 		5B6CC97824AACC240002B5DA /* CLChatPhotoAlbumBottomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLChatPhotoAlbumBottomBar.swift; sourceTree = "<group>"; };
 		5B737E5424A8994400079523 /* CLBackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLBackView.swift; sourceTree = "<group>"; };
 		5B737E5624A899D200079523 /* CLLogForOC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLLogForOC.h; sourceTree = "<group>"; };
@@ -1446,7 +1444,6 @@
 			children = (
 				B5A705B123F29E5E007745BC /* CLChatPhotoAlbumContentView.swift */,
 				B5A705B323F2AE1C007745BC /* CLChatPhotoAlbumCell.swift */,
-				5B6CC97624AACC190002B5DA /* CLChatPhotoAlbumTopBar.swift */,
 				5B6CC97824AACC240002B5DA /* CLChatPhotoAlbumBottomBar.swift */,
 			);
 			path = CLChatPhotoAlbumContentView;
@@ -2471,7 +2468,6 @@
 				5B190E5C23B66803005A2474 /* CLPopupController.swift in Sources */,
 				0CC7796622D9D7E10027B310 /* CLPhotoBrowserViewController.m in Sources */,
 				5BCCEC57245BCDE70049AC70 /* CLVernierCaliperController.swift in Sources */,
-				5B6CC97724AACC190002B5DA /* CLChatPhotoAlbumTopBar.swift in Sources */,
 				5BA7BF8C24AC3D180072B94C /* CLPopupBMIInputController.swift in Sources */,
 				5BA7BF8B24AC3D180072B94C /* CLPopupMessageController.swift in Sources */,
 				5B44D12A2435C61E0059476D /* CLTagsController.swift in Sources */,

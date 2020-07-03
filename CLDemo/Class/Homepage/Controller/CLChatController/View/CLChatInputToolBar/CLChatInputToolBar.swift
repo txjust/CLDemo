@@ -90,8 +90,8 @@ class CLChatInputToolBar: UIView {
     private lazy var moreButton: UIButton = {
         let view = UIButton()
         view.adjustsImageWhenHighlighted = false
-        view.setImage(UIImage.init(named: "addIcon"), for: .normal)
-        view.setImage(UIImage.init(named: "addIcon"), for: .selected)
+        view.setBackgroundImage(UIImage.init(named: "addIcon"), for: .normal)
+        view.setBackgroundImage(UIImage.init(named: "addIcon"), for: .selected)
         view.addTarget(self, action: #selector(photoButtonAction), for: .touchUpInside)
         return view
     }()
@@ -99,8 +99,8 @@ class CLChatInputToolBar: UIView {
     private lazy var emojiButton: UIButton = {
         let view = UIButton()
         view.adjustsImageWhenHighlighted = false
-        view.setImage(UIImage.init(named: "facialIcon"), for: .normal)
-        view.setImage(UIImage.init(named: "facialIcon"), for: .selected)
+        view.setBackgroundImage(UIImage.init(named: "facialIcon"), for: .normal)
+        view.setBackgroundImage(UIImage.init(named: "facialIcon"), for: .selected)
         view.addTarget(self, action: #selector(emojiButtonAction), for: .touchUpInside)
         return view
     }()
@@ -108,8 +108,8 @@ class CLChatInputToolBar: UIView {
     private lazy var recordButton: UIButton = {
         let view = UIButton()
         view.adjustsImageWhenHighlighted = false
-        view.setImage(UIImage.init(named: "voiceIcon"), for: .normal)
-        view.setImage(UIImage.init(named: "voiceIcon"), for: .selected)
+        view.setBackgroundImage(UIImage.init(named: "voiceIcon"), for: .normal)
+        view.setBackgroundImage(UIImage.init(named: "voiceIcon"), for: .selected)
         view.addTarget(self, action: #selector(recordButtonAction), for: .touchUpInside)
         return view
     }()
@@ -118,14 +118,16 @@ class CLChatInputToolBar: UIView {
         let view = UIButton()
         view.isHidden = true
         view.adjustsImageWhenHighlighted = false
-        view.setImage(UIImage.init(named: "btn_knocktalk_send"), for: .normal)
-        view.setImage(UIImage.init(named: "btn_knocktalk_send"), for: .selected)
+        view.setBackgroundImage(UIImage.init(named: "btn_knocktalk_send"), for: .normal)
+        view.setBackgroundImage(UIImage.init(named: "btn_knocktalk_send"), for: .selected)
         view.addTarget(self, action: #selector(sendButtonAction), for: .touchUpInside)
         return view
     }()
     ///输入框
     private lazy var textView: CLChatTextView = {
         let view = CLChatTextView()
+        view.layer.cornerRadius = 5
+        view.clipsToBounds = true
         view.backgroundColor = .white
         view.autocapitalizationType = .none
         view.enablesReturnKeyAutomatically = true
@@ -135,7 +137,6 @@ class CLChatInputToolBar: UIView {
         view.returnKeyType = .send
         view.autocorrectionType = .no
         view.textColor = .hexColor(with: "0xBABAE2")
-        view.keyboardAppearance = .dark
         view.textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom:8, right: 8)
         view.textContainer.lineFragmentPadding = 0
         view.textViewHeightChangeCallBack = {[weak self] (height) in

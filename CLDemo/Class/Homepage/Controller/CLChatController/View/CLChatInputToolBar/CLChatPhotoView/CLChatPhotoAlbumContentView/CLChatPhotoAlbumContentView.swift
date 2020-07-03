@@ -29,20 +29,12 @@ class CLChatPhotoAlbumContentView: UIView {
         manager.stopCachingImagesForAllAssets()
         return manager
     }()
-    ///顶部工具条
-    private lazy var topToolBar: CLChatPhotoAlbumTopBar = {
-        let view = CLChatPhotoAlbumTopBar()
-        view.closeCallback = {[weak self] in
-            self?.closeCallback?()
-        }
-        return view
-    }()
     ///collectionView
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        view.backgroundColor = UIColor.clear
+        view.backgroundColor = .hexColor(with: "#EEEEED")
         view.register(CLChatPhotoAlbumCell.classForCoder(), forCellWithReuseIdentifier: "CLChatPhotoAlbumCell")
         view.delegate = self
         view.dataSource = self
@@ -58,8 +50,8 @@ class CLChatPhotoAlbumContentView: UIView {
             self.sendImageCallBack?(self.selectedArray.map({($0.image, $0.asset)}))
             self.restoreInitialState()
         }
-        view.albumCallback = {[weak self] in
-            self?.showImagePicker()
+        view.closeCallback = {[weak self] in
+            self?.closeCallback?()
         }
         return view
     }()
@@ -76,22 +68,16 @@ class CLChatPhotoAlbumContentView: UIView {
 extension CLChatPhotoAlbumContentView {
     private func initUI() {
         backgroundColor = .hexColor(with: "0x31313F")
-        addSubview(topToolBar)
         addSubview(collectionView)
         addSubview(bottomToolBar)
     }
     private func makeConstraints() {
-        topToolBar.snp.makeConstraints { (make) in
-            make.left.right.top.equalToSuperview()
-            make.height.equalTo(44)
-        }
         bottomToolBar.snp.makeConstraints { (make) in
             make.left.right.bottom.equalToSuperview()
             make.height.equalTo(44)
         }
         collectionView.snp.makeConstraints { (make) in
-            make.left.right.equalToSuperview()
-            make.top.equalTo(topToolBar.snp.bottom)
+            make.top.left.right.equalToSuperview()
             make.bottom.equalTo(bottomToolBar.snp.top)
         }
     }
@@ -110,7 +96,7 @@ extension CLChatPhotoAlbumContentView {
             return .zero
         }
         let scale = CGFloat(asset.pixelWidth) / CGFloat(asset.pixelHeight)
-        let height = frame.height - 88
+        let height = frame.height - 44 - 20
         return CGSize(width: height * scale, height: height)
     }
 }
@@ -174,7 +160,7 @@ extension CLChatPhotoAlbumContentView: UICollectionViewDelegateFlowLayout {
         return 10
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+        return UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
     }
 }
 extension CLChatPhotoAlbumContentView: UICollectionViewDataSource {
