@@ -34,13 +34,13 @@ class CLChatVoiceCell: CLChatCell {
     }()
     ///左侧气泡
     private lazy var leftBubbleImage: UIImage = {
-        var image = UIImage.init(named: "icon_message_l_bg")!
+        var image = UIImage.init(named: "leftBg")!
         image = image.resizableImage(withCapInsets: UIEdgeInsets.init(top: image.size.height * 0.5, left: image.size.width * 0.5, bottom: image.size.height * 0.5, right: image.size.width * 0.5))
         return image
     }()
     ///右侧气泡
     private lazy var rightBubbleImage: UIImage = {
-        var image = UIImage.init(named: "icon_message_r_bg")!
+        var image = UIImage.init(named: "rightBg")!
         image = image.resizableImage(withCapInsets: UIEdgeInsets.init(top: image.size.height * 0.5, left: image.size.width * 0.5, bottom: image.size.height * 0.5, right: image.size.width * 0.5))
         return image
     }()
@@ -107,6 +107,7 @@ extension CLChatVoiceCell: CLChatCellProtocol {
         remakeConstraints(isFromMyself: isFromMyself)
         let duration = CGFloat(floor(Double(item.duration)))
         durationLabel.text = "\(Int(duration))"
+        durationLabel.textColor = isFromMyself ? .white : .black
         var width: CGFloat = 5
         width = duration * width + 65
         width = max(min(width, cl_screenWidth() * 0.45), 70)

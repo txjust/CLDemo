@@ -29,13 +29,13 @@ class CLChatTextCell: CLChatCell {
     }
     ///左侧气泡
     private lazy var leftBubbleImage: UIImage = {
-        var image = UIImage.init(named: "icon_message_l_bg")!
+        var image = UIImage.init(named: "leftBg")!
         image = image.resizableImage(withCapInsets: UIEdgeInsets.init(top: image.size.height * 0.5, left: image.size.width * 0.5, bottom: image.size.height * 0.5, right: image.size.width * 0.5))
         return image
     }()
     ///右侧气泡
     private lazy var rightBubbleImage: UIImage = {
-        var image = UIImage.init(named: "icon_message_r_bg")!
+        var image = UIImage.init(named: "rightBg")!
         image = image.resizableImage(withCapInsets: UIEdgeInsets.init(top: image.size.height * 0.5, left: image.size.width * 0.5, bottom: image.size.height * 0.5, right: image.size.width * 0.5))
         return image
     }()

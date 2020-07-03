@@ -261,7 +261,7 @@ class CLChatInputToolBar: UIView {
     ///初始高度
     var toolBarDefaultHeight: CGFloat {
         get {
-            return textViewDefaultHeight + 10 + 10 + cl_safeAreaInsets().bottom
+            return textViewDefaultHeight + 15 + 15 + cl_safeAreaInsets().bottom
         }
     }
     ///文字大小
@@ -307,7 +307,7 @@ class CLChatInputToolBar: UIView {
 //MARK: - JmoVxia---初始化
 extension CLChatInputToolBar {
     private func initUI() {
-        backgroundColor = .hexColor(with: "##F6F6F6")
+        backgroundColor = .hexColor(with: "#F6F6F6")
         addSubview(contentView)
         addSubview(topLineView)
         contentView.addSubview(topToolBar)
