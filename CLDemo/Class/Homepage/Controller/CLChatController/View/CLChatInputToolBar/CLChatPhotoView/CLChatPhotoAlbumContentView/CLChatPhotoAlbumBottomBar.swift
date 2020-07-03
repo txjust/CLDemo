@@ -38,6 +38,11 @@ class CLChatPhotoAlbumBottomBar: UIView {
     ///发送按钮
     private lazy var sendButton: UIButton = {
         let view = UIButton()
+        view.isUserInteractionEnabled = false
+        view.setTitleColor(.hexColor(with: "#666666"), for: .normal)
+        view.setTitleColor(.hexColor(with: "#666666"), for: .selected)
+        view.setTitleColor(.hexColor(with: "#666666"), for: .highlighted)
+        view.backgroundColor = .hexColor(with: "#EEEEED")
         view.titleLabel?.font = PingFangSCMedium(14)
         view.clipsToBounds = true
         view.layer.cornerRadius = 15
