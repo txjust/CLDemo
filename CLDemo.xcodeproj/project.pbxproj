@@ -1989,8 +1989,8 @@
 			isa = PBXGroup;
 			children = (
 				B51EE6CB23DF104800146862 /* CLGradientLayerView.swift */,
-				B51EE6CD23DF138100146862 /* CLChatInputToolBar */,
 				B5498C8823DEE2A10082D4E5 /* Tableview */,
+				B51EE6CD23DF138100146862 /* CLChatInputToolBar */,
 				B5498C8723DEE2920082D4E5 /* Item */,
 				B5498C8623DEE2820082D4E5 /* Cell */,
 			);

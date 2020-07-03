@@ -195,7 +195,7 @@ class CLChatInputToolBar: UIView {
         return view
     }()
     ///是否弹出键盘
-    private var isShowKeyboard: Bool = false {
+    private (set) var isShowKeyboard: Bool = false {
         willSet {
             if isShowKeyboard != newValue {
                 if newValue == true {

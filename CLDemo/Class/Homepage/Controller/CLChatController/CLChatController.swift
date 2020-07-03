@@ -22,9 +22,14 @@ class CLChatController: CLBaseViewController {
         if #available(iOS 11.0, *) {
             tableView.contentInsetAdjustmentBehavior = .never
         }
-        let panGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         panGestureRecognizer.delegate = self
+        panGestureRecognizer.cancelsTouchesInView = false
         tableView.addGestureRecognizer(panGestureRecognizer)
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tapGestureRecognizer.delegate = self
+        tapGestureRecognizer.cancelsTouchesInView = false
+        tableView.addGestureRecognizer(tapGestureRecognizer)
         return tableView
     }()
     ///输入工具条
@@ -187,7 +192,7 @@ extension CLChatController: UIGestureRecognizerDelegate {
             return false
         }
         let touchFrame = view.convert(touchView.frame, from: touchView.superview)
-        if inputToolBar.frame.contains(touchFrame) {
+        if inputToolBar.frame.contains(touchFrame) || !inputToolBar.isShowKeyboard {
             return false
         }
         return true
