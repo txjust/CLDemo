@@ -210,7 +210,7 @@ extension CLChatRecordView {
             zoomIn()
             redcircle.isHidden = true
             timeView.dismiss()
-            if isOut {
+            if isOut || recorder.audioDuration < 1.0 {
                 cancelRecord()
             }else {
                 endRecord()

@@ -118,8 +118,8 @@ class CLChatInputToolBar: UIView {
         let view = UIButton()
         view.isHidden = true
         view.adjustsImageWhenHighlighted = false
-        view.setBackgroundImage(UIImage.init(named: "btn_knocktalk_send"), for: .normal)
-        view.setBackgroundImage(UIImage.init(named: "btn_knocktalk_send"), for: .selected)
+        view.setBackgroundImage(UIImage.init(named: "sendIcon"), for: .normal)
+        view.setBackgroundImage(UIImage.init(named: "sendIcon"), for: .selected)
         view.addTarget(self, action: #selector(sendButtonAction), for: .touchUpInside)
         return view
     }()
@@ -136,7 +136,7 @@ class CLChatInputToolBar: UIView {
         view.delegate = self
         view.returnKeyType = .send
         view.autocorrectionType = .no
-        view.textColor = .hexColor(with: "0xBABAE2")
+        view.textColor = .black
         view.textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom:8, right: 8)
         view.textContainer.lineFragmentPadding = 0
         view.textViewHeightChangeCallBack = {[weak self] (height) in

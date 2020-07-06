@@ -167,7 +167,11 @@ static OSStatus RecordCallback(void *inRefCon,
     }
 }
 - (void)cancelRecorder {
-    [self stopRecorder];
+    OSStatus status = AudioOutputUnitStop(self.audioUnit);
+    if (status != noErr) {
+        CLLog(@"stopRecorder error: %d", status);
+    }
+    [self resumeActiveAudioSession];
     if ([[NSFileManager defaultManager] fileExistsAtPath: self.mp3Path]) {
         [[NSFileManager defaultManager] removeItemAtPath:self.mp3Path error:nil];
         self.mp3Path = nil;

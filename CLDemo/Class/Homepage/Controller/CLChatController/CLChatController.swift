@@ -105,26 +105,50 @@ extension CLChatController {
     }
     private func addTextMessages(_ messages: [String]) {
         DispatchQueue.global().async {
-            for text in messages {
-                let item = CLChatTextItem()
-                item.position = .right
-                item.text = text
-                self.dataSource.append(item)
+            do {
+                for text in messages {
+                    let item = CLChatTextItem()
+                    item.position = .right
+                    item.text = text
+                    self.dataSource.append(item)
+                }
+            }
+            do {
+                for text in messages {
+                    let item = CLChatTextItem()
+                    item.position = .left
+                    item.text = text
+                    self.dataSource.append(item)
+                }
             }
             self.reloadData()
         }
     }
     private func addImageMessages(_ messages: [(image: UIImage, asset: PHAsset)]) {
         DispatchQueue.global().async {
-            for imageInfo in messages {
-                guard let previewImageData = imageInfo.image.pngData() else {
-                    return
+            do {
+                for imageInfo in messages {
+                    guard let previewImageData = imageInfo.image.pngData() else {
+                        return
+                    }
+                    let imageItem = CLChatImageItem.init()
+                    imageItem.imagePath = self.saveUploadImage(imageData: previewImageData, messageId: (imageItem.messageId + "previewImage"))
+                    imageItem.imageOriginalSize = CGSize(width: imageInfo.asset.pixelWidth, height: imageInfo.asset.pixelHeight)
+                    imageItem.position = .right
+                    self.dataSource.append(imageItem)
                 }
-                let imageItem = CLChatImageItem.init()
-                imageItem.imagePath = self.saveUploadImage(imageData: previewImageData, messageId: (imageItem.messageId + "previewImage"))
-                imageItem.imageOriginalSize = CGSize(width: imageInfo.asset.pixelWidth, height: imageInfo.asset.pixelHeight)
-                imageItem.position = .right
-                self.dataSource.append(imageItem)
+            }
+            do {
+                for imageInfo in messages {
+                    guard let previewImageData = imageInfo.image.pngData() else {
+                        return
+                    }
+                    let imageItem = CLChatImageItem.init()
+                    imageItem.imagePath = self.saveUploadImage(imageData: previewImageData, messageId: (imageItem.messageId + "previewImage"))
+                    imageItem.imageOriginalSize = CGSize(width: imageInfo.asset.pixelWidth, height: imageInfo.asset.pixelHeight)
+                    imageItem.position = .left
+                    self.dataSource.append(imageItem)
+                }
             }
             self.reloadData()
         }

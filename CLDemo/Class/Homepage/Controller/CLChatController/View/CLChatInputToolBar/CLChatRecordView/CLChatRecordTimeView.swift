@@ -18,7 +18,7 @@ class CLChatRecordTimeView: UIView {
        let timeLabel = UILabel()
         timeLabel.textAlignment = .center
         timeLabel.textColor = UIColor.white
-        timeLabel.font = UIFont.systemFont(ofSize: 13)
+        timeLabel.font = .monospacedDigitSystemFont(ofSize: 13, weight: .medium)
         timeLabel.text = "00:00"
         return timeLabel
     }()
@@ -95,7 +95,7 @@ extension CLChatRecordTimeView {
         }) { finished in
             self.contentView.alpha = 1
             self.contentView.isHidden = true
-            self.backgroundImageView.image = UIImage.init(named: "img_time")?.tintedImage(color: .hexColor(with: "0x5C5C71"))
+            self.backgroundImageView.image = UIImage.init(named: "img_time")?.tintedImage(color: .hexColor(with: "34B46F"))
             self.timeLabel.textColor = UIColor.white
             self.isAnimationing = false
             self.timeLabel.text = "00:00"

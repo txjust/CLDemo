@@ -136,7 +136,6 @@
 		5B12FC761E7157BF0091A0E2 /* CLChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B12FC741E7157BF0091A0E2 /* CLChartView.m */; };
 		5B190E5C23B66803005A2474 /* CLPopupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B190E5B23B66803005A2474 /* CLPopupController.swift */; };
 		5B1C74261E78F120000AB534 /* CLChartXLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1C74251E78F120000AB534 /* CLChartXLabel.m */; };
-		5B1CC1C224AC8F6200C35523 /* send_timeout.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B1CC1C124AC8F6200C35523 /* send_timeout.json */; };
 		5B1CC1C424AC93F500C35523 /* CLChatVoiceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1CC1C324AC93F500C35523 /* CLChatVoiceItem.swift */; };
 		5B1CC1C724AC945C00C35523 /* CLChatVoiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1CC1C624AC945B00C35523 /* CLChatVoiceCell.swift */; };
 		5B1CC1C924AC95AE00C35523 /* TimeInterval+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1CC1C824AC95AE00C35523 /* TimeInterval+Extension.swift */; };
@@ -166,6 +165,7 @@
 		5B49566823B50ED700212772 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B49566723B50ED700212772 /* UIColor+Extension.swift */; };
 		5B49566D23B5DD0100212772 /* CLTwoSidedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B49566C23B5DD0100212772 /* CLTwoSidedView.swift */; };
 		5B51EE1324AB161700F45628 /* CLNamespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51EE1224AB161700F45628 /* CLNamespace.swift */; };
+		5B5F093E24B2B7CA00E69256 /* send_timeout.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B5F093D24B2B7CA00E69256 /* send_timeout.json */; };
 		5B63581924ADC50D00D768A4 /* data-right.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B63581724ADC50D00D768A4 /* data-right.json */; };
 		5B63581A24ADC50D00D768A4 /* data-left.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B63581824ADC50D00D768A4 /* data-left.json */; };
 		5B6CC97924AACC240002B5DA /* CLChatPhotoAlbumBottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6CC97824AACC240002B5DA /* CLChatPhotoAlbumBottomBar.swift */; };
@@ -494,7 +494,6 @@
 		5B190E5B23B66803005A2474 /* CLPopupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLPopupController.swift; sourceTree = "<group>"; };
 		5B1C74241E78F120000AB534 /* CLChartXLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLChartXLabel.h; sourceTree = "<group>"; };
 		5B1C74251E78F120000AB534 /* CLChartXLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLChartXLabel.m; sourceTree = "<group>"; };
-		5B1CC1C124AC8F6200C35523 /* send_timeout.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = send_timeout.json; sourceTree = "<group>"; };
 		5B1CC1C324AC93F500C35523 /* CLChatVoiceItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatVoiceItem.swift; sourceTree = "<group>"; };
 		5B1CC1C624AC945B00C35523 /* CLChatVoiceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatVoiceCell.swift; sourceTree = "<group>"; };
 		5B1CC1C824AC95AE00C35523 /* TimeInterval+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Extension.swift"; sourceTree = "<group>"; };
@@ -529,6 +528,7 @@
 		5B49566723B50ED700212772 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		5B49566C23B5DD0100212772 /* CLTwoSidedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLTwoSidedView.swift; sourceTree = "<group>"; };
 		5B51EE1224AB161700F45628 /* CLNamespace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLNamespace.swift; sourceTree = "<group>"; };
+		5B5F093D24B2B7CA00E69256 /* send_timeout.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = send_timeout.json; sourceTree = "<group>"; };
 		5B63581724ADC50D00D768A4 /* data-right.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "data-right.json"; sourceTree = "<group>"; };
 		5B63581824ADC50D00D768A4 /* data-left.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "data-left.json"; sourceTree = "<group>"; };
 		5B6CC97824AACC240002B5DA /* CLChatPhotoAlbumBottomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLChatPhotoAlbumBottomBar.swift; sourceTree = "<group>"; };
@@ -1389,10 +1389,10 @@
 		5B1CC1C024AC8F5600C35523 /* AnimationJson */ = {
 			isa = PBXGroup;
 			children = (
+				5B5F093D24B2B7CA00E69256 /* send_timeout.json */,
 				5B9F17FD24AECCF40094A3FD /* recoredWave_dk.json */,
 				5B63581824ADC50D00D768A4 /* data-left.json */,
 				5B63581724ADC50D00D768A4 /* data-right.json */,
-				5B1CC1C124AC8F6200C35523 /* send_timeout.json */,
 			);
 			path = AnimationJson;
 			sourceTree = "<group>";
@@ -2182,7 +2182,6 @@
 			files = (
 				5B9F17FE24AECCF40094A3FD /* recoredWave_dk.json in Resources */,
 				0CF79B1621967AE600DD0BF1 /* 一月.json in Resources */,
-				5B1CC1C224AC8F6200C35523 /* send_timeout.json in Resources */,
 				5B63581924ADC50D00D768A4 /* data-right.json in Resources */,
 				5BA7BF7524AC3D180072B94C /* food.json in Resources */,
 				0C7DE94D22DECC0D00FA9040 /* localLongImage1.jpg in Resources */,
@@ -2190,6 +2189,7 @@
 				0C7DE95222DECC0D00FA9040 /* localImage2.jpeg in Resources */,
 				0CF79B0B2196799C00DD0BF1 /* bank.json in Resources */,
 				5B63581A24ADC50D00D768A4 /* data-left.json in Resources */,
+				5B5F093E24B2B7CA00E69256 /* send_timeout.json in Resources */,
 				5BA7BF8924AC3D180072B94C /* loading.json in Resources */,
 				5B80D9F71DDD976A00A20E34 /* LaunchScreen.storyboard in Resources */,
 				0C7DE94F22DECC0D00FA9040 /* localImage6.jpeg in Resources */,

@@ -22,7 +22,7 @@ class CLChatTextCell: CLChatCell {
     var bubbleImageView = UIImageView()
     ///文字
     var titleLabel = UILabel.init().then { (label) in
-        label.textColor = .hexColor(with: "0xffffff")
+        label.textColor = .white
         label.font = .systemFont(ofSize: 15)
         label.numberOfLines = 0
         label.preferredMaxLayoutWidth = cl_scale_iphone6_width(275)
@@ -80,9 +80,10 @@ extension CLChatTextCell: CLChatCellProtocol {
         }
         self.item = nil
         self.item = textItem
+        let isFromMyself: Bool = textItem.position == .right
+        titleLabel.textColor = isFromMyself ? .white : .black
         titleLabel.text = textItem.text
         titleLabel.sizeToFit()
-        let isFromMyself: Bool = textItem.position == .right
         
         bubbleImageView.image = isFromMyself ? rightBubbleImage : leftBubbleImage
         remakeConstraints(isFromMyself: isFromMyself)
