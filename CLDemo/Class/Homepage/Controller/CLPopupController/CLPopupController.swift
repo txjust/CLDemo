@@ -181,11 +181,13 @@ extension CLPopupController {
     func showOneAlert() {
         CLPopupManager.showOneAlert(configureCallback: { (configure) in
             configure.isAutorotate = true
+            configure.interfaceOrientationMask = .all
         }, title: "我是一个按钮", message: "我有一个按钮")
     }
     func showTwoAlert() {
         CLPopupManager.showTwoAlert(configureCallback: { (configure) in
             configure.isAutorotate = true
+            configure.interfaceOrientationMask = .all
         }, title: "我是两个按钮", message: "我有两个按钮")
     }
     func showSuccess() {
