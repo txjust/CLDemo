@@ -219,6 +219,8 @@
 		5BA7BF9224AC3E910072B94C /* CLFlopBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA7BF9024AC3E910072B94C /* CLFlopBottomView.swift */; };
 		5BA7BF9424AC40F20072B94C /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA7BF9324AC40F20072B94C /* UILabel+Extension.swift */; };
 		5BAB9F3824A319E700BAC6B5 /* libmp3lame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BAB9F3724A319E700BAC6B5 /* libmp3lame.a */; };
+		5BAD165B24EBD7FC00001E01 /* CLScrollAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAD165A24EBD7FC00001E01 /* CLScrollAnimationController.swift */; };
+		5BAD165D24EBD85300001E01 /* CLScrollComputingValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAD165C24EBD85300001E01 /* CLScrollComputingValue.swift */; };
 		5BB328B0244498230049ADE8 /* UIView+CLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB328AF244498230049ADE8 /* UIView+CLExtension.swift */; };
 		5BBB62921E7444A100B28FC3 /* CLChartToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BBB62911E7444A100B28FC3 /* CLChartToolBar.m */; };
 		5BC3FB8921CE96A400B7FF82 /* CLRotatingPictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC3FB8821CE96A400B7FF82 /* CLRotatingPictureViewController.swift */; };
@@ -597,6 +599,8 @@
 		5BA7BF9324AC40F20072B94C /* UILabel+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		5BAB9F3624A319E100BAC6B5 /* lame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lame.h; sourceTree = "<group>"; };
 		5BAB9F3724A319E700BAC6B5 /* libmp3lame.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libmp3lame.a; sourceTree = "<group>"; };
+		5BAD165A24EBD7FC00001E01 /* CLScrollAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLScrollAnimationController.swift; sourceTree = "<group>"; };
+		5BAD165C24EBD85300001E01 /* CLScrollComputingValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLScrollComputingValue.swift; sourceTree = "<group>"; };
 		5BB328AF244498230049ADE8 /* UIView+CLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+CLExtension.swift"; sourceTree = "<group>"; };
 		5BB848271E002C5000BB266D /* Define.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Define.h; sourceTree = "<group>"; };
 		5BBB62901E7444A100B28FC3 /* CLChartToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLChartToolBar.h; sourceTree = "<group>"; };
@@ -1633,6 +1637,7 @@
 			children = (
 				5B80DA2F1DDD993F00A20E34 /* CLHomepageController.h */,
 				5B80DA301DDD993F00A20E34 /* CLHomepageController.m */,
+				5BAD165924EBD7C300001E01 /* CLScrollAnimationController */,
 				5BAB9F2B24A3011900BAC6B5 /* CLRecordeEncodeController */,
 				5BCCEC52245BCD8F0049AC70 /* CLVernierCaliperController */,
 				5B190E5A23B667DD005A2474 /* CLPopupController */,
@@ -1954,6 +1959,15 @@
 				5BAB9F3724A319E700BAC6B5 /* libmp3lame.a */,
 			);
 			path = LAME;
+			sourceTree = "<group>";
+		};
+		5BAD165924EBD7C300001E01 /* CLScrollAnimationController */ = {
+			isa = PBXGroup;
+			children = (
+				5BAD165A24EBD7FC00001E01 /* CLScrollAnimationController.swift */,
+				5BAD165C24EBD85300001E01 /* CLScrollComputingValue.swift */,
+			);
+			path = CLScrollAnimationController;
 			sourceTree = "<group>";
 		};
 		5BCCEC52245BCD8F0049AC70 /* CLVernierCaliperController */ = {
@@ -2410,6 +2424,7 @@
 				0CEE94872204395B007FA31B /* CLPasswordInputView.swift in Sources */,
 				5BF830AE24AB0DA8008E7CE8 /* CLChatTipsCell.swift in Sources */,
 				B51EE6E623DF138200146862 /* CLChatEmojiDeleteItem.swift in Sources */,
+				5BAD165D24EBD85300001E01 /* CLScrollComputingValue.swift in Sources */,
 				B51EE6EB23DF138200146862 /* CLChatEmojiView.swift in Sources */,
 				5BA7BF7824AC3D180072B94C /* CLPopupFoodPickerContentView.swift in Sources */,
 				0C5854E2235416920036DBC2 /* CLBroadcastMainCell.m in Sources */,
@@ -2460,6 +2475,7 @@
 				5BCCEC68245BFC890049AC70 /* CLVernierCaliperMiddleCell.swift in Sources */,
 				5BF1ACE6245C850A0083BE70 /* CLTitleControllerView.m in Sources */,
 				0CCDA3FF22D9D1C5007B41C4 /* CLPhotoBrowserPresentationController.m in Sources */,
+				5BAD165B24EBD7FC00001E01 /* CLScrollAnimationController.swift in Sources */,
 				5B241196243B039200B2E0DC /* CLTagsItem.swift in Sources */,
 				0C77C4B92248C85C007D0FFC /* CLGCDTimerManager.swift in Sources */,
 				0C7A1EA0231A7129002D75F2 /* CLCustomTransitionDelegate.m in Sources */,

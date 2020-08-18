@@ -99,6 +99,7 @@
         _arrayDS = [[NSMutableArray alloc] init];
         [_arrayDS addObject:NSLocalizedString(@"切换语言", nil)];
         [_arrayDS addObject:NSLocalizedString(@"修改字号", nil)];
+        [_arrayDS addObject:NSLocalizedString(@"滑动动画", nil)];
         [_arrayDS addObject:NSLocalizedString(@"录音转码", nil)];
         [_arrayDS addObject:NSLocalizedString(@"绘制头像", nil)];
         [_arrayDS addObject:NSLocalizedString(@"水平布局", nil)];
@@ -140,6 +141,7 @@
         _controllerArray = [[NSMutableArray alloc] init];
         [_controllerArray addObject:[CLChangeLanguageController class]];
         [_controllerArray addObject:[CLChangeFontSizeController class]];
+        [_controllerArray addObject:[CLScrollAnimationController class]];
         [_controllerArray addObject:[CLRecordeEncodeController class]];
         [_controllerArray addObject:[CLDrawImageController class]];
         [_controllerArray addObject:[CLLayoutController class]];
