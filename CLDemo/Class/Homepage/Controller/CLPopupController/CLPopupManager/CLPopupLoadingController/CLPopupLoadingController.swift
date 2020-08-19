@@ -9,7 +9,7 @@
 import UIKit
 import Lottie
 
-class CLPopupLoadingController: CLPopupManagerBaseController {
+class CLPopupLoadingController: CLPopupManagerController {
     private lazy var backgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = .hexColor(with: "#000000", alpha: 0.15)

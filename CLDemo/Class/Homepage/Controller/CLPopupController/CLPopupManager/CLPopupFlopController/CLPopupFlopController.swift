@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CLPopupFlopController: CLPopupManagerBaseController {
+class CLPopupFlopController: CLPopupManagerController {
     var clickWantCallBack: (() -> ())?
     private var isFlop: Bool = false
     private lazy var contentView: UIView = {

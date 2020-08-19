@@ -17,7 +17,7 @@ enum CLPopupTwoInputType {
     case bloodSugar
 }
 
-class CLPopupTwoInputController: CLPopupManagerBaseController {
+class CLPopupTwoInputController: CLPopupManagerController {
     var sureCallback: ((String?, String?) -> ())?
     var type: CLPopupTwoInputType = .temperature {
         didSet {

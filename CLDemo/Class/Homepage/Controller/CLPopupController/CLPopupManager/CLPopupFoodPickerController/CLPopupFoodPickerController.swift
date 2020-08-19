@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CLPopupFoodPickerController: CLPopupManagerBaseController {
+class CLPopupFoodPickerController: CLPopupManagerController {
     var selectedCallback: ((String, String, String, String)->())?
     lazy var topToolBar: UIButton = {
         let topToolBar = UIButton()
