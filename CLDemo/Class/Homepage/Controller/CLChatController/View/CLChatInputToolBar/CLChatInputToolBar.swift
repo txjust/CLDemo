@@ -23,7 +23,7 @@ protocol CLChatInputToolBarDelegate: class {
     ///取消录音
     func inputBarCancelRecord()
     ///结束录音
-    func inputBarFinishRecord(duration: TimeInterval, path: String)
+    func inputBarFinishRecord(duration: TimeInterval, file: Data)
 }
 extension CLChatInputToolBarDelegate {
     ///键盘发送文字
@@ -51,7 +51,7 @@ extension CLChatInputToolBarDelegate {
         
     }
     ///结束录音
-    func inputBarFinishRecord(duration: TimeInterval, path: String) {
+    func inputBarFinishRecord(duration: TimeInterval, file: Data) {
         
     }
 }
@@ -89,6 +89,7 @@ class CLChatInputToolBar: UIView {
     ///图片按钮
     private lazy var moreButton: UIButton = {
         let view = UIButton()
+        view.expandClickEdgeInsets = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
         view.adjustsImageWhenHighlighted = false
         view.setBackgroundImage(UIImage.init(named: "addIcon"), for: .normal)
         view.setBackgroundImage(UIImage.init(named: "addIcon"), for: .selected)
@@ -98,6 +99,7 @@ class CLChatInputToolBar: UIView {
     ///表情按钮
     private lazy var emojiButton: UIButton = {
         let view = UIButton()
+        view.expandClickEdgeInsets = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
         view.adjustsImageWhenHighlighted = false
         view.setBackgroundImage(UIImage.init(named: "facialIcon"), for: .normal)
         view.setBackgroundImage(UIImage.init(named: "facialIcon"), for: .selected)
@@ -107,6 +109,7 @@ class CLChatInputToolBar: UIView {
     ///录音按钮
     private lazy var recordButton: UIButton = {
         let view = UIButton()
+        view.expandClickEdgeInsets = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
         view.adjustsImageWhenHighlighted = false
         view.setBackgroundImage(UIImage.init(named: "voiceIcon"), for: .normal)
         view.setBackgroundImage(UIImage.init(named: "voiceIcon"), for: .selected)
@@ -116,6 +119,7 @@ class CLChatInputToolBar: UIView {
     ///发送按钮
     private lazy var sendButton: UIButton = {
         let view = UIButton()
+        view.expandClickEdgeInsets = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
         view.isHidden = true
         view.adjustsImageWhenHighlighted = false
         view.setBackgroundImage(UIImage.init(named: "sendIcon"), for: .normal)
@@ -189,8 +193,8 @@ class CLChatInputToolBar: UIView {
         view.cancelRecorderCallBack = {[weak self] in
             self?.delegate?.inputBarCancelRecord()
         }
-        view.finishRecorderCallBack = {[weak self] (duration, path) in
-            self?.delegate?.inputBarFinishRecord(duration: duration, path: path)
+        view.finishRecorderCallBack = {[weak self] (duration, data) in
+            self?.delegate?.inputBarFinishRecord(duration: duration, file: data)
         }
         return view
     }()

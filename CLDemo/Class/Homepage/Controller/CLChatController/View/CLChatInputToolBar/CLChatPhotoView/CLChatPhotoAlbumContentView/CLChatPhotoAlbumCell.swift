@@ -71,6 +71,7 @@ class CLChatPhotoAlbumCell: UICollectionViewCell {
     }()
     private lazy var seletedNumberButton: UIButton = {
         let view = UIButton()
+        view.isUserInteractionEnabled = false
         view.setBackgroundImage(UIImage(named: "advNsel"), for: .normal)
         view.setBackgroundImage(UIImage(named: "advSel"), for: .selected)
         view.setTitleColor(.white, for: .normal)

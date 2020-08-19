@@ -10,11 +10,11 @@ import SnapKit
 
 class CLChatEmojiView: UIView {
     ///item大小
-    var itemSize: CGSize = CGSize(width: 40, height: 40)
+    var itemSize: CGSize = CGSize(width: 45, height: 45)
     ///行间隙
-    var rowMargin: CGFloat = 15
+    var rowMargin: CGFloat = 0
     ///列间隙
-    var columnMargin: CGFloat = 15
+    var columnMargin: CGFloat = 0
     ///顶部间距
     var topInset: CGFloat = 15
     ///底部间距
@@ -172,7 +172,7 @@ extension CLChatEmojiView {
         }
     }
     private func initData() {
-        let subSize = self.rowNumber * self.columnNumber - 1
+        let subSize = rowNumber * columnNumber - 1
         DispatchQueue.global().async {
             self.emojiDataSource = self.splitArray(array: self.emojiArray, withSubSize: subSize)
             DispatchQueue.main.async {
@@ -181,39 +181,23 @@ extension CLChatEmojiView {
         }
     }
     private func splitArray( array: [String], withSubSize subSize: Int) -> [[CLChatEmojiItemProtocol]] {
-        let itemArray = array.map { (emojiString) -> CLChatEmojTextItem in
-            let item = CLChatEmojTextItem()
-            item.emoji = emojiString
-            return item
-        }
-        let count = array.count  % subSize == 0 ? (array.count  / subSize) : (array.count  / subSize + 1)
-        var arr: [[CLChatEmojiItemProtocol]] = []
-        for i in 0..<count {
-            let index: Int = i * subSize
-            var arr1: [CLChatEmojiItemProtocol] = []
-            arr1.removeAll()
-            var j: Int = index
-            while j < subSize * (i + 1) && j < array.count  {
-                arr1.append(itemArray[j])
-                j += 1
-            }
-            arr.append(arr1)
-        }
-        if var last = arr.last {
-            if last.count < subSize {
-                for _ in 0 ..< subSize - last.count {
-                    let item = CLChatEmojTextItem()
-                    last.append(item)
+        let sectionCount = array.count % subSize == 0 ? (array.count / subSize) : (array.count / subSize + 1)
+        var itemArray: [[CLChatEmojiItemProtocol]] = []
+        for section in 0 ..< sectionCount {
+            var index: Int = section * subSize
+            var sectionArray: [CLChatEmojiItemProtocol] = []
+            while index < subSize * (section + 1) {
+                let item = CLChatEmojTextItem()
+                if index < array.count {
+                    item.emoji = array[index]
                 }
-                arr[arr.count - 1] = last
+                sectionArray.append(item)
+                index += 1
             }
+            sectionArray.append(CLChatEmojiDeleteItem())
+            itemArray.append(sectionArray)
         }
-        var dataSourceArray = [[CLChatEmojiItemProtocol]]()
-        for var item in arr {
-            item.append(CLChatEmojiDeleteItem())
-            dataSourceArray.append(item)
-        }
-        return dataSourceArray
+        return itemArray
     }
     
     @objc private func handleLongPress(gesture : UILongPressGestureRecognizer!) {

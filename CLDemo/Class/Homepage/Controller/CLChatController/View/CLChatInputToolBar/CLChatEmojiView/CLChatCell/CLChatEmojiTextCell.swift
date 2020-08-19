@@ -11,7 +11,7 @@ class CLChatEmojiTextCell: UICollectionViewCell {
     private lazy var label: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 100)
+        label.font = UIFont.systemFont(ofSize: 200)
         label.adjustsFontSizeToFitWidth = true
         label.baselineAdjustment = .alignCenters
         return label
@@ -21,7 +21,8 @@ class CLChatEmojiTextCell: UICollectionViewCell {
         super.init(frame: frame)
         addSubview(label)
         label.snp.makeConstraints { (make) in
-            make.edges.equalTo(0)
+            make.center.equalToSuperview()
+            make.size.equalToSuperview().offset(-10)
         }
     }
     required init?(coder: NSCoder) {

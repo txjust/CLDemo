@@ -12,6 +12,8 @@ import Photos
 class CLChatPhotoView: UIView {
     ///发送图片回调
     var sendImageCallBack: (([(UIImage, PHAsset)]) -> ())?
+    ///是否显示快速相册
+    private var isShowAlbumContentView: Bool = false
     ///控件宽度
     private var width: CGFloat {
         return screenWidth()
@@ -22,7 +24,7 @@ class CLChatPhotoView: UIView {
             
         }
         get {
-            return 250 + safeAreaEdgeInsets().bottom
+            return 225 + safeAreaEdgeInsets().bottom
         }
     }
     ///相册按钮
@@ -80,6 +82,10 @@ extension CLChatPhotoView {
 }
 extension CLChatPhotoView {
     func showAlbumContentView() {
+        if isShowAlbumContentView {
+            return
+        }
+        isShowAlbumContentView = true
         addSubview(albumContentView)
         albumContentView.snp.remakeConstraints { (make) in
             make.left.right.equalToSuperview()
@@ -99,6 +105,10 @@ extension CLChatPhotoView {
         }
     }
     func hiddenAlbumContentView() {
+        if !isShowAlbumContentView {
+            return
+        }
+        isShowAlbumContentView = false
         addSubview(albumContentView)
         UIView.animate(withDuration: 0.25, animations: {
             self.albumContentView.snp.remakeConstraints { (make) in
@@ -147,7 +157,7 @@ extension CLChatPhotoView {
 }
 extension CLChatPhotoView: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let image = (info[.originalImage] as? UIImage)?.fixOrientation() {
+        if let image = (info[.originalImage] as? UIImage)?.fixOrientationImage {
             let options = PHFetchOptions()
             options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
             var localIdentifier: String = ""

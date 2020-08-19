@@ -15,9 +15,9 @@ class CLChatRecordView: UIView {
     ///取消录音
     var cancelRecorderCallBack: (() -> ())?
     ///结束录音
-    var finishRecorderCallBack: ((TimeInterval, String) -> ())?
+    var finishRecorderCallBack: ((TimeInterval, Data) -> ())?
     ///高度
-    private (set) var height: CGFloat = 250 + safeAreaEdgeInsets().bottom
+    private (set) var height: CGFloat = 225 + safeAreaEdgeInsets().bottom
     ///是否正在录制
     private (set) var isRecording: Bool = false
     ///红圈
@@ -84,7 +84,7 @@ class CLChatRecordView: UIView {
     ///长按手势
     private lazy var longPress: UILongPressGestureRecognizer = {
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
-        longPress.minimumPressDuration = 0.3
+        longPress.minimumPressDuration = 0.05
         return longPress
     }()
     ///是否超出范围
@@ -231,14 +231,18 @@ extension CLChatRecordView {
 }
 extension CLChatRecordView {
     private func startRecord() {
-        CLPermissions.request(.microphone) {[weak self] (status) in
-            if status.isNoSupport {
-                CLLog("当前设备不支持")
-            }else if status.isAuthorized {
-                self?.recorder.start()
-                self?.startRecorderCallBack?()
-            }else {
-                CLLog("没有麦克风权限 状态 \(status)")
+        if CLPermissions.isAllowed(.microphone) {
+            recorder.start()
+            startRecorderCallBack?()
+        }else {
+            CLPermissions.request(.microphone) { (status) in
+                if status.isNoSupport {
+                    CLLog("当前设备不支持")
+                }else if status.isAuthorized {
+                    CLLog("点击允许麦克风")
+                }else {
+                    CLLog("没有麦克风权限 状态 \(status)")
+                }
             }
         }
     }

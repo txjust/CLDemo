@@ -70,7 +70,7 @@ static OSStatus RecordCallback(void *inRefCon,
     return self;
 }
 - (void)initFold {
-    NSString * recorderFoldPath = [[Tools pathDocuments] stringByAppendingString:@"/CLChatRecorder"];//将需要创建的串拼接到后面
+    NSString * recorderFoldPath = [NSHomeDirectory() stringByAppendingString:@"/Documents/CLChatRecorder"];
     NSFileManager *fileManager = [NSFileManager defaultManager];
     BOOL isDir = NO;
     if (![fileManager fileExistsAtPath:recorderFoldPath isDirectory:&isDir] ) {//如果文件夹不存在
@@ -150,7 +150,11 @@ static OSStatus RecordCallback(void *inRefCon,
             self.durationCallback(0);
         });
     }
-    self.mp3Path = [[Tools pathDocuments] stringByAppendingFormat:@"/CLChatRecorder/%@.mp3", [self currentTime]];
+    NSString *foldPath = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/Record"];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:foldPath]) {
+        [[NSFileManager defaultManager] createDirectoryAtPath:foldPath withIntermediateDirectories:true attributes:nil error:nil];
+    }
+    self.mp3Path = [foldPath stringByAppendingFormat:@"/%@.mp3", [self currentTime]];
     if (![[NSFileManager defaultManager] fileExistsAtPath: self.mp3Path]) {
         [[NSFileManager defaultManager] createFileAtPath: self.mp3Path contents:nil attributes:nil];
     }
@@ -160,7 +164,7 @@ static OSStatus RecordCallback(void *inRefCon,
         [self activeAudioSession];
         OSStatus status = AudioOutputUnitStart(self.audioUnit);
         if (status != noErr) {
-            CLLog(@"startRecorder error: %d", status);
+            CLLog(@"startRecorder error %d", status);
         }
     }else {
         CLLog(@"error: %@", error);
@@ -172,10 +176,7 @@ static OSStatus RecordCallback(void *inRefCon,
         CLLog(@"stopRecorder error: %d", status);
     }
     [self resumeActiveAudioSession];
-    if ([[NSFileManager defaultManager] fileExistsAtPath: self.mp3Path]) {
-        [[NSFileManager defaultManager] removeItemAtPath:self.mp3Path error:nil];
-        self.mp3Path = nil;
-    }
+    [self removeFile];
 }
 - (void)stopRecorder {
     OSStatus status = AudioOutputUnitStop(self.audioUnit);
@@ -185,9 +186,16 @@ static OSStatus RecordCallback(void *inRefCon,
     }else {
         dispatch_async(dispatch_get_main_queue(), ^{
             if (self.finishCallBack) {
-                self.finishCallBack(self.audioDuration, self.mp3Path);
+                self.finishCallBack(self.audioDuration, [[NSData alloc] initWithContentsOfFile:self.mp3Path]);
             }
+            [self removeFile];
         });
+    }
+}
+- (void)removeFile {
+    if ([[NSFileManager defaultManager] fileExistsAtPath: self.mp3Path]) {
+        [[NSFileManager defaultManager] removeItemAtPath:self.mp3Path error:nil];
+        self.mp3Path = nil;
     }
 }
 - (void)activeAudioSession {

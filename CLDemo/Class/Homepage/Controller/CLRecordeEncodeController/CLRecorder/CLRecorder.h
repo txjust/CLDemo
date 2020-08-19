@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy) void (^durationCallback)(NSUInteger seconds);
 
-@property (nonatomic, copy) void (^finishCallBack)(CGFloat audioDuration, NSString *mp3Path);
+@property (nonatomic, copy) void (^finishCallBack)(CGFloat audioDuration, NSData *fileData);
 
 - (void)startRecorder;
 

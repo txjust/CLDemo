@@ -42,6 +42,15 @@ class CLChatPhotoAlbumContentView: UIView {
         view.showsHorizontalScrollIndicator = false
         return view
     }()
+    ///相册按钮
+    private lazy var albumButton: UIButton = {
+        let view = UIButton()
+        view.setImage(UIImage(named: "album"), for: .normal)
+        view.setImage(UIImage(named: "album"), for: .selected)
+        view.setImage(UIImage(named: "album"), for: .highlighted)
+        view.addTarget(self, action: #selector(showAlbum), for: .touchUpInside)
+        return view
+    }()
     ///底部工具条
     private lazy var bottomToolBar: CLChatPhotoAlbumBottomBar = {
         let view = CLChatPhotoAlbumBottomBar()
@@ -74,6 +83,7 @@ class CLChatPhotoAlbumContentView: UIView {
 extension CLChatPhotoAlbumContentView {
     private func initUI() {
         addSubview(collectionView)
+        addSubview(albumButton)
         addSubview(bottomToolBar)
         addSubview(bottomSafeView)
     }
@@ -91,11 +101,16 @@ extension CLChatPhotoAlbumContentView {
             make.top.left.right.equalToSuperview()
             make.bottom.equalTo(bottomToolBar.snp.top)
         }
+        albumButton.snp.makeConstraints { (make) in
+            make.size.equalTo(30)
+            make.bottom.right.equalTo(collectionView).offset(-15)
+        }
     }
     private func initData() {
         DispatchQueue.global().async {
             let options = PHFetchOptions()
             options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+            options.predicate = NSPredicate(format: "mediaType == %ld", PHAssetMediaType.image.rawValue)
             self.fetchResult = PHAsset.fetchAssets(with: .image, options: options)
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
@@ -108,28 +123,8 @@ extension CLChatPhotoAlbumContentView {
         }
         let scale = CGFloat(asset.pixelWidth) / CGFloat(asset.pixelHeight)
         let height = frame.height - 44 - 20 - safeAreaEdgeInsets().bottom
-        return CGSize(width: height * scale, height: height)
-    }
-}
-extension CLChatPhotoAlbumContentView {
-    func showImagePicker() {
-        guard let imagePicker = TZImagePickerController(maxImagesCount: .max, delegate: nil) else { return }
-        imagePicker.allowPickingVideo = false
-        imagePicker.allowTakeVideo = false
-        imagePicker.allowPickingOriginalPhoto = false
-        imagePicker.modalPresentationStyle = .fullScreen
-        imagePicker.didFinishPickingPhotosHandle = {[weak self] (photos, assets, isSelectOriginalPhoto) in
-            guard let photos = photos, let assets = assets as? [PHAsset] else {
-                return
-            }
-            self?.restoreInitialState()
-            var images = [(UIImage, PHAsset)]()
-            for (index, item) in photos.enumerated() {
-                images.append((item, assets[index]))
-            }
-            self?.sendImageCallBack?(images)
-        }
-        UIApplication.shared.keyWindow?.rootViewController?.present(imagePicker, animated: true)
+        let width = min(max(120, height * scale), screenWidth() * 0.6)
+        return CGSize(width: width, height: height)
     }
 }
 extension CLChatPhotoAlbumContentView {
@@ -139,6 +134,28 @@ extension CLChatPhotoAlbumContentView {
         collectionView.reloadData()
         collectionView.setContentOffset(.zero, animated: false)
         bottomToolBar.seletedNumber = selectedArray.count
+    }
+}
+extension CLChatPhotoAlbumContentView {
+    @objc func showAlbum() {
+        guard let imagePicker = TZImagePickerController(maxImagesCount: 9, delegate: nil) else { return }
+        imagePicker.allowPickingVideo = false
+        imagePicker.allowTakeVideo = false
+        imagePicker.allowPickingOriginalPhoto = false
+        imagePicker.modalPresentationStyle = .fullScreen
+        imagePicker.didFinishPickingPhotosHandle = { (photos, assets, _) in
+            guard let photos = photos, let assets = assets as? [PHAsset], photos.count == assets.count else {
+                return
+            }
+            var dataArray = [(UIImage, PHAsset)]()
+            for (index, item) in photos.enumerated() {
+                dataArray.append((item, assets[index]))
+            }
+            self.sendImageCallBack?(dataArray)
+            self.restoreInitialState()
+        }
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        appDelegate?.window?.rootViewController?.present(imagePicker, animated: true)
     }
 }
 extension CLChatPhotoAlbumContentView: UICollectionViewDelegate {
@@ -152,6 +169,10 @@ extension CLChatPhotoAlbumContentView: UICollectionViewDelegate {
                 let image = cell.image,
                 let asset = fetchResult?[indexPath.row]
             else {
+                return
+            }
+            if selectedArray.count >= 9 {
+                CLPopupManager.showTips(text: "您一次最多可以选择9张图片")
                 return
             }
             let item = CLChatPhotoAlbumSelectedItem(image: image, indexPath: indexPath, asset: asset)

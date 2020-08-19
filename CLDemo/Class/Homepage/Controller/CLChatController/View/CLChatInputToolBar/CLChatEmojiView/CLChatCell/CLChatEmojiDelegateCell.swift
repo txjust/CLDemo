@@ -17,7 +17,8 @@ class CLChatEmojiDelegateCell: UICollectionViewCell {
         super.init(frame: frame)
         addSubview(imageView)
         imageView.snp.makeConstraints { (make) in
-            make.edges.equalTo(0)
+            make.center.equalToSuperview()
+            make.size.equalToSuperview().offset(-5)
         }
     }
     required init?(coder: NSCoder) {
