@@ -2703,7 +2703,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/CLDemo/Others/CLBankScan/bank_card/exbankcardcore",
 					"$(PROJECT_DIR)/CLDemo/Class/Homepage/Controller/CLRecordeEncodeController/LAME",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Demo.ccc.vip;
@@ -2732,7 +2731,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/CLDemo/Others/CLBankScan/bank_card/exbankcardcore",
 					"$(PROJECT_DIR)/CLDemo/Class/Homepage/Controller/CLRecordeEncodeController/LAME",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Demo.ccc.vip;
