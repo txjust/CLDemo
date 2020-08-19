@@ -14,7 +14,7 @@ class CLChatPhotoView: UIView {
     var sendImageCallBack: (([(UIImage, PHAsset)]) -> ())?
     ///控件宽度
     private var width: CGFloat {
-        return cl_screenWidth()
+        return screenWidth()
     }
     ///控件高度
     private (set) var height: CGFloat {
@@ -22,7 +22,7 @@ class CLChatPhotoView: UIView {
             
         }
         get {
-            return 250 + cl_safeAreaInsets().bottom
+            return 250 + safeAreaEdgeInsets().bottom
         }
     }
     ///相册按钮

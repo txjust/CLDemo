@@ -17,7 +17,7 @@ class CLChatRecordView: UIView {
     ///结束录音
     var finishRecorderCallBack: ((TimeInterval, String) -> ())?
     ///高度
-    private (set) var height: CGFloat = 250 + cl_safeAreaInsets().bottom
+    private (set) var height: CGFloat = 250 + safeAreaEdgeInsets().bottom
     ///是否正在录制
     private (set) var isRecording: Bool = false
     ///红圈

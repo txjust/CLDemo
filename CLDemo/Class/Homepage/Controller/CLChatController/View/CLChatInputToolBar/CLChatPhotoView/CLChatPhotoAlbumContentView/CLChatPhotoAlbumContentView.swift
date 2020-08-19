@@ -80,7 +80,7 @@ extension CLChatPhotoAlbumContentView {
     private func makeConstraints() {
         bottomSafeView.snp.makeConstraints { (make) in
             make.left.right.bottom.equalToSuperview()
-            make.height.equalTo(cl_safeAreaInsets().bottom)
+            make.height.equalTo(safeAreaEdgeInsets().bottom)
         }
         bottomToolBar.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
@@ -107,7 +107,7 @@ extension CLChatPhotoAlbumContentView {
             return .zero
         }
         let scale = CGFloat(asset.pixelWidth) / CGFloat(asset.pixelHeight)
-        let height = frame.height - 44 - 20 - cl_safeAreaInsets().bottom
+        let height = frame.height - 44 - 20 - safeAreaEdgeInsets().bottom
         return CGSize(width: height * scale, height: height)
     }
 }

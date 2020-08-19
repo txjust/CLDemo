@@ -1,6 +1,6 @@
 //
-//  CKDDebugController.swift
-//  CKD
+//  CLDebugController.swift
+//  CL
 //
 //  Created by JmoVxia on 2020/6/5.
 //  Copyright © 2020 JmoVxia. All rights reserved.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CKDDebugController: CLBaseViewController {
+class CLDebugController: CLBaseViewController {
     private var isCanShare: Bool = false {
         didSet {
             if oldValue != isCanShare {
@@ -56,7 +56,7 @@ class CKDDebugController: CLBaseViewController {
         NotificationCenter.default.removeObserver(self)
     }
 }
-extension CKDDebugController {
+extension CLDebugController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: true)
@@ -73,7 +73,7 @@ extension CKDDebugController {
         view.endEditing(true)
     }
 }
-extension CKDDebugController {
+extension CLDebugController {
     @objc func textDidChange(notification: Notification) {
         if let textField = notification.object as? UITextField, textField.text == "123456789" {
             DispatchQueue.main.async {
@@ -83,7 +83,7 @@ extension CKDDebugController {
         }
     }
 }
-extension CKDDebugController {
+extension CLDebugController {
     private func initUI() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backItem)
         automaticallyAdjustsScrollViewInsets = false
@@ -106,20 +106,20 @@ extension CKDDebugController {
     }
     private func initData() {
         for path in CLLogManager.logPathArray {
-            let item = CKDDebugItem()
+            let item = CLDebugItem()
             item.path = path
             dataSource.append(item)
         }
         tableView.reloadData()
     }
 }
-extension CKDDebugController {
+extension CLDebugController {
     @objc func backItemAction() {
         dismiss(animated: true)
     }
     @objc func shareItemAction() {
         let fileArray = dataSource.compactMap { (item) -> URL? in
-            if let debugItem = (item as? CKDDebugItem), debugItem.isSelected {
+            if let debugItem = (item as? CLDebugItem), debugItem.isSelected {
                 return URL(fileURLWithPath: debugItem.path)
             }else {
                 return nil
@@ -135,17 +135,17 @@ extension CKDDebugController {
         }
     }
 }
-extension CKDDebugController: UITableViewDelegate {
+extension CLDebugController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let item = dataSource[indexPath.row] as? CKDDebugItem else {
+        guard let item = dataSource[indexPath.row] as? CLDebugItem else {
             return
         }
         item.isSelected = !item.isSelected
         tableView.reloadRows(at: [indexPath], with: .none)
-        isCanShare = dataSource.first(where: {($0 as? CKDDebugItem)?.isSelected == true}) != nil
+        isCanShare = dataSource.first(where: {($0 as? CLDebugItem)?.isSelected == true}) != nil
     }
 }
-extension CKDDebugController: UITableViewDataSource {
+extension CLDebugController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource.count
     }

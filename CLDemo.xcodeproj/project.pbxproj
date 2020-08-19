@@ -238,6 +238,7 @@
 		5BF1ACE3245C82B70083BE70 /* CLMyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF1ACE2245C82B70083BE70 /* CLMyController.swift */; };
 		5BF1ACE6245C850A0083BE70 /* CLTitleControllerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF1ACE5245C850A0083BE70 /* CLTitleControllerView.m */; };
 		5BF830AE24AB0DA8008E7CE8 /* CLChatTipsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF830AD24AB0DA8008E7CE8 /* CLChatTipsCell.swift */; };
+		5BFB198A24ECFAFA0074007A /* AutoScale+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFB198924ECFAFA0074007A /* AutoScale+Extension.swift */; };
 		B51EE6C723DF092400146862 /* CLChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51EE6C623DF092400146862 /* CLChatCell.swift */; };
 		B51EE6C923DF093E00146862 /* CLChatItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51EE6C823DF093E00146862 /* CLChatItem.swift */; };
 		B51EE6CC23DF104800146862 /* CLGradientLayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51EE6CB23DF104800146862 /* CLGradientLayerView.swift */; };
@@ -624,6 +625,7 @@
 		5BF1ACE4245C850A0083BE70 /* CLTitleControllerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLTitleControllerView.h; sourceTree = "<group>"; };
 		5BF1ACE5245C850A0083BE70 /* CLTitleControllerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLTitleControllerView.m; sourceTree = "<group>"; };
 		5BF830AD24AB0DA8008E7CE8 /* CLChatTipsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatTipsCell.swift; sourceTree = "<group>"; };
+		5BFB198924ECFAFA0074007A /* AutoScale+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AutoScale+Extension.swift"; sourceTree = "<group>"; };
 		7F29D2D63E4FCF727DAB90EE /* Pods-CLDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CLDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CLDemo/Pods-CLDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		AFF9BFDE81DC6F568D3C9863 /* Pods-CLDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CLDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-CLDemo/Pods-CLDemo.release.xcconfig"; sourceTree = "<group>"; };
 		B51EE6C623DF092400146862 /* CLChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLChatCell.swift; sourceTree = "<group>"; };
@@ -1744,6 +1746,7 @@
 				0C0E36A32257838F00478B69 /* UIImage+CLQRCode.m */,
 				0CCBFB7022AB89FE0078547B /* NSDate+CLExtension.h */,
 				0CCBFB7122AB89FE0078547B /* NSDate+CLExtension.m */,
+				5BFB198924ECFAFA0074007A /* AutoScale+Extension.swift */,
 				5B8AFC6F24A8974C00FAF996 /* Regex.swift */,
 				5B1CC1C824AC95AE00C35523 /* TimeInterval+Extension.swift */,
 				5BA7BF9324AC40F20072B94C /* UILabel+Extension.swift */,
@@ -2323,6 +2326,7 @@
 				0CACA4AB224CC1DC0084ECC8 /* CLTextView.swift in Sources */,
 				5B8AFC6924A8954C00FAF996 /* CKDDebugItem.swift in Sources */,
 				0CB60B17237EC51100D10317 /* CLHorizontalItem.m in Sources */,
+				5BFB198A24ECFAFA0074007A /* AutoScale+Extension.swift in Sources */,
 				0CF6B84523865AF600F10986 /* CLHorizontalLayout.m in Sources */,
 				0C1075F322E1AE8A005E5843 /* CLAnimatedTransitioning.m in Sources */,
 				5BA7BF8124AC3D180072B94C /* CLHourMinuteDataPickerView.swift in Sources */,

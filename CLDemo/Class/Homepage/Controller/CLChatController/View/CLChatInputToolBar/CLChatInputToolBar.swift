@@ -261,7 +261,7 @@ class CLChatInputToolBar: UIView {
     ///初始高度
     var toolBarDefaultHeight: CGFloat {
         get {
-            return textViewDefaultHeight + 15 + 15 + cl_safeAreaInsets().bottom
+            return textViewDefaultHeight + 15 + 15 + safeAreaEdgeInsets().bottom
         }
     }
     ///文字大小
@@ -346,7 +346,7 @@ extension CLChatInputToolBar {
         bottomSafeView.snp.makeConstraints { (make) in
             make.top.equalTo(middleSpaceView.snp.bottom)
             make.left.right.bottom.equalTo(contentView)
-            make.height.equalTo(cl_safeAreaInsets().bottom)
+            make.height.equalTo(safeAreaEdgeInsets().bottom)
         }
         moreButton.snp.makeConstraints { (make) in
             make.left.equalTo(12)
@@ -383,15 +383,15 @@ extension CLChatInputToolBar {
 extension CLChatInputToolBar {
     @objc private func keyboardWillShow(notification: Notification) {
         guard let userInfo = notification.userInfo, let keyboardRect = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect, let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval, let options = userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? NSInteger else {return}
-        var keyboardHeight: CGFloat = keyboardRect.height - cl_safeAreaInsets().bottom
+        var keyboardHeight: CGFloat = keyboardRect.height - safeAreaEdgeInsets().bottom
         if isShowEmojiKeyboard {
-            keyboardHeight = emojiView.height - cl_safeAreaInsets().bottom
+            keyboardHeight = emojiView.height - safeAreaEdgeInsets().bottom
         }
         if isShowPhotoKeyboard {
-            keyboardHeight = photoView.height - cl_safeAreaInsets().bottom
+            keyboardHeight = photoView.height - safeAreaEdgeInsets().bottom
         }
         if isShowVoiceKeyboard {
-            keyboardHeight = recordView.height  - cl_safeAreaInsets().bottom
+            keyboardHeight = recordView.height  - safeAreaEdgeInsets().bottom
         }
         middleSpaceView.snp.updateConstraints { (make) in
             make.height.equalTo(keyboardHeight)
@@ -504,7 +504,7 @@ extension CLChatInputToolBar {
                     make.top.equalTo(self.contentView.snp.bottom).offset(-self.photoView.height)
                 }
                 self.middleSpaceView.snp.updateConstraints { (make) in
-                    make.height.equalTo(self.photoView.height - cl_safeAreaInsets().bottom)
+                    make.height.equalTo(self.photoView.height - safeAreaEdgeInsets().bottom)
                 }
                 self.superview?.setNeedsLayout()
                 self.superview?.layoutIfNeeded()
@@ -536,7 +536,7 @@ extension CLChatInputToolBar {
                     make.top.equalTo(self.contentView.snp.bottom).offset(-self.recordView.height)
                 }
                 self.middleSpaceView.snp.updateConstraints { (make) in
-                    make.height.equalTo(self.recordView.height - cl_safeAreaInsets().bottom)
+                    make.height.equalTo(self.recordView.height - safeAreaEdgeInsets().bottom)
                 }
                 self.superview?.setNeedsLayout()
                 self.superview?.layoutIfNeeded()

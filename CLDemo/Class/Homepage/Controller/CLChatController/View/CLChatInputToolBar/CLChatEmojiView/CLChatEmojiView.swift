@@ -46,19 +46,19 @@ class CLChatEmojiView: UIView {
     ///控件高度
     var height: CGFloat {
         get {
-            return CGFloat(rowNumber) * itemSize.height + CGFloat(rowNumber - 1) * rowMargin + topInset + bottomInset + 15 + cl_safeAreaInsets().bottom
+            return CGFloat(rowNumber) * itemSize.height + CGFloat(rowNumber - 1) * rowMargin + topInset + bottomInset + 15 + safeAreaEdgeInsets().bottom
         }
     }
     ///控件宽度
     private var emojiViewWidth: CGFloat {
         get {
-            return cl_screenWidth()
+            return screenWidth()
         }
     }
     ///collectionView宽度
     private var collectionViewWidth: CGFloat {
         get {
-            return (emojiViewWidth - cl_safeAreaInsets().left - cl_safeAreaInsets().right)
+            return (emojiViewWidth - safeAreaEdgeInsets().left - safeAreaEdgeInsets().right)
         }
     }
     ///多少列
@@ -163,7 +163,7 @@ extension CLChatEmojiView {
         collectionView.snp.makeConstraints { (make) in
             make.left.right.equalTo(0)
             make.top.equalTo(0)
-            make.bottom.equalTo(self.snp.bottom).offset(-15 - cl_safeAreaInsets().bottom)
+            make.bottom.equalTo(self.snp.bottom).offset(-15 - safeAreaEdgeInsets().bottom)
         }
         pageControl.snp.makeConstraints { (make) in
             make.left.right.equalTo(collectionView)
@@ -268,7 +268,7 @@ extension CLChatEmojiView: UICollectionViewDelegateFlowLayout {
         return itemSize
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: topInset, left: sideMargin + cl_safeAreaInsets().left, bottom: bottomInset, right: sideMargin + cl_safeAreaInsets().right)
+        return UIEdgeInsets(top: topInset, left: sideMargin + safeAreaEdgeInsets().left, bottom: bottomInset, right: sideMargin + safeAreaEdgeInsets().right)
     }
 
 }

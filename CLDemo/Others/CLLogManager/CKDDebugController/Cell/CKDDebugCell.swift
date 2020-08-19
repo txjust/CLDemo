@@ -1,6 +1,6 @@
 //
-//  CKDDebugCell.swift
-//  CKD
+//  CLDebugCell.swift
+//  CL
 //
 //  Created by JmoVxia on 2020/6/11.
 //  Copyright © 2020 JmoVxia. All rights reserved.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CKDDebugCell: UITableViewCell {
+class CLDebugCell: UITableViewCell {
     private lazy var contentBackgroundView: UIView = {
         let view = UIView()
         view.clipsToBounds = true
@@ -37,7 +37,7 @@ class CKDDebugCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
-extension CKDDebugCell {
+extension CLDebugCell {
     private func initUI() {
         isExclusiveTouch = true
         selectionStyle = .none
@@ -66,15 +66,15 @@ extension CKDDebugCell {
         }
     }
 }
-extension CKDDebugCell {
+extension CLDebugCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         contentBackgroundView.layer.cornerRadius = contentBackgroundView.bounds.height * 0.5
     }
 }
-extension CKDDebugCell: CLChatCellProtocol {
+extension CLDebugCell: CLChatCellProtocol {
     func setItem(_ item: CLChatItemProtocol) {
-        guard let item = item as? CKDDebugItem else {
+        guard let item = item as? CLDebugItem else {
             return
         }
         iconButton.isSelected = item.isSelected
