@@ -205,9 +205,8 @@ extension CLChatController: CLChatInputToolBarDelegate {
     func inputBarWillSendImage(images: [(image: UIImage, asset: PHAsset)]) {
         addImageMessages(images)
     }
-    func inputBarFinishRecord(duration: TimeInterval, path: String) {
-        print("duration = \(duration), path = \(path)")
-        addVoiceMessages(duration: duration, path: path)
+    func inputBarFinishRecord(duration: TimeInterval, file: Data) {
+        addVoiceMessages(duration: duration, path: "")
     }
 }
 extension CLChatController: UIGestureRecognizerDelegate {
