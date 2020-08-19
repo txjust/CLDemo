@@ -188,7 +188,6 @@ static OSStatus RecordCallback(void *inRefCon,
             if (self.finishCallBack) {
                 self.finishCallBack(self.audioDuration, [[NSData alloc] initWithContentsOfFile:self.mp3Path]);
             }
-            [self removeFile];
         });
     }
 }
