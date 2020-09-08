@@ -9,9 +9,9 @@
 static NSString *CLChangeFontSizeKey = @"CLChangeFontSize";
 
 
-#import "CLChangeFontSizeManager.h"
+#import "CLChangeFontSizeHelper.h"
 
-@implementation CLChangeFontSizeManager
+@implementation CLChangeFontSizeHelper
 
 + (void)setFontSizeCoefficient:(NSInteger )coefficient {
     [[NSUserDefaults standardUserDefaults] setInteger:coefficient forKey:CLChangeFontSizeKey];
@@ -28,7 +28,7 @@ static NSString *CLChangeFontSizeKey = @"CLChangeFontSize";
 }
 
 + (float)scaleCoefficient {
-    NSInteger coefficient =[CLChangeFontSizeManager fontSizeCoefficient];
+    NSInteger coefficient =[CLChangeFontSizeHelper fontSizeCoefficient];
     return 0.075 * (coefficient - 2) + 1;
 }
 

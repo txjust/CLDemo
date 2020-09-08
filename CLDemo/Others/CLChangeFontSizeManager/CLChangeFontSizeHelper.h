@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CLChangeFontSizeManager : NSObject
+@interface CLChangeFontSizeHelper : NSObject
 
 /**
  设置字体大小系数，1到6  2为默认标准

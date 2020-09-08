@@ -96,7 +96,7 @@
 		0CCDA316219855A20057BA14 /* CLChangeFontSizeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCDA315219855A20057BA14 /* CLChangeFontSizeCell.m */; };
 		0CCDA319219855B90057BA14 /* ChangeFontSizeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCDA318219855B90057BA14 /* ChangeFontSizeModel.m */; };
 		0CCDA31C219922680057BA14 /* CLChangeFontSizeSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCDA31B219922680057BA14 /* CLChangeFontSizeSlider.m */; };
-		0CCDA326219927370057BA14 /* CLChangeFontSizeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCDA325219927370057BA14 /* CLChangeFontSizeManager.m */; };
+		0CCDA326219927370057BA14 /* CLChangeFontSizeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCDA325219927370057BA14 /* CLChangeFontSizeHelper.m */; };
 		0CCDA3FF22D9D1C5007B41C4 /* CLPhotoBrowserPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCDA3F422D9D1C4007B41C4 /* CLPhotoBrowserPresentationController.m */; };
 		0CCDA40022D9D1C5007B41C4 /* CLPhotoBrowserTransitioningDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCDA3F522D9D1C4007B41C4 /* CLPhotoBrowserTransitioningDelegate.m */; };
 		0CCDA40122D9D1C5007B41C4 /* CLPhotoBrowserCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCDA3F622D9D1C4007B41C4 /* CLPhotoBrowserCollectionViewCell.m */; };
@@ -424,8 +424,8 @@
 		0CCDA318219855B90057BA14 /* ChangeFontSizeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangeFontSizeModel.m; sourceTree = "<group>"; };
 		0CCDA31A219922680057BA14 /* CLChangeFontSizeSlider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLChangeFontSizeSlider.h; sourceTree = "<group>"; };
 		0CCDA31B219922680057BA14 /* CLChangeFontSizeSlider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLChangeFontSizeSlider.m; sourceTree = "<group>"; };
-		0CCDA324219927370057BA14 /* CLChangeFontSizeManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLChangeFontSizeManager.h; sourceTree = "<group>"; };
-		0CCDA325219927370057BA14 /* CLChangeFontSizeManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLChangeFontSizeManager.m; sourceTree = "<group>"; };
+		0CCDA324219927370057BA14 /* CLChangeFontSizeHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLChangeFontSizeHelper.h; sourceTree = "<group>"; };
+		0CCDA325219927370057BA14 /* CLChangeFontSizeHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLChangeFontSizeHelper.m; sourceTree = "<group>"; };
 		0CCDA3F322D9D1C4007B41C4 /* CLPhotoBrowserCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLPhotoBrowserCollectionViewCell.h; sourceTree = "<group>"; };
 		0CCDA3F422D9D1C4007B41C4 /* CLPhotoBrowserPresentationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLPhotoBrowserPresentationController.m; sourceTree = "<group>"; };
 		0CCDA3F522D9D1C4007B41C4 /* CLPhotoBrowserTransitioningDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLPhotoBrowserTransitioningDelegate.m; sourceTree = "<group>"; };
@@ -1262,8 +1262,8 @@
 		0CCDA31D219922C50057BA14 /* CLChangeFontSizeManager */ = {
 			isa = PBXGroup;
 			children = (
-				0CCDA324219927370057BA14 /* CLChangeFontSizeManager.h */,
-				0CCDA325219927370057BA14 /* CLChangeFontSizeManager.m */,
+				0CCDA324219927370057BA14 /* CLChangeFontSizeHelper.h */,
+				0CCDA325219927370057BA14 /* CLChangeFontSizeHelper.m */,
 			);
 			path = CLChangeFontSizeManager;
 			sourceTree = "<group>";
@@ -2553,7 +2553,7 @@
 				5BFB19B824ECFD800074007A /* UIControl+Extension.swift in Sources */,
 				0C7A1E9A231A6F57002D75F2 /* CLCustomTransitionAnimationViewController.m in Sources */,
 				0C0E36A42257838F00478B69 /* UIImage+CLQRCode.m in Sources */,
-				0CCDA326219927370057BA14 /* CLChangeFontSizeManager.m in Sources */,
+				0CCDA326219927370057BA14 /* CLChangeFontSizeHelper.m in Sources */,
 				5BA7BF7724AC3D180072B94C /* CLPopupFoodPickerContentCell.swift in Sources */,
 				5B80DA581DDD9C3A00A20E34 /* CLTabbarController.m in Sources */,
 				5BFB19B424ECFCCB0074007A /* CLChatEmojiDeleteItem.swift in Sources */,
