@@ -170,6 +170,6 @@
     }
 }
 - (void)setRotationTime:(NSTimeInterval)rotationTime {
-    _rotationTime = MAX(rotationTime, 0);
+    _rotationTime = MAX(rotationTime, 0.5);
 }
 @end
