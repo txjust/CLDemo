@@ -11,7 +11,7 @@
 #import "CLBroadcastMainCell.h"
 #import <Masonry/Masonry.h>
 
-@interface CLBroadcastViewController ()<CLBroadcastViewDataSource>
+@interface CLBroadcastViewController ()<CLBroadcastViewDataSource, CLBroadcastViewDelegate>
 
 ///广播view
 @property (nonatomic, strong) CLBroadcastView *broadcastView;
@@ -34,19 +34,15 @@
         make.height.mas_equalTo(60);
     }];
     self.broadcastView.backgroundColor = [UIColor redColor];
+    self.broadcastView.rotationTime = 5;
     self.broadcastView.dataSource = self;
+    self.broadcastView.delegate = self;
     
     self.arrayDS = [NSMutableArray array];
-    
-    
     [self.arrayDS addObject:@"旋转木马"];
-    
     [self.arrayDS addObject:@"牛津词典"];
-
     [self.arrayDS addObject:@"双语例句"];
-
     [self.arrayDS addObject:@"我找到了一份好工作"];
-
     [self.broadcastView reloadData];
     
 }
@@ -61,6 +57,11 @@
     cell.adText = [self.arrayDS objectAtIndex:index];
     cell.backgroundColor = cl_RandomColor;
     return cell;
+}
+
+///点击cell
+- (void)broadcastView:(CLBroadcastView *)broadcast didSelectIndex:(NSInteger)index {
+    CLLog(@"点击：%ld", index)
 }
 
 @end
