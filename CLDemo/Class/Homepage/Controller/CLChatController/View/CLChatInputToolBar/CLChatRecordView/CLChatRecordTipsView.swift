@@ -12,6 +12,7 @@ class CLChatRecordTipsView: UIView {
     var isCanSend: Bool = false {
         didSet {
             tipsLabel.textColor = isCanSend ? .themeColor : .hexColor(with: "#ff3b30")
+            tipsLabel.text = isCanSend ? "松手发送 滑动取消" : "松手取消"
         }
     }
     private lazy var tipsLabel: UILabel = {
