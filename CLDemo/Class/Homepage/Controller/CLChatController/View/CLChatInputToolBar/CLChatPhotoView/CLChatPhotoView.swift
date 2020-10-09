@@ -14,19 +14,6 @@ class CLChatPhotoView: UIView {
     var sendImageCallBack: (([(UIImage, PHAsset)]) -> ())?
     ///是否显示快速相册
     private var isShowAlbumContentView: Bool = false
-    ///控件宽度
-    private var width: CGFloat {
-        return screenWidth()
-    }
-    ///控件高度
-    private (set) var height: CGFloat {
-        set {
-            
-        }
-        get {
-            return 225 + safeAreaEdgeInsets().bottom
-        }
-    }
     ///相册按钮
     private lazy var albumButton: CLChatPhotoCellButton = {
         let albumButton = CLChatPhotoCellButton()
@@ -56,7 +43,6 @@ class CLChatPhotoView: UIView {
     }()
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.frame = CGRect(x: 0, y: 0, width: width, height: height)
         initUI()
         makeConstraints()
     }
@@ -89,15 +75,15 @@ extension CLChatPhotoView {
         addSubview(albumContentView)
         albumContentView.snp.remakeConstraints { (make) in
             make.left.right.equalToSuperview()
-            make.height.equalTo(height)
-            make.top.equalTo(height)
+            make.height.equalTo(frame.height)
+            make.top.equalTo(frame.height)
         }
         setNeedsLayout()
         layoutIfNeeded()
         UIView.animate(withDuration: 0.25) {
             self.albumContentView.snp.remakeConstraints { (make) in
                 make.left.right.equalToSuperview()
-                make.height.equalTo(self.height)
+                make.height.equalTo(self.frame.height)
                 make.top.equalTo(0)
             }
             self.setNeedsLayout()
@@ -113,8 +99,8 @@ extension CLChatPhotoView {
         UIView.animate(withDuration: 0.25, animations: {
             self.albumContentView.snp.remakeConstraints { (make) in
                 make.left.right.equalToSuperview()
-                make.height.equalTo(self.height)
-                make.top.equalTo(self.height)
+                make.height.equalTo(self.frame.height)
+                make.top.equalTo(self.frame.height)
             }
             self.setNeedsLayout()
             self.layoutIfNeeded()

@@ -59,9 +59,6 @@ extension CLChatController {
         makeConstraints()
         addTipsMessages(["欢迎来到本Demo"])
     }
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        inputToolBar.viewWillTransition(to: size, with: coordinator)
-    }
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .default
     }

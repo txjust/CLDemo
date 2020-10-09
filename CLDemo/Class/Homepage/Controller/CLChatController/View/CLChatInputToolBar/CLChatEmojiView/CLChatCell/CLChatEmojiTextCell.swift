@@ -11,12 +11,11 @@ class CLChatEmojiTextCell: UICollectionViewCell {
     private lazy var label: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 200)
+        label.font = PingFangSCMedium(200)
         label.adjustsFontSizeToFitWidth = true
         label.baselineAdjustment = .alignCenters
         return label
     }()
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(label)

@@ -86,13 +86,24 @@ class CLChatInputToolBar: UIView {
         bottomSafeView.backgroundColor = .hexColor(with: "#F6F6F6")
         return bottomSafeView
     }()
-    ///图片按钮
+    ///更多按钮
     private lazy var moreButton: UIButton = {
         let view = UIButton()
         view.expandClickEdgeInsets = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
         view.adjustsImageWhenHighlighted = false
         view.setBackgroundImage(UIImage.init(named: "addIcon"), for: .normal)
         view.setBackgroundImage(UIImage.init(named: "addIcon"), for: .selected)
+        view.addTarget(self, action: #selector(photoButtonAction), for: .touchUpInside)
+        return view
+    }()
+    ///more键盘按钮
+    private lazy var moreKeyboardButton: UIButton = {
+        let view = UIButton()
+        view.expandClickEdgeInsets = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
+        view.isHidden = true
+        view.adjustsImageWhenHighlighted = false
+        view.setBackgroundImage(UIImage.init(named: "keyboard"), for: .normal)
+        view.setBackgroundImage(UIImage.init(named: "keyboard"), for: .selected)
         view.addTarget(self, action: #selector(photoButtonAction), for: .touchUpInside)
         return view
     }()
@@ -106,6 +117,17 @@ class CLChatInputToolBar: UIView {
         view.addTarget(self, action: #selector(emojiButtonAction), for: .touchUpInside)
         return view
     }()
+    ///emoji键盘按钮
+    private lazy var emojiKeyboardButton: UIButton = {
+        let view = UIButton()
+        view.expandClickEdgeInsets = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
+        view.isHidden = true
+        view.adjustsImageWhenHighlighted = false
+        view.setBackgroundImage(UIImage.init(named: "keyboard"), for: .normal)
+        view.setBackgroundImage(UIImage.init(named: "keyboard"), for: .selected)
+        view.addTarget(self, action: #selector(emojiButtonAction), for: .touchUpInside)
+        return view
+    }()
     ///录音按钮
     private lazy var recordButton: UIButton = {
         let view = UIButton()
@@ -113,6 +135,17 @@ class CLChatInputToolBar: UIView {
         view.adjustsImageWhenHighlighted = false
         view.setBackgroundImage(UIImage.init(named: "voiceIcon"), for: .normal)
         view.setBackgroundImage(UIImage.init(named: "voiceIcon"), for: .selected)
+        view.addTarget(self, action: #selector(recordButtonAction), for: .touchUpInside)
+        return view
+    }()
+    ///录音键盘按钮
+    private lazy var recordKeyboardButton: UIButton = {
+        let view = UIButton()
+        view.expandClickEdgeInsets = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
+        view.isHidden = true
+        view.adjustsImageWhenHighlighted = false
+        view.setBackgroundImage(UIImage.init(named: "keyboard"), for: .normal)
+        view.setBackgroundImage(UIImage.init(named: "keyboard"), for: .selected)
         view.addTarget(self, action: #selector(recordButtonAction), for: .touchUpInside)
         return view
     }()
@@ -148,39 +181,47 @@ class CLChatInputToolBar: UIView {
         }
         view.textDidChangeCallBack = {[weak self](text) in
             self?.isHiddenSend = text.isEmpty || (text).isValidAllEmpty()
+            self?.emojiView.isCanSend = !(text.isEmpty || (text).isValidAllEmpty())
+            self?.emojiView.isCanDelete = !text.isEmpty
         }
         return view
     }()
     ///表情view
     private lazy var emojiView: CLChatEmojiView = {
         let view = CLChatEmojiView()
-        view.backgroundColor = .hexColor(with: "EEEEED")
+        view.backgroundColor = .hexColor(with: "#EEEEED")
         view.autoresizesSubviews = false
         view.didSelectEmojiCallBack = {[weak self] (emoji) in
-            guard let strongSelf = self else {
-                return
-            }
+            guard let strongSelf = self else { return }
             if let selectedTextRange = strongSelf.textView.selectedTextRange {
                 strongSelf.textView .replace(selectedTextRange, withText: emoji)
             }
         }
         view.didSelectDeleteCallBack = {[weak self] in
-            guard let strongSelf = self else {
-                return
-            }
+            guard let strongSelf = self else { return }
             DispatchQueue.main.async {
                 strongSelf.textView.deleteBackward()
             }
+        }
+        view.didSelectSendCallBack = {[weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.sendButtonAction()
         }
         return view
     }()
     ///图片view
     private lazy var photoView: CLChatPhotoView = {
         let view = CLChatPhotoView()
-        view.backgroundColor = .hexColor(with: "EEEEED")
+        view.backgroundColor = .hexColor(with: "#EEEEED")
         view.sendImageCallBack = {[weak self] (images) in
             self?.delegate?.inputBarWillSendImage(images: images)
         }
+        return view
+    }()
+    ///录音提示view
+    private lazy var recordTipsView: CLChatRecordTipsView = {
+        let view = CLChatRecordTipsView()
+        view.backgroundColor = .hexColor(with: "#EEEEED")
         return view
     }()
     ///录音
@@ -189,12 +230,18 @@ class CLChatInputToolBar: UIView {
         view.backgroundColor = .hexColor(with: "#EEEEED")
         view.startRecorderCallBack = {[weak self] in
             self?.delegate?.inputBarStartRecord()
+            self?.showRecordTips()
         }
         view.cancelRecorderCallBack = {[weak self] in
             self?.delegate?.inputBarCancelRecord()
+            self?.hiddenRecordTips()
         }
         view.finishRecorderCallBack = {[weak self] (duration, data) in
             self?.delegate?.inputBarFinishRecord(duration: duration, file: data)
+            self?.hiddenRecordTips()
+        }
+        view.isCanSendCallBack = {[weak self] (isCanSend) in
+            self?.recordTipsView.isCanSend = isCanSend
         }
         return view
     }()
@@ -217,10 +264,7 @@ class CLChatInputToolBar: UIView {
                 sendButton.isHidden = isHiddenSend
                 recordButton.isHidden = !isHiddenSend
                 let animateView = isHiddenSend ? recordButton : sendButton
-                animateView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
-                UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.8, options: .curveEaseOut, animations: {
-                    animateView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-                }, completion: nil)
+                transformanimAnimate(with: animateView)
             }
         }
     }
@@ -233,9 +277,26 @@ class CLChatInputToolBar: UIView {
                 photoKeyboard(show: newValue)
             }
         }
+        didSet {
+            if isShowPhotoKeyboard != oldValue {
+                moreButton.isHidden = isShowPhotoKeyboard
+                moreKeyboardButton.isHidden = !isShowPhotoKeyboard
+                let animateView = isShowPhotoKeyboard ? moreKeyboardButton : moreButton
+                transformanimAnimate(with: animateView)
+            }
+        }
     }
     ///是否显示表情键盘
-    private var isShowEmojiKeyboard: Bool = false
+    private var isShowEmojiKeyboard: Bool = false {
+        didSet {
+            if isShowEmojiKeyboard != oldValue {
+                emojiButton.isHidden = isShowEmojiKeyboard
+                emojiKeyboardButton.isHidden = !isShowEmojiKeyboard
+                let animateView = isShowEmojiKeyboard ? emojiKeyboardButton : emojiButton
+                transformanimAnimate(with: animateView)
+            }
+        }
+    }
     ///是否显示录音键盘
     private var isShowVoiceKeyboard: Bool = false {
         willSet {
@@ -243,11 +304,17 @@ class CLChatInputToolBar: UIView {
                 voiceKeyboard(show: newValue)
             }
         }
+        didSet {
+            if isShowVoiceKeyboard != oldValue {
+                recordButton.isHidden = isShowVoiceKeyboard
+                recordKeyboardButton.isHidden = !isShowVoiceKeyboard
+                let animateView = isShowVoiceKeyboard ? recordKeyboardButton : recordButton
+                transformanimAnimate(with: animateView)
+            }
+        }
     }
     ///是否显示文字键盘
     private var isShowTextKeyboard: Bool = false
-    ///是否正在旋转
-    private var isTransition: Bool = false
     ///输入框默认大小
     private var textViewDefaultHeight: CGFloat {
         get {
@@ -269,7 +336,7 @@ class CLChatInputToolBar: UIView {
         }
     }
     ///文字大小
-    var textFont: UIFont = UIFont.systemFont(ofSize: 15) {
+    var textFont: UIFont = PingFangSCMedium(15) {
         didSet {
             textView.font = textFont
         }
@@ -315,12 +382,16 @@ extension CLChatInputToolBar {
         addSubview(contentView)
         addSubview(topLineView)
         contentView.addSubview(topToolBar)
+        contentView.addSubview(recordTipsView)
         contentView.addSubview(middleSpaceView)
         contentView.addSubview(bottomSafeView)
         
         topToolBar.addSubview(moreButton)
+        topToolBar.addSubview(moreKeyboardButton)
         topToolBar.addSubview(emojiButton)
+        topToolBar.addSubview(emojiKeyboardButton)
         topToolBar.addSubview(recordButton)
+        topToolBar.addSubview(recordKeyboardButton)
         topToolBar.addSubview(sendButton)
         topToolBar.addSubview(textView)
     }
@@ -342,6 +413,10 @@ extension CLChatInputToolBar {
         topToolBar.snp.makeConstraints { (make) in
             make.top.left.right.equalTo(contentView)
         }
+        recordTipsView.snp.makeConstraints { (make) in
+            make.size.left.equalTo(topToolBar)
+            make.top.equalTo(topToolBar.snp.bottom)
+        }
         middleSpaceView.snp.makeConstraints { (make) in
             make.top.equalTo(topToolBar.snp.bottom)
             make.left.right.equalTo(contentView)
@@ -357,15 +432,24 @@ extension CLChatInputToolBar {
             make.width.height.equalTo(textViewHeight - 8)
             make.bottom.equalTo(textView.snp.bottom).offset(-4)
         }
+        moreKeyboardButton.snp.makeConstraints { (make) in
+            make.edges.equalTo(moreButton)
+        }
         emojiButton.snp.makeConstraints { (make) in
             make.left.equalTo(moreButton.snp.right).offset(12)
             make.width.height.equalTo(textViewHeight - 8)
             make.bottom.equalTo(textView.snp.bottom).offset(-4)
         }
+        emojiKeyboardButton.snp.makeConstraints { (make) in
+            make.edges.equalTo(emojiButton)
+        }
         recordButton.snp.makeConstraints { (make) in
             make.right.equalTo(-12)
             make.width.height.equalTo(textViewHeight - 8)
             make.bottom.equalTo(textView.snp.bottom).offset(-4)
+        }
+        recordKeyboardButton.snp.makeConstraints { (make) in
+            make.edges.equalTo(recordButton)
         }
         sendButton.snp.makeConstraints { (make) in
             make.edges.equalTo(recordButton)
@@ -392,10 +476,10 @@ extension CLChatInputToolBar {
             keyboardHeight = emojiView.height - safeAreaEdgeInsets().bottom
         }
         if isShowPhotoKeyboard {
-            keyboardHeight = photoView.height - safeAreaEdgeInsets().bottom
+            keyboardHeight = emojiView.height - safeAreaEdgeInsets().bottom
         }
         if isShowVoiceKeyboard {
-            keyboardHeight = recordView.height  - safeAreaEdgeInsets().bottom
+            keyboardHeight = emojiView.height  - safeAreaEdgeInsets().bottom
         }
         middleSpaceView.snp.updateConstraints { (make) in
             make.height.equalTo(keyboardHeight)
@@ -407,7 +491,7 @@ extension CLChatInputToolBar {
     }
     @objc private func keyboardWillHide(notification: Notification) {
         guard let userInfo = notification.userInfo, let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval, let options = userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? NSInteger else {return}
-        if isShowPhotoKeyboard || isShowVoiceKeyboard || isTransition {
+        if isShowPhotoKeyboard || isShowVoiceKeyboard {
             return
         }
         isShowEmojiKeyboard = false
@@ -428,6 +512,41 @@ extension CLChatInputToolBar {
         textViewChangedHeight = height
         textView.snp.updateConstraints { (make) in
             make.height.equalTo(height)
+        }
+    }
+}
+//MARK: - JmoVxia---录音提示工具条
+extension CLChatInputToolBar {
+    private func showRecordTips() {
+        recordTipsView.snp.remakeConstraints { (make) in
+            make.size.left.equalTo(topToolBar)
+            make.top.equalTo(topToolBar.snp.bottom)
+        }
+        setNeedsLayout()
+        layoutIfNeeded()
+        UIView.animate(withDuration: 0.1) {
+            self.recordTipsView.snp.remakeConstraints { (make) in
+                make.edges.equalTo(self.topToolBar)
+            }
+            self.contentView.setNeedsLayout()
+            self.contentView.layoutIfNeeded()
+        }
+    }
+    private func hiddenRecordTips() {
+        recordTipsView.snp.remakeConstraints { (make) in
+            make.edges.equalTo(topToolBar)
+        }
+        setNeedsLayout()
+        layoutIfNeeded()
+        UIView.animate(withDuration: 0.1) {
+            self.recordTipsView.snp.remakeConstraints { (make) in
+                make.size.left.equalTo(self.topToolBar)
+                make.top.equalTo(self.topToolBar.snp.bottom)
+            }
+            self.contentView.setNeedsLayout()
+            self.contentView.layoutIfNeeded()
+        } completion: { (_) in
+            self.recordTipsView.isCanSend = true
         }
     }
 }
@@ -463,6 +582,12 @@ extension CLChatInputToolBar {
             textViewBecomeFirstResponder()
         }
     }
+    @objc private func sendButtonAction() {
+        if !(textView.text).isValidAllEmpty() {
+            delegate?.inputBarWillSendText(text: textView.text)
+            textView.text = ""
+        }
+    }
     @objc private func emojiButtonAction() {
         isShowPhotoKeyboard = false
         isShowVoiceKeyboard = false
@@ -482,12 +607,6 @@ extension CLChatInputToolBar {
             }
         }
     }
-    @objc private func sendButtonAction() {
-        if !(textView.text).isValidAllEmpty() {
-            delegate?.inputBarWillSendText(text: textView.text)
-            textView.text = ""
-        }
-    }
     private func keyboardChange() {
         isShowKeyboard = isShowPhotoKeyboard || isShowEmojiKeyboard || isShowVoiceKeyboard || isShowTextKeyboard
     }
@@ -496,7 +615,7 @@ extension CLChatInputToolBar {
         if show {
             photoView.snp.remakeConstraints { (make) in
                 make.left.right.equalTo(contentView)
-                make.height.equalTo(photoView.height)
+                make.height.equalTo(emojiView.height)
                 make.top.equalTo(contentView.snp.bottom)
             }
             setNeedsLayout()
@@ -504,11 +623,11 @@ extension CLChatInputToolBar {
             UIView.animate(withDuration: 0.25) {
                 self.photoView.snp.remakeConstraints { (make) in
                     make.left.right.equalTo(self.contentView)
-                    make.height.equalTo(self.photoView.height)
-                    make.top.equalTo(self.contentView.snp.bottom).offset(-self.photoView.height)
+                    make.height.equalTo(self.emojiView.height)
+                    make.top.equalTo(self.contentView.snp.bottom).offset(-self.emojiView.height)
                 }
                 self.middleSpaceView.snp.updateConstraints { (make) in
-                    make.height.equalTo(self.photoView.height - safeAreaEdgeInsets().bottom)
+                    make.height.equalTo(self.emojiView.height - safeAreaEdgeInsets().bottom)
                 }
                 self.superview?.setNeedsLayout()
                 self.superview?.layoutIfNeeded()
@@ -528,7 +647,7 @@ extension CLChatInputToolBar {
         if show {
             recordView.snp.remakeConstraints { (make) in
                 make.left.right.equalTo(contentView)
-                make.height.equalTo(recordView.height)
+                make.height.equalTo(emojiView.height)
                 make.top.equalTo(contentView.snp.bottom)
             }
             setNeedsLayout()
@@ -536,11 +655,11 @@ extension CLChatInputToolBar {
             UIView.animate(withDuration: 0.25) {
                 self.recordView.snp.remakeConstraints { (make) in
                     make.left.right.equalTo(self.contentView)
-                    make.height.equalTo(self.recordView.height)
-                    make.top.equalTo(self.contentView.snp.bottom).offset(-self.recordView.height)
+                    make.height.equalTo(self.emojiView.height)
+                    make.top.equalTo(self.contentView.snp.bottom).offset(-self.emojiView.height)
                 }
                 self.middleSpaceView.snp.updateConstraints { (make) in
-                    make.height.equalTo(self.recordView.height - safeAreaEdgeInsets().bottom)
+                    make.height.equalTo(self.emojiView.height - safeAreaEdgeInsets().bottom)
                 }
                 self.superview?.setNeedsLayout()
                 self.superview?.layoutIfNeeded()
@@ -567,16 +686,16 @@ extension CLChatInputToolBar {
         keyboardChange()
     }
 }
+extension CLChatInputToolBar {
+    private func transformanimAnimate(with animateView: UIView) {
+        animateView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.8, options: .curveEaseOut, animations: {
+            animateView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        }, completion: nil)
+    }
+}
 //MARK: - JmoVxia---对外接口
 extension CLChatInputToolBar {
-    ///控制器将要旋转
-    func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        isTransition = true
-        coordinator.animate(alongsideTransition: nil) { (_) in
-            self.isTransition = false
-        }
-        emojiView.viewWillTransition(to: size, with: coordinator)
-    }
     ///隐藏键盘
     func dismissKeyboard() {
         isShowPhotoKeyboard = false
@@ -591,6 +710,7 @@ extension CLChatInputToolBar {
             self.superview?.layoutIfNeeded()
         }) { (_) in
             self.photoView.hiddenAlbumContentView()
+            self.emojiView.restoreInitialState()
         }
         textViewResignFirstResponder()
     }

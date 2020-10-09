@@ -11,16 +11,6 @@ import SnapKit
 class CLChatEmojiView: UIView {
     ///item大小
     var itemSize: CGSize = CGSize(width: 45, height: 45)
-    ///行间隙
-    var rowMargin: CGFloat = 0
-    ///列间隙
-    var columnMargin: CGFloat = 0
-    ///顶部间距
-    var topInset: CGFloat = 15
-    ///底部间距
-    var bottomInset: CGFloat = 15
-    ///多少行
-    var rowNumber: Int = 4
     ///emoji数组
     var emojiArray: [String] = [
         "😀","😃","😄","😁","😆","😅","😂","🤣","☺️","😊","😇","🙂","🙃","😉","😌","😍","😘","😗","😙","😚","😋",
@@ -36,17 +26,25 @@ class CLChatEmojiView: UIView {
         "🤷‍♂️","🙎‍♀","🙎‍♂️","🙍‍♀","🙍‍♂️","💇‍♀","💇‍♂️","💆‍♀","💆‍♂️","💅","🤳","💃","🕺","👯‍♀","👯‍♂️","🕴","🚶‍♀️","🚶‍♂","🏃‍♀️","🏃‍♂","👫",
         "👭","👬","💑","👩‍❤️‍👩","👨‍❤️‍👨","💏","👩‍❤️‍💋‍👩","👨‍❤️‍💋‍👨","👪","👨‍👩‍👧","👨‍👩‍👧‍👦","👨‍👩‍👦‍👦","👨‍👩‍👧‍👧","👩‍👩‍👦","👩‍👩‍👧","👩‍👩‍👧‍👦","👩‍👩‍👦‍👦","👩‍👩‍👧‍👧","👨‍👨‍👦","👨‍👨‍👧","👨‍👨‍👧‍👦",
         "👨‍👨‍👦‍👦","👨‍👨‍👧‍👧","👩‍👦","👩‍👧","👩‍👧‍👦","👩‍👦‍👦","👩‍👧‍👧","👨‍👦","👨‍👧","👨‍👧‍👦","👨‍👦‍👦","👨‍👧‍👧","👚","👕","👖","👔","👗","👙","👘","👠","👡",
-        "👢","👞","👟","🎩","🎩","👒","🎓","⛑","👑","👝","👛","👜","💼","🎒","👓","🕶","🌂"
+        "👢","👞","👟","🎩","👒","🎓","⛑","👑","👝","👛","👜","💼","🎒","👓","🕶"
     ]
     ///点击emoji回掉
     var didSelectEmojiCallBack: ((String) -> ())?
     ///删除回掉
     var didSelectDeleteCallBack: (() -> ())?
-
+    ///发送回掉
+    var didSelectSendCallBack: (() -> ())?
+    ///间隙
+    var columnMargin: CGFloat {
+        get {
+            let column = Int(collectionViewWidth / itemSize.width)
+            return collectionViewWidth.truncatingRemainder(dividingBy: itemSize.width) / CGFloat(column + 1)
+        }
+    }
     ///控件高度
     var height: CGFloat {
         get {
-            return CGFloat(rowNumber) * itemSize.height + CGFloat(rowNumber - 1) * rowMargin + topInset + bottomInset + 15 + safeAreaEdgeInsets().bottom
+            return 6 * itemSize.height + columnMargin * 5 + safeAreaEdgeInsets().bottom
         }
     }
     ///控件宽度
@@ -61,71 +59,94 @@ class CLChatEmojiView: UIView {
             return (emojiViewWidth - safeAreaEdgeInsets().left - safeAreaEdgeInsets().right)
         }
     }
-    ///多少列
-    private var columnNumber: Int {
-        get {
-            return Int(collectionViewWidth / (itemSize.width + columnMargin))
-        }
-    }
-    ///两边间隙
-    private var sideMargin: CGFloat {
-        get {
-            return (collectionViewWidth - CGFloat(columnNumber) * itemSize.width - columnMargin * CGFloat(columnNumber - 1)) * 0.5
-        }
-    }
     ///数据
-    private var emojiDataSource = [[CLChatEmojiItemProtocol]]()
+    private var emojiDataSource = [CLChatEmojTextItem]()
     ///layout
-    private lazy var layout: CLChatEmojiFlowLayout = {
-        let layout = CLChatEmojiFlowLayout()
-        layout.minimumLineSpacing = rowMargin
-        layout.minimumInteritemSpacing = columnMargin
-        layout.scrollDirection = .horizontal
-        layout.itemCountPerRow = {[weak self] in
-            guard let strongSelf = self else {
-                return 0
-            }
-            return strongSelf.columnNumber
-        }
-        layout.rowCount = {[weak self] in
-            guard let strongSelf = self else {
-                return 0
-            }
-            return strongSelf.rowNumber
-        }
+    private lazy var emojiLayout: UICollectionViewFlowLayout = {
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = columnMargin
+        layout.minimumInteritemSpacing = columnMargin * 0.5
+        layout.sectionInset = UIEdgeInsets(top: 0, left: columnMargin, bottom: 44, right: columnMargin)
+        layout.scrollDirection = .vertical
         return layout
     }()
     ///collectionView
     private lazy var collectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-        collectionView.register(CLChatEmojiTextCell.classForCoder(), forCellWithReuseIdentifier: CLChatEmojiTextCell.cellReuseIdentifier())
-        collectionView.register(CLChatEmojiDelegateCell.classForCoder(), forCellWithReuseIdentifier: CLChatEmojiDelegateCell.cellReuseIdentifier())
+        let view = UICollectionView(frame: CGRect.zero, collectionViewLayout: emojiLayout)
+        view.register(CLChatEmojiTextCell.classForCoder(), forCellWithReuseIdentifier: CLChatEmojiTextCell.cellReuseIdentifier())
         if #available(iOS 11.0, *) {
-            collectionView.contentInsetAdjustmentBehavior = .never
+            view.contentInsetAdjustmentBehavior = .never
         }
-        collectionView.isPagingEnabled = true
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.backgroundColor = UIColor.clear
-        collectionView.showsVerticalScrollIndicator = false
-        collectionView.showsHorizontalScrollIndicator = false
+        view.delegate = self
+        view.dataSource = self
+        view.backgroundColor = UIColor.clear
+        view.showsVerticalScrollIndicator = true
+        view.showsHorizontalScrollIndicator = false
+        return view
+    }()
+    ///删除按钮
+    private lazy var deleteButton: UIButton = {
+        let view = UIButton()
+        view.backgroundColor = .white
+        view.clipsToBounds = true
+        view.layer.cornerRadius = 3
+        view.addTarget(self, action: #selector(deleteButtonAction), for: .touchUpInside)
         let longPressGestureRecognizer = UILongPressGestureRecognizer.init(target: self, action: #selector(handleLongPress(gesture:)))
-        collectionView.addGestureRecognizer(longPressGestureRecognizer)
-        return collectionView
+        view.addGestureRecognizer(longPressGestureRecognizer)
+        return view
     }()
-    ///page
-    private lazy var pageControl: UIPageControl = {
-        let pageControl = UIPageControl()
-        pageControl.pageIndicatorTintColor = .hexColor(with: "#DADADA")
-        pageControl.currentPageIndicatorTintColor = .hexColor(with: "#2DD178")
-        pageControl.isUserInteractionEnabled = false
-        pageControl.numberOfPages = emojiDataSource.count
-        pageControl.currentPage = 0;
-        return pageControl
+    ///发送按钮
+    private lazy var sendButton: UIButton = {
+        let view = UIButton()
+        view.setTitle("发送", for: .normal)
+        view.setTitle("发送", for: .selected)
+        view.setTitle("发送", for: .highlighted)
+        view.titleLabel?.font = PingFangSCMedium(16)
+        view.clipsToBounds = true
+        view.layer.cornerRadius = 3
+        view.addTarget(self, action: #selector(sendButtonAction), for: .touchUpInside)
+        return view
     }()
+    ///背景
+    private lazy var hiddenView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .clear
+        return view
+    }()
+    ///底部安全区域
+    private lazy var bottomSafeView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .clear
+        return view
+    }()
+    ///是否可以删除
+    var isCanDelete: Bool = true {
+        didSet {
+            if isCanDelete != oldValue {
+                deleteButton.isUserInteractionEnabled = isCanDelete
+                let image = isCanDelete ? UIImage(named: "deleteHIcon") : UIImage(named: "deleteIcon")
+                deleteButton.setImage(image, for: .normal)
+                deleteButton.setImage(image, for: .selected)
+                deleteButton.setImage(image, for: .highlighted)
+            }
+        }
+    }
+    ///是否可以发送
+    var isCanSend: Bool = true {
+        didSet {
+            if isCanSend != oldValue {
+                let textColor: UIColor = isCanSend ? .white : .hexColor(with: "#CCCCCC")
+                let backgroundColor: UIColor = isCanSend ? .themeColor : .white
+                sendButton.isUserInteractionEnabled = isCanSend
+                sendButton.setTitleColor(textColor, for: .normal)
+                sendButton.setTitleColor(textColor, for: .selected)
+                sendButton.setTitleColor(textColor, for: .highlighted)
+                sendButton.backgroundColor = backgroundColor
+            }
+        }
+    }
     ///定时器
     private var timer: CLGCDTimer?
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.frame = CGRect(x: 0, y: 0, width: emojiViewWidth, height: height)
@@ -135,130 +156,111 @@ class CLChatEmojiView: UIView {
         setNeedsLayout()
         layoutIfNeeded()
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
 extension CLChatEmojiView {
-    ///控制器将要旋转
-    func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        collectionView.contentOffset = CGPoint.zero
-        collectionView.alpha = 0.0
-        coordinator.animate(alongsideTransition: nil) { (_) in
-            self.collectionView.alpha = 1.0
-            self.layout.invalidateLayout()
-            self.initData()
-            self.pageControl.numberOfPages = self.emojiDataSource.count
-            self.collectionView.reloadData()
-        }
-    }
-}
-extension CLChatEmojiView {
     private func initUI() {
+        isCanDelete = false
+        isCanSend = false
         addSubview(collectionView)
-        addSubview(pageControl)
+        addSubview(bottomSafeView)
+        addSubview(hiddenView)
+        addSubview(deleteButton)
+        addSubview(sendButton)
     }
     private func makeConstraints() {
         collectionView.snp.makeConstraints { (make) in
-            make.left.right.equalTo(0)
-            make.top.equalTo(0)
-            make.bottom.equalTo(self.snp.bottom).offset(-15 - safeAreaEdgeInsets().bottom)
+            make.left.right.top.equalToSuperview()
+            make.bottom.equalTo(bottomSafeView.snp.top)
         }
-        pageControl.snp.makeConstraints { (make) in
-            make.left.right.equalTo(collectionView)
-            make.top.equalTo(collectionView.snp.bottom)
-            make.height.equalTo(15);
+        bottomSafeView.snp.makeConstraints { (make) in
+            make.left.right.bottom.equalToSuperview()
+            make.height.equalTo(safeAreaEdgeInsets().bottom)
+        }
+        deleteButton.snp.makeConstraints { (make) in
+            make.size.equalTo(CGSize(width: 55, height: 30))
+            make.bottom.equalTo(collectionView.snp.bottom).offset(-7.5)
+            make.right.equalTo(sendButton.snp.left).offset(-8)
+        }
+        sendButton.snp.makeConstraints { (make) in
+            make.size.equalTo(CGSize(width: 55, height: 30))
+            make.bottom.equalTo(collectionView.snp.bottom).offset(-7.5)
+            make.right.equalTo(-15)
+        }
+        hiddenView.snp.makeConstraints { (make) in
+            make.top.left.equalTo(deleteButton)
+            make.bottom.right.equalTo(sendButton)
         }
     }
     private func initData() {
-        let subSize = rowNumber * columnNumber - 1
-        DispatchQueue.global().async {
-            self.emojiDataSource = self.splitArray(array: self.emojiArray, withSubSize: subSize)
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-            }
-        }
-    }
-    private func splitArray( array: [String], withSubSize subSize: Int) -> [[CLChatEmojiItemProtocol]] {
-        let sectionCount = array.count % subSize == 0 ? (array.count / subSize) : (array.count / subSize + 1)
-        var itemArray: [[CLChatEmojiItemProtocol]] = []
-        for section in 0 ..< sectionCount {
-            var index: Int = section * subSize
-            var sectionArray: [CLChatEmojiItemProtocol] = []
-            while index < subSize * (section + 1) {
-                let item = CLChatEmojTextItem()
-                if index < array.count {
-                    item.emoji = array[index]
-                }
-                sectionArray.append(item)
-                index += 1
-            }
-            sectionArray.append(CLChatEmojiDeleteItem())
-            itemArray.append(sectionArray)
-        }
-        return itemArray
+        emojiDataSource.append(contentsOf: emojiArray.map({ (text) -> CLChatEmojTextItem in
+            let item = CLChatEmojTextItem()
+            item.emoji = text
+            return item
+        }))
     }
     
     @objc private func handleLongPress(gesture : UILongPressGestureRecognizer!) {
         if gesture.state == .ended || gesture.state == .cancelled || gesture.state == .failed {
             timer?.cancel()
         }else if (gesture.state == .began) {
-            let point = gesture.location(in: collectionView)
-            if let indexPath = collectionView.indexPathForItem(at: point) {
-                let array = emojiDataSource[indexPath.section]
-                let item = array[indexPath.row]
-                if let _ = item as? CLChatEmojiDeleteItem {
-                    timer = CLGCDTimer.init(interval: 0.1, action: {[weak self] (_) in
-                        DispatchQueue.main.async {
-                            self?.didSelectDeleteCallBack?()
-                        }
-                    })
-                    timer?.start()
+            timer = CLGCDTimer.init(interval: 0.1, action: {[weak self] (_) in
+                DispatchQueue.main.async {
+                    self?.didSelectDeleteCallBack?()
                 }
-            }
+            })
+            timer?.start()
         }
+    }
+}
+extension CLChatEmojiView {
+    @objc private func deleteButtonAction() {
+        didSelectDeleteCallBack?()
+    }
+    @objc private func sendButtonAction() {
+        didSelectSendCallBack?()
+    }
+}
+extension CLChatEmojiView {
+    ///恢复初始状态
+    func restoreInitialState() {
+        collectionView.setContentOffset(.zero, animated: false)
     }
 }
 extension CLChatEmojiView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let array = emojiDataSource[indexPath.section]
-        let item = array[indexPath.row]
-        if let emojiItem = item as? CLChatEmojTextItem {
-            guard let emoji = emojiItem.emoji else {
-                return
-            }
-            didSelectEmojiCallBack?(emoji)
-        }else if let _ = item as? CLChatEmojiDeleteItem {
-            didSelectDeleteCallBack?()
+        guard let emoji = emojiDataSource[indexPath.row].emoji, let cell = collectionView.cellForItem(at: indexPath), cell.alpha == 1.0 else {
+            return
         }
+        didSelectEmojiCallBack?(emoji)
+    }
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let cellRect = cell.convert(cell.bounds, to: self)
+        let hiddenRect = hiddenView.convert(hiddenView.bounds, to: self)
+        cell.alpha = hiddenRect.intersects(cellRect) ? max(0, 1.0 - (cellRect.maxY - hiddenRect.minY) / (45 * 0.45)) : 1.0
     }
 }
 extension CLChatEmojiView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return rowNumber * columnNumber
-    }
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return emojiDataSource.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let array = emojiDataSource[indexPath.section]
-        let item = array[indexPath.row]
-        return item.dequeueReusableCell(collectionView: collectionView, indexPath: indexPath)
+        return emojiDataSource[indexPath.row].dequeueReusableCell(collectionView: collectionView, indexPath: indexPath)
     }
 }
 extension CLChatEmojiView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return itemSize
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: topInset, left: sideMargin + safeAreaEdgeInsets().left, bottom: bottomInset, right: sideMargin + safeAreaEdgeInsets().right)
-    }
-
 }
 extension CLChatEmojiView: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let page = floor((scrollView.contentOffset.x - scrollView.frame.width / 2) / scrollView.frame.width) + 1;
-        pageControl.currentPage = Int(page);
+        for cell in collectionView.visibleCells {
+            let cellRect = cell.convert(cell.bounds, to: self)
+            let hiddenRect = hiddenView.convert(hiddenView.bounds, to: self)
+            cell.alpha = hiddenRect.intersects(cellRect) ? max(0, 1.0 - (cellRect.maxY - hiddenRect.minY) / (45 * 0.45)) : 1.0
+        }
     }
 }
