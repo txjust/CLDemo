@@ -105,7 +105,7 @@
 - (CLBroadcastCell *)broadcastView:(CLBroadcastView *)broadcast cellForRowAtIndexIndex:(NSInteger)index {
     CLBroadcastMainCell *cell = (CLBroadcastMainCell *)[broadcast dequeueReusableCellWithIdentifier:@"CLBroadcastMainCell"];
     cell.backgroundColor = [UIColor lightGrayColor];
-    NSInteger currentIndex = MIN(index + broadcast.tag - self.arrayDS.count, index + broadcast.tag);
+    NSInteger currentIndex = (index + broadcast.tag) % self.arrayDS.count;
     cell.adText = [self.arrayDS objectAtIndex:currentIndex];
     return cell;
 }
