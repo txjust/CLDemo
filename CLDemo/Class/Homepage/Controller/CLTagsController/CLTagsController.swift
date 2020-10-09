@@ -38,7 +38,7 @@ class CLTagsController: CLBaseViewController {
                 guard let date = array.sample(size: max(Int(arc4random_uniform(UInt32(array.count))), 1)) else {
                     return
                 }
-                let item = CLTagsItem(with: date, maxWidth: maxWidth, tagsMinPadding: 10)
+                let item = CLTagsItem(with: date, maxWidth: maxWidth, tagsMinPadding: 10, isAlignment: date.count % 2 == 0)
                 self.arrayDS.append(item)
             }
             DispatchQueue.main.async {

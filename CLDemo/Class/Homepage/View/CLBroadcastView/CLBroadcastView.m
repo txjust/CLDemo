@@ -132,7 +132,6 @@
     }];
     [self setNeedsLayout];
     [self layoutIfNeeded];
-    
     [UIView animateWithDuration:0.5 animations:^{
         [self.currentCell mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self);
