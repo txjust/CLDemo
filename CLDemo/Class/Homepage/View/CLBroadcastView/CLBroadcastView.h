@@ -56,6 +56,9 @@ NS_ASSUME_NONNULL_BEGIN
 ///注册cell
 - (void)registerClass:(nullable Class)cellClass forCellReuseIdentifier:(NSString *)identifier;
 
+///滑动到下一个
+- (void)scrollToNext;
+
 ///加载方法
 - (void)reloadData;
 

@@ -10,6 +10,7 @@
 #import "CLBroadcastView.h"
 #import "CLBroadcastMainCell.h"
 #import <Masonry/Masonry.h>
+#import "CLGCDTimerManager.h"
 
 @interface CLBroadcastViewController ()<CLBroadcastViewDataSource, CLBroadcastViewDelegate>
 
@@ -27,7 +28,8 @@
 @property (nonatomic, strong) CLBroadcastView *broadcastView4;
 ///广播view
 @property (nonatomic, strong) CLBroadcastView *broadcastView5;
-
+///定时器
+@property (nonatomic, strong) CLGCDTimer *timer;
 
 @end
 
@@ -49,33 +51,39 @@
 }
 - (void)mas_makeConstraints {
     [self.broadcastView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.mas_equalTo(self.view);
+        make.left.mas_equalTo(self.view.mas_safeAreaLayoutGuideLeft);
+        make.right.mas_equalTo(self.view.mas_safeAreaLayoutGuideRight);
         make.centerX.mas_equalTo(self.view);
         make.height.mas_equalTo(60);
         make.bottom.mas_equalTo(self.broadcastView1.mas_top).offset(-90);
     }];
     [self.broadcastView1 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.mas_equalTo(self.view);
+        make.left.mas_equalTo(self.view.mas_safeAreaLayoutGuideLeft);
+        make.right.mas_equalTo(self.view.mas_safeAreaLayoutGuideRight);
         make.center.mas_equalTo(self.view);
         make.height.mas_equalTo(60);
     }];
     [self.broadcastView2 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.mas_equalTo(self.view);
+        make.left.mas_equalTo(self.view.mas_safeAreaLayoutGuideLeft);
+        make.right.mas_equalTo(self.view.mas_safeAreaLayoutGuideRight);
         make.top.mas_equalTo(self.broadcastView1.mas_bottom);
         make.height.mas_equalTo(60);
     }];
     [self.broadcastView3 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.mas_equalTo(self.view);
+        make.left.mas_equalTo(self.view.mas_safeAreaLayoutGuideLeft);
+        make.right.mas_equalTo(self.view.mas_safeAreaLayoutGuideRight);
         make.top.mas_equalTo(self.broadcastView2.mas_bottom);
         make.height.mas_equalTo(60);
     }];
     [self.broadcastView4 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.mas_equalTo(self.view);
+        make.left.mas_equalTo(self.view.mas_safeAreaLayoutGuideLeft);
+        make.right.mas_equalTo(self.view.mas_safeAreaLayoutGuideRight);
         make.top.mas_equalTo(self.broadcastView3.mas_bottom);
         make.height.mas_equalTo(60);
     }];
     [self.broadcastView5 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.mas_equalTo(self.view);
+        make.left.mas_equalTo(self.view.mas_safeAreaLayoutGuideLeft);
+        make.right.mas_equalTo(self.view.mas_safeAreaLayoutGuideRight);
         make.top.mas_equalTo(self.broadcastView4.mas_bottom);
         make.height.mas_equalTo(60);
     }];
@@ -87,6 +95,7 @@
     [self.broadcastView3 reloadData];
     [self.broadcastView4 reloadData];
     [self.broadcastView5 reloadData];
+    [self.timer start];
 }
 ///广播个数
 - (NSInteger)broadcastViewRows:(CLBroadcastView *)broadcast {
@@ -116,6 +125,14 @@
         [_arrayDS addObject:@"我是第七个"];
     }
     return _arrayDS;
+}
+- (void)scrollToNext {
+    [self.broadcastView scrollToNext];
+    [self.broadcastView1 scrollToNext];
+    [self.broadcastView2 scrollToNext];
+    [self.broadcastView3 scrollToNext];
+    [self.broadcastView4 scrollToNext];
+    [self.broadcastView5 scrollToNext];
 }
 - (CLBroadcastView *)broadcastView {
     if (!_broadcastView) {
@@ -183,6 +200,17 @@
     }
     return _broadcastView5;
 }
+- (CLGCDTimer *)timer {
+    if (!_timer) {
+        __weak __typeof(self) weakSelf = self;
+        _timer = [[CLGCDTimer alloc] initWithInterval:2 delaySecs:2 queue:dispatch_get_main_queue() repeats:YES action:^(NSInteger __unused actionTimes) {
+            __typeof(&*weakSelf) strongSelf = weakSelf;
+            [strongSelf scrollToNext];
+        }];
+    }
+    return _timer;
+}
+
 
 
 @end

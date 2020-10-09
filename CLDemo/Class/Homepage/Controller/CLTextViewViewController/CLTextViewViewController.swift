@@ -31,7 +31,7 @@ class CLTextViewViewController: CLBaseViewController {
         let textView = CLTextView()
         view.addSubview(textView)
         textView.snp.makeConstraints({ (make) in
-            make.top.equalTo(self.topLayoutGuide.snp.bottom)
+            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
             if #available(iOS 11.0, *) {
                 make.left.right.equalTo(view.safeAreaLayoutGuide)
             } else {

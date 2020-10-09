@@ -40,8 +40,8 @@
 @property (nonatomic, assign) NSInteger totalRow;
 ///当前的下标
 @property (nonatomic, assign) NSInteger currentIndex;
-///定时器
-@property (nonatomic, strong) CLGCDTimer *timer;
+/////定时器
+//@property (nonatomic, strong) CLGCDTimer *timer;
 ///正在进行动画
 @property (nonatomic, assign) BOOL isAnimtion;
 
@@ -92,16 +92,16 @@
         [self.cellCaches addObject:self.removedCell];
     }
     self.totalRow = [self.dataSource broadcastViewRows:self];
-    if (self.totalRow > 1) {
-        __weak __typeof(self) weakSelf = self;
-        self.timer = [[CLGCDTimer alloc] initWithInterval:self.rotationTime delaySecs:self.rotationTime queue:dispatch_get_main_queue() repeats:YES action:^(NSInteger __unused actionTimes) {
-            __typeof(&*weakSelf) strongSelf = weakSelf;
-            [strongSelf scrollToNext];
-        }];
-        [self.timer start];
-    }else {
-        self.timer = nil;
-    }
+//    if (self.totalRow > 1) {
+//        __weak __typeof(self) weakSelf = self;
+//        self.timer = [[CLGCDTimer alloc] initWithInterval:self.rotationTime delaySecs:self.rotationTime queue:dispatch_get_main_queue() repeats:YES action:^(NSInteger __unused actionTimes) {
+//            __typeof(&*weakSelf) strongSelf = weakSelf;
+//            [strongSelf scrollToNext];
+//        }];
+//        [self.timer start];
+//    }else {
+//        self.timer = nil;
+//    }
     if (self.totalRow > 0) {
         if (!self.currentCell) {
             CLBroadcastCell *cell = [self.dataSource broadcastView:self cellForRowAtIndexIndex:self.currentIndex];

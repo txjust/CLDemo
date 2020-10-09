@@ -213,24 +213,24 @@ extension CLPopupController {
         CLPopupManager.showTips(text: "AAAAAAAAAAAAAAAAAAAA")
     }
     func showYearMonthDayDataPicker() {
-        CLPopupManager.showYearMonthDayDataPicker { (year, month, day) in
+        CLPopupManager.showYearMonthDayDataPicker(yearMonthDayCallback:  { (year, month, day) in
             print("选中-----\(year)年\(month)月\(day)日")
-        }
+        })
     }
     func showHourMinuteDataPicker() {
-        CLPopupManager.showHourMinuteDataPicker { (hour, minute) in
+        CLPopupManager.showHourMinuteDataPicker(hourMinuteCallback:  { (hour, minute) in
             print("选中-----\(hour)时\(minute)分")
-        }
+        })
     }
     func showYearMonthDayHourMinuteDataPicker()  {
-        CLPopupManager.showYearMonthDayHourMinuteDataPicker { (year, month, day, hour, minute) in
+        CLPopupManager.showYearMonthDayHourMinuteDataPicker(yearMonthDayHourMinuteCallback:  { (year, month, day, hour, minute) in
             print("选中-----\(year)年\(month)月\(day)日\(hour)时\(minute)分")
-        }
+        })
     }
     func showBMIInput() {
-        CLPopupManager.showBMIInput { (bmi) in
+        CLPopupManager.showBMIInput(bmiCallback:  { (bmi) in
             print("BMI-----\(bmi)")
-        }
+        })
     }
     func showOneInput() {
         CLPopupManager.showOneInput(type: .UrineVolume) { (value) in

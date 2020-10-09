@@ -86,7 +86,6 @@ extension CLDebugController {
 extension CLDebugController {
     private func initUI() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backItem)
-        automaticallyAdjustsScrollViewInsets = false
         view.addSubview(tableView)
         view.addSubview(contentView)
         contentView.addSubview(textField)
