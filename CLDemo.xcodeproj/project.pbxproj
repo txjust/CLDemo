@@ -204,6 +204,8 @@
 		5B8AFC7424A897D000FAF996 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8AFC7324A897D000FAF996 /* Date+Extension.swift */; };
 		5B9EDC3E25305FE20045CD4B /* libmp3lame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B9EDC3D25305FE20045CD4B /* libmp3lame.a */; };
 		5B9F17FE24AECCF40094A3FD /* recoredWave_dk.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B9F17FD24AECCF40094A3FD /* recoredWave_dk.json */; };
+		5BA48263253179A80072F9BD /* CLPopupMomentumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA48262253179A80072F9BD /* CLPopupMomentumController.swift */; };
+		5BA4826725317D260072F9BD /* CLMomentumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA4826625317D260072F9BD /* CLMomentumView.swift */; };
 		5BA7BF7124AC3D180072B94C /* CLPopupTipsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA7BF4524AC3D180072B94C /* CLPopupTipsController.swift */; };
 		5BA7BF7224AC3D180072B94C /* CLPopupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA7BF4624AC3D180072B94C /* CLPopupManager.swift */; };
 		5BA7BF7324AC3D180072B94C /* CLPopupFoodPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA7BF4824AC3D180072B94C /* CLPopupFoodPickerController.swift */; };
@@ -583,6 +585,8 @@
 		5B914ED324ECFEF100AF88A5 /* lame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lame.h; sourceTree = "<group>"; };
 		5B9EDC3D25305FE20045CD4B /* libmp3lame.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libmp3lame.a; sourceTree = "<group>"; };
 		5B9F17FD24AECCF40094A3FD /* recoredWave_dk.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = recoredWave_dk.json; sourceTree = "<group>"; };
+		5BA48262253179A80072F9BD /* CLPopupMomentumController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLPopupMomentumController.swift; sourceTree = "<group>"; };
+		5BA4826625317D260072F9BD /* CLMomentumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLMomentumView.swift; sourceTree = "<group>"; };
 		5BA7BF4524AC3D180072B94C /* CLPopupTipsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLPopupTipsController.swift; sourceTree = "<group>"; };
 		5BA7BF4624AC3D180072B94C /* CLPopupManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLPopupManager.swift; sourceTree = "<group>"; };
 		5BA7BF4824AC3D180072B94C /* CLPopupFoodPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLPopupFoodPickerController.swift; sourceTree = "<group>"; };
@@ -1904,10 +1908,20 @@
 			path = LAME;
 			sourceTree = "<group>";
 		};
+		5BA48261253179740072F9BD /* CLPopupMomentumController */ = {
+			isa = PBXGroup;
+			children = (
+				5BA48262253179A80072F9BD /* CLPopupMomentumController.swift */,
+				5BA4826625317D260072F9BD /* CLMomentumView.swift */,
+			);
+			path = CLPopupMomentumController;
+			sourceTree = "<group>";
+		};
 		5BA7BF4124AC3D180072B94C /* CLPopupManager */ = {
 			isa = PBXGroup;
 			children = (
 				5BA7BF4624AC3D180072B94C /* CLPopupManager.swift */,
+				5BA48261253179740072F9BD /* CLPopupMomentumController */,
 				5BA7BF4424AC3D180072B94C /* CLPopupTipsController */,
 				5BA7BF4724AC3D180072B94C /* CLPopupFoodPickerController */,
 				5BA7BF4E24AC3D180072B94C /* CLPopupFlopController */,
@@ -2340,6 +2354,7 @@
 				5B737E5524A8994400079523 /* CLBackView.swift in Sources */,
 				0C30ED49231E44BF00364327 /* CLCustomTransitionPresentationController.m in Sources */,
 				5BF1ACE1245C7D620083BE70 /* CLTitleControllerView.swift in Sources */,
+				5BA4826725317D260072F9BD /* CLMomentumView.swift in Sources */,
 				5B7AE6112530626500B10AD0 /* CLChatEmojTextItem.swift in Sources */,
 				0C66AF8F22E1C75600C5C9E8 /* CLPresentTransitionNavigationController.m in Sources */,
 				0CB2769522E1A76800AFCB8C /* CLPresentTransitionController.m in Sources */,
@@ -2414,6 +2429,7 @@
 				0CF642FD222FECA800227361 /* CLWaveView.m in Sources */,
 				B51EE6C723DF092400146862 /* CLChatCell.swift in Sources */,
 				0CF2B6EC231A6C2A0071AEC3 /* CLCustomTransitionViewController.m in Sources */,
+				5BA48263253179A80072F9BD /* CLPopupMomentumController.swift in Sources */,
 				0CCDA316219855A20057BA14 /* CLChangeFontSizeCell.m in Sources */,
 				0C6CE0C022ACD71200B4EECF /* FPSDisplay.m in Sources */,
 				0C03A16D22DB0C540064ADD5 /* CLPhotoBrowserTableViewController.m in Sources */,

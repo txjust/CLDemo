@@ -26,7 +26,15 @@
 //    [FPSDisplay shareFPSDisplay];
     return YES;
 }
-
+- (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
+    if ([application.keyWindow isKindOfClass:[CLPopupManagerWindow class]]) {
+        CLPopupManagerController *controller = (CLPopupManagerController *)application.keyWindow.rootViewController;
+        UIInterfaceOrientationMask mask = controller.supportedInterfaceOrientations;
+        return mask;
+    }else {
+        return UIInterfaceOrientationMaskAllButUpsideDown;
+    }
+}
 
 
 @end

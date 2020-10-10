@@ -35,9 +35,6 @@ import DateToolsSwift
         if let statusBarStyle = UIApplication.shared.keyWindow?.rootViewController?.preferredStatusBarStyle {
             configure.statusBarStyle = statusBarStyle
         }
-        if let interfaceOrientationMask = UIApplication.shared.keyWindow?.rootViewController?.supportedInterfaceOrientations {
-            configure.interfaceOrientationMask = interfaceOrientationMask
-        }
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -134,6 +131,17 @@ extension CLPopupManager {
         let identifier: String = dateRandomString
         DispatchQueue.main.async {
             let controller = CLPopupFlopController()
+            controller.configure.identifier = identifier
+            configureCallback?(controller.configure)
+            showController(controller)
+        }
+        return identifier
+    }
+    /// 显示可拖拽弹窗
+    @discardableResult class func showDrag(configureCallback: ((CLPopupManagerConfigure) -> ())? = nil) -> String{
+        let identifier: String = dateRandomString
+        DispatchQueue.main.async {
+            let controller = CLPopupMomentumController()
             controller.configure.identifier = identifier
             configureCallback?(controller.configure)
             showController(controller)
