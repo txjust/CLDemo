@@ -88,26 +88,21 @@
         [self.cellCaches addObject:self.removedCell];
     }
     self.totalRow = [self.dataSource broadcastViewRows:self];
-    if (self.totalRow > 0) {
-        if (!self.currentCell) {
-            CLBroadcastCell *cell = [self.dataSource broadcastView:self cellForRowAtIndexIndex:self.currentIndex];
-            cell.transform = CGAffineTransformIdentity;
-            [cell mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.edges.mas_equalTo(self);
-            }];
-            self.currentCell = cell;
-        }
+    if (self.totalRow > 0 && !self.currentCell) {
+        CLBroadcastCell *cell = [self.dataSource broadcastView:self cellForRowAtIndexIndex:self.currentIndex];
+        cell.transform = CGAffineTransformIdentity;
+        [cell mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.edges.mas_equalTo(self);
+        }];
+        self.currentCell = cell;
     }
 }
 - (void)scrollToNext {
-    if (self.isAnimtion) {
-        return;
-    }
-    if (!self.dataSource || ![self.dataSource respondsToSelector:@selector(broadcastView:cellForRowAtIndexIndex:)] || ![self.dataSource respondsToSelector:@selector(broadcastViewRows:)]) {
+    if (self.isAnimtion || !self.dataSource || ![self.dataSource respondsToSelector:@selector(broadcastView:cellForRowAtIndexIndex:)] || ![self.dataSource respondsToSelector:@selector(broadcastViewRows:)]) {
         return;
     }
     self.isAnimtion = YES;
-    ((self.currentIndex + 1) < self.totalRow) ? (self.currentIndex ++) : (self.currentIndex = 0);
+    self.currentIndex = (self.currentIndex + 1) % self.totalRow;
     CLBroadcastCell *nextCell = [self.dataSource broadcastView:self cellForRowAtIndexIndex:self.currentIndex];
     [nextCell mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(self);
@@ -126,8 +121,8 @@
     }];
 }
 - (BOOL)isNeedAddToCache:(CLBroadcastCell *)cell {
-    for (CLBroadcastCell *cellIn in self.cellCaches) {
-        if ([cellIn.reuseIdentifier isEqualToString:cell.reuseIdentifier]) {
+    for (CLBroadcastCell *cacheCell in self.cellCaches) {
+        if ([cacheCell.reuseIdentifier isEqualToString:cell.reuseIdentifier]) {
             return NO;
         }
     }
