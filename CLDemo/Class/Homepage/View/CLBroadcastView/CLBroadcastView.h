@@ -49,10 +49,6 @@ NS_ASSUME_NONNULL_BEGIN
 ///代理
 @property (nonatomic, weak) id<CLBroadcastViewDelegate> delegate;
 
-///轮播时间
-@property (nonatomic, assign) NSTimeInterval rotationTime;
-
-
 ///注册cell
 - (void)registerClass:(nullable Class)cellClass forCellReuseIdentifier:(NSString *)identifier;
 

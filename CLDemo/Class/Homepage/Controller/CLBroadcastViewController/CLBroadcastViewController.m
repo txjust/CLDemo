@@ -138,7 +138,6 @@
     if (!_broadcastView) {
         _broadcastView = [[CLBroadcastView alloc] init];
         [_broadcastView registerClass:[CLBroadcastMainCell class] forCellReuseIdentifier:@"CLBroadcastMainCell"];
-        _broadcastView.rotationTime = 3;
         _broadcastView.dataSource = self;
         _broadcastView.delegate = self;
         _broadcastView.tag = 0;
@@ -149,7 +148,6 @@
     if (!_broadcastView1) {
         _broadcastView1 = [[CLBroadcastView alloc] init];
         [_broadcastView1 registerClass:[CLBroadcastMainCell class] forCellReuseIdentifier:@"CLBroadcastMainCell"];
-        _broadcastView1.rotationTime = 1;
         _broadcastView1.dataSource = self;
         _broadcastView1.delegate = self;
         _broadcastView1.tag = 0;
@@ -160,7 +158,6 @@
     if (!_broadcastView2) {
         _broadcastView2 = [[CLBroadcastView alloc] init];
         [_broadcastView2 registerClass:[CLBroadcastMainCell class] forCellReuseIdentifier:@"CLBroadcastMainCell"];
-        _broadcastView2.rotationTime = 1;
         _broadcastView2.dataSource = self;
         _broadcastView2.delegate = self;
         _broadcastView2.tag = 1;
@@ -171,7 +168,6 @@
     if (!_broadcastView3) {
         _broadcastView3 = [[CLBroadcastView alloc] init];
         [_broadcastView3 registerClass:[CLBroadcastMainCell class] forCellReuseIdentifier:@"CLBroadcastMainCell"];
-        _broadcastView3.rotationTime = 1;
         _broadcastView3.dataSource = self;
         _broadcastView3.delegate = self;
         _broadcastView3.tag = 2;
@@ -182,7 +178,6 @@
     if (!_broadcastView4) {
         _broadcastView4 = [[CLBroadcastView alloc] init];
         [_broadcastView4 registerClass:[CLBroadcastMainCell class] forCellReuseIdentifier:@"CLBroadcastMainCell"];
-        _broadcastView4.rotationTime = 1;
         _broadcastView4.dataSource = self;
         _broadcastView4.delegate = self;
         _broadcastView4.tag = 3;
@@ -193,7 +188,6 @@
     if (!_broadcastView5) {
         _broadcastView5 = [[CLBroadcastView alloc] init];
         [_broadcastView5 registerClass:[CLBroadcastMainCell class] forCellReuseIdentifier:@"CLBroadcastMainCell"];
-        _broadcastView5.rotationTime = 1;
         _broadcastView5.dataSource = self;
         _broadcastView5.delegate = self;
         _broadcastView5.tag = 4;
