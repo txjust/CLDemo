@@ -104,7 +104,7 @@
 ///创建cell
 - (CLBroadcastCell *)broadcastView:(CLBroadcastView *)broadcast cellForRowAtIndexIndex:(NSInteger)index {
     CLBroadcastMainCell *cell = (CLBroadcastMainCell *)[broadcast dequeueReusableCellWithIdentifier:@"CLBroadcastMainCell"];
-    cell.backgroundColor = [UIColor lightGrayColor];
+    cell.backgroundColor = [[UIColor orangeColor] colorWithAlphaComponent:0.4];
     NSInteger currentIndex = (index + broadcast.tag) % self.arrayDS.count;
     cell.adText = [self.arrayDS objectAtIndex:currentIndex];
     return cell;
@@ -197,7 +197,7 @@
 - (CLGCDTimer *)timer {
     if (!_timer) {
         __weak __typeof(self) weakSelf = self;
-        _timer = [[CLGCDTimer alloc] initWithInterval:2 delaySecs:2 queue:dispatch_get_main_queue() repeats:YES action:^(NSInteger __unused actionTimes) {
+        _timer = [[CLGCDTimer alloc] initWithInterval:1 delaySecs:1 queue:dispatch_get_main_queue() repeats:YES action:^(NSInteger __unused actionTimes) {
             __typeof(&*weakSelf) strongSelf = weakSelf;
             [strongSelf scrollToNext];
         }];

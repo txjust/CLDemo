@@ -88,6 +88,16 @@
         [self.cellCaches addObject:self.removedCell];
     }
     self.totalRow = [self.dataSource broadcastViewRows:self];
+    if (self.totalRow == 0) {
+        if (self.currentCell) {
+            [self.currentCell removeFromSuperview];
+            self.currentCell = nil;
+        }
+        if (self.removedCell) {
+            [self.removedCell removeFromSuperview];
+            self.removedCell = nil;
+        }
+    }
     if (self.totalRow > 0 && !self.currentCell) {
         CLBroadcastCell *cell = [self.dataSource broadcastView:self cellForRowAtIndexIndex:self.currentIndex];
         cell.transform = CGAffineTransformIdentity;
