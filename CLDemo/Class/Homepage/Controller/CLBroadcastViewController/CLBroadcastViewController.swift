@@ -44,6 +44,11 @@ class CLBroadcastViewController: CLBaseViewController {
         view.tag = 2
         return view
     }()
+    private lazy var carouseView: CLCarouselView = {
+        let view = CLCarouselView()
+        view.dataSource = self
+        return view
+    }()
     private lazy var timer: CLGCDTimer = {
         let gcdTimer = CLGCDTimer(interval: 3, delaySecs: 3) {[weak self] (_) in
             self?.scrollToNext()
@@ -62,10 +67,17 @@ extension CLBroadcastViewController {
         view.addSubview(broadcastView)
         view.addSubview(broadcastView1)
         view.addSubview(broadcastView2)
+        view.addSubview(carouseView)
     }
     func makeConstraints() {
+        carouseView.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.left.right.equalToSuperview()
+            make.height.equalTo(120)
+            make.bottom.equalTo(broadcastView.snp.top).offset(-80)
+        }
         broadcastView.snp.makeConstraints { (make) in
-            make.center.equalToSuperview()
+            make.centerX.equalToSuperview()
             make.left.right.equalToSuperview()
             make.height.equalTo(60)
         }
@@ -80,6 +92,7 @@ extension CLBroadcastViewController {
             make.centerX.equalToSuperview()
             make.left.right.equalToSuperview()
             make.height.equalTo(60)
+            make.bottom.equalToSuperview().offset(-180)
         }
     }
     func reloadData() {
@@ -87,11 +100,21 @@ extension CLBroadcastViewController {
         broadcastView1.reloadData()
         broadcastView2.reloadData()
         timer.start()
+        
+        carouseView.reloadData()
     }
     func scrollToNext() {
         broadcastView.scrollToNext()
         broadcastView1.scrollToNext()
         broadcastView2.scrollToNext()
+    }
+}
+extension CLBroadcastViewController: CLCarouselViewDataSource {
+    func carouselViewRows() -> Int {
+        return arrayDS.count
+    }
+    func carouselViewDidChange(cell: CLCarouselCell, index: Int) {
+        print("\(index)")
     }
 }
 extension CLBroadcastViewController: CLBroadcastViewDelegate {

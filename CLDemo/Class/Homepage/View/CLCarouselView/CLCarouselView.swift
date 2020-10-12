@@ -20,14 +20,7 @@ class CLCarouselView: UIView {
     /// 图片点击回调
     var blockWithClick: ((Int) -> ())?
     /// 设定自动滚动间隔(默认三秒)
-    var autoScrollDeley: TimeInterval = 3 {
-        didSet{
-            if autoScrollDeley != oldValue {
-                removeTimer()
-                setUpTimer()
-            }
-        }
-    }
+    var autoScrollDeley: TimeInterval = 3
     /// 自动轮播，默认三秒
     var isAutoScroll : Bool = true
     /// 当前图片标示
@@ -108,6 +101,8 @@ extension CLCarouselView {
             return
         }
         rows = dataSource.carouselViewRows()
+        removeTimer()
+        setUpTimer()
         resetData()
     }
 }
@@ -139,9 +134,10 @@ extension CLCarouselView {
 }
 extension CLCarouselView {
     private func resetData(){
-        guard let dataSource = dataSource else {
+        guard let dataSource = dataSource, rows > 0 else {
             return
         }
+        scrollView.isScrollEnabled = rows != 1
         if rows == 1 {
             dataSource.carouselViewDidChange(cell: currentCell, index: 0)
         }else {
@@ -164,7 +160,7 @@ extension CLCarouselView: UIScrollViewDelegate {
     }
     /// 用手滚动结束时重新添加定时器
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        if isAutoScroll == true{
+        if isAutoScroll == true {
             setUpTimer()
         }
     }
@@ -172,6 +168,9 @@ extension CLCarouselView: UIScrollViewDelegate {
         scrollViewDidEndDecelerating(scrollView)
     }
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        guard rows > 0 else {
+            return
+        }
         let offsetX = scrollView.contentOffset.x
         if offsetX >= (bounds.width) * 2 {
             currentIndex = (currentIndex + 1) % rows
