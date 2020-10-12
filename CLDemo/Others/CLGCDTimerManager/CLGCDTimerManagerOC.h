@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CLGCDTimer : NSObject
+@interface CLGCDTimerOC : NSObject
 
 /**
  创建定时器，需要调用开始开启
@@ -43,7 +43,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface CLGCDTimerManager : NSObject
+@interface CLGCDTimerManagerOC : NSObject
 
 /**
  创建全局定时器
@@ -72,7 +72,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**恢复定时器*/
 + (void)resume:(NSString *_Nonnull)name;
 /**获取定时器*/
-+ (CLGCDTimer *_Nullable)timer:(NSString *_Nonnull)name;
++ (CLGCDTimerOC *_Nullable)timer:(NSString *_Nonnull)name;
 
 @end
 

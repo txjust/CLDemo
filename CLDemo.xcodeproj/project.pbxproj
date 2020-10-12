@@ -87,11 +87,10 @@
 		0CB60B14237EC51100D10317 /* CLHorizontalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CB60B09237EC51100D10317 /* CLHorizontalCell.m */; };
 		0CB60B17237EC51100D10317 /* CLHorizontalItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CB60B10237EC51100D10317 /* CLHorizontalItem.m */; };
 		0CBBE930220DBAEC00640BB9 /* CLLogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CBBE92F220DBAEC00640BB9 /* CLLogViewController.m */; };
-		0CC171422248B4D2005B0F0A /* CLGCDTimerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CC171412248B4D2005B0F0A /* CLGCDTimerManager.m */; };
+		0CC171422248B4D2005B0F0A /* CLGCDTimerManagerOC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CC171412248B4D2005B0F0A /* CLGCDTimerManagerOC.m */; };
 		0CC7796622D9D7E10027B310 /* CLPhotoBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CC7796522D9D7E10027B310 /* CLPhotoBrowserViewController.m */; };
 		0CCBFB7222AB89FE0078547B /* NSDate+CLExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCBFB7122AB89FE0078547B /* NSDate+CLExtension.m */; };
 		0CCD1DCA231F60D200AFCE1F /* CLBroadcastView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCD1DC9231F60D200AFCE1F /* CLBroadcastView.m */; };
-		0CCD1DD0231F649D00AFCE1F /* CLBroadcastViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCD1DCF231F649D00AFCE1F /* CLBroadcastViewController.m */; };
 		0CCDA30B219850EF0057BA14 /* CLChangeFontSizeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCDA30A219850EF0057BA14 /* CLChangeFontSizeController.m */; };
 		0CCDA316219855A20057BA14 /* CLChangeFontSizeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCDA315219855A20057BA14 /* CLChangeFontSizeCell.m */; };
 		0CCDA319219855B90057BA14 /* ChangeFontSizeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCDA318219855B90057BA14 /* ChangeFontSizeModel.m */; };
@@ -166,6 +165,7 @@
 		5B63581A24ADC50D00D768A4 /* data-left.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B63581824ADC50D00D768A4 /* data-left.json */; };
 		5B6CABE9253446D70076C873 /* CLCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6CABE8253446D70076C873 /* CLCarouselView.swift */; };
 		5B6CABED2534473E0076C873 /* CLCarouselCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6CABEC2534473E0076C873 /* CLCarouselCell.swift */; };
+		5B6CABF125344F910076C873 /* CLBroadcastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6CABF025344F910076C873 /* CLBroadcastViewController.swift */; };
 		5B737E5524A8994400079523 /* CLBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B737E5424A8994400079523 /* CLBackView.swift */; };
 		5B737E5824A899D300079523 /* CLLogForOC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B737E5724A899D200079523 /* CLLogForOC.m */; };
 		5B7AE6032530626500B10AD0 /* CLChatPhotoCellButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7AE5ED2530626500B10AD0 /* CLChatPhotoCellButton.swift */; };
@@ -409,16 +409,14 @@
 		0CB60B10237EC51100D10317 /* CLHorizontalItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLHorizontalItem.m; sourceTree = "<group>"; };
 		0CBBE92E220DBAEC00640BB9 /* CLLogViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLLogViewController.h; sourceTree = "<group>"; };
 		0CBBE92F220DBAEC00640BB9 /* CLLogViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLLogViewController.m; sourceTree = "<group>"; };
-		0CC171402248B4D2005B0F0A /* CLGCDTimerManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLGCDTimerManager.h; sourceTree = "<group>"; };
-		0CC171412248B4D2005B0F0A /* CLGCDTimerManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLGCDTimerManager.m; sourceTree = "<group>"; };
+		0CC171402248B4D2005B0F0A /* CLGCDTimerManagerOC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLGCDTimerManagerOC.h; sourceTree = "<group>"; };
+		0CC171412248B4D2005B0F0A /* CLGCDTimerManagerOC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLGCDTimerManagerOC.m; sourceTree = "<group>"; };
 		0CC7796422D9D7E10027B310 /* CLPhotoBrowserViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLPhotoBrowserViewController.h; sourceTree = "<group>"; };
 		0CC7796522D9D7E10027B310 /* CLPhotoBrowserViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLPhotoBrowserViewController.m; sourceTree = "<group>"; };
 		0CCBFB7022AB89FE0078547B /* NSDate+CLExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+CLExtension.h"; sourceTree = "<group>"; };
 		0CCBFB7122AB89FE0078547B /* NSDate+CLExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+CLExtension.m"; sourceTree = "<group>"; };
 		0CCD1DC8231F60D200AFCE1F /* CLBroadcastView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLBroadcastView.h; sourceTree = "<group>"; };
 		0CCD1DC9231F60D200AFCE1F /* CLBroadcastView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLBroadcastView.m; sourceTree = "<group>"; };
-		0CCD1DCE231F649D00AFCE1F /* CLBroadcastViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLBroadcastViewController.h; sourceTree = "<group>"; };
-		0CCD1DCF231F649D00AFCE1F /* CLBroadcastViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLBroadcastViewController.m; sourceTree = "<group>"; };
 		0CCDA309219850EF0057BA14 /* CLChangeFontSizeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLChangeFontSizeController.h; sourceTree = "<group>"; };
 		0CCDA30A219850EF0057BA14 /* CLChangeFontSizeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLChangeFontSizeController.m; sourceTree = "<group>"; };
 		0CCDA314219855A20057BA14 /* CLChangeFontSizeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLChangeFontSizeCell.h; sourceTree = "<group>"; };
@@ -535,6 +533,7 @@
 		5B63581824ADC50D00D768A4 /* data-left.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "data-left.json"; sourceTree = "<group>"; };
 		5B6CABE8253446D70076C873 /* CLCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLCarouselView.swift; sourceTree = "<group>"; };
 		5B6CABEC2534473E0076C873 /* CLCarouselCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLCarouselCell.swift; sourceTree = "<group>"; };
+		5B6CABF025344F910076C873 /* CLBroadcastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLBroadcastViewController.swift; sourceTree = "<group>"; };
 		5B737E5424A8994400079523 /* CLBackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLBackView.swift; sourceTree = "<group>"; };
 		5B737E5624A899D200079523 /* CLLogForOC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLLogForOC.h; sourceTree = "<group>"; };
 		5B737E5724A899D200079523 /* CLLogForOC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLLogForOC.m; sourceTree = "<group>"; };
@@ -833,8 +832,7 @@
 		0C1CFA7523744AC9004B59CB /* CLBroadcastViewController */ = {
 			isa = PBXGroup;
 			children = (
-				0CCD1DCE231F649D00AFCE1F /* CLBroadcastViewController.h */,
-				0CCD1DCF231F649D00AFCE1F /* CLBroadcastViewController.m */,
+				5B6CABF025344F910076C873 /* CLBroadcastViewController.swift */,
 			);
 			path = CLBroadcastViewController;
 			sourceTree = "<group>";
@@ -921,8 +919,8 @@
 		0C29D593222FE7DB00635F25 /* CLGCDTimerManager */ = {
 			isa = PBXGroup;
 			children = (
-				0CC171402248B4D2005B0F0A /* CLGCDTimerManager.h */,
-				0CC171412248B4D2005B0F0A /* CLGCDTimerManager.m */,
+				0CC171402248B4D2005B0F0A /* CLGCDTimerManagerOC.h */,
+				0CC171412248B4D2005B0F0A /* CLGCDTimerManagerOC.m */,
 				0C77C4B82248C85C007D0FFC /* CLGCDTimer.swift */,
 			);
 			path = CLGCDTimerManager;
@@ -2506,7 +2504,7 @@
 				5BA7BF8B24AC3D180072B94C /* CLPopupMessageController.swift in Sources */,
 				5B44D12A2435C61E0059476D /* CLTagsController.swift in Sources */,
 				0CB60B14237EC51100D10317 /* CLHorizontalCell.m in Sources */,
-				0CC171422248B4D2005B0F0A /* CLGCDTimerManager.m in Sources */,
+				0CC171422248B4D2005B0F0A /* CLGCDTimerManagerOC.m in Sources */,
 				5BCCEC5A245BCE2C0049AC70 /* CLVernierCaliperView.swift in Sources */,
 				B5498C7D23DED4220082D4E5 /* CLChatTextCell.swift in Sources */,
 				5B399E2824AB147E00A14FE7 /* CLChatImageItem.swift in Sources */,
@@ -2514,6 +2512,7 @@
 				0CF4EF912330834400D8B95E /* CLInputPasswordViewController.m in Sources */,
 				0CA1236F22255A6F007DDE6D /* CLCardView.m in Sources */,
 				0CF6B84623865AF600F10986 /* CLLayoutView.m in Sources */,
+				5B6CABF125344F910076C873 /* CLBroadcastViewController.swift in Sources */,
 				5BA7BF8724AC3D180072B94C /* CLPopupOneInputController.swift in Sources */,
 				5B49566D23B5DD0100212772 /* CLTwoSidedView.swift in Sources */,
 				5BA7BF9224AC3E910072B94C /* CLFlopBottomView.swift in Sources */,
@@ -2538,7 +2537,6 @@
 				0CF79B082196798400DD0BF1 /* BankModel.m in Sources */,
 				5B8AFC6A24A8954C00FAF996 /* CLLogManager.swift in Sources */,
 				0C94BA4A22D9DC04008CD7BA /* CLPhotoCollectionViewCell.m in Sources */,
-				0CCD1DD0231F649D00AFCE1F /* CLBroadcastViewController.m in Sources */,
 				0C223C792243818A00E319E2 /* CLRoundAnimationView.swift in Sources */,
 				0CCBFB7222AB89FE0078547B /* NSDate+CLExtension.m in Sources */,
 				5BC3FB8921CE96A400B7FF82 /* CLRotatingPictureViewController.swift in Sources */,

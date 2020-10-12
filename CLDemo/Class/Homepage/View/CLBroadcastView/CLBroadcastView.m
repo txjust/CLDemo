@@ -81,7 +81,7 @@
 }
 ///加载方法
 - (void)reloadData {
-    if (!self.dataSource || ![self.dataSource respondsToSelector:@selector(broadcastView:cellForRowAtIndexIndex:)] || ![self.dataSource respondsToSelector:@selector(broadcastViewRows:)]) {
+    if (!self.dataSource || ![self.dataSource respondsToSelector:@selector(broadcastView:cellForRowAtIndex:)] || ![self.dataSource respondsToSelector:@selector(broadcastViewRows:)]) {
         return;
     }
     if ([self isNeedAddToCache:self.removedCell] && self.removedCell) {
@@ -99,7 +99,7 @@
         }
     }
     if (self.totalRow > 0 && !self.currentCell) {
-        CLBroadcastCell *cell = [self.dataSource broadcastView:self cellForRowAtIndexIndex:self.currentIndex];
+        CLBroadcastCell *cell = [self.dataSource broadcastView:self cellForRowAtIndex:self.currentIndex];
         cell.transform = CGAffineTransformIdentity;
         [cell mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.edges.mas_equalTo(self);
@@ -108,12 +108,12 @@
     }
 }
 - (void)scrollToNext {
-    if (self.isAnimtion || !self.dataSource || ![self.dataSource respondsToSelector:@selector(broadcastView:cellForRowAtIndexIndex:)] || ![self.dataSource respondsToSelector:@selector(broadcastViewRows:)]) {
+    if (self.isAnimtion || !self.dataSource || ![self.dataSource respondsToSelector:@selector(broadcastView:cellForRowAtIndex:)] || ![self.dataSource respondsToSelector:@selector(broadcastViewRows:)]) {
         return;
     }
     self.isAnimtion = YES;
     self.currentIndex = (self.currentIndex + 1) % self.totalRow;
-    CLBroadcastCell *nextCell = [self.dataSource broadcastView:self cellForRowAtIndexIndex:self.currentIndex];
+    CLBroadcastCell *nextCell = [self.dataSource broadcastView:self cellForRowAtIndex:self.currentIndex];
     [nextCell mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(self);
     }];

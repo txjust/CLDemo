@@ -8,30 +8,34 @@
 
 import UIKit
 
+protocol CLCarouselViewDataSource {
+    ///轮播总个数
+    func carouselViewRows() -> Int
+    ///数据源改变
+    func carouselViewDidChange(cell: CLCarouselCell, index: Int)
+}
 class CLCarouselView: UIView {
-    /// 当前图片标示
-    private var currentIndex : Int = 0
-    /// 定时器
-    private var timer : Timer?
+    ///数据源协议
+    var dataSource: CLCarouselViewDataSource?
     /// 图片点击回调
-    var blockWithClick : ((Int) -> ())?
+    var blockWithClick: ((Int) -> ())?
     /// 设定自动滚动间隔(默认三秒)
-    var autoScrollDeley : TimeInterval = 15{
+    var autoScrollDeley: TimeInterval = 3 {
         didSet{
-            self.removeTimer()
-            self.setUpTimer()
-        }
-    }
-    /// 装图片URL的数组
-    var imageArray = [String]()
-    /// 自动轮播，默认三秒
-    var isAutoScroll : Bool?{
-        didSet{
-            if isAutoScroll == true && (imageArray.count) > 1{
-                autoScrollDeley = 15
+            if autoScrollDeley != oldValue {
+                removeTimer()
+                setUpTimer()
             }
         }
     }
+    /// 自动轮播，默认三秒
+    var isAutoScroll : Bool = true
+    /// 当前图片标示
+    private var currentIndex: Int = 0
+    /// 定时器
+    private var timer: CLGCDTimer?
+    ///总个数
+    private var rows: Int = 0
     ///滑动视图
     private lazy var scrollView : UIScrollView = {
        let view = UIScrollView()
@@ -59,7 +63,6 @@ class CLCarouselView: UIView {
         let view = CLCarouselCell()
         return view
     }()
-
     override init(frame : CGRect){
         super.init(frame: frame)
         initUI()
@@ -69,11 +72,10 @@ class CLCarouselView: UIView {
         super.init(coder: aDecoder)
         fatalError("init(coder:) has not been implemented")
     }
-
 }
 extension CLCarouselView {
     private func initUI(){
-        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageClick)))
+        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(clickCell)))
         addSubview(scrollView)
         scrollView.addSubview(lastCell)
         scrollView.addSubview(currentCell)
@@ -98,46 +100,57 @@ extension CLCarouselView {
     override func layoutSubviews() {
         super.layoutSubviews()
         scrollView.contentSize = CGSize(width: (bounds.width) * 3.0, height: 0)
-        changeImage()
+    }
+}
+extension CLCarouselView {
+    func reloadData() {
+        guard let dataSource = dataSource else {
+            return
+        }
+        rows = dataSource.carouselViewRows()
+        resetData()
     }
 }
 extension CLCarouselView {
     private func setUpTimer(){
-        timer = Timer(timeInterval: 2, target: self, selector: #selector(scrollToLast), userInfo: nil, repeats: true)
-        RunLoop.current.add(timer!, forMode: .common)
+        timer = CLGCDTimer(interval: autoScrollDeley, delaySecs: autoScrollDeley, action: {[weak self] (_) in
+            self?.scrollToLast()
+        })
+        timer?.start()
     }
     private func removeTimer(){
-        timer?.invalidate()
-        timer = nil
+        timer?.cancel()
     }
 }
 extension CLCarouselView {
-    @objc private func imageClick(){
+    @objc private func clickCell(){
         blockWithClick?(currentIndex)
     }
 }
 extension CLCarouselView {
-    @objc func scrollToLast(){
+    func scrollToLast(){
         let offset = CGPoint(x: scrollView.contentOffset.x - bounds.width, y: 0)
         scrollView.setContentOffset(offset, animated: true)
     }
-    @objc func scrollToNext(){
+    func scrollToNext(){
         let offset = CGPoint(x: scrollView.contentOffset.x + bounds.width, y: 0)
         scrollView.setContentOffset(offset, animated: true)
     }
 }
 extension CLCarouselView {
-    private func changeImage(){
-        if imageArray.count == 1 {
-//            middleImageView?.image = UIImage(named: imageArray[0])
+    private func resetData(){
+        guard let dataSource = dataSource else {
+            return
+        }
+        if rows == 1 {
+            dataSource.carouselViewDidChange(cell: currentCell, index: 0)
         }else {
-            let left: Int = (currentIndex - 1 + imageArray.count) % imageArray.count
+            let left: Int = (currentIndex - 1 + rows) % rows
             let middle: Int = currentIndex
-            let right: Int = (currentIndex + 1) % imageArray.count
-            //给重用的三个imageView附上图片
-//            leftImageView?.image = UIImage(named: imageArray[left])
-//            middleImageView?.image = UIImage(named: imageArray[middle])
-//            rightImageView?.image = UIImage(named: imageArray[right])
+            let right: Int = (currentIndex + 1) % rows
+            dataSource.carouselViewDidChange(cell: lastCell, index: left)
+            dataSource.carouselViewDidChange(cell: currentCell, index: middle)
+            dataSource.carouselViewDidChange(cell: nextCell, index: right)
         }
         DispatchQueue.main.async {
             self.scrollView.setContentOffset(CGPoint(x:(self.bounds.width),y:0), animated: false)
@@ -161,11 +174,11 @@ extension CLCarouselView: UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let offsetX = scrollView.contentOffset.x
         if offsetX >= (bounds.width) * 2 {
-            currentIndex = (currentIndex + 1) % imageArray.count
-            changeImage()
+            currentIndex = (currentIndex + 1) % rows
+            resetData()
         }else if offsetX <= 0 {
-            currentIndex = (currentIndex - 1 + imageArray.count) % imageArray.count
-            changeImage()
+            currentIndex = (currentIndex - 1 + rows) % rows
+            resetData()
         }
     }
 }

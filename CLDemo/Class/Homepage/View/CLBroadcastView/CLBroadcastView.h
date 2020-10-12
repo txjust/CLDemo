@@ -29,7 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///广播个数
 - (NSInteger)broadcastViewRows:(CLBroadcastView *)broadcast;
 ///创建cell
-- (CLBroadcastCell *)broadcastView:(CLBroadcastView *)broadcast cellForRowAtIndexIndex:(NSInteger)index;
+- (CLBroadcastCell *)broadcastView:(CLBroadcastView *)broadcast cellForRowAtIndex:(NSInteger)index;
 
 @end
 
