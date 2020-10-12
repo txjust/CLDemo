@@ -114,7 +114,7 @@ extension CLBroadcastViewController: CLCarouselViewDataSource {
         return arrayDS.count
     }
     func carouselViewDidChange(cell: CLCarouselCell, index: Int) {
-        print("\(index)")
+        cell.label.text = arrayDS[index]
     }
 }
 extension CLBroadcastViewController: CLBroadcastViewDelegate {
