@@ -11,6 +11,7 @@ import UIKit
 class CLCarouselCell: UIView {
     lazy var label: UILabel = {
         let view = UILabel()
+        view.textAlignment = .center
         return view
     }()
     override init(frame: CGRect) {
