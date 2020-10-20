@@ -8,22 +8,27 @@
 
 import UIKit
 
-protocol CLCarouselViewDataSource {
+protocol CLCarouselViewDataSource: class {
     ///轮播总个数
     func carouselViewRows() -> Int
     ///数据源改变
     func carouselViewDidChange(cell: CLCarouselCell, index: Int)
 }
+protocol CLCarouselViewDelegate: class {
+    ///点击cell
+    func carouselViewDidSelect(cell: CLCarouselCell, index: Int)
+}
+
 class CLCarouselView: UIView {
     ///数据源协议
-    var dataSource: CLCarouselViewDataSource?
-    /// 图片点击回调
-    var blockWithClick: ((Int) -> ())?
+    weak var dataSource: CLCarouselViewDataSource?
+    ///代理
+    weak var delegate: CLCarouselViewDelegate?
     /// 设定自动滚动间隔(默认三秒)
     var autoScrollDeley: TimeInterval = 3
-    /// 自动轮播，默认三秒
+    /// 自动轮播
     var isAutoScroll : Bool = true
-    /// 当前图片标示
+    /// 当前索引
     private var currentIndex: Int = 0
     /// 定时器
     private var timer: CLGCDTimer?
@@ -97,12 +102,12 @@ extension CLCarouselView {
 }
 extension CLCarouselView {
     func reloadData() {
-        guard let dataSource = dataSource else {
-            return
+        let rows = dataSource?.carouselViewRows() ?? 0
+        self.rows = rows
+        if isAutoScroll {
+            removeTimer()
+            setUpTimer()
         }
-        rows = dataSource.carouselViewRows()
-        removeTimer()
-        setUpTimer()
         resetData()
     }
 }
@@ -119,7 +124,7 @@ extension CLCarouselView {
 }
 extension CLCarouselView {
     @objc private func clickCell(){
-        blockWithClick?(currentIndex)
+        delegate?.carouselViewDidSelect(cell: currentCell, index: currentIndex)
     }
 }
 extension CLCarouselView {
@@ -134,19 +139,16 @@ extension CLCarouselView {
 }
 extension CLCarouselView {
     private func resetData(){
-        guard let dataSource = dataSource, rows > 0 else {
-            return
-        }
         scrollView.isScrollEnabled = rows != 1
         if rows == 1 {
-            dataSource.carouselViewDidChange(cell: currentCell, index: 0)
+            dataSource?.carouselViewDidChange(cell: currentCell, index: 0)
         }else {
             let left: Int = (currentIndex - 1 + rows) % rows
             let middle: Int = currentIndex
             let right: Int = (currentIndex + 1) % rows
-            dataSource.carouselViewDidChange(cell: lastCell, index: left)
-            dataSource.carouselViewDidChange(cell: currentCell, index: middle)
-            dataSource.carouselViewDidChange(cell: nextCell, index: right)
+            dataSource?.carouselViewDidChange(cell: lastCell, index: left)
+            dataSource?.carouselViewDidChange(cell: currentCell, index: middle)
+            dataSource?.carouselViewDidChange(cell: nextCell, index: right)
         }
         DispatchQueue.main.async {
             self.scrollView.setContentOffset(CGPoint(x:(self.bounds.width),y:0), animated: false)
@@ -156,7 +158,9 @@ extension CLCarouselView {
 extension CLCarouselView: UIScrollViewDelegate {
     /// 开始用手滚动时干掉定时器
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        removeTimer()
+        if isAutoScroll == true {
+            removeTimer()
+        }
     }
     /// 用手滚动结束时重新添加定时器
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {

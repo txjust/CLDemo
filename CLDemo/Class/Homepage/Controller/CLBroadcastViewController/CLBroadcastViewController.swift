@@ -47,6 +47,9 @@ class CLBroadcastViewController: CLBaseViewController {
     private lazy var carouseView: CLCarouselView = {
         let view = CLCarouselView()
         view.dataSource = self
+        view.delegate = self
+        view.isAutoScroll = true
+        view.autoScrollDeley = 1
         return view
     }()
     private lazy var timer: CLGCDTimer = {
@@ -115,6 +118,11 @@ extension CLBroadcastViewController: CLCarouselViewDataSource {
     }
     func carouselViewDidChange(cell: CLCarouselCell, index: Int) {
         cell.label.text = arrayDS[index]
+    }
+}
+extension CLBroadcastViewController: CLCarouselViewDelegate {
+    func carouselViewDidSelect(cell: CLCarouselCell, index: Int) {
+        print("点击\(index)")
     }
 }
 extension CLBroadcastViewController: CLBroadcastViewDelegate {
