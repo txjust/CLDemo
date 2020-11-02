@@ -166,24 +166,25 @@
 		5B6CABE9253446D70076C873 /* CLCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6CABE8253446D70076C873 /* CLCarouselView.swift */; };
 		5B6CABED2534473E0076C873 /* CLCarouselCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6CABEC2534473E0076C873 /* CLCarouselCell.swift */; };
 		5B6CABF125344F910076C873 /* CLBroadcastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6CABF025344F910076C873 /* CLBroadcastViewController.swift */; };
+		5B72314C254FAFB200DA1FE9 /* CLChatPhotoCellButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B723135254FAFB200DA1FE9 /* CLChatPhotoCellButton.swift */; };
+		5B72314D254FAFB200DA1FE9 /* CLChatPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B723136254FAFB200DA1FE9 /* CLChatPhotoView.swift */; };
+		5B72314E254FAFB200DA1FE9 /* CLChatPhotoAlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B723138254FAFB200DA1FE9 /* CLChatPhotoAlbumCell.swift */; };
+		5B72314F254FAFB200DA1FE9 /* CLChatPhotoAlbumContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B723139254FAFB200DA1FE9 /* CLChatPhotoAlbumContentView.swift */; };
+		5B723150254FAFB200DA1FE9 /* CLChatPhotoAlbumBottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B72313A254FAFB200DA1FE9 /* CLChatPhotoAlbumBottomBar.swift */; };
+		5B723151254FAFB200DA1FE9 /* CLChatPhotoAlbumImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B72313B254FAFB200DA1FE9 /* CLChatPhotoAlbumImageCache.swift */; };
+		5B723152254FAFB200DA1FE9 /* CLChatTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B72313D254FAFB200DA1FE9 /* CLChatTextView.swift */; };
+		5B723153254FAFB200DA1FE9 /* CLChatRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B72313F254FAFB200DA1FE9 /* CLChatRecordView.swift */; };
+		5B723154254FAFB200DA1FE9 /* CLChatRecordTipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B723140254FAFB200DA1FE9 /* CLChatRecordTipsView.swift */; };
+		5B723155254FAFB200DA1FE9 /* CLChatRecordTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B723141254FAFB200DA1FE9 /* CLChatRecordTimeView.swift */; };
+		5B723156254FAFB200DA1FE9 /* CLChatInputToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B723142254FAFB200DA1FE9 /* CLChatInputToolBar.swift */; };
+		5B723157254FAFB200DA1FE9 /* CLChatEmojiFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B723144254FAFB200DA1FE9 /* CLChatEmojiFlowLayout.swift */; };
+		5B723158254FAFB200DA1FE9 /* CKDChatEmojiTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B723146254FAFB200DA1FE9 /* CKDChatEmojiTextCell.swift */; };
+		5B723159254FAFB200DA1FE9 /* CKDChatEmojiCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B723147254FAFB200DA1FE9 /* CKDChatEmojiCellProtocol.swift */; };
+		5B72315A254FAFB200DA1FE9 /* CLChatEmojiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B723148254FAFB200DA1FE9 /* CLChatEmojiView.swift */; };
+		5B72315B254FAFB200DA1FE9 /* CLChatEmojTextItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B72314A254FAFB200DA1FE9 /* CLChatEmojTextItem.swift */; };
+		5B72315C254FAFB200DA1FE9 /* CLChatEmojiItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B72314B254FAFB200DA1FE9 /* CLChatEmojiItemProtocol.swift */; };
 		5B737E5524A8994400079523 /* CLBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B737E5424A8994400079523 /* CLBackView.swift */; };
 		5B737E5824A899D300079523 /* CLLogForOC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B737E5724A899D200079523 /* CLLogForOC.m */; };
-		5B7AE6032530626500B10AD0 /* CLChatPhotoCellButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7AE5ED2530626500B10AD0 /* CLChatPhotoCellButton.swift */; };
-		5B7AE6042530626500B10AD0 /* CLChatPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7AE5EE2530626500B10AD0 /* CLChatPhotoView.swift */; };
-		5B7AE6052530626500B10AD0 /* CLChatPhotoAlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7AE5F02530626500B10AD0 /* CLChatPhotoAlbumCell.swift */; };
-		5B7AE6062530626500B10AD0 /* CLChatPhotoAlbumContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7AE5F12530626500B10AD0 /* CLChatPhotoAlbumContentView.swift */; };
-		5B7AE6072530626500B10AD0 /* CLChatPhotoAlbumBottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7AE5F22530626500B10AD0 /* CLChatPhotoAlbumBottomBar.swift */; };
-		5B7AE6082530626500B10AD0 /* CLChatTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7AE5F42530626500B10AD0 /* CLChatTextView.swift */; };
-		5B7AE6092530626500B10AD0 /* CLChatRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7AE5F62530626500B10AD0 /* CLChatRecordView.swift */; };
-		5B7AE60A2530626500B10AD0 /* CLChatRecordTipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7AE5F72530626500B10AD0 /* CLChatRecordTipsView.swift */; };
-		5B7AE60B2530626500B10AD0 /* CLChatRecordTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7AE5F82530626500B10AD0 /* CLChatRecordTimeView.swift */; };
-		5B7AE60C2530626500B10AD0 /* CLChatInputToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7AE5F92530626500B10AD0 /* CLChatInputToolBar.swift */; };
-		5B7AE60D2530626500B10AD0 /* CLChatEmojiFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7AE5FB2530626500B10AD0 /* CLChatEmojiFlowLayout.swift */; };
-		5B7AE60E2530626500B10AD0 /* CLChatEmojiTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7AE5FD2530626500B10AD0 /* CLChatEmojiTextCell.swift */; };
-		5B7AE60F2530626500B10AD0 /* CLChatEmojiCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7AE5FE2530626500B10AD0 /* CLChatEmojiCellProtocol.swift */; };
-		5B7AE6102530626500B10AD0 /* CLChatEmojiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7AE5FF2530626500B10AD0 /* CLChatEmojiView.swift */; };
-		5B7AE6112530626500B10AD0 /* CLChatEmojTextItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7AE6012530626500B10AD0 /* CLChatEmojTextItem.swift */; };
-		5B7AE6122530626500B10AD0 /* CLChatEmojiItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7AE6022530626500B10AD0 /* CLChatEmojiItemProtocol.swift */; };
 		5B80D9E91DDD976A00A20E34 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B80D9E81DDD976A00A20E34 /* main.m */; };
 		5B80D9EC1DDD976A00A20E34 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B80D9EB1DDD976A00A20E34 /* AppDelegate.m */; };
 		5B80D9F41DDD976A00A20E34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B80D9F31DDD976A00A20E34 /* Assets.xcassets */; };
@@ -534,25 +535,26 @@
 		5B6CABE8253446D70076C873 /* CLCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLCarouselView.swift; sourceTree = "<group>"; };
 		5B6CABEC2534473E0076C873 /* CLCarouselCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLCarouselCell.swift; sourceTree = "<group>"; };
 		5B6CABF025344F910076C873 /* CLBroadcastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLBroadcastViewController.swift; sourceTree = "<group>"; };
+		5B723135254FAFB200DA1FE9 /* CLChatPhotoCellButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatPhotoCellButton.swift; sourceTree = "<group>"; };
+		5B723136254FAFB200DA1FE9 /* CLChatPhotoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatPhotoView.swift; sourceTree = "<group>"; };
+		5B723138254FAFB200DA1FE9 /* CLChatPhotoAlbumCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatPhotoAlbumCell.swift; sourceTree = "<group>"; };
+		5B723139254FAFB200DA1FE9 /* CLChatPhotoAlbumContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatPhotoAlbumContentView.swift; sourceTree = "<group>"; };
+		5B72313A254FAFB200DA1FE9 /* CLChatPhotoAlbumBottomBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatPhotoAlbumBottomBar.swift; sourceTree = "<group>"; };
+		5B72313B254FAFB200DA1FE9 /* CLChatPhotoAlbumImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatPhotoAlbumImageCache.swift; sourceTree = "<group>"; };
+		5B72313D254FAFB200DA1FE9 /* CLChatTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatTextView.swift; sourceTree = "<group>"; };
+		5B72313F254FAFB200DA1FE9 /* CLChatRecordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatRecordView.swift; sourceTree = "<group>"; };
+		5B723140254FAFB200DA1FE9 /* CLChatRecordTipsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatRecordTipsView.swift; sourceTree = "<group>"; };
+		5B723141254FAFB200DA1FE9 /* CLChatRecordTimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatRecordTimeView.swift; sourceTree = "<group>"; };
+		5B723142254FAFB200DA1FE9 /* CLChatInputToolBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatInputToolBar.swift; sourceTree = "<group>"; };
+		5B723144254FAFB200DA1FE9 /* CLChatEmojiFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatEmojiFlowLayout.swift; sourceTree = "<group>"; };
+		5B723146254FAFB200DA1FE9 /* CKDChatEmojiTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CKDChatEmojiTextCell.swift; sourceTree = "<group>"; };
+		5B723147254FAFB200DA1FE9 /* CKDChatEmojiCellProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CKDChatEmojiCellProtocol.swift; sourceTree = "<group>"; };
+		5B723148254FAFB200DA1FE9 /* CLChatEmojiView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatEmojiView.swift; sourceTree = "<group>"; };
+		5B72314A254FAFB200DA1FE9 /* CLChatEmojTextItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatEmojTextItem.swift; sourceTree = "<group>"; };
+		5B72314B254FAFB200DA1FE9 /* CLChatEmojiItemProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatEmojiItemProtocol.swift; sourceTree = "<group>"; };
 		5B737E5424A8994400079523 /* CLBackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLBackView.swift; sourceTree = "<group>"; };
 		5B737E5624A899D200079523 /* CLLogForOC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLLogForOC.h; sourceTree = "<group>"; };
 		5B737E5724A899D200079523 /* CLLogForOC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLLogForOC.m; sourceTree = "<group>"; };
-		5B7AE5ED2530626500B10AD0 /* CLChatPhotoCellButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatPhotoCellButton.swift; sourceTree = "<group>"; };
-		5B7AE5EE2530626500B10AD0 /* CLChatPhotoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatPhotoView.swift; sourceTree = "<group>"; };
-		5B7AE5F02530626500B10AD0 /* CLChatPhotoAlbumCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatPhotoAlbumCell.swift; sourceTree = "<group>"; };
-		5B7AE5F12530626500B10AD0 /* CLChatPhotoAlbumContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatPhotoAlbumContentView.swift; sourceTree = "<group>"; };
-		5B7AE5F22530626500B10AD0 /* CLChatPhotoAlbumBottomBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatPhotoAlbumBottomBar.swift; sourceTree = "<group>"; };
-		5B7AE5F42530626500B10AD0 /* CLChatTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatTextView.swift; sourceTree = "<group>"; };
-		5B7AE5F62530626500B10AD0 /* CLChatRecordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatRecordView.swift; sourceTree = "<group>"; };
-		5B7AE5F72530626500B10AD0 /* CLChatRecordTipsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatRecordTipsView.swift; sourceTree = "<group>"; };
-		5B7AE5F82530626500B10AD0 /* CLChatRecordTimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatRecordTimeView.swift; sourceTree = "<group>"; };
-		5B7AE5F92530626500B10AD0 /* CLChatInputToolBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatInputToolBar.swift; sourceTree = "<group>"; };
-		5B7AE5FB2530626500B10AD0 /* CLChatEmojiFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatEmojiFlowLayout.swift; sourceTree = "<group>"; };
-		5B7AE5FD2530626500B10AD0 /* CLChatEmojiTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatEmojiTextCell.swift; sourceTree = "<group>"; };
-		5B7AE5FE2530626500B10AD0 /* CLChatEmojiCellProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatEmojiCellProtocol.swift; sourceTree = "<group>"; };
-		5B7AE5FF2530626500B10AD0 /* CLChatEmojiView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatEmojiView.swift; sourceTree = "<group>"; };
-		5B7AE6012530626500B10AD0 /* CLChatEmojTextItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatEmojTextItem.swift; sourceTree = "<group>"; };
-		5B7AE6022530626500B10AD0 /* CLChatEmojiItemProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatEmojiItemProtocol.swift; sourceTree = "<group>"; };
 		5B80D9E41DDD976A00A20E34 /* CLDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CLDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B80D9E81DDD976A00A20E34 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5B80D9EA1DDD976A00A20E34 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -1498,81 +1500,82 @@
 			path = CLCarouselView;
 			sourceTree = "<group>";
 		};
-		5B7AE5EB2530626500B10AD0 /* CLChatInputToolBar */ = {
+		5B723133254FAFB200DA1FE9 /* CLChatInputToolBar */ = {
 			isa = PBXGroup;
 			children = (
-				5B7AE5EC2530626500B10AD0 /* CLChatPhotoView */,
-				5B7AE5F32530626500B10AD0 /* CLChatTextView */,
-				5B7AE5F52530626500B10AD0 /* CLChatRecordView */,
-				5B7AE5F92530626500B10AD0 /* CLChatInputToolBar.swift */,
-				5B7AE5FA2530626500B10AD0 /* CLChatEmojiView */,
+				5B723142254FAFB200DA1FE9 /* CLChatInputToolBar.swift */,
+				5B723134254FAFB200DA1FE9 /* CLChatPhotoView */,
+				5B72313C254FAFB200DA1FE9 /* CLChatTextView */,
+				5B72313E254FAFB200DA1FE9 /* CLChatRecordView */,
+				5B723143254FAFB200DA1FE9 /* CLChatEmojiView */,
 			);
 			path = CLChatInputToolBar;
 			sourceTree = "<group>";
 		};
-		5B7AE5EC2530626500B10AD0 /* CLChatPhotoView */ = {
+		5B723134254FAFB200DA1FE9 /* CLChatPhotoView */ = {
 			isa = PBXGroup;
 			children = (
-				5B7AE5ED2530626500B10AD0 /* CLChatPhotoCellButton.swift */,
-				5B7AE5EE2530626500B10AD0 /* CLChatPhotoView.swift */,
-				5B7AE5EF2530626500B10AD0 /* CLChatPhotoAlbumContentView */,
+				5B723135254FAFB200DA1FE9 /* CLChatPhotoCellButton.swift */,
+				5B723136254FAFB200DA1FE9 /* CLChatPhotoView.swift */,
+				5B723137254FAFB200DA1FE9 /* CLChatPhotoAlbumContentView */,
 			);
 			path = CLChatPhotoView;
 			sourceTree = "<group>";
 		};
-		5B7AE5EF2530626500B10AD0 /* CLChatPhotoAlbumContentView */ = {
+		5B723137254FAFB200DA1FE9 /* CLChatPhotoAlbumContentView */ = {
 			isa = PBXGroup;
 			children = (
-				5B7AE5F02530626500B10AD0 /* CLChatPhotoAlbumCell.swift */,
-				5B7AE5F12530626500B10AD0 /* CLChatPhotoAlbumContentView.swift */,
-				5B7AE5F22530626500B10AD0 /* CLChatPhotoAlbumBottomBar.swift */,
+				5B72313B254FAFB200DA1FE9 /* CLChatPhotoAlbumImageCache.swift */,
+				5B723138254FAFB200DA1FE9 /* CLChatPhotoAlbumCell.swift */,
+				5B723139254FAFB200DA1FE9 /* CLChatPhotoAlbumContentView.swift */,
+				5B72313A254FAFB200DA1FE9 /* CLChatPhotoAlbumBottomBar.swift */,
 			);
 			path = CLChatPhotoAlbumContentView;
 			sourceTree = "<group>";
 		};
-		5B7AE5F32530626500B10AD0 /* CLChatTextView */ = {
+		5B72313C254FAFB200DA1FE9 /* CLChatTextView */ = {
 			isa = PBXGroup;
 			children = (
-				5B7AE5F42530626500B10AD0 /* CLChatTextView.swift */,
+				5B72313D254FAFB200DA1FE9 /* CLChatTextView.swift */,
 			);
 			path = CLChatTextView;
 			sourceTree = "<group>";
 		};
-		5B7AE5F52530626500B10AD0 /* CLChatRecordView */ = {
+		5B72313E254FAFB200DA1FE9 /* CLChatRecordView */ = {
 			isa = PBXGroup;
 			children = (
-				5B7AE5F62530626500B10AD0 /* CLChatRecordView.swift */,
-				5B7AE5F72530626500B10AD0 /* CLChatRecordTipsView.swift */,
-				5B7AE5F82530626500B10AD0 /* CLChatRecordTimeView.swift */,
+				5B72313F254FAFB200DA1FE9 /* CLChatRecordView.swift */,
+				5B723140254FAFB200DA1FE9 /* CLChatRecordTipsView.swift */,
+				5B723141254FAFB200DA1FE9 /* CLChatRecordTimeView.swift */,
 			);
 			path = CLChatRecordView;
 			sourceTree = "<group>";
 		};
-		5B7AE5FA2530626500B10AD0 /* CLChatEmojiView */ = {
+		5B723143254FAFB200DA1FE9 /* CLChatEmojiView */ = {
 			isa = PBXGroup;
 			children = (
-				5B7AE5FB2530626500B10AD0 /* CLChatEmojiFlowLayout.swift */,
-				5B7AE5FC2530626500B10AD0 /* CLChatCell */,
-				5B7AE5FF2530626500B10AD0 /* CLChatEmojiView.swift */,
-				5B7AE6002530626500B10AD0 /* CLChatEmojiItem */,
+				5B723144254FAFB200DA1FE9 /* CLChatEmojiFlowLayout.swift */,
+				5B723145254FAFB200DA1FE9 /* CLChatCell */,
+				5B723148254FAFB200DA1FE9 /* CLChatEmojiView.swift */,
+				5B723149254FAFB200DA1FE9 /* CLChatEmojiItem */,
 			);
 			path = CLChatEmojiView;
 			sourceTree = "<group>";
 		};
-		5B7AE5FC2530626500B10AD0 /* CLChatCell */ = {
+		5B723145254FAFB200DA1FE9 /* CLChatCell */ = {
 			isa = PBXGroup;
 			children = (
-				5B7AE5FD2530626500B10AD0 /* CLChatEmojiTextCell.swift */,
-				5B7AE5FE2530626500B10AD0 /* CLChatEmojiCellProtocol.swift */,
+				5B723146254FAFB200DA1FE9 /* CKDChatEmojiTextCell.swift */,
+				5B723147254FAFB200DA1FE9 /* CKDChatEmojiCellProtocol.swift */,
 			);
 			path = CLChatCell;
 			sourceTree = "<group>";
 		};
-		5B7AE6002530626500B10AD0 /* CLChatEmojiItem */ = {
+		5B723149254FAFB200DA1FE9 /* CLChatEmojiItem */ = {
 			isa = PBXGroup;
 			children = (
-				5B7AE6012530626500B10AD0 /* CLChatEmojTextItem.swift */,
-				5B7AE6022530626500B10AD0 /* CLChatEmojiItemProtocol.swift */,
+				5B72314A254FAFB200DA1FE9 /* CLChatEmojTextItem.swift */,
+				5B72314B254FAFB200DA1FE9 /* CLChatEmojiItemProtocol.swift */,
 			);
 			path = CLChatEmojiItem;
 			sourceTree = "<group>";
@@ -2111,7 +2114,7 @@
 			isa = PBXGroup;
 			children = (
 				B51EE6CB23DF104800146862 /* CLGradientLayerView.swift */,
-				5B7AE5EB2530626500B10AD0 /* CLChatInputToolBar */,
+				5B723133254FAFB200DA1FE9 /* CLChatInputToolBar */,
 				B5498C8823DEE2A10082D4E5 /* Tableview */,
 				B5498C8723DEE2920082D4E5 /* Item */,
 				B5498C8623DEE2820082D4E5 /* Cell */,
@@ -2354,7 +2357,6 @@
 				5B80DA491DDD993F00A20E34 /* CLCollectionController.m in Sources */,
 				0CCDA40122D9D1C5007B41C4 /* CLPhotoBrowserCollectionViewCell.m in Sources */,
 				5BA7BF8824AC3D180072B94C /* CLPopupHudController.swift in Sources */,
-				5B7AE6092530626500B10AD0 /* CLChatRecordView.swift in Sources */,
 				0C2AE878223F87AF007D5DC5 /* CLWaveSwiftViewController.swift in Sources */,
 				5B1C74261E78F120000AB534 /* CLChartXLabel.m in Sources */,
 				5B8AFC6824A8954C00FAF996 /* CLDebugCell.swift in Sources */,
@@ -2364,32 +2366,30 @@
 				0C52EF6D2192949A0079A0E7 /* NSBundle+CLLanguage.m in Sources */,
 				0C558AE421EDA2E800C2C096 /* UIColor+CLHex.m in Sources */,
 				0C61577822BE1241009AABAC /* CLSectorAnimationView.swift in Sources */,
-				5B7AE6032530626500B10AD0 /* CLChatPhotoCellButton.swift in Sources */,
 				5B80DA4E1DDD993F00A20E34 /* CLCustomTabbar.m in Sources */,
 				5B737E5524A8994400079523 /* CLBackView.swift in Sources */,
 				0C30ED49231E44BF00364327 /* CLCustomTransitionPresentationController.m in Sources */,
 				5BF1ACE1245C7D620083BE70 /* CLTitleControllerView.swift in Sources */,
 				5BA4826725317D260072F9BD /* CLMomentumView.swift in Sources */,
-				5B7AE6112530626500B10AD0 /* CLChatEmojTextItem.swift in Sources */,
 				0C66AF8F22E1C75600C5C9E8 /* CLPresentTransitionNavigationController.m in Sources */,
 				0CB2769522E1A76800AFCB8C /* CLPresentTransitionController.m in Sources */,
 				0C903002224774430064088E /* CLRotateAnimationView.swift in Sources */,
-				5B7AE6042530626500B10AD0 /* CLChatPhotoView.swift in Sources */,
+				5B723158254FAFB200DA1FE9 /* CKDChatEmojiTextCell.swift in Sources */,
 				0C9235A722F5584300EA3E9F /* CLMailboxAutoCompletionViewController.m in Sources */,
 				B5498C8523DEE0C70082D4E5 /* CLIntrinsicTableView.swift in Sources */,
 				5B80DA521DDD9BBE00A20E34 /* CLBaseViewController.m in Sources */,
 				0CAE2E4F2209855E00003E81 /* CLPasswordViewSwiftController.swift in Sources */,
-				5B7AE60F2530626500B10AD0 /* CLChatEmojiCellProtocol.swift in Sources */,
 				0CCDA319219855B90057BA14 /* ChangeFontSizeModel.m in Sources */,
 				5B8A4D4323B118CC00360631 /* CLChatController.swift in Sources */,
 				5BE0FA3F1E03E03900914DFF /* CLSearchBar.m in Sources */,
 				5B49566423B4FF4800212772 /* CLFlipController.swift in Sources */,
 				0C2AE874223F48DE007D5DC5 /* CLBubbleViewViewController.m in Sources */,
 				0C03D7FB236D4F3800F15067 /* CLLayoutController.m in Sources */,
+				5B723155254FAFB200DA1FE9 /* CLChatRecordTimeView.swift in Sources */,
+				5B723150254FAFB200DA1FE9 /* CLChatPhotoAlbumBottomBar.swift in Sources */,
 				5BFB19C224ECFDB90074007A /* CLMp3Encoder.m in Sources */,
 				0C108EAA22A93289009EA457 /* CLCountdownCell.m in Sources */,
 				5BA7BF8524AC3D180072B94C /* CLOnePickerView.swift in Sources */,
-				5B7AE60E2530626500B10AD0 /* CLChatEmojiTextCell.swift in Sources */,
 				0CF4EF952330848B00D8B95E /* CLInputPasswordToolBar.m in Sources */,
 				5B1CC1C424AC93F500C35523 /* CLChatVoiceItem.swift in Sources */,
 				5B8AFC6724A8954C00FAF996 /* CLDebugController.swift in Sources */,
@@ -2400,13 +2400,13 @@
 				5BCCEC6F245C292E0049AC70 /* NSDecimalNumber+Extension.swift in Sources */,
 				0C6D47E9226C37EC00699FBD /* CLPopArrowView.m in Sources */,
 				5B305328245D1D87002C53DB /* CLMyDetailsController.swift in Sources */,
-				5B7AE60A2530626500B10AD0 /* CLChatRecordTipsView.swift in Sources */,
 				B5498C8123DED4F60082D4E5 /* CLChatTextItem.swift in Sources */,
 				0C31C38521994CCF001860C2 /* UIFont+CLFont.m in Sources */,
 				0CCDA40422D9D1C5007B41C4 /* CLPhotoBrowserCollectionViewFlowLayout.m in Sources */,
 				0CB2769922E1A85F00AFCB8C /* CLTransitionController.m in Sources */,
 				0CF64300222FECBD00227361 /* CLWaveViewController.m in Sources */,
 				5B3327E523DF384800CA315C /* NSString+Extension.swift in Sources */,
+				5B72314E254FAFB200DA1FE9 /* CLChatPhotoAlbumCell.swift in Sources */,
 				5BA7BF7124AC3D180072B94C /* CLPopupTipsController.swift in Sources */,
 				5BA7BF8024AC3D180072B94C /* CLPopupDataPickerController.swift in Sources */,
 				5BA7BF8224AC3D180072B94C /* CLDurationDataPickerView.swift in Sources */,
@@ -2416,12 +2416,11 @@
 				5BA7BF9424AC40F20072B94C /* UILabel+Extension.swift in Sources */,
 				5BA4826B253192150072F9BD /* UISpringTimingParameters+Extension.swift in Sources */,
 				5BA7BF7C24AC3D180072B94C /* CLPopupTwoInputController.swift in Sources */,
+				5B723159254FAFB200DA1FE9 /* CKDChatEmojiCellProtocol.swift in Sources */,
 				0C547345239E2C7000F48BFA /* CLPhoneNumberVerificationController.m in Sources */,
 				0CA1237522255B81007DDE6D /* CLCardController.m in Sources */,
-				5B7AE60C2530626500B10AD0 /* CLChatInputToolBar.swift in Sources */,
-				5B7AE6052530626500B10AD0 /* CLChatPhotoAlbumCell.swift in Sources */,
-				5B7AE6072530626500B10AD0 /* CLChatPhotoAlbumBottomBar.swift in Sources */,
 				0C3CAA5521AF89BD00A352F0 /* CLRotateAnimationController.m in Sources */,
+				5B72314D254FAFB200DA1FE9 /* CLChatPhotoView.swift in Sources */,
 				5B1CC1C924AC95AE00C35523 /* TimeInterval+Extension.swift in Sources */,
 				5BA7BF7324AC3D180072B94C /* CLPopupFoodPickerController.swift in Sources */,
 				0CF79AE72195B1C800DD0BF1 /* UIButton+CLBlockAction.m in Sources */,
@@ -2443,6 +2442,7 @@
 				5BA7BF7824AC3D180072B94C /* CLPopupFoodPickerContentView.swift in Sources */,
 				0C5854E2235416920036DBC2 /* CLBroadcastMainCell.m in Sources */,
 				0CF642FD222FECA800227361 /* CLWaveView.m in Sources */,
+				5B72315C254FAFB200DA1FE9 /* CLChatEmojiItemProtocol.swift in Sources */,
 				B51EE6C723DF092400146862 /* CLChatCell.swift in Sources */,
 				0CF2B6EC231A6C2A0071AEC3 /* CLCustomTransitionViewController.m in Sources */,
 				5BA48263253179A80072F9BD /* CLPopupMomentumController.swift in Sources */,
@@ -2454,11 +2454,12 @@
 				5BA7BF8A24AC3D180072B94C /* CLPopupLoadingController.swift in Sources */,
 				5B6CABE9253446D70076C873 /* CLCarouselView.swift in Sources */,
 				5BA7BF7624AC3D180072B94C /* CLPopupFoodPickerView.swift in Sources */,
+				5B72314F254FAFB200DA1FE9 /* CLChatPhotoAlbumContentView.swift in Sources */,
 				5B3327E323DF366600CA315C /* UIImage+Extension.swift in Sources */,
 				5B399E2624AB0E7F00A14FE7 /* CLChatTipsItem.swift in Sources */,
 				5B399E4A24AB14F700A14FE7 /* CLChatImageProgressView.swift in Sources */,
 				5B399E4B24AB14F700A14FE7 /* CLChatImageCell.swift in Sources */,
-				5B7AE60D2530626500B10AD0 /* CLChatEmojiFlowLayout.swift in Sources */,
+				5B723157254FAFB200DA1FE9 /* CLChatEmojiFlowLayout.swift in Sources */,
 				5BFB19C324ECFDB90074007A /* CLRecorder.m in Sources */,
 				0CF6B84E2386626800F10986 /* CLVerticalItem.m in Sources */,
 				5B49566823B50ED700212772 /* UIColor+Extension.swift in Sources */,
@@ -2478,22 +2479,22 @@
 				5BCCEC6A245BFCA00049AC70 /* CLVernierCaliperFooterCell.swift in Sources */,
 				5B8AFC7424A897D000FAF996 /* Date+Extension.swift in Sources */,
 				0CCD1DCA231F60D200AFCE1F /* CLBroadcastView.m in Sources */,
+				5B723152254FAFB200DA1FE9 /* CLChatTextView.swift in Sources */,
 				5BA7BF8E24AC3E790072B94C /* CLPopupFlopController.swift in Sources */,
+				5B72314C254FAFB200DA1FE9 /* CLChatPhotoCellButton.swift in Sources */,
 				5B51EE1324AB161700F45628 /* CLNamespace.swift in Sources */,
 				0CCDA40222D9D1C5007B41C4 /* CLPhotoBrowserAnimatedTransitioning.m in Sources */,
 				5B44D12C2435C6F10059476D /* CLTagsFrameHelper.swift in Sources */,
+				5B723151254FAFB200DA1FE9 /* CLChatPhotoAlbumImageCache.swift in Sources */,
 				0CF79B092196798400DD0BF1 /* BankDataModel.m in Sources */,
 				5BA7BF7224AC3D180072B94C /* CLPopupManager.swift in Sources */,
 				5B42F09024A3918D006861BF /* CLRecordeEncodeController.m in Sources */,
 				5BCCEC68245BFC890049AC70 /* CLVernierCaliperMiddleCell.swift in Sources */,
 				5BF1ACE6245C850A0083BE70 /* CLTitleControllerView.m in Sources */,
 				0CCDA3FF22D9D1C5007B41C4 /* CLPhotoBrowserPresentationController.m in Sources */,
-				5B7AE6062530626500B10AD0 /* CLChatPhotoAlbumContentView.swift in Sources */,
 				5BAD165B24EBD7FC00001E01 /* CLScrollAnimationController.swift in Sources */,
 				5B241196243B039200B2E0DC /* CLTagsItem.swift in Sources */,
-				5B7AE6122530626500B10AD0 /* CLChatEmojiItemProtocol.swift in Sources */,
 				0C77C4B92248C85C007D0FFC /* CLGCDTimer.swift in Sources */,
-				5B7AE60B2530626500B10AD0 /* CLChatRecordTimeView.swift in Sources */,
 				5B6CABED2534473E0076C873 /* CLCarouselCell.swift in Sources */,
 				0C7A1EA0231A7129002D75F2 /* CLCustomTransitionDelegate.m in Sources */,
 				0CACA4AD224CC1F80084ECC8 /* CLTextViewViewController.swift in Sources */,
@@ -2510,6 +2511,7 @@
 				5B399E2824AB147E00A14FE7 /* CLChatImageItem.swift in Sources */,
 				0CCDA31C219922680057BA14 /* CLChangeFontSizeSlider.m in Sources */,
 				0CF4EF912330834400D8B95E /* CLInputPasswordViewController.m in Sources */,
+				5B72315B254FAFB200DA1FE9 /* CLChatEmojTextItem.swift in Sources */,
 				0CA1236F22255A6F007DDE6D /* CLCardView.m in Sources */,
 				0CF6B84623865AF600F10986 /* CLLayoutView.m in Sources */,
 				5B6CABF125344F910076C873 /* CLBroadcastViewController.swift in Sources */,
@@ -2521,6 +2523,7 @@
 				5BA7BF9124AC3E910072B94C /* CLFlopPrizeView.swift in Sources */,
 				0C30ED4C231E48FC00364327 /* CLLineChartViewController.m in Sources */,
 				5B3327E123DF352900CA315C /* CLConst.swift in Sources */,
+				5B723154254FAFB200DA1FE9 /* CLChatRecordTipsView.swift in Sources */,
 				0CCDA30B219850EF0057BA14 /* CLChangeFontSizeController.m in Sources */,
 				5B12FC761E7157BF0091A0E2 /* CLChartView.m in Sources */,
 				0CE733422191CBC700270851 /* UIView+CLSetRect.m in Sources */,
@@ -2537,16 +2540,16 @@
 				0CF79B082196798400DD0BF1 /* BankModel.m in Sources */,
 				5B8AFC6A24A8954C00FAF996 /* CLLogManager.swift in Sources */,
 				0C94BA4A22D9DC04008CD7BA /* CLPhotoCollectionViewCell.m in Sources */,
+				5B72315A254FAFB200DA1FE9 /* CLChatEmojiView.swift in Sources */,
 				0C223C792243818A00E319E2 /* CLRoundAnimationView.swift in Sources */,
+				5B723156254FAFB200DA1FE9 /* CLChatInputToolBar.swift in Sources */,
 				0CCBFB7222AB89FE0078547B /* NSDate+CLExtension.m in Sources */,
 				5BC3FB8921CE96A400B7FF82 /* CLRotatingPictureViewController.swift in Sources */,
 				5B49566623B507A700212772 /* CLFlipView.swift in Sources */,
-				5B7AE6102530626500B10AD0 /* CLChatEmojiView.swift in Sources */,
 				5BA7BF8324AC3D180072B94C /* CLDataPickerTitleView.swift in Sources */,
 				0CF79B012196792700DD0BF1 /* Aspects.m in Sources */,
 				0CF6B84423865AF600F10986 /* CLVerticalLayout.m in Sources */,
 				5B80DA551DDD9BD500A20E34 /* CLBaseNavigationController.m in Sources */,
-				5B7AE6082530626500B10AD0 /* CLChatTextView.swift in Sources */,
 				5BB328B0244498230049ADE8 /* UIView+CLExtension.swift in Sources */,
 				0CCDA40322D9D1C5007B41C4 /* CLPhotoBrowser.m in Sources */,
 				5B3725CC24AC2389006DD7E4 /* CLPermissionInterface.swift in Sources */,
@@ -2561,6 +2564,7 @@
 				5B80DA581DDD9C3A00A20E34 /* CLTabbarController.m in Sources */,
 				5B28650E21EE428200334E6C /* CLCoreTextView.m in Sources */,
 				5B8AFC5D24A8829A00FAF996 /* CLVoicePlayer.m in Sources */,
+				5B723153254FAFB200DA1FE9 /* CLChatRecordView.swift in Sources */,
 				0C1075F022E1ADF9005E5843 /* CLTransitioningDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

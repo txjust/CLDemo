@@ -224,6 +224,8 @@ class CLChatInputToolBar: UIView {
         view.backgroundColor = .hexColor(with: "#EEEEED")
         return view
     }()
+    ///是否显示提示
+    private var isShowTips: Bool = false
     ///录音
     private lazy var recordView: CLChatRecordView = {
         let view = CLChatRecordView()
@@ -518,6 +520,10 @@ extension CLChatInputToolBar {
 //MARK: - JmoVxia---录音提示工具条
 extension CLChatInputToolBar {
     private func showRecordTips() {
+        guard !isShowTips else {
+            return
+        }
+        isShowTips.toggle()
         recordTipsView.snp.remakeConstraints { (make) in
             make.size.left.equalTo(topToolBar)
             make.top.equalTo(topToolBar.snp.bottom)
@@ -533,6 +539,10 @@ extension CLChatInputToolBar {
         }
     }
     private func hiddenRecordTips() {
+        guard isShowTips else {
+            return
+        }
+        isShowTips.toggle()
         recordTipsView.snp.remakeConstraints { (make) in
             make.edges.equalTo(topToolBar)
         }

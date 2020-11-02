@@ -20,6 +20,8 @@ class CLChatPhotoAlbumContentView: UIView {
     var sendImageCallBack: (([(UIImage, PHAsset)]) -> ())?
     ///关闭回调
     var closeCallback: (() -> ())?
+    ///图片缓存
+    private let imageCache = CLChatPhotoAlbumImageCache()
     ///数据源
     private var fetchResult: PHFetchResult<PHAsset>?
     private var selectedArray: [CLChatPhotoAlbumSelectedItem] = [CLChatPhotoAlbumSelectedItem]()
@@ -116,7 +118,7 @@ private extension CLChatPhotoAlbumContentView {
     func initData() {
         DispatchQueue.global().async {
             let options = PHFetchOptions()
-            options.fetchLimit = 30
+            options.fetchLimit = 50
             options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
             options.predicate = NSPredicate(format: "mediaType == %ld", PHAssetMediaType.image.rawValue)
             self.fetchResult = PHAsset.fetchAssets(with: .image, options: options)
@@ -153,7 +155,7 @@ private extension CLChatPhotoAlbumContentView {
             guard let cell = cell as? CLChatPhotoAlbumCell, let indexPath = collectionView.indexPath(for: cell) else {
                 return
             }
-            cell.seletedNumber = (selectedArray.firstIndex(where: {$0.indexPath == indexPath}) ?? -1) + 1
+            cell.seletedNumber = currentSeletedNumber(indexPath)
         }
     }
     /// 更新可见celll选中按钮偏移
@@ -172,11 +174,35 @@ private extension CLChatPhotoAlbumContentView {
         let width = min(max(120, height * scale), screenWidth() * 0.6)
         return CGSize(width: width, height: height)
     }
+    ///当前选中数字
+    func currentSeletedNumber(_ indexPath: IndexPath) -> Int {
+        return (selectedArray.firstIndex(where: {$0.indexPath == indexPath}) ?? -1) + 1
+    }
+    ///配置cell
+    func configureCell(_ cell: CLChatPhotoAlbumCell, with asset: PHAsset) {
+        cell.lockScollViewCallBack = {[weak self](lock) in
+            self?.collectionView.isScrollEnabled = lock
+        }
+        cell.sendImageCallBack = {[weak self] (image) in
+            self?.sendImageCallBack?([(image, asset)])
+        }
+        imageCache.load(asset: asset, size: cell.bounds.size) {(image) in
+            cell.image = image
+        }
+    }
 }
 extension CLChatPhotoAlbumContentView: PHPhotoLibraryChangeObserver {
     func photoLibraryDidChange(_ changeInstance: PHChange) {
         guard let fetchResult = self.fetchResult, let collectionChanges = changeInstance.changeDetails(for: fetchResult) else {
             return
+        }
+        var array: [String] = [String]()
+        fetchResult.enumerateObjects { (asset, _, _) in
+            array.append(asset.localIdentifier)
+        }
+        var changesArray: [String] = [String]()
+        collectionChanges.fetchResultAfterChanges.enumerateObjects { (asset, _, _) in
+            changesArray.append(asset.localIdentifier)
         }
         DispatchQueue.main.async {
             self.fetchResult = collectionChanges.fetchResultAfterChanges
@@ -224,20 +250,14 @@ extension CLChatPhotoAlbumContentView: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CLChatPhotoAlbumCell", for: indexPath)
         cell.isExclusiveTouch = false
         if let photoAlbumCell = cell as? CLChatPhotoAlbumCell, let asset = fetchResult?[indexPath.row] {
-            photoAlbumCell.seletedNumber = (selectedArray.firstIndex(where: {$0.indexPath == indexPath}) ?? -1) + 1
-            photoAlbumCell.lockScollViewCallBack = {[weak self](lock) in
-                self?.collectionView.isScrollEnabled = lock
-            }
-            photoAlbumCell.sendImageCallBack = {[weak self] (image) in
-                self?.sendImageCallBack?([(image, asset)])
-            }
-            imageManager.requestImage(for: asset, targetSize: cell.bounds.size, contentMode: .aspectFill, options: nil) { (image, info) in
-                DispatchQueue.main.async {
-                    photoAlbumCell.image = image
-                }
-            }
+            configureCell(photoAlbumCell, with: asset)
         }
         return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if let photoAlbumCell = cell as? CLChatPhotoAlbumCell {
+            photoAlbumCell.seletedNumber = currentSeletedNumber(indexPath)
+        }
     }
 }
 extension CLChatPhotoAlbumContentView {

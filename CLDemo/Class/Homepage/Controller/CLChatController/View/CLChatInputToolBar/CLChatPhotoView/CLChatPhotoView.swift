@@ -111,25 +111,28 @@ extension CLChatPhotoView {
 }
 extension CLChatPhotoView {
     @objc private func albumButtonAction() {
-        CLPermissions.request(.photoLibrary) {[weak self] (status) in
+        CLPermissions.request(.photoLibrary) { (status) in
             if status.isNoSupport {
-                CLLog("当前设备不支持")
+                CLPopupManager.showOneAlert(title: "当前设备不支持")
             }else if status.isAuthorized {
-                self?.showAlbumContentView()
+                self.showAlbumContentView()
             }else {
-                CLLog("没有相册权限 状态 \(status)")
+                CLPopupManager.showTwoAlert(title: "APP 需要访问照片才能发送图片消息\n\n请前往「设置—隐私—照片」中打开开关。", right: "设置", rightCallBack:  {
+                    openSettings()
+                })
             }
         }
     }
     @objc private func cameraButtonButtonAction() {
         CLPermissions.request(.camera) {(status) in
             if status.isNoSupport {
-                CLLog("当前设备不支持")
-                
+                CLPopupManager.showOneAlert(title: "当前设备不支持")
             }else if status.isAuthorized {
                 showCameraPicker()
             }else {
-                CLLog("没有相机权限 状态 \(status)")
+                CLPopupManager.showTwoAlert(title: "APP 无法访问相机才能发送图片消息\n\n请前往「设置—隐私—相机」中打开开关。", right: "设置", rightCallBack:  {
+                    openSettings()
+                })
             }
         }
         func showCameraPicker() {

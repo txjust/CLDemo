@@ -279,3 +279,8 @@ func calculateScaleSize(imageSize: CGSize, maxSize: CGSize = CGSize(width: UIScr
         }
     }
 }
+/// 打开APP权限设置
+func openSettings() {
+    guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
+    UIApplication.shared.open(url, options: [:])
+}
