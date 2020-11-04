@@ -191,15 +191,9 @@ extension CLBroadcastViewController: CLInfiniteCollectionViewDataSource {
         return arrayDS.count
     }
     func cellForItemAtIndexPath(_ collectionView: UICollectionView, dequeueIndexPath: IndexPath, index: Int)  -> UICollectionViewCell {
-        if collectionView == horizontalInfiniteCollectionView {
-            let cell = horizontalInfiniteCollectionView.dequeueReusableCell(withReuseIdentifier: "CLInfiniteCollectionViewCell", for: dequeueIndexPath) as! CLInfiniteCollectionViewCell
-            cell.label.text = arrayDS[index]
-            return cell
-        }else {
-            let cell = verticalInfiniteCollectionView.dequeueReusableCell(withReuseIdentifier: "CLInfiniteCollectionViewCell", for: dequeueIndexPath) as! CLInfiniteCollectionViewCell
-            cell.label.text = arrayDS[index]
-            return cell
-        }
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CLInfiniteCollectionViewCell", for: dequeueIndexPath) as! CLInfiniteCollectionViewCell
+        cell.label.text = arrayDS[index]
+        return cell
     }
 }
 extension CLBroadcastViewController: CLInfiniteCollectionViewDelegate {
