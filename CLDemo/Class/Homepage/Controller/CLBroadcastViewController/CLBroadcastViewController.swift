@@ -20,6 +20,31 @@ class CLBroadcastViewController: CLBaseViewController {
         array.append("我是第七个")
         return array
     }()
+    private lazy var collectionVerticalLabel: UILabel = {
+        let view = UILabel()
+        view.text = "UICollectionView 竖直"
+        view.textColor = .red
+        return view
+    }()
+    private lazy var collectionHorizontalLabel: UILabel = {
+        let view = UILabel()
+        view.text = "UICollectionView 水平"
+        view.textColor = .red
+        return view
+    }()
+    private lazy var scrollViewLabel: UILabel = {
+        let view = UILabel()
+        view.text = "UIScrollView"
+        view.textColor = .red
+        return view
+    }()
+    private lazy var customLabel: UILabel = {
+        let view = UILabel()
+        view.text = "自定义View"
+        view.textColor = .red
+        return view
+    }()
+
     private lazy var broadcastView: CLBroadcastView = {
         let view = CLBroadcastView()
         view.register(CLBroadcastMainCell.self, forCellReuseIdentifier: "CLBroadcastMainCell")
@@ -50,7 +75,7 @@ class CLBroadcastViewController: CLBaseViewController {
         view.dataSource = self
         view.delegate = self
         view.isAutoScroll = true
-        view.autoScrollDeley = 3
+        view.autoScrollDeley = 2
         return view
     }()
     private lazy var horizontalInfiniteCollectionView: CLInfiniteCollectionView = {
@@ -94,6 +119,10 @@ class CLBroadcastViewController: CLBaseViewController {
 }
 extension CLBroadcastViewController {
     func initUI() {
+        view.addSubview(collectionVerticalLabel)
+        view.addSubview(collectionHorizontalLabel)
+        view.addSubview(scrollViewLabel)
+        view.addSubview(customLabel)
         view.addSubview(broadcastView)
         view.addSubview(broadcastView1)
         view.addSubview(broadcastView2)
@@ -124,7 +153,7 @@ extension CLBroadcastViewController {
             make.centerX.equalToSuperview()
             make.left.right.equalToSuperview()
             make.height.equalTo(60)
-            make.bottom.equalToSuperview().offset(-100)
+            make.bottom.equalToSuperview().offset(-120)
         }
         horizontalInfiniteCollectionView.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
@@ -135,6 +164,22 @@ extension CLBroadcastViewController {
             make.left.right.equalToSuperview()
             make.height.equalTo(150)
             make.bottom.equalTo(horizontalInfiniteCollectionView.snp.top).offset(-30)
+        }
+        collectionVerticalLabel.snp.makeConstraints { (make) in
+            make.bottom.equalTo(verticalInfiniteCollectionView.snp.top)
+            make.centerX.equalToSuperview()
+        }
+        collectionHorizontalLabel.snp.makeConstraints { (make) in
+            make.bottom.equalTo(horizontalInfiniteCollectionView.snp.top)
+            make.centerX.equalToSuperview()
+        }
+        scrollViewLabel.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(carouseView.snp.top)
+        }
+        customLabel.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(broadcastView.snp.top)
         }
     }
     func reloadData() {
