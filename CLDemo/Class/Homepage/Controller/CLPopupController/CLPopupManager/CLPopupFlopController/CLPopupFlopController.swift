@@ -59,8 +59,6 @@ class CLPopupFlopController: CLPopupManagerController {
         let prizeView = CLFlopPrizeView()
         return prizeView
     }()
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(contentView)
