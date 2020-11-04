@@ -77,12 +77,12 @@ extension CLInfiniteCollectionView {
         guard let layout = collectionViewLayout as? UICollectionViewFlowLayout else { return }
         let currentOffset = contentOffset
         let contentHeight = getTotalContentHeight()
-        let centerOffsetY: CGFloat = (3 * contentHeight ) * 0.5
+        let centerOffsetY: CGFloat = (3 * contentHeight  - bounds.size.height) * 0.5
         let distFromCentre = centerOffsetY - currentOffset.y
         if abs(distFromCentre) > (contentHeight * 0.25) {
-            let cellcount = distFromCentre / (layout.itemSize.height + layout.minimumInteritemSpacing)
+            let cellcount = distFromCentre / (layout.itemSize.height + layout.minimumLineSpacing)
             let shiftCells = Int((cellcount > 0) ? floor(cellcount) : ceil(cellcount))
-            let offsetCorrection = abs(cellcount).truncatingRemainder(dividingBy: 1) * (layout.itemSize.height + layout.minimumInteritemSpacing)
+            let offsetCorrection = abs(cellcount).truncatingRemainder(dividingBy: 1) * (layout.itemSize.height + layout.minimumLineSpacing)
             if contentOffset.y < centerOffsetY {
                 contentOffset = CGPoint(x: currentOffset.x, y: centerOffsetY - offsetCorrection)
             }else if contentOffset.y > centerOffsetY {
@@ -101,7 +101,7 @@ extension CLInfiniteCollectionView {
     }
     private func getTotalContentHeight() -> CGFloat {
         guard let layout = collectionViewLayout as? UICollectionViewFlowLayout, let numberOfCells = infiniteDataSource?.numberOfItems(self) else { return 0 }
-        return (CGFloat(numberOfCells) * (layout.itemSize.height + layout.minimumInteritemSpacing))
+        return (CGFloat(numberOfCells) * (layout.itemSize.height + layout.minimumLineSpacing))
     }
     private func getCorrectedIndex(_ indexToCorrect: Int) -> Int {
         guard let numberOfCells = infiniteDataSource?.numberOfItems(self) else { return 0 }

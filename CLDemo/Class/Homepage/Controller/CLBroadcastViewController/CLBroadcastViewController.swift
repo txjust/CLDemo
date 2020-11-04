@@ -62,6 +62,7 @@ class CLBroadcastViewController: CLBaseViewController {
         view.register(CLInfiniteCollectionViewCell.self, forCellWithReuseIdentifier: "CLInfiniteCollectionViewCell")
         view.infiniteDelegate = self
         view.infiniteDataSource = self
+        view.backgroundColor = UIColor.green.withAlphaComponent(0.25)
         return view
     }()
     private lazy var verticalInfiniteCollectionView: CLInfiniteCollectionView = {
@@ -74,6 +75,7 @@ class CLBroadcastViewController: CLBaseViewController {
         view.register(CLInfiniteCollectionViewCell.self, forCellWithReuseIdentifier: "CLInfiniteCollectionViewCell")
         view.infiniteDelegate = self
         view.infiniteDataSource = self
+        view.backgroundColor = UIColor.yellow.withAlphaComponent(0.25)
         return view
     }()
 
@@ -131,7 +133,7 @@ extension CLBroadcastViewController {
         }
         verticalInfiniteCollectionView.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
-            make.height.equalTo(120)
+            make.height.equalTo(150)
             make.bottom.equalTo(horizontalInfiniteCollectionView.snp.top).offset(-30)
         }
     }
@@ -144,7 +146,7 @@ extension CLBroadcastViewController {
         horizontalInfiniteCollectionView.reloadData()
         verticalInfiniteCollectionView.reloadData()
         
-        timer.start()
+//        timer.start()
     }
     func scrollToNext() {
         broadcastView.scrollToNext()
@@ -189,9 +191,15 @@ extension CLBroadcastViewController: CLInfiniteCollectionViewDataSource {
         return arrayDS.count
     }
     func cellForItemAtIndexPath(_ collectionView: UICollectionView, dequeueIndexPath: IndexPath, index: Int)  -> UICollectionViewCell {
-        let cell = horizontalInfiniteCollectionView.dequeueReusableCell(withReuseIdentifier: "CLInfiniteCollectionViewCell", for: dequeueIndexPath) as! CLInfiniteCollectionViewCell
-        cell.label.text = arrayDS[index]
-        return cell
+        if collectionView == horizontalInfiniteCollectionView {
+            let cell = horizontalInfiniteCollectionView.dequeueReusableCell(withReuseIdentifier: "CLInfiniteCollectionViewCell", for: dequeueIndexPath) as! CLInfiniteCollectionViewCell
+            cell.label.text = arrayDS[index]
+            return cell
+        }else {
+            let cell = verticalInfiniteCollectionView.dequeueReusableCell(withReuseIdentifier: "CLInfiniteCollectionViewCell", for: dequeueIndexPath) as! CLInfiniteCollectionViewCell
+            cell.label.text = arrayDS[index]
+            return cell
+        }
     }
 }
 extension CLBroadcastViewController: CLInfiniteCollectionViewDelegate {
