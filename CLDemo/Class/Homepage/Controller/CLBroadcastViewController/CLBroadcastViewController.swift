@@ -46,16 +46,16 @@ class CLBroadcastViewController: CLBaseViewController {
     }()
     private lazy var carouseView: CLCarouselView = {
         let view = CLCarouselView()
+        view.backgroundColor = UIColor.orange.withAlphaComponent(0.25)
         view.dataSource = self
         view.delegate = self
         view.isAutoScroll = true
         view.autoScrollDeley = 1
         return view
     }()
-    private lazy var infiniteCollectionView: CLInfiniteCollectionView = {
+    private lazy var horizontalInfiniteCollectionView: CLInfiniteCollectionView = {
         let layout = CLFlowLayout()
         layout.scrollDirection = .horizontal
-//        layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0
         layout.itemSize = CGSize(width: view.bounds.width / 3.0, height: 80)
         let view = CLInfiniteCollectionView(frame: .zero, collectionViewLayout: layout)
@@ -64,6 +64,19 @@ class CLBroadcastViewController: CLBaseViewController {
         view.infiniteDataSource = self
         return view
     }()
+    private lazy var verticalInfiniteCollectionView: CLInfiniteCollectionView = {
+        let layout = CLFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.minimumLineSpacing = 0
+        layout.itemSize = CGSize(width: view.bounds.width, height: 50)
+        let view = CLInfiniteCollectionView(frame: .zero, collectionViewLayout: layout)
+        view.isHorizontalScroll = false
+        view.register(CLInfiniteCollectionViewCell.self, forCellWithReuseIdentifier: "CLInfiniteCollectionViewCell")
+        view.infiniteDelegate = self
+        view.infiniteDataSource = self
+        return view
+    }()
+
     private lazy var timer: CLGCDTimer = {
         let gcdTimer = CLGCDTimer(interval: 2, delaySecs: 2) {[weak self] (_) in
             self?.scrollToNext()
@@ -83,14 +96,15 @@ extension CLBroadcastViewController {
         view.addSubview(broadcastView1)
         view.addSubview(broadcastView2)
         view.addSubview(carouseView)
-        view.addSubview(infiniteCollectionView)
+        view.addSubview(horizontalInfiniteCollectionView)
+        view.addSubview(verticalInfiniteCollectionView)
     }
     func makeConstraints() {
         carouseView.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
             make.left.right.equalToSuperview()
             make.height.equalTo(120)
-            make.bottom.equalTo(broadcastView.snp.top).offset(-80)
+            make.bottom.equalTo(broadcastView.snp.top).offset(-30)
         }
         broadcastView.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
@@ -108,30 +122,36 @@ extension CLBroadcastViewController {
             make.centerX.equalToSuperview()
             make.left.right.equalToSuperview()
             make.height.equalTo(60)
-            make.bottom.equalToSuperview().offset(-180)
+            make.bottom.equalToSuperview().offset(-100)
         }
-        infiniteCollectionView.snp.makeConstraints { (make) in
+        horizontalInfiniteCollectionView.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
             make.height.equalTo(80)
             make.bottom.equalTo(carouseView.snp.top).offset(-30)
+        }
+        verticalInfiniteCollectionView.snp.makeConstraints { (make) in
+            make.left.right.equalToSuperview()
+            make.height.equalTo(120)
+            make.bottom.equalTo(horizontalInfiniteCollectionView.snp.top).offset(-30)
         }
     }
     func reloadData() {
         broadcastView.reloadData()
         broadcastView1.reloadData()
         broadcastView2.reloadData()
-        timer.start()
         
         carouseView.reloadData()
+        horizontalInfiniteCollectionView.reloadData()
+        verticalInfiniteCollectionView.reloadData()
         
-        infiniteCollectionView.reloadData()
+        timer.start()
     }
     func scrollToNext() {
         broadcastView.scrollToNext()
         broadcastView1.scrollToNext()
         broadcastView2.scrollToNext()
         
-        infiniteCollectionView.scrollToLeftItem()
+        horizontalInfiniteCollectionView.scrollToRightItem()
     }
 }
 extension CLBroadcastViewController: CLCarouselViewDataSource {
@@ -169,7 +189,7 @@ extension CLBroadcastViewController: CLInfiniteCollectionViewDataSource {
         return arrayDS.count
     }
     func cellForItemAtIndexPath(_ collectionView: UICollectionView, dequeueIndexPath: IndexPath, index: Int)  -> UICollectionViewCell {
-        let cell = infiniteCollectionView.dequeueReusableCell(withReuseIdentifier: "CLInfiniteCollectionViewCell", for: dequeueIndexPath) as! CLInfiniteCollectionViewCell
+        let cell = horizontalInfiniteCollectionView.dequeueReusableCell(withReuseIdentifier: "CLInfiniteCollectionViewCell", for: dequeueIndexPath) as! CLInfiniteCollectionViewCell
         cell.label.text = arrayDS[index]
         return cell
     }
