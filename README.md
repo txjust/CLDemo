@@ -8,6 +8,7 @@
 ![效果图](https://github.com/JmoVxia/Photos/blob/master/13.gif)
 ![效果图](https://github.com/JmoVxia/Photos/blob/master/12.gif)
 ![效果图](https://github.com/JmoVxia/Photos/blob/master/11.gif)
+![效果图](https://github.com/JmoVxia/Photos/blob/master/18.gif)
 ![效果图](https://github.com/JmoVxia/Photos/blob/master/1.gif)
 ![效果图](https://github.com/JmoVxia/Photos/blob/master/2.gif)
 ![效果图](https://github.com/JmoVxia/Photos/blob/master/3.gif)
