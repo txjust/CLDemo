@@ -52,8 +52,20 @@ class CLBroadcastViewController: CLBaseViewController {
         view.autoScrollDeley = 1
         return view
     }()
+    private lazy var infiniteCollectionView: CLInfiniteCollectionView = {
+        let layout = CLFlowLayout()
+        layout.scrollDirection = .horizontal
+//        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
+        layout.itemSize = CGSize(width: view.bounds.width / 3.0, height: 80)
+        let view = CLInfiniteCollectionView(frame: .zero, collectionViewLayout: layout)
+        view.register(CLInfiniteCollectionViewCell.self, forCellWithReuseIdentifier: "CLInfiniteCollectionViewCell")
+        view.infiniteDelegate = self
+        view.infiniteDataSource = self
+        return view
+    }()
     private lazy var timer: CLGCDTimer = {
-        let gcdTimer = CLGCDTimer(interval: 3, delaySecs: 3) {[weak self] (_) in
+        let gcdTimer = CLGCDTimer(interval: 2, delaySecs: 2) {[weak self] (_) in
             self?.scrollToNext()
         }
         return gcdTimer
@@ -71,6 +83,7 @@ extension CLBroadcastViewController {
         view.addSubview(broadcastView1)
         view.addSubview(broadcastView2)
         view.addSubview(carouseView)
+        view.addSubview(infiniteCollectionView)
     }
     func makeConstraints() {
         carouseView.snp.makeConstraints { (make) in
@@ -97,6 +110,11 @@ extension CLBroadcastViewController {
             make.height.equalTo(60)
             make.bottom.equalToSuperview().offset(-180)
         }
+        infiniteCollectionView.snp.makeConstraints { (make) in
+            make.left.right.equalToSuperview()
+            make.height.equalTo(80)
+            make.bottom.equalTo(carouseView.snp.top).offset(-30)
+        }
     }
     func reloadData() {
         broadcastView.reloadData()
@@ -105,11 +123,15 @@ extension CLBroadcastViewController {
         timer.start()
         
         carouseView.reloadData()
+        
+        infiniteCollectionView.reloadData()
     }
     func scrollToNext() {
         broadcastView.scrollToNext()
         broadcastView1.scrollToNext()
         broadcastView2.scrollToNext()
+        
+        infiniteCollectionView.scrollToLeftItem()
     }
 }
 extension CLBroadcastViewController: CLCarouselViewDataSource {
@@ -140,5 +162,20 @@ extension CLBroadcastViewController: CLBroadcastViewDataSource {
         let currentIndex = (index + broadcast.tag) % self.arrayDS.count
         (cell as? CLBroadcastMainCell)?.adText = arrayDS[currentIndex]
         return cell
+    }
+}
+extension CLBroadcastViewController: CLInfiniteCollectionViewDataSource {
+    func numberOfItems(_ collectionView: UICollectionView) -> Int {
+        return arrayDS.count
+    }
+    func cellForItemAtIndexPath(_ collectionView: UICollectionView, dequeueIndexPath: IndexPath, index: Int)  -> UICollectionViewCell {
+        let cell = infiniteCollectionView.dequeueReusableCell(withReuseIdentifier: "CLInfiniteCollectionViewCell", for: dequeueIndexPath) as! CLInfiniteCollectionViewCell
+        cell.label.text = arrayDS[index]
+        return cell
+    }
+}
+extension CLBroadcastViewController: CLInfiniteCollectionViewDelegate {
+    func didSelectCellAtIndexPath(_ collectionView: UICollectionView, index: Int) {
+        print("selected \(index)")
     }
 }
