@@ -50,7 +50,7 @@ class CLBroadcastViewController: CLBaseViewController {
         view.dataSource = self
         view.delegate = self
         view.isAutoScroll = true
-        view.autoScrollDeley = 1
+        view.autoScrollDeley = 3
         return view
     }()
     private lazy var horizontalInfiniteCollectionView: CLInfiniteCollectionView = {
@@ -146,7 +146,7 @@ extension CLBroadcastViewController {
         horizontalInfiniteCollectionView.reloadData()
         verticalInfiniteCollectionView.reloadData()
         
-//        timer.start()
+        timer.start()
     }
     func scrollToNext() {
         broadcastView.scrollToNext()
@@ -154,6 +154,7 @@ extension CLBroadcastViewController {
         broadcastView2.scrollToNext()
         
         horizontalInfiniteCollectionView.scrollToRightItem()
+        verticalInfiniteCollectionView.scrollToBottomItem()
     }
 }
 extension CLBroadcastViewController: CLCarouselViewDataSource {

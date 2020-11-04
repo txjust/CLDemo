@@ -52,6 +52,16 @@ extension CLInfiniteCollectionView {
         let centerOffsetX = contentOffset.x + (layout.itemSize.width + layout.minimumLineSpacing)
         setContentOffset(CGPoint(x: centerOffsetX, y: 0), animated: true)
     }
+    func scrollToTopItem() {
+        guard !isHorizontalScroll, let layout = collectionViewLayout as? UICollectionViewFlowLayout else { return }
+        let centerOffsetY = contentOffset.y + (layout.itemSize.height + layout.minimumLineSpacing)
+        setContentOffset(CGPoint(x: 0, y: centerOffsetY), animated: true)
+    }
+    func scrollToBottomItem() {
+        guard !isHorizontalScroll, let layout = collectionViewLayout as? UICollectionViewFlowLayout else { return }
+        let centerOffsetY = contentOffset.y - (layout.itemSize.height + layout.minimumLineSpacing)
+        setContentOffset(CGPoint(x: 0, y: centerOffsetY), animated: true)
+    }
 }
 extension CLInfiniteCollectionView {
     private func centreIfNeeded() {
