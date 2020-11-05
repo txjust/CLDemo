@@ -35,12 +35,6 @@ class CLInfiniteCollectionView: UICollectionView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        if bounds != .zero {
-            isHorizontalScroll ? centreIfNeeded() : centreVerticallyIfNeeded()
-        }
-    }
 }
 extension CLInfiniteCollectionView {
     func scrollToLeftItem() {
@@ -138,5 +132,8 @@ extension CLInfiniteCollectionView: UICollectionViewDataSource {
 extension CLInfiniteCollectionView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         infiniteDelegate?.didSelectCellAtIndexPath(self, index: getCorrectedIndex(indexPath.row - indexOffset))
+    }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        isHorizontalScroll ? centreIfNeeded() : centreVerticallyIfNeeded()
     }
 }
