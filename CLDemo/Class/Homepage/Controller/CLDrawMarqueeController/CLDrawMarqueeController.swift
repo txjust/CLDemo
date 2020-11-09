@@ -9,13 +9,27 @@
 import UIKit
 import SnapKit
 
-//MARK: - JmoVxia---枚举
-extension CLDrawMarqueeController {
-}
 //MARK: - JmoVxia---类-属性
 class CLDrawMarqueeController: CLBaseViewController {
+    let array = ["漫漫秋夜长，烈烈北风凉。",
+                 "展转不能寐，披衣起彷徨。",
+                 "彷徨忽已久，白露沾我裳。",
+                 "俯视清水波，仰看明月光。",
+                 "天汉回西流，三五正纵横。",
+                 "草虫鸣何悲，孤雁独南翔。",
+                 "郁郁多悲思，绵绵思故乡。",
+                 "愿飞安得翼，欲济河无梁。",
+                 "向风长叹息，断绝我中肠。",
+                 "西北有浮云，亭亭如车盖。",
+                 "惜哉时不遇，适与飘风会。",
+                 "吹我东南行，行行至吴会。",
+                 "吴会非吾乡，安能久留滞。",
+                 "弃置勿复陈，客子常畏人。",]
+    private var index: Int = 0
     private lazy var marqueeView: CLDrawMarqueeView = {
         let view = CLDrawMarqueeView()
+        view.speed = 2
+        view.delegate = self
         return view
     }()
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -67,21 +81,15 @@ private extension CLDrawMarqueeController {
 //MARK: - JmoVxia---数据
 private extension CLDrawMarqueeController {
     func initData() {
-        marqueeView.setText("台湾释放被遣返诈骗犯 国台办要求立即纠正错误，严惩嫌犯")
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        marqueeView.setText(array.first!)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.marqueeView.startAnimation()
         }
     }
 }
-//MARK: - JmoVxia---override
-extension CLDrawMarqueeController {
-}
-//MARK: - JmoVxia---objc
-@objc private extension CLDrawMarqueeController {
-}
-//MARK: - JmoVxia---私有方法
-private extension CLDrawMarqueeController {
-}
-//MARK: - JmoVxia---公共方法
-extension CLDrawMarqueeController {
+extension CLDrawMarqueeController: CLDrawMarqueeViewDelegate {
+    func drawMarqueeView(view: CLDrawMarqueeView, animationDidStopFinished finished: Bool) {
+        index = (index + 1) % array.count
+        view.setText(array[index])
+    }
 }

@@ -58,7 +58,8 @@ private extension CLDrawMarqueeView {
     }
     func makeConstraints() {
         label.snp.makeConstraints { (make) in
-            make.left.top.bottom.equalToSuperview()
+            make.top.bottom.equalToSuperview()
+            make.left.equalTo(snp.right)
         }
     }
 }
