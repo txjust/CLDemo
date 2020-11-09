@@ -44,7 +44,6 @@ class CLBroadcastViewController: CLBaseViewController {
         view.textColor = .red
         return view
     }()
-
     private lazy var broadcastView: CLBroadcastView = {
         let view = CLBroadcastView()
         view.register(CLBroadcastMainCell.self, forCellReuseIdentifier: "CLBroadcastMainCell")
@@ -103,7 +102,6 @@ class CLBroadcastViewController: CLBaseViewController {
         view.backgroundColor = UIColor.yellow.withAlphaComponent(0.25)
         return view
     }()
-
     private lazy var timer: CLGCDTimer = {
         let gcdTimer = CLGCDTimer(interval: 2, delaySecs: 2) {[weak self] (_) in
             self?.scrollToNext()
