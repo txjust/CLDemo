@@ -102,6 +102,7 @@
         [_arrayDS addObject:NSLocalizedString(@"录音转码", nil)];
         [_arrayDS addObject:NSLocalizedString(@"绘制头像", nil)];
         [_arrayDS addObject:NSLocalizedString(@"水平布局", nil)];
+        [_arrayDS addObject:NSLocalizedString(@"跑马灯", nil)];
         [_arrayDS addObject:NSLocalizedString(@"标签动态排布", nil)];
         [_arrayDS addObject:NSLocalizedString(@"自定义弹窗", nil)];
         [_arrayDS addObject:NSLocalizedString(@"游标卡尺", nil)];
@@ -144,6 +145,7 @@
         [_controllerArray addObject:[CLRecordeEncodeController class]];
         [_controllerArray addObject:[CLDrawImageController class]];
         [_controllerArray addObject:[CLLayoutController class]];
+        [_controllerArray addObject:[CLDrawMarqueeController class]];
         [_controllerArray addObject:[CLTagsController class]];
         [_controllerArray addObject:[CLPopupController class]];
         [_controllerArray addObject:[CLVernierCaliperController class]];
