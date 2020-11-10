@@ -12,7 +12,7 @@ class CLDrawMarqueeVerticalCell: UICollectionViewCell {
     lazy var label: CLVerticalLabel = {
         let view = CLVerticalLabel()
         view.verticalAlignment = .alignmentMiddle
-        view.backgroundColor = UIColor.red.withAlphaComponent(0.35)
+        view.backgroundColor = UIColor.orange.withAlphaComponent(0.5)
         view.numberOfLines = 0
         return view
     }()
