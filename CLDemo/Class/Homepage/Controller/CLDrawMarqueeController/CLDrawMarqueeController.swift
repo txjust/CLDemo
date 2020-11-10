@@ -31,6 +31,26 @@ class CLDrawMarqueeController: CLBaseViewController {
         view.backgroundColor = UIColor.orange.withAlphaComponent(0.35)
         return view
     }()
+    private lazy var marqueeCollectionView: CLDrawMarqueeCollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.estimatedItemSize = CGSize.init(width: 80, height: 40)
+        layout.minimumLineSpacing = 10
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
+        let view = CLDrawMarqueeCollectionView(frame: .zero, collectionViewLayout: layout)
+        view.backgroundColor = UIColor.cyan.withAlphaComponent(0.35)
+        view.infiniteDelegate = self
+        view.infiniteDataSource = self
+        view.register(CLDrawMarqueeCell.self, forCellWithReuseIdentifier: "CLDrawMarqueeCell")
+        view.isScrollEnabled = false
+        return view
+    }()
+    private lazy var timer: CLGCDTimer = {
+        let gcdTimer = CLGCDTimer(interval: 0.01, delaySecs: 0.01) {[weak self] (_) in
+            self?.scrollToLeft()
+        }
+        return gcdTimer
+    }()
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
@@ -69,12 +89,19 @@ extension CLDrawMarqueeController {
 private extension CLDrawMarqueeController {
     func initUI() {
         view.addSubview(marqueeView)
+        view.addSubview(marqueeCollectionView)
     }
     func makeConstraints() {
         marqueeView.snp.makeConstraints { (make) in
             make.center.equalToSuperview()
             make.height.equalTo(40)
             make.width.equalTo(100)
+        }
+        marqueeCollectionView.snp.makeConstraints { (make) in
+            make.top.equalTo(marqueeView.snp.bottom).offset(90)
+            make.height.equalTo(40)
+            make.width.equalTo(200)
+            make.centerX.equalToSuperview()
         }
     }
 }
@@ -84,10 +111,13 @@ private extension CLDrawMarqueeController {
         marqueeView.setText(array.first!)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.marqueeView.startAnimation()
+            self.timer.start()
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.marqueeView.pauseAnimation()
-        }
+    }
+}
+extension CLDrawMarqueeController {
+    func scrollToLeft() {
+        marqueeCollectionView.scrollToLeft(1)
     }
 }
 extension CLDrawMarqueeController: CLDrawMarqueeViewDelegate {
@@ -95,5 +125,21 @@ extension CLDrawMarqueeController: CLDrawMarqueeViewDelegate {
         if finished {
             view.setText(array[index % array.count])
         }
+    }
+}
+extension CLDrawMarqueeController: CLDrawMarqueeCollectionViewDataSource {
+    func cellForItemAtIndexPath(_ collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CLDrawMarqueeCell", for: indexPath) as! CLDrawMarqueeCell
+        cell.label.text = array[indexPath.row]
+        return cell
+    }
+    
+    func numberOfItems(_ collectionView: UICollectionView) -> Int {
+        return array.count
+    }
+}
+extension CLDrawMarqueeController: CLDrawMarqueeCollectionViewDelegate {
+    func didSelectCellAtIndexPath(_ collectionView: UICollectionView, indexPath: IndexPath) {
+        CLLog("didSelectCellAtIndexPath \(indexPath.row)")
     }
 }

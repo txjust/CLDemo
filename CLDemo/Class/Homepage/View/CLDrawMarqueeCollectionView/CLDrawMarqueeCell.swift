@@ -1,14 +1,14 @@
 //
-//  CLInfiniteCollectionViewCell.swift
+//  CLDrawMarqueeCell.swift
 //  CLDemo
 //
-//  Created by Chen JmoVxia on 2020/11/4.
+//  Created by Chen JmoVxia on 2020/11/10.
 //  Copyright © 2020 JmoVxia. All rights reserved.
 //
 
 import UIKit
 
-class CLInfiniteCollectionViewCell: UICollectionViewCell {
+class CLDrawMarqueeCell: UICollectionViewCell {
     lazy var label: UILabel = {
         let view = UILabel()
         view.textAlignment = .center
@@ -19,7 +19,8 @@ class CLInfiniteCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         contentView.addSubview(label)
         label.snp.makeConstraints { (make) in
-            make.edges.equalTo(UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5))
+            make.height.equalTo(40)
+            make.left.right.top.bottom.equalToSuperview()
         }
     }
     
