@@ -25,7 +25,6 @@ class CLDrawMarqueeController: CLBaseViewController {
                  "吹我东南行，行行至吴会。",
                  "吴会非吾乡，安能久留滞。",
                  "弃置勿复陈，客子常畏人。",]
-    private var index: Int = 0
     private lazy var marqueeView: CLDrawMarqueeView = {
         let view = CLDrawMarqueeView(direction: .right)
         view.delegate = self
@@ -39,6 +38,7 @@ class CLDrawMarqueeController: CLBaseViewController {
         fatalError("init(coder:) has not been implemented")
     }
     deinit {
+        marqueeView.stopAnimation()
     }
 }
 //MARK: - JmoVxia---生命周期
@@ -82,16 +82,18 @@ private extension CLDrawMarqueeController {
 private extension CLDrawMarqueeController {
     func initData() {
         marqueeView.setText(array.first!)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.marqueeView.startAnimation()
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.marqueeView.pauseAnimation()
         }
     }
 }
 extension CLDrawMarqueeController: CLDrawMarqueeViewDelegate {
-    func drawMarqueeView(view: CLDrawMarqueeView, animationDidStopFinished finished: Bool) {
+    func drawMarqueeView(view: CLDrawMarqueeView, index: Int, animationDidStopFinished finished: Bool) {
         if finished {
-            index = (index + 1) % array.count
-            view.setText(array[index])
+            view.setText(array[index % array.count])
         }
     }
 }

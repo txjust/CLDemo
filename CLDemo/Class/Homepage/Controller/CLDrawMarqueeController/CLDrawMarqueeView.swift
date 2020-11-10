@@ -9,11 +9,11 @@
 import UIKit
 import SnapKit
 
-protocol CLDrawMarqueeViewDelegate {
-    func drawMarqueeView(view: CLDrawMarqueeView, animationDidStopFinished finished: Bool)
+protocol CLDrawMarqueeViewDelegate: NSObject {
+    func drawMarqueeView(view: CLDrawMarqueeView, index: Int, animationDidStopFinished finished: Bool)
 }
 extension CLDrawMarqueeViewDelegate {
-    func drawMarqueeView(view: CLDrawMarqueeView, animationDidStopFinished finished: Bool) {
+    func drawMarqueeView(view: CLDrawMarqueeView, index: Int, animationDidStopFinished finished: Bool) {
         
     }
 }
@@ -27,12 +27,13 @@ extension CLDrawMarqueeView {
 }
 //MARK: - JmoVxia---类-属性
 class CLDrawMarqueeView: UIView {
-    var delegate: CLDrawMarqueeViewDelegate?
+    weak var delegate: CLDrawMarqueeViewDelegate?
     private (set) var speed: CGFloat = 2
     private (set) var direction: Direction = .left
+    private (set) var index: Int = 0
+    private (set) var isPaused: Bool = false
     private var stoped: Bool = false
     private var isFrist: Bool = true
-    private var isPaused: Bool = false
     private var animationViewWidth: CGFloat {
         return label.bounds.width
     }
@@ -53,13 +54,16 @@ class CLDrawMarqueeView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    deinit {
+        print("=======")
+    }
 }
 //MARK: - JmoVxia---布局
 private extension CLDrawMarqueeView {
     func initUI() {
         layer.masksToBounds = true
         addSubview(label)
-        NotificationCenter.default.addObserver(self, selector: #selector(applictionEillEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(applictionDidBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(applicationWillResignActive), name: UIApplication.willResignActiveNotification, object: nil)
     }
     func makeConstraints() {
@@ -97,7 +101,7 @@ extension CLDrawMarqueeView {
         
         let moveAnimation = CAKeyframeAnimation(keyPath: "position")
         moveAnimation.path = movePath.cgPath
-        moveAnimation.isRemovedOnCompletion = true
+        moveAnimation.isRemovedOnCompletion = false
         moveAnimation.timingFunctions = [CAMediaTimingFunction(name: .linear)]
         moveAnimation.duration = CFTimeInterval(animationViewWidth / 30 * (1 / speed))
         moveAnimation.delegate = self
@@ -110,7 +114,7 @@ extension CLDrawMarqueeView {
     }
     ///暂停动画
     func pauseAnimation() {
-        if isPaused {
+        if isPaused || stoped {
             return
         }
         isPaused = true
@@ -120,7 +124,7 @@ extension CLDrawMarqueeView {
     }
     ///恢复动画
     func resumeAnimation() {
-        if !isPaused {
+        if !isPaused || stoped {
             return
         }
         isPaused = false
@@ -133,7 +137,7 @@ extension CLDrawMarqueeView {
     }
 }
 @objc private extension CLDrawMarqueeView {
-    func applictionEillEnterForeground() {
+    func applictionDidBecomeActive() {
         resumeAnimation()
     }
     func applicationWillResignActive() {
@@ -142,8 +146,9 @@ extension CLDrawMarqueeView {
 }
 extension CLDrawMarqueeView: CAAnimationDelegate {
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
-        delegate?.drawMarqueeView(view: self, animationDidStopFinished: flag)
-        if (!stoped) {
+        index += 1
+        delegate?.drawMarqueeView(view: self, index: index, animationDidStopFinished: flag)
+        if (flag && !stoped) {
             startAnimation()
         }
     }
