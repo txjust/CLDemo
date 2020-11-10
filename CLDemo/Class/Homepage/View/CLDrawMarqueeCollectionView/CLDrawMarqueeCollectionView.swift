@@ -34,14 +34,14 @@ class CLDrawMarqueeCollectionView: UICollectionView {
     }
 }
 extension CLDrawMarqueeCollectionView {
-    func scrollToLeft(_ offset: CGFloat) {
+    func horizontalScroll(_ offset: CGFloat) {
         guard (collectionViewLayout as? UICollectionViewFlowLayout)?.scrollDirection == .horizontal else {
             return
         }
         contentOffset.x += offset
     }
-    func scrollToRight(_ offset: CGFloat) {
-        guard (collectionViewLayout as? UICollectionViewFlowLayout)?.scrollDirection == .horizontal else {
+    func verticalScroll(_ offset: CGFloat) {
+        guard (collectionViewLayout as? UICollectionViewFlowLayout)?.scrollDirection == .vertical else {
             return
         }
         contentOffset.x -= offset
@@ -63,14 +63,27 @@ extension CLDrawMarqueeCollectionView: UICollectionViewDelegate {
         infiniteDelegate?.didSelectCellAtIndexPath(collectionView, indexPath: indexPath)
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let contentOffsetX = scrollView.contentOffset.x
-        let framWidth = bounds.width
-        let sectionLength = contentSize.width / 3.0
-        let contentLength = contentSize.width
-        if contentOffsetX <= 0 {
-            contentOffset.x = sectionLength - contentOffsetX
-        } else if contentOffsetX >= contentLength - framWidth {
-            contentOffset.x = contentLength - sectionLength - framWidth
+        if (collectionViewLayout as? UICollectionViewFlowLayout)?.scrollDirection == .horizontal {
+            let contentOffsetX = scrollView.contentOffset.x
+            let framWidth = bounds.width
+            let sectionLength = contentSize.width / 3.0
+            let contentLength = contentSize.width
+            if contentOffsetX <= 0 {
+                contentOffset.x = sectionLength - contentOffsetX
+            } else if contentOffsetX >= contentLength - framWidth {
+                contentOffset.x = contentLength - sectionLength - framWidth
+            }
+        }else {
+            let contentOffsetY = scrollView.contentOffset.y
+            let framHeight = bounds.height
+            let sectionLength = contentSize.height / 3.0
+            let contentLength = contentSize.height
+            if contentOffsetY <= 0 {
+                contentOffset.y = sectionLength - contentOffsetY
+            } else if contentOffsetY >= contentLength - framHeight {
+                contentOffset.y = contentLength - sectionLength - framHeight
+            }
+
         }
     }
 }
