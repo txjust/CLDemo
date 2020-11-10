@@ -9,18 +9,17 @@
 import UIKit
 import SnapKit
 
-protocol CLInfiniteCollectionViewDataSource {
+protocol CLInfiniteCollectionViewDataSource: NSObject {
     func cellForItemAtIndexPath(_ collectionView: UICollectionView, dequeueIndexPath: IndexPath, index: Int) -> UICollectionViewCell
     func numberOfItems(_ collectionView: UICollectionView) -> Int
 }
-protocol CLInfiniteCollectionViewDelegate {
+protocol CLInfiniteCollectionViewDelegate: NSObject {
     func didSelectCellAtIndexPath(_ collectionView: UICollectionView, index: Int)
 }
 
 class CLInfiniteCollectionView: UICollectionView {
-    var infiniteDataSource: CLInfiniteCollectionViewDataSource?
-    var infiniteDelegate: CLInfiniteCollectionViewDelegate?
-    
+    weak var infiniteDataSource: CLInfiniteCollectionViewDataSource?
+    weak var infiniteDelegate: CLInfiniteCollectionViewDelegate?
     private var isHorizontalScroll: Bool {
         return (collectionViewLayout as? UICollectionViewFlowLayout)?.scrollDirection == .horizontal
     }

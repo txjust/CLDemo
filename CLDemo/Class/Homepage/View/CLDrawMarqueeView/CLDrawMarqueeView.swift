@@ -55,7 +55,7 @@ class CLDrawMarqueeView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     deinit {
-        print("=======")
+        CLLog("CLDrawMarqueeView deinit")
     }
 }
 //MARK: - JmoVxia---布局

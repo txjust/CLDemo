@@ -113,6 +113,9 @@ class CLBroadcastViewController: CLBaseViewController {
         makeConstraints()
         reloadData()
     }
+    deinit {
+        CLLog("CLBroadcastViewController deinit")
+    }
 }
 extension CLBroadcastViewController {
     func initUI() {

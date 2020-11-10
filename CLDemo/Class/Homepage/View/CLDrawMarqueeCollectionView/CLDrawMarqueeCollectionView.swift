@@ -9,17 +9,17 @@
 import UIKit
 import SnapKit
 
-protocol CLDrawMarqueeCollectionViewDataSource {
+protocol CLDrawMarqueeCollectionViewDataSource: NSObject {
     func cellForItemAtIndexPath(_ collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell
     func numberOfItems(_ collectionView: UICollectionView) -> Int
 }
-protocol CLDrawMarqueeCollectionViewDelegate {
+protocol CLDrawMarqueeCollectionViewDelegate: NSObject {
     func didSelectCellAtIndexPath(_ collectionView: UICollectionView, indexPath: IndexPath)
 }
 
 class CLDrawMarqueeCollectionView: UICollectionView {
-    var infiniteDataSource: CLDrawMarqueeCollectionViewDataSource?
-    var infiniteDelegate: CLDrawMarqueeCollectionViewDelegate?
+    weak var infiniteDataSource: CLDrawMarqueeCollectionViewDataSource?
+    weak var infiniteDelegate: CLDrawMarqueeCollectionViewDelegate?
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
         dataSource = self

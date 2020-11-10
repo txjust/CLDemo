@@ -74,6 +74,7 @@ class CLDrawMarqueeController: CLBaseViewController {
     }
     deinit {
         marqueeView.stopAnimation()
+        CLLog("CLDrawMarqueeController deinit")
     }
 }
 //MARK: - JmoVxia---生命周期
