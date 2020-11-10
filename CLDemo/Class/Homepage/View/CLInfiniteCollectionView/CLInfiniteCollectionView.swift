@@ -21,7 +21,9 @@ class CLInfiniteCollectionView: UICollectionView {
     var infiniteDataSource: CLInfiniteCollectionViewDataSource?
     var infiniteDelegate: CLInfiniteCollectionViewDelegate?
     
-    var isHorizontalScroll: Bool = true
+    private var isHorizontalScroll: Bool {
+        return (collectionViewLayout as? UICollectionViewFlowLayout)?.scrollDirection == .horizontal
+    }
     private var indexOffset: Int = 0
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)

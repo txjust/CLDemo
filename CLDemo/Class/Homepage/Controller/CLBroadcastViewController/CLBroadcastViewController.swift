@@ -95,7 +95,6 @@ class CLBroadcastViewController: CLBaseViewController {
         layout.minimumLineSpacing = 0
         layout.itemSize = CGSize(width: view.bounds.width, height: 50)
         let view = CLInfiniteCollectionView(frame: .zero, collectionViewLayout: layout)
-        view.isHorizontalScroll = false
         view.register(CLInfiniteCollectionViewCell.self, forCellWithReuseIdentifier: "CLInfiniteCollectionViewCell")
         view.infiniteDelegate = self
         view.infiniteDataSource = self
