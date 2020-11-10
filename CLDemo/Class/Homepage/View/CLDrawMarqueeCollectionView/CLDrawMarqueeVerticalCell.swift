@@ -9,9 +9,9 @@
 import UIKit
 
 class CLDrawMarqueeVerticalCell: UICollectionViewCell {
-    lazy var label: UILabel = {
-        let view = UILabel()
-        view.textAlignment = .center
+    lazy var label: CLVerticalLabel = {
+        let view = CLVerticalLabel()
+        view.verticalAlignment = .alignmentMiddle
         view.backgroundColor = UIColor.red.withAlphaComponent(0.35)
         view.numberOfLines = 0
         return view
@@ -21,7 +21,8 @@ class CLDrawMarqueeVerticalCell: UICollectionViewCell {
         contentView.addSubview(label)
         label.snp.makeConstraints { (make) in
             make.width.equalTo(20)
-            make.left.right.top.bottom.equalToSuperview()
+            make.top.bottom.equalToSuperview()
+            make.centerX.equalToSuperview()
         }
     }
     

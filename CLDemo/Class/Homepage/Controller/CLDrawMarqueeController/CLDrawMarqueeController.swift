@@ -48,7 +48,7 @@ class CLDrawMarqueeController: CLBaseViewController {
     private lazy var verticalMarqueeView: CLDrawMarqueeCollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.estimatedItemSize = CGSize.init(width: 20, height: 80)
+        layout.estimatedItemSize = CGSize.init(width: 40, height: 80)
         layout.minimumInteritemSpacing = 10
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
         let view = CLDrawMarqueeCollectionView(frame: .zero, collectionViewLayout: layout)
@@ -123,7 +123,7 @@ private extension CLDrawMarqueeController {
         verticalMarqueeView.snp.makeConstraints { (make) in
             make.top.equalTo(horizontalMarqueeView.snp.bottom).offset(30)
             make.height.equalTo(200)
-            make.width.equalTo(20)
+            make.width.equalTo(40)
             make.centerX.equalToSuperview()
         }
     }
