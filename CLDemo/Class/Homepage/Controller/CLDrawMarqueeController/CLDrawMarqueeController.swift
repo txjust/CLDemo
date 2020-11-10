@@ -112,6 +112,7 @@ private extension CLDrawMarqueeController {
             make.top.equalTo(120)
             make.height.equalTo(40)
             make.width.equalTo(100)
+            make.centerX.equalToSuperview()
         }
         horizontalMarqueeView.snp.makeConstraints { (make) in
             make.top.equalTo(marqueeView.snp.bottom).offset(30)

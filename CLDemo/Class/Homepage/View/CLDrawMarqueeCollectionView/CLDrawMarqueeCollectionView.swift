@@ -44,7 +44,7 @@ extension CLDrawMarqueeCollectionView {
         guard (collectionViewLayout as? UICollectionViewFlowLayout)?.scrollDirection == .vertical else {
             return
         }
-        contentOffset.x -= offset
+        contentOffset.y += offset
     }
 }
 extension CLDrawMarqueeCollectionView: UICollectionViewDataSource {
@@ -81,9 +81,8 @@ extension CLDrawMarqueeCollectionView: UICollectionViewDelegate {
             if contentOffsetY <= 0 {
                 contentOffset.y = sectionLength - contentOffsetY
             } else if contentOffsetY >= contentLength - framHeight {
-                contentOffset.y = contentLength - sectionLength - framHeight
+                contentOffset.y = contentLength - framHeight - sectionLength
             }
-
         }
     }
 }
