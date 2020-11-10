@@ -28,9 +28,11 @@ extension CLDrawMarqueeView {
 //MARK: - JmoVxia---类-属性
 class CLDrawMarqueeView: UIView {
     var delegate: CLDrawMarqueeViewDelegate?
-    var speed: CGFloat = 2
-    var direction: Direction = .left
+    private (set) var speed: CGFloat = 2
+    private (set) var direction: Direction = .left
     private var stoped: Bool = false
+    private var isFrist: Bool = true
+    private var isPaused: Bool = false
     private var animationViewWidth: CGFloat {
         return label.bounds.width
     }
@@ -41,8 +43,10 @@ class CLDrawMarqueeView: UIView {
         let view = UILabel()
         return view
     }()
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(speed: CGFloat = 2.0, direction: Direction = .left) {
+        super.init(frame: .zero)
+        self.speed = speed
+        self.direction = direction
         initUI()
         makeConstraints()
     }
@@ -55,11 +59,17 @@ private extension CLDrawMarqueeView {
     func initUI() {
         layer.masksToBounds = true
         addSubview(label)
+        NotificationCenter.default.addObserver(self, selector: #selector(applictionEillEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationWillResignActive), name: UIApplication.willResignActiveNotification, object: nil)
     }
     func makeConstraints() {
         label.snp.makeConstraints { (make) in
             make.top.bottom.equalToSuperview()
-            make.left.equalTo(snp.right)
+            if direction == .left {
+                make.left.equalToSuperview()
+            }else {
+                make.right.equalToSuperview()
+            }
         }
     }
 }
@@ -68,12 +78,14 @@ extension CLDrawMarqueeView {
     func setText(_ text: String) {
         label.text = text
         label.sizeToFit()
+        setNeedsLayout()
+        layoutIfNeeded()
     }
     func startAnimation() {
         label.layer.removeAnimation(forKey: "animationViewPosition")
         stoped = false
-        let pointRightCenter = CGPoint(x: bounds.width + animationViewWidth * 0.5, y: animationViewHeight * 0.5)
-        let pointLeftCenter = CGPoint(x: -animationViewWidth * 0.5, y: animationViewHeight * 0.5)
+        let pointRightCenter = CGPoint(x: ((isFrist && direction == .left) ? 0 : bounds.width) + animationViewWidth * 0.5, y: animationViewHeight * 0.5)
+        let pointLeftCenter = CGPoint(x: -animationViewWidth * 0.5 + ((isFrist && direction == .right) ? bounds.width : 0), y: animationViewHeight * 0.5)
         let fromPoint = direction == .left ? pointRightCenter : pointLeftCenter
         let toPoint = direction == .left ? pointLeftCenter  : pointRightCenter
         
@@ -90,22 +102,48 @@ extension CLDrawMarqueeView {
         moveAnimation.duration = CFTimeInterval(animationViewWidth / 30 * (1 / speed))
         moveAnimation.delegate = self
         label.layer.add(moveAnimation, forKey: "animationViewPosition")
+        isFrist = false
     }
     func stopAnimation() {
         stoped = true
         label.layer.removeAnimation(forKey: "animationViewPosition")
     }
+    ///暂停动画
     func pauseAnimation() {
-        
+        if isPaused {
+            return
+        }
+        isPaused = true
+        let pausedTime = label.layer.convertTime(CACurrentMediaTime(), from: nil)
+        label.layer.speed = 0.0;
+        label.layer.timeOffset = pausedTime
     }
+    ///恢复动画
     func resumeAnimation() {
-        
+        if !isPaused {
+            return
+        }
+        isPaused = false
+        let pausedTime = label.layer.timeOffset
+        label.layer.speed = 1.0
+        label.layer.timeOffset = 0.0
+        label.layer.beginTime = 0.0
+        let timeSincePause = label.layer.convertTime(CACurrentMediaTime(), from: nil) - pausedTime
+        label.layer.beginTime = timeSincePause
+    }
+}
+@objc private extension CLDrawMarqueeView {
+    func applictionEillEnterForeground() {
+        resumeAnimation()
+    }
+    func applicationWillResignActive() {
+        pauseAnimation()
     }
 }
 extension CLDrawMarqueeView: CAAnimationDelegate {
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
         delegate?.drawMarqueeView(view: self, animationDidStopFinished: flag)
-        if (flag && !stoped) {
+        if (!stoped) {
             startAnimation()
         }
     }

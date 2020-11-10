@@ -27,9 +27,9 @@ class CLDrawMarqueeController: CLBaseViewController {
                  "弃置勿复陈，客子常畏人。",]
     private var index: Int = 0
     private lazy var marqueeView: CLDrawMarqueeView = {
-        let view = CLDrawMarqueeView()
-        view.speed = 2
+        let view = CLDrawMarqueeView(direction: .right)
         view.delegate = self
+        view.backgroundColor = UIColor.orange.withAlphaComponent(0.35)
         return view
     }()
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -74,7 +74,7 @@ private extension CLDrawMarqueeController {
         marqueeView.snp.makeConstraints { (make) in
             make.center.equalToSuperview()
             make.height.equalTo(40)
-            make.left.right.equalToSuperview()
+            make.width.equalTo(100)
         }
     }
 }
@@ -82,14 +82,16 @@ private extension CLDrawMarqueeController {
 private extension CLDrawMarqueeController {
     func initData() {
         marqueeView.setText(array.first!)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.marqueeView.startAnimation()
         }
     }
 }
 extension CLDrawMarqueeController: CLDrawMarqueeViewDelegate {
     func drawMarqueeView(view: CLDrawMarqueeView, animationDidStopFinished finished: Bool) {
-        index = (index + 1) % array.count
-        view.setText(array[index])
+        if finished {
+            index = (index + 1) % array.count
+            view.setText(array[index])
+        }
     }
 }
