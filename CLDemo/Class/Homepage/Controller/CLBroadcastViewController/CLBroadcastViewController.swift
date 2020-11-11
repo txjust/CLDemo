@@ -77,27 +77,27 @@ class CLBroadcastViewController: CLBaseViewController {
         view.autoScrollDeley = 2
         return view
     }()
-    private lazy var horizontalInfiniteCollectionView: CLInfiniteCollectionView = {
+    private lazy var horizontalInfiniteView: CLInfiniteView = {
         let layout = CLFlowLayout()
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 0
         layout.itemSize = CGSize(width: view.bounds.width / 3.0, height: 80)
-        let view = CLInfiniteCollectionView(frame: .zero, collectionViewLayout: layout)
-        view.register(CLInfiniteCollectionViewCell.self, forCellWithReuseIdentifier: "CLInfiniteCollectionViewCell")
-        view.infiniteDelegate = self
-        view.infiniteDataSource = self
+        let view = CLInfiniteView(frame: .zero, collectionViewLayout: layout)
+        view.register(CLInfiniteViewCell.self, forCellWithReuseIdentifier: "CLInfiniteCollectionViewCell")
+        view.delegate = self
+        view.dataSource = self
         view.backgroundColor = UIColor.green.withAlphaComponent(0.25)
         return view
     }()
-    private lazy var verticalInfiniteCollectionView: CLInfiniteCollectionView = {
+    private lazy var verticalInfiniteView: CLInfiniteView = {
         let layout = CLFlowLayout()
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 0
         layout.itemSize = CGSize(width: view.bounds.width, height: 50)
-        let view = CLInfiniteCollectionView(frame: .zero, collectionViewLayout: layout)
-        view.register(CLInfiniteCollectionViewCell.self, forCellWithReuseIdentifier: "CLInfiniteCollectionViewCell")
-        view.infiniteDelegate = self
-        view.infiniteDataSource = self
+        let view = CLInfiniteView(frame: .zero, collectionViewLayout: layout)
+        view.register(CLInfiniteViewCell.self, forCellWithReuseIdentifier: "CLInfiniteCollectionViewCell")
+        view.delegate = self
+        view.dataSource = self
         view.backgroundColor = UIColor.yellow.withAlphaComponent(0.25)
         return view
     }()
@@ -127,8 +127,8 @@ extension CLBroadcastViewController {
         view.addSubview(broadcastView1)
         view.addSubview(broadcastView2)
         view.addSubview(carouseView)
-        view.addSubview(horizontalInfiniteCollectionView)
-        view.addSubview(verticalInfiniteCollectionView)
+        view.addSubview(horizontalInfiniteView)
+        view.addSubview(verticalInfiniteView)
     }
     func makeConstraints() {
         carouseView.snp.makeConstraints { (make) in
@@ -155,22 +155,22 @@ extension CLBroadcastViewController {
             make.height.equalTo(60)
             make.bottom.equalToSuperview().offset(-120)
         }
-        horizontalInfiniteCollectionView.snp.makeConstraints { (make) in
+        horizontalInfiniteView.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
             make.height.equalTo(80)
             make.bottom.equalTo(carouseView.snp.top).offset(-30)
         }
-        verticalInfiniteCollectionView.snp.makeConstraints { (make) in
+        verticalInfiniteView.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
             make.height.equalTo(150)
-            make.bottom.equalTo(horizontalInfiniteCollectionView.snp.top).offset(-30)
+            make.bottom.equalTo(horizontalInfiniteView.snp.top).offset(-30)
         }
         collectionVerticalLabel.snp.makeConstraints { (make) in
-            make.bottom.equalTo(verticalInfiniteCollectionView.snp.top)
+            make.bottom.equalTo(verticalInfiniteView.snp.top)
             make.centerX.equalToSuperview()
         }
         collectionHorizontalLabel.snp.makeConstraints { (make) in
-            make.bottom.equalTo(horizontalInfiniteCollectionView.snp.top)
+            make.bottom.equalTo(horizontalInfiniteView.snp.top)
             make.centerX.equalToSuperview()
         }
         scrollViewLabel.snp.makeConstraints { (make) in
@@ -188,8 +188,8 @@ extension CLBroadcastViewController {
         broadcastView2.reloadData()
         
         carouseView.reloadData()
-        horizontalInfiniteCollectionView.reloadData()
-        verticalInfiniteCollectionView.reloadData()
+        horizontalInfiniteView.reloadData()
+        verticalInfiniteView.reloadData()
         
         timer.start()
     }
@@ -198,8 +198,8 @@ extension CLBroadcastViewController {
         broadcastView1.scrollToNext()
         broadcastView2.scrollToNext()
         
-        horizontalInfiniteCollectionView.scrollToRightItem()
-        verticalInfiniteCollectionView.scrollToBottomItem()
+        horizontalInfiniteView.scrollToRightItem()
+        verticalInfiniteView.scrollToBottomItem()
     }
 }
 extension CLBroadcastViewController: CLCarouselViewDataSource {
@@ -232,18 +232,22 @@ extension CLBroadcastViewController: CLBroadcastViewDataSource {
         return cell
     }
 }
-extension CLBroadcastViewController: CLInfiniteCollectionViewDataSource {
-    func numberOfItems(_ collectionView: UICollectionView) -> Int {
+extension CLBroadcastViewController: CLInfiniteViewDataSource {
+    func numberOfItems(_ infiniteView: CLInfiniteView) -> Int {
         return arrayDS.count
     }
-    func cellForItemAtIndexPath(_ collectionView: UICollectionView, dequeueIndexPath: IndexPath, index: Int)  -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CLInfiniteCollectionViewCell", for: dequeueIndexPath) as! CLInfiniteCollectionViewCell
+    func infiniteView(_ infiniteView: CLInfiniteView, index: Int) -> String {
+        return "CLInfiniteCollectionViewCell"
+    }
+    func infiniteView(_ collectionView: CLInfiniteView, willDisplay cell: UICollectionViewCell, forItemAt index: Int) {
+        guard let cell = cell as? CLInfiniteViewCell else {
+            return
+        }
         cell.label.text = arrayDS[index]
-        return cell
     }
 }
-extension CLBroadcastViewController: CLInfiniteCollectionViewDelegate {
-    func didSelectCellAtIndexPath(_ collectionView: UICollectionView, index: Int) {
-        print("selected \(index)")
+extension CLBroadcastViewController: CLInfiniteViewDelegate {
+    func didSelectCellAtIndex(_ infiniteView: CLInfiniteView, index: Int) {
+        CLLog("didSelectCellAtIndex: \(index)")
     }
 }

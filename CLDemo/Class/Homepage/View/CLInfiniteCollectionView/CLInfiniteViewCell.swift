@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CLInfiniteCollectionViewCell: UICollectionViewCell {
+class CLInfiniteViewCell: UICollectionViewCell {
     lazy var label: UILabel = {
         let view = UILabel()
         view.textAlignment = .center

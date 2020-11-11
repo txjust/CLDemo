@@ -50,7 +50,7 @@ class CLDrawMarqueeController: CLBaseViewController {
         layout.minimumInteritemSpacing = 10
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
         let view = CLDrawMarqueeCollectionView(frame: .zero, collectionViewLayout: layout)
-        view.backgroundColor = UIColor.cyan.withAlphaComponent(0.35)
+        view.backgroundColor = UIColor.brown.withAlphaComponent(0.35)
         view.register(CLDrawMarqueeVerticalCell.self, forCellWithReuseIdentifier: "CLDrawMarqueeVerticalCell")
         view.delegate = self
         return view

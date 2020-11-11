@@ -137,8 +137,8 @@
 		5B1CC1C424AC93F500C35523 /* CLChatVoiceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1CC1C324AC93F500C35523 /* CLChatVoiceItem.swift */; };
 		5B1CC1C724AC945C00C35523 /* CLChatVoiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1CC1C624AC945B00C35523 /* CLChatVoiceCell.swift */; };
 		5B1CC1C924AC95AE00C35523 /* TimeInterval+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1CC1C824AC95AE00C35523 /* TimeInterval+Extension.swift */; };
-		5B20D6AB255273300046D110 /* CLInfiniteCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B20D6AA255273300046D110 /* CLInfiniteCollectionView.swift */; };
-		5B20D6C2255280D60046D110 /* CLInfiniteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B20D6C1255280D60046D110 /* CLInfiniteCollectionViewCell.swift */; };
+		5B20D6AB255273300046D110 /* CLInfiniteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B20D6AA255273300046D110 /* CLInfiniteView.swift */; };
+		5B20D6C2255280D60046D110 /* CLInfiniteViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B20D6C1255280D60046D110 /* CLInfiniteViewCell.swift */; };
 		5B20D6C5255283C80046D110 /* CLFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B20D6C4255283C80046D110 /* CLFlowLayout.swift */; };
 		5B2411922438EF4F00B2E0DC /* CLTagsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2411912438EF4F00B2E0DC /* CLTagsCell.swift */; };
 		5B241196243B039200B2E0DC /* CLTagsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B241195243B039200B2E0DC /* CLTagsItem.swift */; };
@@ -512,8 +512,8 @@
 		5B1CC1C324AC93F500C35523 /* CLChatVoiceItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatVoiceItem.swift; sourceTree = "<group>"; };
 		5B1CC1C624AC945B00C35523 /* CLChatVoiceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLChatVoiceCell.swift; sourceTree = "<group>"; };
 		5B1CC1C824AC95AE00C35523 /* TimeInterval+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Extension.swift"; sourceTree = "<group>"; };
-		5B20D6AA255273300046D110 /* CLInfiniteCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLInfiniteCollectionView.swift; sourceTree = "<group>"; };
-		5B20D6C1255280D60046D110 /* CLInfiniteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLInfiniteCollectionViewCell.swift; sourceTree = "<group>"; };
+		5B20D6AA255273300046D110 /* CLInfiniteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLInfiniteView.swift; sourceTree = "<group>"; };
+		5B20D6C1255280D60046D110 /* CLInfiniteViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLInfiniteViewCell.swift; sourceTree = "<group>"; };
 		5B20D6C4255283C80046D110 /* CLFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLFlowLayout.swift; sourceTree = "<group>"; };
 		5B2411912438EF4F00B2E0DC /* CLTagsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLTagsCell.swift; sourceTree = "<group>"; };
 		5B241195243B039200B2E0DC /* CLTagsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLTagsItem.swift; sourceTree = "<group>"; };
@@ -1444,8 +1444,8 @@
 		5B20D6A92552730A0046D110 /* CLInfiniteCollectionView */ = {
 			isa = PBXGroup;
 			children = (
-				5B20D6AA255273300046D110 /* CLInfiniteCollectionView.swift */,
-				5B20D6C1255280D60046D110 /* CLInfiniteCollectionViewCell.swift */,
+				5B20D6AA255273300046D110 /* CLInfiniteView.swift */,
+				5B20D6C1255280D60046D110 /* CLInfiniteViewCell.swift */,
 				5B20D6C4255283C80046D110 /* CLFlowLayout.swift */,
 			);
 			path = CLInfiniteCollectionView;
@@ -2450,7 +2450,7 @@
 				5B723150254FAFB200DA1FE9 /* CLChatPhotoAlbumBottomBar.swift in Sources */,
 				5BFB19C224ECFDB90074007A /* CLMp3Encoder.m in Sources */,
 				0C108EAA22A93289009EA457 /* CLCountdownCell.m in Sources */,
-				5B20D6C2255280D60046D110 /* CLInfiniteCollectionViewCell.swift in Sources */,
+				5B20D6C2255280D60046D110 /* CLInfiniteViewCell.swift in Sources */,
 				5BA7BF8524AC3D180072B94C /* CLOnePickerView.swift in Sources */,
 				0CF4EF952330848B00D8B95E /* CLInputPasswordToolBar.m in Sources */,
 				5B1CC1C424AC93F500C35523 /* CLChatVoiceItem.swift in Sources */,
@@ -2510,7 +2510,7 @@
 				0CF642FD222FECA800227361 /* CLWaveView.m in Sources */,
 				5B72315C254FAFB200DA1FE9 /* CLChatEmojiItemProtocol.swift in Sources */,
 				B51EE6C723DF092400146862 /* CLChatCell.swift in Sources */,
-				5B20D6AB255273300046D110 /* CLInfiniteCollectionView.swift in Sources */,
+				5B20D6AB255273300046D110 /* CLInfiniteView.swift in Sources */,
 				0CF2B6EC231A6C2A0071AEC3 /* CLCustomTransitionViewController.m in Sources */,
 				5BA48263253179A80072F9BD /* CLPopupMomentumController.swift in Sources */,
 				0CCDA316219855A20057BA14 /* CLChangeFontSizeCell.m in Sources */,

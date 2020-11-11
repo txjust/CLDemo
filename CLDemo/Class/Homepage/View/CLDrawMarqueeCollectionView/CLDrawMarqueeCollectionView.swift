@@ -50,6 +50,9 @@ class CLDrawMarqueeCollectionView: UIView {
     }
 }
 extension CLDrawMarqueeCollectionView {
+    func reloadData() {
+        collectionView.reloadData()
+    }
     func register(_ cellClass: AnyClass?, forCellWithReuseIdentifier identifier: String) {
         collectionView.register(cellClass, forCellWithReuseIdentifier: identifier)
     }
