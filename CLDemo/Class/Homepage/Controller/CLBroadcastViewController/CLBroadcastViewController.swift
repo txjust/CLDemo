@@ -233,17 +233,19 @@ extension CLBroadcastViewController: CLBroadcastViewDataSource {
     }
 }
 extension CLBroadcastViewController: CLInfiniteViewDataSource {
+    func infiniteView(_ infiniteView: CLInfiniteView, cellForItemAt indexPath: IndexPath, index: Int) -> UICollectionViewCell {
+        let cell = infiniteView.dequeueReusableCell(withReuseIdentifier: "CLInfiniteViewCell", for: indexPath)
+        if let cell = cell as? CLInfiniteViewCell {
+            cell.label.text = arrayDS[index]
+        }
+        return cell
+    }
+    
     func infiniteView(numberOfItems infiniteView: CLInfiniteView) -> Int {
         return arrayDS.count
     }
     func infiniteView(_ infiniteView: CLInfiniteView, reuseIdentifierAt index: Int) -> String {
         return "CLInfiniteViewCell"
-    }
-    func infiniteView(_ collectionView: CLInfiniteView, willDisplay cell: UICollectionViewCell, forItemAt index: Int) {
-        guard let cell = cell as? CLInfiniteViewCell else {
-            return
-        }
-        cell.label.text = arrayDS[index]
     }
 }
 extension CLBroadcastViewController: CLInfiniteViewDelegate {

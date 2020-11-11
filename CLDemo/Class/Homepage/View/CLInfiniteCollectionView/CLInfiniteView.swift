@@ -10,8 +10,7 @@ import UIKit
 import SnapKit
 
 protocol CLInfiniteViewDataSource: NSObject {
-    func infiniteView(_ infiniteView: CLInfiniteView, reuseIdentifierAt index: Int) -> String
-    func infiniteView(_ infiniteView: CLInfiniteView, willDisplay cell: UICollectionViewCell, forItemAt index: Int)
+    func infiniteView(_ infiniteView: CLInfiniteView, cellForItemAt indexPath: IndexPath, index: Int) -> UICollectionViewCell
     func infiniteView(numberOfItems infiniteView: CLInfiniteView) -> Int
 }
 protocol CLInfiniteViewDelegate: NSObject {
@@ -51,6 +50,9 @@ extension CLInfiniteView {
     }
     func register(_ cellClass: AnyClass?, forCellWithReuseIdentifier identifier: String) {
         collectionView.register(cellClass, forCellWithReuseIdentifier: identifier)
+    }
+    func dequeueReusableCell(withReuseIdentifier identifier: String, for indexPath: IndexPath) -> UICollectionViewCell {
+        return collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
     }
 }
 extension CLInfiniteView {
@@ -145,11 +147,7 @@ extension CLInfiniteView: UICollectionViewDataSource {
         return dataSource?.infiniteView(numberOfItems: self) ?? 0
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let identifier = dataSource!.infiniteView(self, reuseIdentifierAt: getCorrectedIndex(indexPath.row - indexOffset))
-        return collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
-    }
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        dataSource?.infiniteView(self, willDisplay: cell, forItemAt: getCorrectedIndex(indexPath.row - indexOffset))
+        return dataSource!.infiniteView(self, cellForItemAt: indexPath, index: getCorrectedIndex(indexPath.row - indexOffset))
     }
 }
 extension CLInfiniteView: UICollectionViewDelegate {
