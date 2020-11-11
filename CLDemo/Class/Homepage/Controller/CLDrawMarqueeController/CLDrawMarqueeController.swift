@@ -56,11 +56,10 @@ class CLDrawMarqueeController: CLBaseViewController {
         return view
     }()
 
-    private lazy var timer: CLGCDTimer = {
-        let gcdTimer = CLGCDTimer(interval: 0.01, delaySecs: 0.01) {[weak self] (_) in
-            self?.scrollToLeft()
-        }
-        return gcdTimer
+    private lazy var timer: CADisplayLink = {
+        let displayLink = CADisplayLink(target: self, selector: #selector(scrollToLeft))
+        displayLink.preferredFramesPerSecond = 60
+        return displayLink
     }()
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -69,6 +68,7 @@ class CLDrawMarqueeController: CLBaseViewController {
         fatalError("init(coder:) has not been implemented")
     }
     deinit {
+        timer.invalidate()
         marqueeView.stopAnimation()
         CLLog("CLDrawMarqueeController deinit")
     }
@@ -131,12 +131,12 @@ private extension CLDrawMarqueeController {
         marqueeView.setText(array.first!)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.marqueeView.startAnimation()
-            self.timer.start()
+            self.timer.add(to: RunLoop.current, forMode: .common)
         }
     }
 }
 extension CLDrawMarqueeController {
-    func scrollToLeft() {
+    @objc func scrollToLeft() {
         horizontalMarqueeView.horizontalScroll(1)
         verticalMarqueeView.verticalScroll(1)
     }
