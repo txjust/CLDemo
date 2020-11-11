@@ -83,7 +83,7 @@ class CLBroadcastViewController: CLBaseViewController {
         layout.minimumLineSpacing = 0
         layout.itemSize = CGSize(width: view.bounds.width / 3.0, height: 80)
         let view = CLInfiniteView(frame: .zero, collectionViewLayout: layout)
-        view.register(CLInfiniteViewCell.self, forCellWithReuseIdentifier: "CLInfiniteCollectionViewCell")
+        view.register(CLInfiniteViewCell.self, forCellWithReuseIdentifier: "CLInfiniteViewCell")
         view.delegate = self
         view.dataSource = self
         view.backgroundColor = UIColor.green.withAlphaComponent(0.25)
@@ -95,7 +95,7 @@ class CLBroadcastViewController: CLBaseViewController {
         layout.minimumLineSpacing = 0
         layout.itemSize = CGSize(width: view.bounds.width, height: 50)
         let view = CLInfiniteView(frame: .zero, collectionViewLayout: layout)
-        view.register(CLInfiniteViewCell.self, forCellWithReuseIdentifier: "CLInfiniteCollectionViewCell")
+        view.register(CLInfiniteViewCell.self, forCellWithReuseIdentifier: "CLInfiniteViewCell")
         view.delegate = self
         view.dataSource = self
         view.backgroundColor = UIColor.yellow.withAlphaComponent(0.25)
@@ -233,11 +233,11 @@ extension CLBroadcastViewController: CLBroadcastViewDataSource {
     }
 }
 extension CLBroadcastViewController: CLInfiniteViewDataSource {
-    func numberOfItems(_ infiniteView: CLInfiniteView) -> Int {
+    func infiniteView(numberOfItems infiniteView: CLInfiniteView) -> Int {
         return arrayDS.count
     }
-    func infiniteView(_ infiniteView: CLInfiniteView, index: Int) -> String {
-        return "CLInfiniteCollectionViewCell"
+    func infiniteView(_ infiniteView: CLInfiniteView, reuseIdentifierAt index: Int) -> String {
+        return "CLInfiniteViewCell"
     }
     func infiniteView(_ collectionView: CLInfiniteView, willDisplay cell: UICollectionViewCell, forItemAt index: Int) {
         guard let cell = cell as? CLInfiniteViewCell else {
@@ -247,7 +247,7 @@ extension CLBroadcastViewController: CLInfiniteViewDataSource {
     }
 }
 extension CLBroadcastViewController: CLInfiniteViewDelegate {
-    func didSelectCellAtIndex(_ infiniteView: CLInfiniteView, index: Int) {
+    func infiniteView(_ infiniteView: CLInfiniteView, didSelectCellAt index: Int) {
         CLLog("didSelectCellAtIndex: \(index)")
     }
 }

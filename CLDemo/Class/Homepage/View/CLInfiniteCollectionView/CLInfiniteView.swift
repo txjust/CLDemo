@@ -10,12 +10,12 @@ import UIKit
 import SnapKit
 
 protocol CLInfiniteViewDataSource: NSObject {
-    func infiniteView(_ infiniteView: CLInfiniteView, index: Int) -> String
-    func infiniteView(_ collectionView: CLInfiniteView, willDisplay cell: UICollectionViewCell, forItemAt index: Int)
-    func numberOfItems(_ infiniteView: CLInfiniteView) -> Int
+    func infiniteView(_ infiniteView: CLInfiniteView, reuseIdentifierAt index: Int) -> String
+    func infiniteView(_ infiniteView: CLInfiniteView, willDisplay cell: UICollectionViewCell, forItemAt index: Int)
+    func infiniteView(numberOfItems infiniteView: CLInfiniteView) -> Int
 }
 protocol CLInfiniteViewDelegate: NSObject {
-    func didSelectCellAtIndex(_ infiniteView: CLInfiniteView, index: Int)
+    func infiniteView(_ infiniteView: CLInfiniteView, didSelectCellAt index: Int)
 }
 
 class CLInfiniteView: UIView {
@@ -118,15 +118,15 @@ extension CLInfiniteView {
         indexOffset += offset
     }
     private func getTotalContentWidth() -> CGFloat {
-        guard let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout, let numberOfCells = dataSource?.numberOfItems(self) else { return 0 }
+        guard let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout, let numberOfCells = dataSource?.infiniteView(numberOfItems: self) else { return 0 }
         return CGFloat(numberOfCells) * (layout.itemSize.width + layout.minimumLineSpacing)
     }
     private func getTotalContentHeight() -> CGFloat {
-        guard let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout, let numberOfCells = dataSource?.numberOfItems(self) else { return 0 }
+        guard let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout, let numberOfCells = dataSource?.infiniteView(numberOfItems: self) else { return 0 }
         return (CGFloat(numberOfCells) * (layout.itemSize.height + layout.minimumLineSpacing))
     }
     private func getCorrectedIndex(_ indexToCorrect: Int) -> Int {
-        guard let numberOfCells = dataSource?.numberOfItems(self) else { return 0 }
+        guard let numberOfCells = dataSource?.infiniteView(numberOfItems: self) else { return 0 }
         if (indexToCorrect < numberOfCells && indexToCorrect >= 0) {
             return indexToCorrect
         }else {
@@ -142,10 +142,10 @@ extension CLInfiniteView: UICollectionViewDataSource {
         return 3
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataSource?.numberOfItems(self) ?? 0
+        return dataSource?.infiniteView(numberOfItems: self) ?? 0
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let identifier = dataSource!.infiniteView(self, index: getCorrectedIndex(indexPath.row - indexOffset))
+        let identifier = dataSource!.infiniteView(self, reuseIdentifierAt: getCorrectedIndex(indexPath.row - indexOffset))
         return collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
     }
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
@@ -154,7 +154,7 @@ extension CLInfiniteView: UICollectionViewDataSource {
 }
 extension CLInfiniteView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.didSelectCellAtIndex(self, index: getCorrectedIndex(indexPath.row - indexOffset))
+        delegate?.infiniteView(self, didSelectCellAt: getCorrectedIndex(indexPath.row - indexOffset))
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         isHorizontalScroll ? centreIfNeeded() : centreVerticallyIfNeeded()
