@@ -131,14 +131,14 @@ private extension CLDrawMarqueeController {
         marqueeView.setText(array.first!)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.marqueeView.startAnimation()
-            self.timer.add(to: RunLoop.current, forMode: .common)
+            self.timer.add(to: .main, forMode: .common)
         }
     }
 }
 extension CLDrawMarqueeController {
     @objc func scrollToLeft() {
-        horizontalMarqueeView.horizontalScroll(1)
-        verticalMarqueeView.verticalScroll(1)
+        horizontalMarqueeView.horizontalScroll(2)
+        verticalMarqueeView.verticalScroll(2)
     }
 }
 extension CLDrawMarqueeController: CLDrawMarqueeViewDelegate {
