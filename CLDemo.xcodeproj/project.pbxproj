@@ -1261,7 +1261,7 @@
 			children = (
 				5BC856A7255A6DA200DBA7DD /* CLDrawMarqueeCollectionView */,
 				5BC856A6255A6D8E00DBA7DD /* CLDrawMarqueeView */,
-				5B20D6A92552730A0046D110 /* CLInfiniteCollectionView */,
+				5B20D6A92552730A0046D110 /* CLInfiniteView */,
 				5B6CABE7253446830076C873 /* CLCarouselView */,
 				5B49566B23B5DCA100212772 /* CLTwoSidedView */,
 				0CB60B00237EC51100D10317 /* CLlLayoutView */,
@@ -1441,14 +1441,14 @@
 			path = CLChatVoiceCell;
 			sourceTree = "<group>";
 		};
-		5B20D6A92552730A0046D110 /* CLInfiniteCollectionView */ = {
+		5B20D6A92552730A0046D110 /* CLInfiniteView */ = {
 			isa = PBXGroup;
 			children = (
 				5B20D6AA255273300046D110 /* CLInfiniteView.swift */,
 				5B20D6C1255280D60046D110 /* CLInfiniteViewCell.swift */,
 				5B20D6C4255283C80046D110 /* CLFlowLayout.swift */,
 			);
-			path = CLInfiniteCollectionView;
+			path = CLInfiniteView;
 			sourceTree = "<group>";
 		};
 		5B3327DF23DF352100CA315C /* CLConst */ = {

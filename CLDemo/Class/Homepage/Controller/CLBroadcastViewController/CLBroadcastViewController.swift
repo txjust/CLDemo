@@ -74,7 +74,7 @@ class CLBroadcastViewController: CLBaseViewController {
         view.dataSource = self
         view.delegate = self
         view.isAutoScroll = true
-        view.autoScrollDeley = 2
+        view.autoScrollDeley = 1
         return view
     }()
     private lazy var horizontalInfiniteView: CLInfiniteView = {
@@ -102,7 +102,7 @@ class CLBroadcastViewController: CLBaseViewController {
         return view
     }()
     private lazy var timer: CLGCDTimer = {
-        let gcdTimer = CLGCDTimer(interval: 2, delaySecs: 2) {[weak self] (_) in
+        let gcdTimer = CLGCDTimer(interval: 1, delaySecs: 1) {[weak self] (_) in
             self?.scrollToNext()
         }
         return gcdTimer
@@ -233,19 +233,15 @@ extension CLBroadcastViewController: CLBroadcastViewDataSource {
     }
 }
 extension CLBroadcastViewController: CLInfiniteViewDataSource {
+    func numberOfItems(in infiniteView: CLInfiniteView) -> Int {
+        return arrayDS.count
+    }
     func infiniteView(_ infiniteView: CLInfiniteView, cellForItemAt indexPath: IndexPath, index: Int) -> UICollectionViewCell {
         let cell = infiniteView.dequeueReusableCell(withReuseIdentifier: "CLInfiniteViewCell", for: indexPath)
         if let cell = cell as? CLInfiniteViewCell {
             cell.label.text = arrayDS[index]
         }
         return cell
-    }
-    
-    func infiniteView(numberOfItems infiniteView: CLInfiniteView) -> Int {
-        return arrayDS.count
-    }
-    func infiniteView(_ infiniteView: CLInfiniteView, reuseIdentifierAt index: Int) -> String {
-        return "CLInfiniteViewCell"
     }
 }
 extension CLBroadcastViewController: CLInfiniteViewDelegate {
