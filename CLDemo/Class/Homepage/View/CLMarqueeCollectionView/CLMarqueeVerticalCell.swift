@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CLDrawMarqueeVerticalCell: UICollectionViewCell {
+class CLMarqueeVerticalCell: UICollectionViewCell {
     lazy var label: CLVerticalLabel = {
         let view = CLVerticalLabel()
         view.verticalAlignment = .alignmentMiddle

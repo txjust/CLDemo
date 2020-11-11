@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 
 
-class CLDrawMarqueeCollectionView: UIView {
+class CLMarqueeView: UIView {
     weak var delegate: (UICollectionViewDelegate & UICollectionViewDataSource)? {
         didSet {
             collectionView.dataSource = self
@@ -49,7 +49,7 @@ class CLDrawMarqueeCollectionView: UIView {
         return super.responds(to: aSelector)
     }
 }
-extension CLDrawMarqueeCollectionView {
+extension CLMarqueeView {
     func reloadData() {
         collectionView.reloadData()
     }
@@ -57,7 +57,7 @@ extension CLDrawMarqueeCollectionView {
         collectionView.register(cellClass, forCellWithReuseIdentifier: identifier)
     }
 }
-extension CLDrawMarqueeCollectionView {
+extension CLMarqueeView {
     func horizontalScroll(_ offset: CGFloat) {
         guard (collectionView.collectionViewLayout as? UICollectionViewFlowLayout)?.scrollDirection == .horizontal else {
             return
@@ -71,7 +71,7 @@ extension CLDrawMarqueeCollectionView {
         collectionView.contentOffset.y += offset
     }
 }
-extension CLDrawMarqueeCollectionView: UICollectionViewDataSource {
+extension CLMarqueeView: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 3
     }
@@ -82,7 +82,7 @@ extension CLDrawMarqueeCollectionView: UICollectionViewDataSource {
         return delegate!.collectionView(collectionView, cellForItemAt: indexPath)
     }
 }
-extension CLDrawMarqueeCollectionView: UICollectionViewDelegate {
+extension CLMarqueeView: UICollectionViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if (collectionView.collectionViewLayout as? UICollectionViewFlowLayout)?.scrollDirection == .horizontal {
             let contentOffsetX = scrollView.contentOffset.x

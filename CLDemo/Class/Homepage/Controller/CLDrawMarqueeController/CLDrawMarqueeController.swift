@@ -31,27 +31,27 @@ class CLDrawMarqueeController: CLBaseViewController {
         view.backgroundColor = UIColor.orange.withAlphaComponent(0.35)
         return view
     }()
-    private lazy var horizontalMarqueeView: CLDrawMarqueeCollectionView = {
+    private lazy var horizontalMarqueeView: CLMarqueeView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.estimatedItemSize = CGSize.init(width: 80, height: 40)
         layout.minimumLineSpacing = 10
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
-        let view = CLDrawMarqueeCollectionView(frame: .zero, collectionViewLayout: layout)
+        let view = CLMarqueeView(frame: .zero, collectionViewLayout: layout)
         view.backgroundColor = UIColor.cyan.withAlphaComponent(0.35)
-        view.register(CLDrawMarqueeHorizontalCell.self, forCellWithReuseIdentifier: "CLDrawMarqueeHorizontalCell")
+        view.register(CLMarqueeHorizontalCell.self, forCellWithReuseIdentifier: "CLDrawMarqueeHorizontalCell")
         view.delegate = self
         return view
     }()
-    private lazy var verticalMarqueeView: CLDrawMarqueeCollectionView = {
+    private lazy var verticalMarqueeView: CLMarqueeView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.estimatedItemSize = CGSize.init(width: 40, height: 80)
         layout.minimumInteritemSpacing = 10
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
-        let view = CLDrawMarqueeCollectionView(frame: .zero, collectionViewLayout: layout)
+        let view = CLMarqueeView(frame: .zero, collectionViewLayout: layout)
         view.backgroundColor = UIColor.brown.withAlphaComponent(0.35)
-        view.register(CLDrawMarqueeVerticalCell.self, forCellWithReuseIdentifier: "CLDrawMarqueeVerticalCell")
+        view.register(CLMarqueeVerticalCell.self, forCellWithReuseIdentifier: "CLDrawMarqueeVerticalCell")
         view.delegate = self
         return view
     }()
@@ -154,11 +154,11 @@ extension CLDrawMarqueeController: UICollectionViewDataSource {
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == horizontalMarqueeView.collectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CLDrawMarqueeHorizontalCell", for: indexPath) as! CLDrawMarqueeHorizontalCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CLDrawMarqueeHorizontalCell", for: indexPath) as! CLMarqueeHorizontalCell
             cell.label.text = array[indexPath.row]
             return cell
         }else if collectionView == verticalMarqueeView.collectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CLDrawMarqueeVerticalCell", for: indexPath) as! CLDrawMarqueeVerticalCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CLDrawMarqueeVerticalCell", for: indexPath) as! CLMarqueeVerticalCell
             cell.label.text = array[indexPath.row]
             return cell
         }

@@ -246,9 +246,9 @@
 		5BBA670D255931850070FC99 /* CLDrawMarqueeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBA670C255931850070FC99 /* CLDrawMarqueeView.swift */; };
 		5BBB62921E7444A100B28FC3 /* CLChartToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BBB62911E7444A100B28FC3 /* CLChartToolBar.m */; };
 		5BC3FB8921CE96A400B7FF82 /* CLRotatingPictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC3FB8821CE96A400B7FF82 /* CLRotatingPictureViewController.swift */; };
-		5BC856A9255A6DB500DBA7DD /* CLDrawMarqueeCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC856A8255A6DB500DBA7DD /* CLDrawMarqueeCollectionView.swift */; };
-		5BC856AD255A749300DBA7DD /* CLDrawMarqueeHorizontalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC856AC255A749300DBA7DD /* CLDrawMarqueeHorizontalCell.swift */; };
-		5BC856B1255A7ECC00DBA7DD /* CLDrawMarqueeVerticalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC856B0255A7ECC00DBA7DD /* CLDrawMarqueeVerticalCell.swift */; };
+		5BC856A9255A6DB500DBA7DD /* CLMarqueeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC856A8255A6DB500DBA7DD /* CLMarqueeView.swift */; };
+		5BC856AD255A749300DBA7DD /* CLMarqueeHorizontalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC856AC255A749300DBA7DD /* CLMarqueeHorizontalCell.swift */; };
+		5BC856B1255A7ECC00DBA7DD /* CLMarqueeVerticalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC856B0255A7ECC00DBA7DD /* CLMarqueeVerticalCell.swift */; };
 		5BC856B5255A867B00DBA7DD /* CLVerticalLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC856B4255A867B00DBA7DD /* CLVerticalLabel.swift */; };
 		5BCCEC57245BCDE70049AC70 /* CLVernierCaliperController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCCEC56245BCDE70049AC70 /* CLVernierCaliperController.swift */; };
 		5BCCEC5A245BCE2C0049AC70 /* CLVernierCaliperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCCEC59245BCE2C0049AC70 /* CLVernierCaliperView.swift */; };
@@ -642,9 +642,9 @@
 		5BBB62911E7444A100B28FC3 /* CLChartToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLChartToolBar.m; sourceTree = "<group>"; };
 		5BC3FB8521CE966A00B7FF82 /* CLDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CLDemo-Bridging-Header.h"; sourceTree = "<group>"; };
 		5BC3FB8821CE96A400B7FF82 /* CLRotatingPictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLRotatingPictureViewController.swift; sourceTree = "<group>"; };
-		5BC856A8255A6DB500DBA7DD /* CLDrawMarqueeCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLDrawMarqueeCollectionView.swift; sourceTree = "<group>"; };
-		5BC856AC255A749300DBA7DD /* CLDrawMarqueeHorizontalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLDrawMarqueeHorizontalCell.swift; sourceTree = "<group>"; };
-		5BC856B0255A7ECC00DBA7DD /* CLDrawMarqueeVerticalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLDrawMarqueeVerticalCell.swift; sourceTree = "<group>"; };
+		5BC856A8255A6DB500DBA7DD /* CLMarqueeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLMarqueeView.swift; sourceTree = "<group>"; };
+		5BC856AC255A749300DBA7DD /* CLMarqueeHorizontalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLMarqueeHorizontalCell.swift; sourceTree = "<group>"; };
+		5BC856B0255A7ECC00DBA7DD /* CLMarqueeVerticalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLMarqueeVerticalCell.swift; sourceTree = "<group>"; };
 		5BC856B4255A867B00DBA7DD /* CLVerticalLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLVerticalLabel.swift; sourceTree = "<group>"; };
 		5BCCEC56245BCDE70049AC70 /* CLVernierCaliperController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLVernierCaliperController.swift; sourceTree = "<group>"; };
 		5BCCEC59245BCE2C0049AC70 /* CLVernierCaliperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLVernierCaliperView.swift; sourceTree = "<group>"; };
@@ -1259,7 +1259,7 @@
 		0CCDA310219855620057BA14 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				5BC856A7255A6DA200DBA7DD /* CLDrawMarqueeCollectionView */,
+				5BC856A7255A6DA200DBA7DD /* CLMarqueeCollectionView */,
 				5BC856A6255A6D8E00DBA7DD /* CLDrawMarqueeView */,
 				5B20D6A92552730A0046D110 /* CLInfiniteView */,
 				5B6CABE7253446830076C873 /* CLCarouselView */,
@@ -2117,15 +2117,15 @@
 			path = CLDrawMarqueeView;
 			sourceTree = "<group>";
 		};
-		5BC856A7255A6DA200DBA7DD /* CLDrawMarqueeCollectionView */ = {
+		5BC856A7255A6DA200DBA7DD /* CLMarqueeCollectionView */ = {
 			isa = PBXGroup;
 			children = (
-				5BC856A8255A6DB500DBA7DD /* CLDrawMarqueeCollectionView.swift */,
-				5BC856AC255A749300DBA7DD /* CLDrawMarqueeHorizontalCell.swift */,
-				5BC856B0255A7ECC00DBA7DD /* CLDrawMarqueeVerticalCell.swift */,
+				5BC856A8255A6DB500DBA7DD /* CLMarqueeView.swift */,
+				5BC856AC255A749300DBA7DD /* CLMarqueeHorizontalCell.swift */,
+				5BC856B0255A7ECC00DBA7DD /* CLMarqueeVerticalCell.swift */,
 				5BC856B4255A867B00DBA7DD /* CLVerticalLabel.swift */,
 			);
-			path = CLDrawMarqueeCollectionView;
+			path = CLMarqueeCollectionView;
 			sourceTree = "<group>";
 		};
 		5BCCEC52245BCD8F0049AC70 /* CLVernierCaliperController */ = {
@@ -2446,7 +2446,7 @@
 				0C2AE874223F48DE007D5DC5 /* CLBubbleViewViewController.m in Sources */,
 				0C03D7FB236D4F3800F15067 /* CLLayoutController.m in Sources */,
 				5B723155254FAFB200DA1FE9 /* CLChatRecordTimeView.swift in Sources */,
-				5BC856A9255A6DB500DBA7DD /* CLDrawMarqueeCollectionView.swift in Sources */,
+				5BC856A9255A6DB500DBA7DD /* CLMarqueeView.swift in Sources */,
 				5B723150254FAFB200DA1FE9 /* CLChatPhotoAlbumBottomBar.swift in Sources */,
 				5BFB19C224ECFDB90074007A /* CLMp3Encoder.m in Sources */,
 				0C108EAA22A93289009EA457 /* CLCountdownCell.m in Sources */,
@@ -2455,7 +2455,7 @@
 				0CF4EF952330848B00D8B95E /* CLInputPasswordToolBar.m in Sources */,
 				5B1CC1C424AC93F500C35523 /* CLChatVoiceItem.swift in Sources */,
 				5BBA6709255930EE0070FC99 /* CLDrawMarqueeController.swift in Sources */,
-				5BC856AD255A749300DBA7DD /* CLDrawMarqueeHorizontalCell.swift in Sources */,
+				5BC856AD255A749300DBA7DD /* CLMarqueeHorizontalCell.swift in Sources */,
 				5B8AFC6724A8954C00FAF996 /* CLDebugController.swift in Sources */,
 				0CF79AFC219678FB00DD0BF1 /* NSString+PinYin.m in Sources */,
 				5B2411922438EF4F00B2E0DC /* CLTagsCell.swift in Sources */,
@@ -2472,7 +2472,7 @@
 				0CF64300222FECBD00227361 /* CLWaveViewController.m in Sources */,
 				5B3327E523DF384800CA315C /* NSString+Extension.swift in Sources */,
 				5B72314E254FAFB200DA1FE9 /* CLChatPhotoAlbumCell.swift in Sources */,
-				5BC856B1255A7ECC00DBA7DD /* CLDrawMarqueeVerticalCell.swift in Sources */,
+				5BC856B1255A7ECC00DBA7DD /* CLMarqueeVerticalCell.swift in Sources */,
 				5BA7BF7124AC3D180072B94C /* CLPopupTipsController.swift in Sources */,
 				5BA7BF8024AC3D180072B94C /* CLPopupDataPickerController.swift in Sources */,
 				5BA7BF8224AC3D180072B94C /* CLDurationDataPickerView.swift in Sources */,

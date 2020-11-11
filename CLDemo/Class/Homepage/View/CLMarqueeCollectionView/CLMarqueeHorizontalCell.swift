@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CLDrawMarqueeHorizontalCell: UICollectionViewCell {
+class CLMarqueeHorizontalCell: UICollectionViewCell {
     lazy var label: UILabel = {
         let view = UILabel()
         view.textAlignment = .center
