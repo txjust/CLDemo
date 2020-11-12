@@ -35,8 +35,8 @@ class CLDrawMarqueeController: CLBaseViewController {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.estimatedItemSize = CGSize.init(width: 80, height: 40)
-        layout.minimumLineSpacing = 10
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
+        layout.minimumLineSpacing = 30
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 30)
         let view = CLMarqueeView(frame: .zero, collectionViewLayout: layout)
         view.backgroundColor = UIColor.cyan.withAlphaComponent(0.35)
         view.register(CLMarqueeHorizontalCell.self, forCellWithReuseIdentifier: "CLDrawMarqueeHorizontalCell")
@@ -47,7 +47,7 @@ class CLDrawMarqueeController: CLBaseViewController {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.estimatedItemSize = CGSize.init(width: 40, height: 80)
-        layout.minimumInteritemSpacing = 10
+        layout.minimumLineSpacing = 10
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
         let view = CLMarqueeView(frame: .zero, collectionViewLayout: layout)
         view.backgroundColor = UIColor.brown.withAlphaComponent(0.35)
