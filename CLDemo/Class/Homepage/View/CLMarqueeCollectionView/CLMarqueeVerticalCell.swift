@@ -9,9 +9,8 @@
 import UIKit
 
 class CLMarqueeVerticalCell: UICollectionViewCell {
-    lazy var label: CLVerticalLabel = {
-        let view = CLVerticalLabel()
-        view.verticalAlignment = .alignmentMiddle
+    lazy var label: UILabel = {
+        let view = UILabel()
         view.backgroundColor = UIColor.orange.withAlphaComponent(0.5)
         view.numberOfLines = 0
         return view

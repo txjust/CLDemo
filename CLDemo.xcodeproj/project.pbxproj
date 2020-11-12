@@ -249,7 +249,6 @@
 		5BC856A9255A6DB500DBA7DD /* CLMarqueeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC856A8255A6DB500DBA7DD /* CLMarqueeView.swift */; };
 		5BC856AD255A749300DBA7DD /* CLMarqueeHorizontalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC856AC255A749300DBA7DD /* CLMarqueeHorizontalCell.swift */; };
 		5BC856B1255A7ECC00DBA7DD /* CLMarqueeVerticalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC856B0255A7ECC00DBA7DD /* CLMarqueeVerticalCell.swift */; };
-		5BC856B5255A867B00DBA7DD /* CLVerticalLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC856B4255A867B00DBA7DD /* CLVerticalLabel.swift */; };
 		5BCCEC57245BCDE70049AC70 /* CLVernierCaliperController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCCEC56245BCDE70049AC70 /* CLVernierCaliperController.swift */; };
 		5BCCEC5A245BCE2C0049AC70 /* CLVernierCaliperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCCEC59245BCE2C0049AC70 /* CLVernierCaliperView.swift */; };
 		5BCCEC64245BFBF20049AC70 /* CLIndexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCCEC63245BFBF20049AC70 /* CLIndexView.swift */; };
@@ -645,7 +644,6 @@
 		5BC856A8255A6DB500DBA7DD /* CLMarqueeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLMarqueeView.swift; sourceTree = "<group>"; };
 		5BC856AC255A749300DBA7DD /* CLMarqueeHorizontalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLMarqueeHorizontalCell.swift; sourceTree = "<group>"; };
 		5BC856B0255A7ECC00DBA7DD /* CLMarqueeVerticalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLMarqueeVerticalCell.swift; sourceTree = "<group>"; };
-		5BC856B4255A867B00DBA7DD /* CLVerticalLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLVerticalLabel.swift; sourceTree = "<group>"; };
 		5BCCEC56245BCDE70049AC70 /* CLVernierCaliperController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLVernierCaliperController.swift; sourceTree = "<group>"; };
 		5BCCEC59245BCE2C0049AC70 /* CLVernierCaliperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLVernierCaliperView.swift; sourceTree = "<group>"; };
 		5BCCEC63245BFBF20049AC70 /* CLIndexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLIndexView.swift; sourceTree = "<group>"; };
@@ -2123,7 +2121,6 @@
 				5BC856A8255A6DB500DBA7DD /* CLMarqueeView.swift */,
 				5BC856AC255A749300DBA7DD /* CLMarqueeHorizontalCell.swift */,
 				5BC856B0255A7ECC00DBA7DD /* CLMarqueeVerticalCell.swift */,
-				5BC856B4255A867B00DBA7DD /* CLVerticalLabel.swift */,
 			);
 			path = CLMarqueeCollectionView;
 			sourceTree = "<group>";
@@ -2531,7 +2528,6 @@
 				0CF6B84E2386626800F10986 /* CLVerticalItem.m in Sources */,
 				5B49566823B50ED700212772 /* UIColor+Extension.swift in Sources */,
 				5BF1ACE3245C82B70083BE70 /* CLMyController.swift in Sources */,
-				5BC856B5255A867B00DBA7DD /* CLVerticalLabel.swift in Sources */,
 				5BA7BF8424AC3D180072B94C /* CLYearMonthDayDataPickerView.swift in Sources */,
 				5B80DA4B1DDD993F00A20E34 /* CLCurriculumController.m in Sources */,
 				5B3C5C4C24AB3FF100A1561F /* CLPermissions.swift in Sources */,
