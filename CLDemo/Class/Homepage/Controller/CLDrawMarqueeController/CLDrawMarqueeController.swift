@@ -34,8 +34,9 @@ class CLDrawMarqueeController: CLBaseViewController {
     private lazy var horizontalMarqueeView: CLMarqueeView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.estimatedItemSize = CGSize.init(width: 80, height: 40)
+        layout.itemSize = CGSize(width: 204, height: 40)
         layout.minimumLineSpacing = 30
+        layout.minimumInteritemSpacing = 0
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 30)
         let view = CLMarqueeView(frame: .zero, collectionViewLayout: layout)
         view.backgroundColor = UIColor.cyan.withAlphaComponent(0.35)
@@ -46,8 +47,9 @@ class CLDrawMarqueeController: CLBaseViewController {
     private lazy var verticalMarqueeView: CLMarqueeView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.estimatedItemSize = CGSize.init(width: 40, height: 80)
+        layout.itemSize = CGSize(width: 40, height: 244)
         layout.minimumLineSpacing = 10
+        layout.minimumInteritemSpacing = 0
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
         let view = CLMarqueeView(frame: .zero, collectionViewLayout: layout)
         view.backgroundColor = UIColor.brown.withAlphaComponent(0.35)
@@ -114,12 +116,12 @@ private extension CLDrawMarqueeController {
         horizontalMarqueeView.snp.makeConstraints { (make) in
             make.top.equalTo(marqueeView.snp.bottom).offset(30)
             make.height.equalTo(40)
-            make.width.equalTo(200)
+            make.width.equalTo(300)
             make.centerX.equalToSuperview()
         }
         verticalMarqueeView.snp.makeConstraints { (make) in
             make.top.equalTo(horizontalMarqueeView.snp.bottom).offset(30)
-            make.height.equalTo(200)
+            make.height.equalTo(300)
             make.width.equalTo(40)
             make.centerX.equalToSuperview()
         }

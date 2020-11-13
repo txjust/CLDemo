@@ -20,8 +20,7 @@ class CLMarqueeVerticalCell: UICollectionViewCell {
         contentView.addSubview(label)
         label.snp.makeConstraints { (make) in
             make.width.equalTo(20)
-            make.top.bottom.equalToSuperview()
-            make.centerX.equalToSuperview()
+            make.center.equalToSuperview()
         }
     }
     
