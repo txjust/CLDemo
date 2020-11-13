@@ -11,21 +11,19 @@ import SnapKit
 
 
 class CLMarqueeView: UIView {
-    weak var delegate: (UICollectionViewDelegate & UICollectionViewDataSource)? {
-        didSet {
-            collectionView.dataSource = self
-            collectionView.delegate = self
-        }
-    }
+    private (set) weak var delegate: (UICollectionViewDelegate & UICollectionViewDataSource)!
     private (set) var collectionView: UICollectionView!
-    init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
+    init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout, delegate: (UICollectionViewDelegate & UICollectionViewDataSource)) {
         super.init(frame: frame)
+        self.delegate = delegate
         collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.decelerationRate = .fast
         collectionView.isScrollEnabled = false
+        collectionView.dataSource = self
+        collectionView.delegate = self
         addSubview(collectionView)
         collectionView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
@@ -76,10 +74,10 @@ extension CLMarqueeView: UICollectionViewDataSource {
         return 3
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return delegate!.collectionView(collectionView, numberOfItemsInSection: section)
+        return delegate.collectionView(collectionView, numberOfItemsInSection: section)
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return delegate!.collectionView(collectionView, cellForItemAt: indexPath)
+        return delegate.collectionView(collectionView, cellForItemAt: indexPath)
     }
 }
 extension CLMarqueeView: UICollectionViewDelegate {
@@ -105,7 +103,7 @@ extension CLMarqueeView: UICollectionViewDelegate {
                 collectionView.contentOffset.y = contentLength - framHeight - sectionLength
             }
         }
-        delegate?.scrollViewDidScroll?(scrollView)
+        delegate.scrollViewDidScroll?(scrollView)
     }
 }
 
