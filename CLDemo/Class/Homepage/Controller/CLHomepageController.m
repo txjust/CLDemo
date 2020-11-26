@@ -80,6 +80,7 @@
     Class class = [self.controllerArray objectAtIndex:indexPath.row];
     UIViewController *controller =  (UIViewController *)[[class alloc] init];
     [self.navigationController pushViewController:controller animated:YES];
+    CLLog(@"%@", NSStringFromClass(class));
 }
 
 - (UITableView *) tableView{
