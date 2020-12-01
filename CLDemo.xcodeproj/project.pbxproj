@@ -162,6 +162,10 @@
 		5B49566623B507A700212772 /* CLFlipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B49566523B507A700212772 /* CLFlipView.swift */; };
 		5B49566823B50ED700212772 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B49566723B50ED700212772 /* UIColor+Extension.swift */; };
 		5B49566D23B5DD0100212772 /* CLTwoSidedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B49566C23B5DD0100212772 /* CLTwoSidedView.swift */; };
+		5B49622025760C5E009463B1 /* CLWheelMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B49621F25760C5E009463B1 /* CLWheelMenuController.swift */; };
+		5B49622425760CC9009463B1 /* CLWheelMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B49622325760CC9009463B1 /* CLWheelMenuView.swift */; };
+		5B49622925760D5E009463B1 /* CLMenuLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B49622825760D5E009463B1 /* CLMenuLayer.swift */; };
+		5B49622C25761064009463B1 /* CLMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B49622B25761064009463B1 /* CLMenuItem.swift */; };
 		5B51EE1324AB161700F45628 /* CLNamespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51EE1224AB161700F45628 /* CLNamespace.swift */; };
 		5B5F093E24B2B7CA00E69256 /* send_timeout.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B5F093D24B2B7CA00E69256 /* send_timeout.json */; };
 		5B63581924ADC50D00D768A4 /* data-right.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B63581724ADC50D00D768A4 /* data-right.json */; };
@@ -539,6 +543,10 @@
 		5B49566523B507A700212772 /* CLFlipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLFlipView.swift; sourceTree = "<group>"; };
 		5B49566723B50ED700212772 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		5B49566C23B5DD0100212772 /* CLTwoSidedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLTwoSidedView.swift; sourceTree = "<group>"; };
+		5B49621F25760C5E009463B1 /* CLWheelMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLWheelMenuController.swift; sourceTree = "<group>"; };
+		5B49622325760CC9009463B1 /* CLWheelMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLWheelMenuView.swift; sourceTree = "<group>"; };
+		5B49622825760D5E009463B1 /* CLMenuLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLMenuLayer.swift; sourceTree = "<group>"; };
+		5B49622B25761064009463B1 /* CLMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLMenuItem.swift; sourceTree = "<group>"; };
 		5B51EE1224AB161700F45628 /* CLNamespace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLNamespace.swift; sourceTree = "<group>"; };
 		5B5F093D24B2B7CA00E69256 /* send_timeout.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = send_timeout.json; sourceTree = "<group>"; };
 		5B63581724ADC50D00D768A4 /* data-right.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "data-right.json"; sourceTree = "<group>"; };
@@ -1257,6 +1265,7 @@
 		0CCDA310219855620057BA14 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5B49622225760CAF009463B1 /* CLWheelMenuView */,
 				5BC856A7255A6DA200DBA7DD /* CLMarqueeCollectionView */,
 				5BC856A6255A6D8E00DBA7DD /* CLDrawMarqueeView */,
 				5B20D6A92552730A0046D110 /* CLInfiniteView */,
@@ -1512,6 +1521,24 @@
 			path = CLTwoSidedView;
 			sourceTree = "<group>";
 		};
+		5B49621E25760C31009463B1 /* CLWheelMenuController */ = {
+			isa = PBXGroup;
+			children = (
+				5B49621F25760C5E009463B1 /* CLWheelMenuController.swift */,
+			);
+			path = CLWheelMenuController;
+			sourceTree = "<group>";
+		};
+		5B49622225760CAF009463B1 /* CLWheelMenuView */ = {
+			isa = PBXGroup;
+			children = (
+				5B49622325760CC9009463B1 /* CLWheelMenuView.swift */,
+				5B49622825760D5E009463B1 /* CLMenuLayer.swift */,
+				5B49622B25761064009463B1 /* CLMenuItem.swift */,
+			);
+			path = CLWheelMenuView;
+			sourceTree = "<group>";
+		};
 		5B51EE1424AB163900F45628 /* Untils */ = {
 			isa = PBXGroup;
 			children = (
@@ -1756,6 +1783,7 @@
 			children = (
 				5B80DA2F1DDD993F00A20E34 /* CLHomepageController.h */,
 				5B80DA301DDD993F00A20E34 /* CLHomepageController.m */,
+				5B49621E25760C31009463B1 /* CLWheelMenuController */,
 				5BBA6707255930CE0070FC99 /* CLDrawMarqueeController */,
 				5BAD165924EBD7C300001E01 /* CLScrollAnimationController */,
 				5BAB9F2B24A3011900BAC6B5 /* CLRecordeEncodeController */,
@@ -2408,6 +2436,7 @@
 				0CF79AFD219678FB00DD0BF1 /* UITableView+IndexTip.m in Sources */,
 				0C0E36A12257836100478B69 /* CLCustomQRCodeViewController.m in Sources */,
 				0C47E22422D9C3E4003EDB4E /* CLTransitionViewController.swift in Sources */,
+				5B49622C25761064009463B1 /* CLMenuItem.swift in Sources */,
 				5BE0FA3C1E03C2C400914DFF /* NSString+CLCalculateSize.m in Sources */,
 				0C7A1EA6231A7210002D75F2 /* CLCustomTransitionAnimatedTransitioning.m in Sources */,
 				5B80DA491DDD993F00A20E34 /* CLCollectionController.m in Sources */,
@@ -2512,6 +2541,7 @@
 				5BA48263253179A80072F9BD /* CLPopupMomentumController.swift in Sources */,
 				0CCDA316219855A20057BA14 /* CLChangeFontSizeCell.m in Sources */,
 				0C6CE0C022ACD71200B4EECF /* FPSDisplay.m in Sources */,
+				5B49622425760CC9009463B1 /* CLWheelMenuView.swift in Sources */,
 				0C03A16D22DB0C540064ADD5 /* CLPhotoBrowserTableViewController.m in Sources */,
 				0C93FADA22E1DECF002069F8 /* CLDrivenInteractiveTransition.m in Sources */,
 				5B80DA4A1DDD993F00A20E34 /* CLHomepageController.m in Sources */,
@@ -2570,6 +2600,7 @@
 				5B44D12A2435C61E0059476D /* CLTagsController.swift in Sources */,
 				0CB60B14237EC51100D10317 /* CLHorizontalCell.m in Sources */,
 				0CC171422248B4D2005B0F0A /* CLGCDTimerManagerOC.m in Sources */,
+				5B49622025760C5E009463B1 /* CLWheelMenuController.swift in Sources */,
 				5BCCEC5A245BCE2C0049AC70 /* CLVernierCaliperView.swift in Sources */,
 				B5498C7D23DED4220082D4E5 /* CLChatTextCell.swift in Sources */,
 				5B399E2824AB147E00A14FE7 /* CLChatImageItem.swift in Sources */,
@@ -2590,6 +2621,7 @@
 				5B723154254FAFB200DA1FE9 /* CLChatRecordTipsView.swift in Sources */,
 				0CCDA30B219850EF0057BA14 /* CLChangeFontSizeController.m in Sources */,
 				5B12FC761E7157BF0091A0E2 /* CLChartView.m in Sources */,
+				5B49622925760D5E009463B1 /* CLMenuLayer.swift in Sources */,
 				0CE733422191CBC700270851 /* UIView+CLSetRect.m in Sources */,
 				5BEA5A0E243DC96D0076BA9F /* UITextField+CLExtension.swift in Sources */,
 				0C7316AA222814AB005ACFE7 /* CLJumpManager.m in Sources */,
