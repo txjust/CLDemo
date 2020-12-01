@@ -13,7 +13,9 @@ class CLMenuLayer: CAShapeLayer {
     var image: UIImage!
     var selected = false {
         didSet {
-            updateContents()
+            if oldValue != selected {
+                updateContents()
+            }
         }
     }
     fileprivate let contentsLayer: CALayer
