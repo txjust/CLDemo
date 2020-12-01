@@ -12,6 +12,7 @@ class CLWheelMenuController: CLBaseViewController {
     private lazy var wheelMenuView: CLWheelMenuView = {
         let view = CLWheelMenuView()
         view.centerButtonCustomImage = UIImage(named: "Menu")
+        view.delegate = self
         return view
     }()
     override func viewDidLoad() {
@@ -31,5 +32,10 @@ class CLWheelMenuController: CLBaseViewController {
         }
         wheelMenuView.items = items
         // Do any additional setup after loading the view.
+    }
+}
+extension CLWheelMenuController: CLWheelMenuViewDelegate {
+    func wheelMenuView(_ view: CLWheelMenuView, didSelectItem: CLMenuItem) {
+        self.view.backgroundColor = didSelectItem.fillColor
     }
 }

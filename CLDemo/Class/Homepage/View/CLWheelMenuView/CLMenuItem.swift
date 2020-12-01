@@ -11,4 +11,5 @@ import UIKit
 class CLMenuItem: NSObject {
     var selectedImage: UIImage!
     var image: UIImage!
+    var fillColor: UIColor = UIColor.randomColor.withAlphaComponent(0.35)
 }

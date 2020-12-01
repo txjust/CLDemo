@@ -9,7 +9,7 @@
 import UIKit
 
 protocol CLWheelMenuViewDelegate: NSObjectProtocol {
-    func wheelMenuView(_ view: CLWheelMenuView, didSelectItem: UITabBarItem)
+    func wheelMenuView(_ view: CLWheelMenuView, didSelectItem: CLMenuItem)
 }
 
 class CLWheelMenuView: UIView {
@@ -56,6 +56,10 @@ class CLWheelMenuView: UIView {
     }
     private lazy var menuBaseView: UIView = {
         let view = UIView()
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture(_:)))
+        view.addGestureRecognizer(pan)
+        view.addGestureRecognizer(tap)
         return view
     }()
     override init(frame: CGRect) {
@@ -88,7 +92,7 @@ class CLWheelMenuView: UIView {
             let menuLayer = CLMenuLayer(center: center, radius: bounds.width/2, startAngle: startAngle, endAngle: endAngle, item: item, bounds: bounds, contentsTransform: transform, selectedImage: item.selectedImage, image: item.image)
             
             menuLayer.strokeColor = boarderColor.cgColor
-            menuLayer.fillColor   = UIColor.randomColor.cgColor
+            menuLayer.fillColor   = item.fillColor.cgColor
             menuLayer.selected    = index == selectedIndex
             menuBaseView.layer.addSublayer(menuLayer)
             createHoleIn(view : menuBaseView, radius: centerButtonRadius + 10)
@@ -141,4 +145,62 @@ extension CLWheelMenuView {
             completion: nil
         )
     }
+    @objc func handlePanGesture(_ sender: UIPanGestureRecognizer) {
+        let location = sender.location(in: self)
+        switch sender.state {
+        case .began:
+            startPoint = location
+        case .changed:
+            let radian1 = -atan2(
+                startPoint.x - menuBaseView.center.x,
+                startPoint.y - menuBaseView.center.y)
+            let radian2 = -atan2(
+                location.x - menuBaseView.center.x,
+                location.y - menuBaseView.center.y)
+            menuBaseView.transform = menuBaseView.transform.rotated(by: radian2 - radian1)
+            startPoint = location
+        default:
+            let angle         = 2 * CGFloat(Double.pi) / CGFloat(menuLayers.count)
+            var menuViewAngle = atan2(menuBaseView.transform.b, menuBaseView.transform.a)
+            
+            if menuViewAngle < 0 {
+                menuViewAngle += CGFloat(2 * Double.pi)
+            }
+            
+            var index = menuLayers.count - Int((menuViewAngle + CGFloat(Double.pi / 4)) / angle)
+            if index == menuLayers.count {
+                index = 0
+            }
+            setSelectedIndex(index, animated: true)
+            delegate?.wheelMenuView(self, didSelectItem: items[index])
+        }
+    }
+    @objc func handleTapGesture(_ sender: UITapGestureRecognizer) {
+        let location = sender.location(in: menuBaseView)
+        for (index, menuLayer) in menuLayers.enumerated() {
+            let touchInLayer = menuLayer.path?.contains(location) ?? false
+            if touchInLayer {
+                setSelectedIndex(index, animated: true)
+                delegate?.wheelMenuView(self, didSelectItem: items[index])
+                return
+            }
+        }
+    }
+
+    public func setSelectedIndex(_ index: Int, animated: Bool) {
+        selectedIndex = index
+        let duration  = animated ? TimeInterval(animationDuration) : 0
+        UIView.animate(withDuration: TimeInterval(duration),
+            animations: {
+                self.menuBaseView.transform =
+                    CGAffineTransform(rotationAngle: self.currentAngle)
+            },
+            completion: { _ in
+                self.menuLayers.enumerated().forEach {
+                    $0.element.selected = $0.offset == index
+                }
+            }
+        )
+    }
+
 }
