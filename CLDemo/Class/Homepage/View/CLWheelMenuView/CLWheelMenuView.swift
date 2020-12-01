@@ -113,7 +113,7 @@ class CLWheelMenuView: UIView {
 extension CLWheelMenuView {
     func updateCenterButton() {
         centerButton.layer.cornerRadius = centerButtonRadius
-        centerButton.setImage(centerButtonCustomImage, for: UIControl.State())
+        centerButton.setImage(centerButtonCustomImage, for: .normal)
     }
     @objc func centerButtonAction() {
         openMenu ? closeMenuView() : openMenuView()
@@ -126,6 +126,8 @@ extension CLWheelMenuView {
             initialSpringVelocity: 5.0,
             options: [],
             animations: {
+                self.centerButton.transform = .identity
+                self.centerButton.setImage(UIImage(named: "Vector"), for: .normal)
                 self.menuBaseView.transform = CGAffineTransform(scaleX: 1, y: 1).rotated(by: self.currentAngle)
             },
             completion: nil
@@ -140,6 +142,8 @@ extension CLWheelMenuView {
             initialSpringVelocity: 5.0,
             options: [],
             animations: {
+                self.centerButton.transform = CGAffineTransform(rotationAngle: .pi * 0.5)
+                self.centerButton.setImage(UIImage(named: "Menu"), for: .normal)
                 self.menuBaseView.transform = CGAffineTransform(scaleX: scale, y: scale).rotated(by: self.currentAngle)
             },
             completion: nil
